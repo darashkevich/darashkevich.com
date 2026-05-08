@@ -1,0 +1,306 @@
+---
+// Header component with latest iPadOS 26 Apple UI Kit design
+---
+
+<header class="relative min-h-[72vh] lg:min-h-[82vh] flex items-center justify-center overflow-hidden">
+  <!-- Ambient hero treatment -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+    <div class="absolute -top-16 left-[12%] w-[34rem] h-[34rem] rounded-full blur-3xl animate-float" style="background: radial-gradient(circle at center, color-mix(in srgb, var(--color-primary) 18%, transparent), transparent 68%);"></div>
+    <div class="absolute bottom-[-9rem] right-[6%] w-[30rem] h-[30rem] rounded-full blur-3xl animate-float" style="background: radial-gradient(circle at center, color-mix(in srgb, var(--color-primary-dark) 16%, transparent), transparent 70%); animation-delay: 3s;"></div>
+  </div>
+
+  <!-- Sticky/Fixed executive navigation -->
+  <div class="fixed top-0 left-0 right-0 z-50 pointer-events-auto border-b backdrop-blur-2xl" style="background-color: color-mix(in srgb, var(--color-bg) 82%, transparent); border-color: var(--color-border); box-shadow: 0 8px 26px rgba(2, 6, 12, 0.45);">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-4" aria-label="Primary">
+      <div class="rounded-[1.15rem] border px-4 sm:px-5 py-2.5 flex justify-between items-center backdrop-blur-2xl" style="background-color: color-mix(in srgb, var(--color-surface) 88%, transparent); border-color: var(--color-border); box-shadow: 0 10px 24px rgba(2, 6, 12, 0.34);">
+        <!-- Brand photo + quick actions -->
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden border shadow-lg backdrop-blur-xl" style="border-color: var(--color-border); background-color: rgba(24, 33, 49, 0.75);">
+            <img
+              src="/images/avatar.jpg"
+              alt="Yahor Darashkevich"
+              class="w-full h-full object-cover"
+              loading="eager"
+              width="96"
+              height="96"
+              fetchpriority="high"
+              decoding="async"
+            >
+          </div>
+          <div class="hidden md:flex items-center gap-2">
+          <a href="https://www.linkedin.com/in/darashkevich" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl border shadow-md flex items-center justify-center transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]" style="background-color: rgba(24, 33, 49, 0.74); border-color: var(--color-border);">
+            <svg class="w-6 h-6 text-[var(--color-icon)] hover:text-[var(--color-primary)] transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.047-1.852-3.047-1.853 0-2.136 1.445-2.136 2.939v5.677H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+            </svg>
+          </a>
+          <a href="mailto:yahor@darashkevich.com" aria-label="Email Yahor" class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl border shadow-md flex items-center justify-center transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]" style="background-color: rgba(24, 33, 49, 0.74); border-color: var(--color-border);">
+            <svg class="w-6 h-6 text-[var(--color-icon)] hover:text-[var(--color-primary)] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+          </a>
+          <a href="tel:+1-617-528-9656" aria-label="Call Yahor" class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl border shadow-md flex items-center justify-center transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]" style="background-color: rgba(24, 33, 49, 0.74); border-color: var(--color-border);">
+            <svg class="w-6 h-6 text-[var(--color-icon)] hover:text-[var(--color-primary)] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+            </svg>
+          </a>
+          </div>
+        </div>
+      
+        <!-- Desktop Navigation -->
+      <div class="hidden lg:flex space-x-2 items-center">
+        <a href="#about" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-all duration-300 font-semibold text-sm px-3 py-2 rounded-xl hover:bg-white/10 backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]">About</a>
+        <a href="#services" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-all duration-300 font-semibold text-sm px-3 py-2 rounded-xl hover:bg-white/10 backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]">Services</a>
+        <a href="#contact" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-all duration-300 font-semibold text-sm px-3 py-2 rounded-xl hover:bg-white/10 backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]">Contact</a>
+        </div>
+      
+        <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-button"
+      class="lg:hidden text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-all duration-200 rounded-xl p-2.5 hover:bg-white/10 backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
+        aria-label="Toggle mobile menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg id="menu-icon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <svg id="close-icon" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Mobile Menu Overlay with Liquid Glass -->
+  <div id="mobile-menu" class="lg:hidden fixed inset-0 bg-black/75 z-[120] transform translate-x-full transition-all duration-400 ease-out pointer-events-none" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="mobile-menu-title">
+      <div class="mobile-menu-panel absolute top-0 right-0 h-full w-[min(86vw,21.5rem)] backdrop-blur-xl shadow-2xl transform translate-x-full transition-all duration-400 ease-out border-l z-[91]" style="background: linear-gradient(180deg, rgba(18, 25, 36, 0.98), rgba(12, 17, 26, 0.98)); border-color: rgba(125, 146, 181, 0.30);" tabindex="-1">
+        <div class="p-8">
+          <h2 id="mobile-menu-title" class="sr-only">Mobile navigation</h2>
+          <div class="flex justify-between items-center mb-12">
+            <div class="w-12 h-12 rounded-full overflow-hidden border shadow-lg backdrop-blur-xl" style="border-color: var(--color-border); background-color: rgba(24, 33, 49, 0.75);">
+              <img
+                src="/images/avatar.jpg"
+                alt="Yahor Darashkevich"
+                class="w-full h-full object-cover"
+                loading="eager"
+                width="96"
+                height="96"
+                decoding="async"
+              >
+            </div>
+            <button
+              id="mobile-menu-close" 
+              class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-0 rounded-2xl p-3 hover:bg-white/10 border border-white/10"
+              aria-label="Close mobile menu"
+            >
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
+          
+          <!-- Enhanced Mobile Navigation Links -->
+          <div class="space-y-3">
+              <a 
+              href="#about" 
+              class="mobile-nav-link block rounded-2xl text-xl font-semibold tracking-tight text-[var(--color-text)] hover:text-[var(--color-primary)] transition-all duration-300 px-4 py-4 border border-white/10 hover:border-[color:var(--color-border)] hover:bg-white/5"
+              data-section="about"
+            >
+              About
+            </a>
+            <a 
+              href="#services" 
+              class="mobile-nav-link block rounded-2xl text-xl font-semibold tracking-tight text-[var(--color-text)] hover:text-[var(--color-primary)] transition-all duration-300 px-4 py-4 border border-white/10 hover:border-[color:var(--color-border)] hover:bg-white/5"
+              data-section="services"
+            >
+              Services
+            </a>
+            <a 
+              href="#contact" 
+              class="mobile-nav-link block rounded-2xl text-xl font-semibold tracking-tight text-[var(--color-text)] hover:text-[var(--color-primary)] transition-all duration-300 px-4 py-4 border border-white/10 hover:border-[color:var(--color-border)] hover:bg-white/5"
+              data-section="contact"
+            >
+              Contact
+            </a>
+          </div>
+          <div class="mt-8 flex items-center gap-3 pt-5 border-t border-white/10">
+            <a href="https://www.linkedin.com/in/darashkevich" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="w-10 h-10 rounded-2xl border shadow-md flex items-center justify-center transition-all duration-300 hover:bg-white/10" style="background-color: rgba(24, 33, 49, 0.74); border-color: var(--color-border);">
+              <svg class="w-5 h-5 text-[var(--color-icon)] hover:text-[var(--color-primary)] transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.047-1.852-3.047-1.853 0-2.136 1.445-2.136 2.939v5.677H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+              </svg>
+            </a>
+            <a href="mailto:yahor@darashkevich.com" aria-label="Email Yahor" class="w-10 h-10 rounded-2xl border shadow-md flex items-center justify-center transition-all duration-300 hover:bg-white/10" style="background-color: rgba(24, 33, 49, 0.74); border-color: var(--color-border);">
+              <svg class="w-5 h-5 text-[var(--color-icon)] hover:text-[var(--color-primary)] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+            </a>
+            <a href="tel:+1-617-528-9656" aria-label="Call Yahor" class="w-10 h-10 rounded-2xl border shadow-md flex items-center justify-center transition-all duration-300 hover:bg-white/10" style="background-color: rgba(24, 33, 49, 0.74); border-color: var(--color-border);">
+              <svg class="w-5 h-5 text-[var(--color-icon)] hover:text-[var(--color-primary)] transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- Hero Content with Liquid Glass -->
+  <div class="relative z-10 text-center px-6 sm:px-8 lg:px-12 max-w-6xl mx-auto pt-32 sm:pt-36 lg:pt-40">
+    <!-- Typography -->
+    <h1 class="text-5xl sm:text-6xl lg:text-[5.75rem] xl:text-[6.65rem] font-extrabold text-[var(--color-text)] mb-6 sm:mb-7 leading-[0.92] tracking-[-0.03em] max-w-[14ch] mx-auto">
+      Yahor Darashkevich
+    </h1>
+
+    <p class="text-lg sm:text-xl lg:text-2xl font-semibold text-[var(--color-text)] mb-4 sm:mb-5 leading-snug max-w-[34ch] mx-auto">
+      Scaling customer experience for high-growth consumer brands.
+    </p>
+
+    <p class="text-base sm:text-lg lg:text-[1.22rem] text-[var(--color-text-muted)] mb-8 sm:mb-10 leading-[1.78] max-w-[38ch] sm:max-w-[42ch] mx-auto font-normal">
+      Senior CX and support operator with a track record of scaling teams, modernizing Zendesk and AI workflows, and improving retention under rapid growth.
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
+      <a href="#contact" class="inline-flex w-full sm:w-auto items-center justify-center rounded-[1.15rem] px-7 py-3.5 text-base font-semibold text-[var(--color-executive)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg" style="background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark)); box-shadow: 0 12px 28px color-mix(in srgb, var(--color-primary) 32%, transparent);">
+        Discuss Opportunities
+      </a>
+      <a href="/YD_resume_2026.pdf" download="YD_resume_2026.pdf" class="inline-flex w-full sm:w-auto items-center justify-center rounded-[1.15rem] px-7 py-3.5 text-base font-semibold text-[var(--color-executive)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg" style="background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark)); box-shadow: 0 12px 28px color-mix(in srgb, var(--color-primary) 32%, transparent);">
+        Download Resume
+      </a>
+    </div>
+    
+  </div>
+
+</header>
+
+<script>
+  let closeMobileMenu: () => void = () => {};
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+    const mobileNavLinks = document.querySelectorAll<HTMLAnchorElement>('.mobile-nav-link');
+    const mobileMenuPanel = mobileMenu?.querySelector('.mobile-menu-panel');
+    const focusableSelector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    let previouslyFocusedElement: HTMLElement | null = null;
+
+    if (
+      !(mobileMenuButton instanceof HTMLButtonElement) ||
+      !(mobileMenu instanceof HTMLElement) ||
+      !(mobileMenuClose instanceof HTMLButtonElement) ||
+      !(menuIcon instanceof SVGElement) ||
+      !(closeIcon instanceof SVGElement) ||
+      !(mobileMenuPanel instanceof HTMLElement)
+    ) {
+      return;
+    }
+
+    const mobileMenuButtonEl = mobileMenuButton;
+    const mobileMenuEl = mobileMenu;
+    const mobileMenuCloseEl = mobileMenuClose;
+    const menuIconEl = menuIcon;
+    const closeIconEl = closeIcon;
+    const mobileMenuPanelEl = mobileMenuPanel;
+
+    function getFocusableElements() {
+      return Array.from(mobileMenuEl.querySelectorAll<HTMLElement>(focusableSelector));
+    }
+
+    function openMobileMenu() {
+      mobileMenuEl.classList.remove('translate-x-full', 'pointer-events-none');
+      mobileMenuEl.classList.add('pointer-events-auto');
+      mobileMenuPanelEl.classList.remove('translate-x-full');
+      menuIconEl.classList.add('hidden');
+      closeIconEl.classList.remove('hidden');
+      mobileMenuButtonEl.setAttribute('aria-expanded', 'true');
+      mobileMenuEl.setAttribute('aria-hidden', 'false');
+      previouslyFocusedElement = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+      document.body.style.overflow = 'hidden';
+
+      const focusable = getFocusableElements();
+      (focusable[0] || mobileMenuPanelEl).focus();
+    }
+
+    closeMobileMenu = function() {
+      mobileMenuEl.classList.add('translate-x-full');
+      mobileMenuEl.classList.remove('pointer-events-auto');
+      mobileMenuEl.classList.add('pointer-events-none');
+      mobileMenuPanelEl.classList.add('translate-x-full');
+      menuIconEl.classList.remove('hidden');
+      closeIconEl.classList.add('hidden');
+      mobileMenuButtonEl.setAttribute('aria-expanded', 'false');
+      mobileMenuEl.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+
+      if (previouslyFocusedElement instanceof HTMLElement) {
+        previouslyFocusedElement.focus();
+      }
+    };
+
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        const href = link.getAttribute('href');
+        if (!href || href === '#') return;
+
+        e.preventDefault();
+        closeMobileMenu();
+
+        setTimeout(() => {
+          const targetElement = document.querySelector(href);
+          if (targetElement) {
+            targetElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+
+            if (window.location.hash !== href) {
+              window.history.pushState(null, '', href);
+            }
+          }
+        }, 180);
+      });
+    });
+
+    mobileMenuButtonEl.addEventListener('click', openMobileMenu);
+    mobileMenuCloseEl.addEventListener('click', closeMobileMenu);
+
+    mobileMenuEl.addEventListener('click', function(e) {
+      if (e.target === mobileMenuEl) {
+        closeMobileMenu();
+      }
+    });
+
+    document.addEventListener('keydown', function(e) {
+      const menuOpen = !mobileMenuEl.classList.contains('translate-x-full');
+
+      if (e.key === 'Escape' && menuOpen) {
+        closeMobileMenu();
+      }
+
+      if (e.key === 'Tab' && menuOpen) {
+        const focusable = getFocusableElements();
+        if (focusable.length === 0) return;
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        const active = document.activeElement;
+
+        if (e.shiftKey && active === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && active === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    });
+
+    window.addEventListener('resize', function() {
+      if (window.innerWidth >= 1024) {
+        closeMobileMenu();
+      }
+    });
+  });
+</script>

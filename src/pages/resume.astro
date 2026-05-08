@@ -1,0 +1,208 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LegalHeader from '../components/LegalHeader.astro';
+import Footer from '../components/Footer.astro';
+
+const expertise = [
+  'Customer Experience Strategy',
+  'Customer Support Leadership',
+  'DTC & Subscription Operations',
+  'Zendesk Suite',
+  'AI & Self-Service',
+  'Help Center & Knowledge Management',
+  'Workforce Planning',
+  'Vendor & BPO Management',
+  'CSAT & Voice of Customer',
+  'KPI Reporting',
+  'Process Improvement',
+  'Escalation Management',
+  'Retention Support',
+  'Quality Assurance',
+  'Training & Enablement'
+];
+
+const experience = [
+  {
+    role: 'Sr. Director of Customer Support',
+    period: '2017 - 2026',
+    company: "Ka'Chava / Tribal Nutrition LLC",
+    location: 'Remote',
+    highlights: [
+      'Built and scaled the customer support organization from a 1-agent operation to 95+ agents at peak growth, including staffing model, workflows, QA standards, and operating processes.',
+      'Led support operations through 1.5M+ resolved customer tickets while maintaining 89%+ CSAT across a high-volume, multi-channel environment.',
+      'Owned support for subscriptions, billing, refunds, returns, shipping issues, product questions, escalations, and retention-related friction.',
+      'Built workflows, automations, escalation paths, SOPs, and internal knowledge resources that improved consistency, response speed, and agent productivity.',
+      'Partnered with operations, fulfillment, marketing, retention, and product teams to surface customer pain points and operational risks to leadership.',
+      'Supported customer retention and subscription growth initiatives by identifying recurring friction points across billing, fulfillment, and customer lifecycle experiences.',
+      'Built reporting frameworks for CSAT, contact volume, response time, resolution time, sentiment trends, escalation rates, and customer pain points.',
+      'Managed hiring, onboarding, workforce planning, coaching, and vendor/BPO operations through seasonal spikes, launches, and fulfillment disruptions.'
+    ]
+  },
+  {
+    role: 'Zendesk & Customer Happiness Consultant',
+    period: '2015 - 2019',
+    company: 'Freelance',
+    location: 'Remote',
+    highlights: [
+      'Implemented and optimized Zendesk Suite environments for growing teams, including workflows, automations, macros, reporting, help centers, and integrations.',
+      'Designed SOPs, support processes, reporting dashboards, and self-service content aligned with operational goals and CX best practices.',
+      'Recruited, trained, and managed support agents while advising clients on quality, KPI tracking, and scalability.'
+    ]
+  },
+  {
+    role: 'Support & Training Specialist',
+    period: '2013 - 2015',
+    company: 'TeachPoint',
+    location: 'Cambridge, MA',
+    highlights: [
+      'Developed support, onboarding, and customer education strategies for a SaaS education technology platform.',
+      'Delivered technical support through Zendesk and phone channels while managing onboarding, training webinars, scheduling, and help center content.',
+      'Collected support metrics, customer feedback, bug reports, and feature requests to improve product and customer experience.'
+    ]
+  },
+  {
+    role: 'Specialist / Family Room Specialist',
+    period: '2011 - 2013',
+    company: 'Apple',
+    location: 'Cambridge, MA',
+    highlights: [
+      'Delivered 3,000+ customer support and training sessions across Apple mobile, computing, and software products in a high-volume retail environment.',
+      'Troubleshot iOS and macOS issues, repaired Mac and iPhone hardware, and supported device setup and data transfers.'
+    ]
+  }
+];
+---
+
+<Layout
+  title="Resume | Yahor Darashkevich"
+  description="Executive resume for Yahor Darashkevich, Customer Support and Customer Experience leader across DTC, eCommerce, subscription, Zendesk, and AI-enabled support operations."
+>
+  <LegalHeader />
+
+  <section class="pt-12 pb-8 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="backdrop-blur-2xl rounded-3xl border p-8 md:p-12" style="background-color: var(--color-surface); border-color: var(--color-border); box-shadow: 0 16px 38px var(--color-shadow);">
+        <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
+          <div>
+            <p class="text-sm uppercase tracking-[0.2em] text-[var(--color-text-soft)] mb-4">Executive Resume</p>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[var(--color-text)] mb-5">Yahor Darashkevich</h1>
+            <p class="text-lg md:text-xl text-[var(--color-text-muted)] max-w-3xl leading-relaxed">
+              Customer Support and Customer Experience executive focused on scaling high-performing support organizations for DTC, eCommerce, subscription, SaaS, and technology businesses.
+            </p>
+          </div>
+          <div class="flex flex-col sm:items-end gap-4">
+            <a href="/YD_resume_2026.pdf" download="YD_resume_2026.pdf" class="inline-flex items-center justify-center rounded-2xl px-6 py-3 text-base font-semibold text-[var(--color-executive)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg" style="background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark)); box-shadow: 0 10px 28px color-mix(in srgb, var(--color-primary) 30%, transparent);">
+              Download PDF
+            </a>
+            <div class="text-sm text-[var(--color-text-soft)] space-y-1 sm:text-right">
+              <p>Remote, Worldwide</p>
+              <p><a href="mailto:yahor@darashkevich.com" class="hover:text-[var(--color-primary)] transition-colors">yahor@darashkevich.com</a></p>
+              <p><a href="tel:+16175289656" class="hover:text-[var(--color-primary)] transition-colors">+1 (617) 528-9656</a></p>
+              <p><a href="https://www.linkedin.com/in/darashkevich" target="_blank" rel="noopener noreferrer" class="hover:text-[var(--color-primary)] transition-colors">linkedin.com/in/darashkevich</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-8 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+        <article class="xl:col-span-2 backdrop-blur-xl rounded-3xl border p-7 md:p-9" style="background-color: var(--color-surface); border-color: var(--color-border); box-shadow: 0 14px 34px var(--color-shadow);">
+          <h2 class="text-2xl md:text-3xl font-semibold tracking-tight text-[var(--color-text)] mb-4">Executive Summary</h2>
+          <div class="space-y-4 text-[var(--color-text-muted)] leading-relaxed">
+            <p>
+              Customer Support and Customer Experience executive with 15+ years of experience building and scaling support organizations for fast-growing direct-to-consumer, eCommerce, subscription, SaaS, and technology companies.
+            </p>
+            <p>
+              At Ka&apos;Chava, scaled support from a 1-agent operation to 95+ agents at peak growth, led 1.5M+ resolved customer tickets, and maintained 89%+ CSAT in a high-volume consumer support environment.
+            </p>
+            <p>
+              Brings a mix of operational leadership, Zendesk expertise, AI and self-service strategy, workforce planning, analytics, vendor management, and customer insight programs.
+            </p>
+          </div>
+        </article>
+
+        <aside class="backdrop-blur-xl rounded-3xl border p-7 md:p-9" style="background-color: var(--color-surface); border-color: var(--color-border); box-shadow: 0 14px 34px var(--color-shadow);">
+          <h2 class="text-2xl font-semibold tracking-tight text-[var(--color-text)] mb-4">Core Expertise</h2>
+          <ul class="space-y-2">
+            {expertise.map((item) => (
+              <li class="text-[var(--color-text-muted)] leading-relaxed flex gap-2">
+                <span class="text-[var(--color-primary)] mt-0.5">•</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-8 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="backdrop-blur-xl rounded-3xl border p-7 md:p-10" style="background-color: var(--color-surface); border-color: var(--color-border); box-shadow: 0 14px 34px var(--color-shadow);">
+        <h2 class="text-2xl md:text-3xl font-semibold tracking-tight text-[var(--color-text)] mb-8">Professional Experience</h2>
+        <div class="space-y-9">
+          {experience.map((item) => (
+            <article class="border-b pb-8 last:border-b-0 last:pb-0" style="border-color: color-mix(in srgb, var(--color-border) 90%, transparent);">
+              <div class="flex flex-col md:flex-row md:justify-between md:items-baseline gap-2 mb-3">
+                <h3 class="text-xl font-semibold text-[var(--color-text)]">{item.role}</h3>
+                <span class="text-sm md:text-base text-[var(--color-text-soft)]">{item.period}</span>
+              </div>
+              <p class="text-[var(--color-text-soft)] mb-4">{item.company} - {item.location}</p>
+              <ul class="space-y-2.5">
+                {item.highlights.map((point) => (
+                  <li class="text-[var(--color-text-muted)] leading-relaxed flex gap-2.5">
+                    <span class="text-[var(--color-primary)] mt-0.5">•</span>
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-8 px-6">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+      <article class="backdrop-blur-xl rounded-3xl border p-7 md:p-9" style="background-color: var(--color-surface); border-color: var(--color-border); box-shadow: 0 14px 34px var(--color-shadow);">
+        <h2 class="text-2xl font-semibold tracking-tight text-[var(--color-text)] mb-4">Education</h2>
+        <div class="space-y-4 text-[var(--color-text-muted)] leading-relaxed">
+          <p><span class="text-[var(--color-text)] font-medium">St. Lawrence University</span><br />Bachelor of Arts, Government - Canton, NY (2010)</p>
+          <p><span class="text-[var(--color-text)] font-medium">United World College of the Adriatic</span><br />International Baccalaureate - Duino, Italy (2006)</p>
+        </div>
+      </article>
+
+      <article class="backdrop-blur-xl rounded-3xl border p-7 md:p-9" style="background-color: var(--color-surface); border-color: var(--color-border); box-shadow: 0 14px 34px var(--color-shadow);">
+        <h2 class="text-2xl font-semibold tracking-tight text-[var(--color-text)] mb-4">Technology & Languages</h2>
+        <div class="space-y-4 text-[var(--color-text-muted)] leading-relaxed">
+          <p>
+            <span class="text-[var(--color-text)] font-medium">Technology:</span> Zendesk Suite, Zendesk Explore, AI and self-service platforms, support analytics, knowledge management systems, help center platforms, macOS, iOS, HTML/CSS, Adobe Illustrator.
+          </p>
+          <p>
+            <span class="text-[var(--color-text)] font-medium">Languages:</span> English, Belarusian, Russian; intermediate French, Italian, and Polish.
+          </p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="pt-2 pb-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="backdrop-blur-xl rounded-3xl border p-7 md:p-9 flex flex-col md:flex-row md:items-center md:justify-between gap-5" style="background-color: var(--color-surface); border-color: var(--color-border); box-shadow: 0 14px 34px var(--color-shadow);">
+        <div>
+          <h2 class="text-2xl font-semibold tracking-tight text-[var(--color-text)] mb-2">Open to executive opportunities</h2>
+          <p class="text-[var(--color-text-muted)]">Available for VP / Head of Customer Experience and customer support leadership roles.</p>
+        </div>
+        <a href="/#contact" class="inline-flex items-center justify-center rounded-2xl px-6 py-3 text-base font-semibold text-[var(--color-executive)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg whitespace-nowrap" style="background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark)); box-shadow: 0 10px 28px color-mix(in srgb, var(--color-primary) 30%, transparent);">
+          Contact Yahor
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,69 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LegalHeader from '../components/LegalHeader.astro';
+---
+
+<Layout
+  title="Accessibility Statement | Yahor Darashkevich"
+  description="Accessibility Statement for Yahor Darashkevich portfolio website."
+>
+  <LegalHeader />
+  <main class="py-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="backdrop-blur-xl rounded-3xl border p-8 md:p-12" style="background-color: var(--color-surface); border-color: var(--color-border); box-shadow: 0 16px 38px var(--color-shadow);">
+        <h1 class="text-4xl md:text-5xl font-bold text-[var(--color-text)] mb-4 tracking-tight">Accessibility Statement</h1>
+        <p class="text-[var(--color-text-soft)] mb-10">Effective date: May 8, 2026</p>
+
+        <div class="space-y-8 text-[var(--color-text-muted)] leading-relaxed">
+          <section>
+            <h2 class="text-2xl font-semibold text-[var(--color-text)] mb-3">1. Commitment</h2>
+            <p>
+              This website is designed and maintained to support inclusive access for all visitors, including people
+              using assistive technologies.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-2xl font-semibold text-[var(--color-text)] mb-3">2. Standards Targeted</h2>
+            <p>
+              The site is developed with the goal of conforming to WCAG 2.1 Level AA best practices and related
+              accessibility obligations that may apply in relevant jurisdictions.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-2xl font-semibold text-[var(--color-text)] mb-3">3. Accessibility Features</h2>
+            <ul class="list-disc pl-6 mt-2 space-y-1">
+              <li>Keyboard-focus visibility and keyboard-accessible navigation.</li>
+              <li>Skip-to-content link and semantic page landmarks.</li>
+              <li>Accessible names for primary interactive controls.</li>
+              <li>Responsive layout designed for zoom and smaller viewports.</li>
+              <li>Reduced-motion support for users who prefer less animation.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 class="text-2xl font-semibold text-[var(--color-text)] mb-3">4. Ongoing Testing</h2>
+            <p>
+              Accessibility is reviewed periodically through manual checks and automated linting/audit tooling during
+              development and pre-release verification.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-2xl font-semibold text-[var(--color-text)] mb-3">5. Feedback and Support</h2>
+            <p>
+              If you experience an accessibility barrier on this website, please report it by email with the page URL,
+              issue details, and any assistive technology used:
+            </p>
+            <p class="mt-3">
+              <a class="text-[var(--color-primary)] underline underline-offset-2 hover:text-[var(--color-icon)]" href="mailto:yahor@darashkevich.com">
+                yahor@darashkevich.com
+              </a>
+            </p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

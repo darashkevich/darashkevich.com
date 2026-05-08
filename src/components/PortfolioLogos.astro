@@ -1,0 +1,78 @@
+---
+type LogoTile = {
+  src?: string;
+  label?: string;
+  alt: string;
+  bgColor: string;
+  textColor?: string;
+  sublabel?: string;
+};
+
+const logos: LogoTile[] = [
+  { src: '/images/brands/picBB.jpg', alt: 'Brand logo BB', bgColor: '#272526' },
+  { src: '/images/brands/picBoia.png', alt: 'Brand logo Boia', bgColor: '#ffffff' },
+  { src: '/images/brands/picEfyTal.png', alt: 'Brand logo EfyTal', bgColor: '#ffffff' },
+  { src: '/images/brands/picFCF.png', alt: 'Brand logo FCF', bgColor: '#111111' },
+  { src: '/images/brands/picGoshly.jpg', alt: 'Brand logo Goshly', bgColor: '#6d6d6d' },
+  { src: '/images/brands/picIORAD.jpg', alt: 'Brand logo IORAD', bgColor: '#ffffff' },
+  { src: '/images/brands/picJB.jpg', alt: 'Brand logo JB', bgColor: '#ffffff' },
+  { src: '/images/brands/picKachava.jpg', alt: 'Brand logo Kachava', bgColor: '#f8efea' },
+  { src: '/images/brands/picLawnLove.png', alt: 'Brand logo LawnLove', bgColor: '#328363' },
+  { src: '/images/brands/picPOTV.jpg', alt: 'Brand logo POTV', bgColor: '#f9f5f2' },
+  { src: '/images/brands/picPedalSure.png', alt: 'Brand logo PedalSure', bgColor: '#07161d' },
+  { src: '/images/brands/picRotoQL.jpg', alt: 'Brand logo RotoQL', bgColor: '#000000' },
+  { src: '/images/brands/picSatechi.jpg', alt: 'Brand logo Satechi', bgColor: '#ffffff' },
+  { label: '', alt: 'Apple logo tile', bgColor: '#f3f4f6', textColor: '#111111' }
+];
+---
+
+<section id="portfolio-logos" class="pt-4 pb-12 relative">
+  <div class="max-w-7xl mx-auto px-8 lg:px-12">
+    <div class="backdrop-blur-xl rounded-3xl p-10 md:p-14 border" style="background-color: var(--color-surface); border-color: var(--color-border); box-shadow: 0 14px 34px var(--color-shadow);">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl lg:text-5xl xl:text-6xl font-bold text-[var(--color-text)] mb-6 tracking-tight">
+          Selected Brands &amp; Organizations
+        </h2>
+        <p class="text-[var(--color-text-muted)] text-lg mb-6 max-w-3xl mx-auto leading-relaxed">
+          Experience across nutrition, supplements, meal replacement, DTC, eCommerce, subscription, SaaS, technology, education, and consumer support environments.
+        </p>
+        <div class="w-40 h-1.5 bg-gradient-to-r from-slate-500/60 via-blue-500/60 to-indigo-500/60 mx-auto rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+        {logos.map((logo) => (
+          <div
+            class="h-24 md:h-28 backdrop-blur-xl rounded-2xl border transition-all duration-300 flex items-center justify-center p-4 hover:-translate-y-0.5"
+            style={`background-color: ${logo.bgColor}; border-color: var(--color-border); box-shadow: 0 8px 22px var(--color-shadow);`}
+          >
+            {logo.src ? (
+              <img
+                src={logo.src}
+                alt={logo.alt}
+                loading="lazy"
+                decoding="async"
+                width="180"
+                height="96"
+                class="max-h-full max-w-full object-contain"
+              />
+            ) : (
+              <div class="text-center leading-tight">
+                <div
+                  class={`font-semibold ${(logo.label === '' || logo.label === '?') ? 'text-3xl md:text-4xl leading-none' : 'text-base md:text-lg'}`}
+                  style={`color: ${logo.textColor || '#111827'};`}
+                >
+                  {logo.label}
+                </div>
+                {logo.sublabel && (
+                  <div class="text-xs md:text-sm mt-1 opacity-80" style={`color: ${logo.textColor || '#111827'};`}>
+                    {logo.sublabel}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

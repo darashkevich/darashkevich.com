@@ -1,0 +1,274 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title,
+  description = "Customer Support and Customer Experience executive specializing in high-growth DTC, eCommerce, subscription, nutrition, supplements, meal replacement, Zendesk, AI self-service, customer operations, and support team scaling.",
+  image = "/og-image.svg"
+} = Astro.props;
+const siteUrl = Astro.site ?? new URL(Astro.url.origin);
+const canonicalURL = new URL(Astro.url.pathname, siteUrl);
+const absoluteImageURL = new URL(image, siteUrl);
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Yahor Darashkevich",
+  url: siteUrl.toString(),
+  description
+};
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Yahor Darashkevich",
+  url: siteUrl.toString(),
+  image: absoluteImageURL.toString(),
+  jobTitle: "Customer Support and Customer Experience Executive",
+  description,
+  sameAs: [
+    "https://www.linkedin.com/in/darashkevich",
+    "https://www.upwork.com/freelancers/~011b1479d238052c29?companyReference=613482611598331906&mp_source=share"
+  ],
+  worksFor: {
+    "@type": "Organization",
+    name: "Darashkevich Consulting"
+  },
+  knowsAbout: [
+    "Nutrition Customer Support",
+    "Supplements Industry",
+    "Meal Replacement",
+    "Wellness eCommerce",
+    "Subscription Commerce",
+    "DTC Nutrition",
+    "eCommerce Support",
+    "Customer Operations",
+    "Customer Experience Strategy",
+    "Customer Support Leadership",
+    "AI Self-Service",
+    "AI Support Agents",
+    "Voice of Customer",
+    "Zendesk Optimization",
+    "Support Team Scaling",
+    "BPO / Vendor Management",
+    "Customer Retention",
+    "Workforce Planning",
+    "KPI Reporting",
+    "CSAT",
+    "Customer Sentiment Analysis"
+  ]
+};
+const professionalServiceSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Darashkevich Consulting",
+  url: siteUrl.toString(),
+  image: absoluteImageURL.toString(),
+  description,
+  founder: {
+    "@type": "Person",
+    name: "Yahor Darashkevich"
+  },
+  areaServed: "Worldwide",
+  serviceType: [
+    "Customer Operations Leadership",
+    "eCommerce Support Operations",
+    "DTC Subscription Support",
+    "Nutrition and Wellness Customer Experience",
+    "Customer Experience Strategy",
+    "Support Team Scaling",
+    "Zendesk Workflow Optimization",
+    "AI Self-Service and Support Automation"
+  ],
+  sameAs: personSchema.sameAs
+};
+const structuredData = [websiteSchema, personSchema, professionalServiceSchema];
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={absoluteImageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/svg+xml" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={absoluteImageURL} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="/images/avatar.jpg" as="image">
+    <style is:global>
+      :root {
+        --color-bg: #0B0D10;
+        --color-bg-soft: #111318;
+        --color-bg-deep: #161A22;
+        --color-surface: #181C24;
+        --color-surface-strong: #1D2330;
+        --color-text: #F5F7FA;
+        --color-text-muted: #A7B0C0;
+        --color-text-soft: #6B7280;
+        --color-primary: #7DD3FC;
+        --color-primary-dark: #60A5FA;
+        --color-executive: #0F141D;
+        --color-accent-cyan: rgba(125, 211, 252, 0.15);
+        --color-accent-blue: rgba(96, 165, 250, 0.14);
+        --color-border: rgba(167, 176, 192, 0.2);
+        --color-shadow: rgba(2, 6, 12, 0.5);
+        --color-icon: #C9D3E4;
+        --radius-card: 1.35rem;
+      }
+
+      section {
+        scroll-margin-top: 96px;
+      }
+
+      :focus-visible {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 2px;
+      }
+
+      [data-reveal] {
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 420ms ease, transform 420ms ease;
+      }
+
+      [data-reveal].is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .brand-grid {
+        background-image:
+          linear-gradient(to right, color-mix(in srgb, var(--color-border) 40%, transparent) 1px, transparent 1px),
+          linear-gradient(to bottom, color-mix(in srgb, var(--color-border) 40%, transparent) 1px, transparent 1px);
+        background-size: 44px 44px;
+        mask-image: radial-gradient(circle at center, black 36%, transparent 78%);
+        opacity: 0.15;
+      }
+
+      .brand-noise {
+        background-image: radial-gradient(rgba(255,255,255,0.06) 0.55px, transparent 0.55px);
+        background-size: 3px 3px;
+        opacity: 0.1;
+      }
+
+      .skip-link {
+        position: absolute;
+        top: 0.5rem;
+        left: 0.5rem;
+        padding: 0.625rem 0.875rem;
+        border-radius: 0.75rem;
+        border: 1px solid var(--color-border);
+        background: var(--color-executive);
+        color: var(--color-text);
+        transform: translateY(-140%);
+        transition: transform 200ms ease;
+        z-index: 999;
+      }
+
+      .skip-link:focus-visible {
+        transform: translateY(0);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-[var(--color-bg)] text-[var(--color-text)] font-sans antialiased min-h-screen">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <!-- Ambient background signature -->
+    <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+      <div class="absolute inset-0 bg-gradient-to-b from-[var(--color-bg)] via-[var(--color-bg-soft)] to-[var(--color-bg-deep)]"></div>
+      <div class="absolute inset-0 brand-grid"></div>
+      <div class="absolute inset-0 brand-noise"></div>
+      <div class="absolute top-[-10rem] left-[8%] w-[34rem] h-[34rem] rounded-full blur-3xl animate-float" style="background: radial-gradient(circle at center, var(--color-accent-cyan), transparent 66%);"></div>
+      <div class="absolute top-[18%] right-[2%] w-[30rem] h-[30rem] rounded-full blur-3xl animate-float" style="background: radial-gradient(circle at center, var(--color-accent-blue), transparent 66%); animation-delay: 2.5s;"></div>
+    </div>
+    <main id="main-content">
+      <slot />
+    </main>
+    
+    <!-- Smooth scrolling and modern interactions -->
+    <script>
+      // Add smooth scrolling for in-page anchor links while keeping URL/hash semantics.
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', (e) => {
+          const href = anchor.getAttribute('href');
+          if (!href || href === '#') return;
+          const target = document.querySelector(href);
+          if (!target) return;
+
+          e.preventDefault();
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+
+          if (window.location.hash !== href) {
+            window.history.pushState(null, '', href);
+          }
+        });
+      });
+
+      // Intersection Observer for animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      }, observerOptions);
+
+      // Observe all sections
+      document.querySelectorAll('section').forEach(section => {
+        section.setAttribute('data-reveal', '');
+        observer.observe(section);
+      });
+
+    </script>
+  </body>
+</html>
