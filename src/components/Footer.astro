@@ -2,14 +2,17 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="relative pb-20">
-  <div class="max-w-7xl mx-auto px-8 lg:px-12">
-    <div class="backdrop-blur-xl rounded-3xl p-8 border" style="background-color: var(--color-surface); border-color: var(--color-border); box-shadow: 0 12px 30px var(--color-shadow);">
-      <div class="flex flex-col md:flex-row justify-between items-center">
-        <div class="text-[var(--color-text-muted)] text-lg mb-6 md:mb-0">
+<footer class="relative pb-16 sm:pb-20">
+  <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+    <div class="flex justify-center mb-5 sm:mb-6">
+      <div class="w-20 sm:w-24 h-px rounded-full" style="background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--color-primary) 55%, transparent), transparent);"></div>
+    </div>
+    <div class="backdrop-blur-xl rounded-[1.35rem] p-6 sm:p-8 border" style="background-color: color-mix(in srgb, var(--color-surface) 92%, transparent); border-color: var(--color-border); box-shadow: 0 12px 30px var(--color-shadow);">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-5">
+        <div class="text-[var(--color-text-muted)] text-sm sm:text-base text-center md:text-left">
           &copy; {currentYear} Yahor Darashkevich. All rights reserved.
         </div>
-        <div class="flex space-x-8 text-lg text-[var(--color-text-muted)]">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-6 text-sm sm:text-base text-[var(--color-text-muted)] text-center">
           <a href="/privacy-policy" class="hover:text-[var(--color-primary)] underline underline-offset-2 transition-colors duration-300">Privacy Policy</a>
           <a href="/terms-of-service" class="hover:text-[var(--color-primary)] underline underline-offset-2 transition-colors duration-300">Terms of Service</a>
           <a href="/accessibility" class="hover:text-[var(--color-primary)] underline underline-offset-2 transition-colors duration-300">Accessibility</a>
