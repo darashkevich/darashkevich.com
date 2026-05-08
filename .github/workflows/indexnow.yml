@@ -1,0 +1,27 @@
+name: IndexNow Notify
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+jobs:
+  notify-indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Wait for deploy propagation
+        run: sleep 120
+
+      - name: Submit URLs to IndexNow
+        env:
+          SITE_URL: https://darashkevich.com
+          INDEXNOW_KEY: 74f2c7e9b54140a790f7dc6ab2f9d3e1
+          INDEXNOW_KEY_LOCATION: https://darashkevich.com/74f2c7e9b54140a790f7dc6ab2f9d3e1.txt
+          MAX_RETRIES: "10"
+          RETRY_DELAY_SECONDS: "30"
+        run: bash ./scripts/notify-indexnow.sh
