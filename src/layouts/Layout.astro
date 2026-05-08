@@ -9,7 +9,7 @@ export interface Props {
 
 const {
   title,
-  description = "Customer Support and Customer Experience executive specializing in high-growth DTC, eCommerce, subscription, nutrition, supplements, meal replacement, Zendesk, AI self-service, customer operations, and support team scaling.",
+  description = "Customer Experience and Support Operations executive specializing in DTC, subscription, Zendesk, AI self-service, and scalable support teams.",
   image = "/og-image.svg"
 } = Astro.props;
 const siteUrl = Astro.site ?? new URL(Astro.url.origin);
@@ -28,7 +28,7 @@ const personSchema = {
   name: "Yahor Darashkevich",
   url: siteUrl.toString(),
   image: absoluteImageURL.toString(),
-  jobTitle: "Customer Support and Customer Experience Executive",
+  jobTitle: "Customer Experience and Support Operations Executive",
   description,
   sameAs: [
     "https://www.linkedin.com/in/darashkevich",
@@ -103,7 +103,7 @@ const structuredData = [websiteSchema, personSchema, professionalServiceSchema];
     
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={Astro.url} />
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={absoluteImageURL} />
@@ -113,7 +113,7 @@ const structuredData = [websiteSchema, personSchema, professionalServiceSchema];
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:url" content={canonicalURL} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={absoluteImageURL} />

@@ -12,7 +12,7 @@ const caseStudies = [
     title: 'Reduced Ticket Volume Through Workflow Redesign',
     summary:
       'Re-architected Zendesk workflows, self-service content, and agent operating practices to reduce support friction and improve resolution consistency.',
-    outcomes: ['40% reduction in ticket volume', 'Faster first-response performance', 'Improved quality and consistency of resolutions']
+    outcomes: ['Helped reduce avoidable ticket volume through workflow and self-service improvements.', 'Faster first-response performance', 'Improved quality and consistency of resolutions']
   },
   {
     company: 'Multi-Brand Advisory',
@@ -35,7 +35,7 @@ const caseStudies = [
 
     <div class="grid lg:grid-cols-3 gap-6 md:gap-7">
       {caseStudies.map((item) => (
-        <article class="rounded-[1.35rem] border p-7 md:p-8 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 hover:border-[color:var(--color-primary-dark)] hover:shadow-[0_22px_44px_rgba(2,6,12,0.58)]" style="background: color-mix(in srgb, var(--color-surface) 94%, transparent); border-color: var(--color-border); box-shadow: 0 16px 34px var(--color-shadow);">
+        <article class="h-full rounded-[1.35rem] border p-7 md:p-8 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 hover:border-[color:var(--color-primary-dark)] hover:shadow-[0_22px_44px_rgba(2,6,12,0.58)]" style="background: color-mix(in srgb, var(--color-surface) 94%, transparent); border-color: var(--color-border); box-shadow: 0 16px 34px var(--color-shadow);">
           <p class="text-xs uppercase tracking-[0.18em] text-[var(--color-text-soft)] mb-3">{item.company}</p>
           <h3 class="text-[1.6rem] font-semibold text-[var(--color-text)] tracking-[-0.01em] leading-tight mb-4">{item.title}</h3>
           <p class="text-base text-[var(--color-text-muted)] leading-7 mb-6 max-w-[34ch]">{item.summary}</p>
