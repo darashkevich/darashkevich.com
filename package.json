@@ -10,6 +10,7 @@
     "check": "astro sync && tsc --noEmit -p tsconfig.json",
     "lint": "tsc --noEmit -p tsconfig.json",
     "verify": "npm run check && npm run build",
+    "audit:prod": "bash ./scripts/audit-production.sh",
     "astro": "astro"
   },
   "dependencies": {

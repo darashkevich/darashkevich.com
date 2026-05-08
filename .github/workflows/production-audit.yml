@@ -1,0 +1,24 @@
+name: Production Audit
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+  schedule:
+    - cron: "0 12 * * *"
+
+jobs:
+  audit-production:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run production audit checks
+        env:
+          SITE_URL: https://darashkevich.com
+          MAX_RETRIES: "15"
+          RETRY_DELAY_SECONDS: "20"
+        run: bash ./scripts/audit-production.sh
