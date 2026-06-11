@@ -40,6 +40,8 @@ SPAN = (
     "letter-spacing: 0px; line-height: 1.2; font-size: {size}px;"
 )
 
+ICON_DISPLAY_PX = 28
+
 ICON_LINKS = [
     ("email.png", "mailto:yahor@darashkevich.com", "Email"),
     ("phone.png", "tel:+16175289656", "Phone"),
@@ -64,11 +66,12 @@ def build_icon_row(use_hosted: bool = True) -> str:
     for i, (filename, href, alt) in enumerate(ICON_LINKS):
         src = icon_hosted_url(filename) if use_hosted else icon_data_uri(filename)
         pad = "0 10px 0 0" if i < len(ICON_LINKS) - 1 else "0"
+        px = ICON_DISPLAY_PX
         cells.append(
             f'<td style="padding: {pad}; line-height: 0; font-size: 0;">'
             f'<a href="{href}" style="text-decoration: unset; display: block;">'
-            f'<img src="{src}" width="24" height="24" border="0" alt="{alt}" '
-            'style="display: block; border: 0; width: 24px; height: 24px;">'
+            f'<img src="{src}" width="{px}" height="{px}" border="0" alt="{alt}" '
+            f'style="display: block; border: 0; width: {px}px; height: {px}px;">'
             "</a></td>"
         )
     return (
