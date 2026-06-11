@@ -2,6 +2,7 @@
 """Write a Mail.app-compatible .mailsignature using Teams signature structure."""
 
 import base64
+import re
 import sys
 import uuid
 from io import BytesIO
@@ -9,6 +10,8 @@ from pathlib import Path
 from typing import Optional
 
 import quopri
+
+DATA_URI_RE = re.compile(r"data:image/[^;]+;base64,[A-Za-z0-9+/=]+")
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 ICON_DIR = SCRIPT_DIR.parent / "public" / "signature" / "icons"
@@ -56,7 +59,7 @@ def icon_hosted_url(filename: str) -> str:
     return f"{HOSTED_ICON_BASE}/{filename}"
 
 
-def build_icon_row(use_hosted: bool = False) -> str:
+def build_icon_row(use_hosted: bool = True) -> str:
     cells = []
     for i, (filename, href, alt) in enumerate(ICON_LINKS):
         src = icon_hosted_url(filename) if use_hosted else icon_data_uri(filename)
@@ -64,7 +67,7 @@ def build_icon_row(use_hosted: bool = False) -> str:
         cells.append(
             f'<td style="padding: {pad}; line-height: 0; font-size: 0;">'
             f'<a href="{href}" style="text-decoration: unset; display: block;">'
-            f'<img src="{src}" width="24" height="24" alt="{alt}" '
+            f'<img src="{src}" width="24" height="24" border="0" alt="{alt}" '
             'style="display: block; border: 0; width: 24px; height: 24px;">'
             "</a></td>"
         )
@@ -75,7 +78,7 @@ def build_icon_row(use_hosted: bool = False) -> str:
     )
 
 
-def build_inner_html(minimal: bool = False, use_hosted_icons: bool = False) -> str:
+def build_inner_html(minimal: bool = False, use_hosted_icons: bool = True) -> str:
     """Light-background-safe HTML: dark text, cyan accent, icon link row."""
     if minimal:
         return (
@@ -143,17 +146,36 @@ def wrap_teams_shell(inner_html: str) -> str:
     )
 
 
-def encode_quoted_printable(html: str) -> str:
+def _qp_encode_chunk(text: str) -> str:
     buf = BytesIO()
-    quopri.encode(BytesIO(html.encode("utf-8")), buf, quotetabs=False, header=False)
+    quopri.encode(BytesIO(text.encode("utf-8")), buf, quotetabs=False, header=False)
     return buf.getvalue().decode("ascii")
+
+
+def _qp_encode_data_uri(uri: str) -> str:
+    """Escape data URIs for QP without soft line breaks (preserves base64 integrity)."""
+    return uri.replace("=", "=3D")
+
+
+def encode_quoted_printable(html: str) -> str:
+    """QP-encode HTML; data URIs stay on one line with = escaped as =3D."""
+    result: list[str] = []
+    last = 0
+    for match in DATA_URI_RE.finditer(html):
+        if match.start() > last:
+            result.append(_qp_encode_chunk(html[last : match.start()]))
+        result.append(_qp_encode_data_uri(match.group(0)))
+        last = match.end()
+    if last < len(html):
+        result.append(_qp_encode_chunk(html[last:]))
+    return "".join(result)
 
 
 def write_mailsignature(
     out_path: Path,
     message_id: Optional[str] = None,
     minimal: bool = False,
-    use_hosted_icons: bool = False,
+    use_hosted_icons: bool = True,
 ) -> None:
     mail_html = wrap_teams_shell(build_inner_html(minimal=minimal, use_hosted_icons=use_hosted_icons))
     encoded = encode_quoted_printable(mail_html)
@@ -164,12 +186,12 @@ def write_mailsignature(
 def main() -> None:
     args = sys.argv[1:]
     minimal = "--minimal" in args
-    use_hosted = "--hosted-icons" in args
-    args = [a for a in args if a not in ("--minimal", "--hosted-icons")]
+    use_hosted = "--base64-icons" not in args
+    args = [a for a in args if a not in ("--minimal", "--base64-icons", "--hosted-icons")]
 
     if len(args) < 1:
         print(
-            f"Usage: {sys.argv[0]} <output.mailsignature> [message-id] [--minimal] [--hosted-icons]",
+            f"Usage: {sys.argv[0]} <output.mailsignature> [message-id] [--minimal] [--base64-icons]",
             file=sys.stderr,
         )
         raise SystemExit(1)
@@ -177,7 +199,7 @@ def main() -> None:
     out_path = Path(args[0])
     msg_id = args[1] if len(args) > 1 else None
     write_mailsignature(out_path, msg_id, minimal=minimal, use_hosted_icons=use_hosted)
-    mode = "minimal" if minimal else "icons (base64)" if not use_hosted else "icons (hosted)"
+    mode = "minimal" if minimal else "icons (hosted)" if use_hosted else "icons (base64)"
     print(f"Wrote {out_path} ({mode} Teams-format)")
 
 

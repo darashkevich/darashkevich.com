@@ -53,8 +53,17 @@ else:
 path.write_bytes(plistlib.dumps(data))
 PY
 
+EXTRA_ARGS=()
+if [[ "${1:-}" == "--base64-icons" ]]; then
+  EXTRA_ARGS=(--base64-icons)
+fi
+
 echo "Writing Teams-format .mailsignature (${SIGNATURE_UUID})..."
-python3 "${WRITE_SIG}" "${SIG_FILE}" "${SIGNATURE_UUID}"
+if ((${#EXTRA_ARGS[@]})); then
+  python3 "${WRITE_SIG}" "${SIG_FILE}" "${SIGNATURE_UUID}" "${EXTRA_ARGS[@]}"
+else
+  python3 "${WRITE_SIG}" "${SIG_FILE}" "${SIGNATURE_UUID}"
+fi
 
 if [[ ! -s "${SIG_FILE}" ]]; then
   echo "Error: ${SIG_FILE} is missing or empty after write."

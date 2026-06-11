@@ -1,10 +1,7 @@
 #!/bin/bash
-# Regenerate PNG icons from SVG sources (macOS qlmanage + sips).
+# Regenerate 96x96 retina PNG icons from SVG sources (sharp).
 set -euo pipefail
-ICON_DIR="$(cd "$(dirname "$0")/.." && pwd)/public/signature/icons"
-for f in email phone linkedin website; do
-  qlmanage -t -s 48 -o "$ICON_DIR" "$ICON_DIR/$f.svg" >/dev/null 2>&1
-  mv -f "$ICON_DIR/$f.svg.png" "$ICON_DIR/$f.png"
-  sips -z 24 24 "$ICON_DIR/$f.png" >/dev/null
-done
-echo "Icons written to $ICON_DIR/*.png"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
+cd "${ROOT_DIR}"
+node "${SCRIPT_DIR}/render-signature-icons.mjs"
