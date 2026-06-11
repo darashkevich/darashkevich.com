@@ -45,7 +45,7 @@ ICON_DISPLAY_PX = 28
 ICON_LINKS = [
     ("email.png", "mailto:yahor@darashkevich.com", "Email"),
     ("phone.png", "tel:+16175289656", "Phone"),
-    ("linkedin.png", "https://linkedin.com/in/yahordarashkevich", "LinkedIn"),
+    ("linkedin.png", "https://www.linkedin.com/in/darashkevich/", "LinkedIn"),
     ("website.png", "https://darashkevich.com", "Website"),
 ]
 
