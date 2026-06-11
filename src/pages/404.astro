@@ -1,0 +1,145 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LegalHeader from '../components/LegalHeader.astro';
+---
+
+<Layout
+  title="404 | Page not found — Yahor Darashkevich"
+  description="The page you requested could not be found. Return to the homepage or get in touch."
+>
+  <LegalHeader />
+
+  <style is:global>
+    .err-404-ambient {
+      pointer-events: none;
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .err-404-ambient .orb {
+      position: absolute;
+      border-radius: 9999px;
+      filter: blur(80px);
+      opacity: 0.55;
+    }
+    .err-404-ambient .orb-a {
+      width: min(42vw, 28rem);
+      height: min(42vw, 28rem);
+      top: 10%;
+      left: 8%;
+      background: radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--color-primary) 45%, transparent), transparent 70%);
+      animation: err404-float 9s ease-in-out infinite;
+    }
+    .err-404-ambient .orb-b {
+      width: min(48vw, 32rem);
+      height: min(48vw, 32rem);
+      bottom: 5%;
+      right: 5%;
+      background: radial-gradient(circle at 60% 50%, color-mix(in srgb, var(--color-primary-dark) 40%, transparent), transparent 72%);
+      animation: err404-float 11s ease-in-out infinite;
+      animation-delay: -2s;
+    }
+    .err-404-ambient .orb-c {
+      width: min(36vw, 22rem);
+      height: min(36vw, 22rem);
+      top: 38%;
+      left: calc(50% - min(18vw, 11rem));
+      background: radial-gradient(circle at center, rgba(167, 139, 250, 0.22), transparent 68%);
+      animation: err404-float 7s ease-in-out infinite;
+      animation-delay: -4s;
+    }
+    @keyframes err404-float {
+      0%,
+      100% {
+        transform: translateY(0) scale(1);
+      }
+      50% {
+        transform: translateY(-18px) scale(1.03);
+      }
+    }
+    .err-404-code {
+      font-size: clamp(4.5rem, 18vw, 11rem);
+      font-weight: 800;
+      line-height: 0.92;
+      letter-spacing: -0.06em;
+      background: linear-gradient(
+        115deg,
+        var(--color-primary) 0%,
+        var(--color-primary-dark) 28%,
+        #c4b5fd 52%,
+        var(--color-primary) 78%,
+        #38bdf8 100%
+      );
+      background-size: 220% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: err404-gradient 10s ease-in-out infinite;
+      text-shadow: 0 0 80px color-mix(in srgb, var(--color-primary) 25%, transparent);
+    }
+    @keyframes err404-gradient {
+      0%,
+      100% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .err-404-ambient .orb-a,
+      .err-404-ambient .orb-b,
+      .err-404-ambient .orb-c {
+        animation: none;
+      }
+      .err-404-code {
+        animation: none;
+        background-position: 40% 50%;
+      }
+    }
+  </style>
+
+  <section class="relative min-h-[calc(100vh-8rem)] flex items-center justify-center px-6 py-16 md:py-24 overflow-hidden">
+    <div class="err-404-ambient" aria-hidden="true">
+      <div class="orb orb-a"></div>
+      <div class="orb orb-b"></div>
+      <div class="orb orb-c"></div>
+    </div>
+
+    <div
+      class="relative z-10 w-full max-w-xl text-center rounded-[1.75rem] border px-8 py-12 md:px-12 md:py-14 backdrop-blur-2xl animate-fade-in"
+      style="background: color-mix(in srgb, var(--color-surface) 78%, transparent); border-color: color-mix(in srgb, var(--color-border) 85%, transparent); box-shadow: 0 28px 64px var(--color-shadow), 0 0 0 1px color-mix(in srgb, var(--color-primary) 12%, transparent) inset;"
+    >
+      <p class="text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-text-soft)] mb-6">Error</p>
+      <h1 class="err-404-code mb-8 select-none" aria-label="404">404</h1>
+      <p class="text-xl md:text-2xl font-semibold tracking-tight text-[var(--color-text)] mb-4">
+        This page is not in the routing queue.
+      </p>
+      <p class="text-base md:text-lg text-[var(--color-text-muted)] leading-relaxed mb-10 max-w-md mx-auto">
+        The URL may have moved, or the link could be outdated. Let’s get you somewhere useful.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center items-stretch sm:items-center">
+        <a
+          href="/"
+          class="inline-flex items-center justify-center rounded-2xl px-7 py-3.5 text-base font-semibold text-[var(--color-executive)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
+          style="background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark)); box-shadow: 0 12px 32px color-mix(in srgb, var(--color-primary) 32%, transparent);"
+        >
+          Back to homepage
+        </a>
+        <a
+          href="/#contact"
+          class="inline-flex items-center justify-center rounded-2xl px-7 py-3.5 text-base font-semibold border transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
+          style="border-color: var(--color-border); background-color: color-mix(in srgb, var(--color-surface-strong) 72%, transparent); color: var(--color-text);"
+        >
+          Contact
+        </a>
+      </div>
+      <p class="mt-10 text-sm text-[var(--color-text-soft)]">
+        <a href="/resume/" class="text-[var(--color-primary)] underline underline-offset-2 hover:text-[var(--color-text)] transition-colors">Resume</a>
+        <span class="mx-2 opacity-40" aria-hidden="true">·</span>
+        <a href="/#services" class="text-[var(--color-primary)] underline underline-offset-2 hover:text-[var(--color-text)] transition-colors">Services</a>
+      </p>
+    </div>
+  </section>
+</Layout>

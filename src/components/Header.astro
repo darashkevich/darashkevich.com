@@ -1,5 +1,26 @@
 ---
-// Header component with latest iPadOS 26 Apple UI Kit design
+function formatHeaderDate(date: Date) {
+  return new Intl.DateTimeFormat('en-US', {
+    weekday: 'short',
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric'
+  }).format(date);
+}
+
+function formatHeaderTime(date: Date) {
+  return new Intl.DateTimeFormat('en-US', {
+    hour: 'numeric',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: true
+  }).format(date);
+}
+
+const headerNow = new Date();
+const headerDateInitial = formatHeaderDate(headerNow);
+const headerTimeInitial = formatHeaderTime(headerNow);
+const headerDateTimeIso = headerNow.toISOString();
 ---
 
 <header class="relative min-h-[72vh] lg:min-h-[82vh] flex items-center justify-center overflow-hidden pb-10 sm:pb-14 lg:pb-16">
@@ -12,9 +33,9 @@
   <!-- Sticky/Fixed executive navigation -->
   <div class="fixed top-0 left-0 right-0 z-50 pointer-events-auto border-b backdrop-blur-2xl" style="background-color: color-mix(in srgb, var(--color-bg) 82%, transparent); border-color: var(--color-border); box-shadow: 0 8px 26px rgba(2, 6, 12, 0.45);">
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-4" aria-label="Primary">
-      <div class="rounded-[1.15rem] border px-4 sm:px-5 py-2.5 flex justify-between items-center backdrop-blur-2xl" style="background-color: color-mix(in srgb, var(--color-surface) 88%, transparent); border-color: var(--color-border); box-shadow: 0 10px 24px rgba(2, 6, 12, 0.34);">
+      <div class="relative rounded-[1.15rem] border px-4 sm:px-5 py-2.5 flex items-center justify-between gap-2 sm:gap-3 backdrop-blur-2xl" style="background-color: color-mix(in srgb, var(--color-surface) 88%, transparent); border-color: var(--color-border); box-shadow: 0 10px 24px rgba(2, 6, 12, 0.34);">
         <!-- Brand photo + quick actions -->
-        <div class="flex items-center gap-3">
+        <div class="flex items-center gap-3 min-w-0 shrink">
           <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden border shadow-lg backdrop-blur-xl" style="border-color: var(--color-border); background-color: rgba(24, 33, 49, 0.75);">
             <img
               src="/images/avatar.jpg"
@@ -45,29 +66,41 @@
           </a>
           </div>
         </div>
-      
+
+        <time
+          id="header-datetime"
+          class="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 text-center text-xs font-medium tabular-nums tracking-tight whitespace-nowrap px-1 sm:px-1.5 pointer-events-none"
+          style="color: var(--color-text-muted)"
+          datetime={headerDateTimeIso}
+          aria-live="polite"
+        >
+          <span class="hidden md:inline" id="header-date">{headerDateInitial}</span><span class="hidden md:inline mx-1.5" style="color: var(--color-text-soft)" aria-hidden="true">·</span><span id="header-time">{headerTimeInitial}</span>
+        </time>
+
+        <div class="flex items-center justify-end gap-2 sm:gap-3 lg:gap-4 min-w-0 shrink">
         <!-- Desktop Navigation -->
-      <div class="hidden lg:flex space-x-2 items-center">
-        <a href="#about" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-all duration-300 font-semibold text-sm px-3 py-2 rounded-xl hover:bg-white/10 backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]">About</a>
-        <a href="#services" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-all duration-300 font-semibold text-sm px-3 py-2 rounded-xl hover:bg-white/10 backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]">Services</a>
-        <a href="#contact" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-all duration-300 font-semibold text-sm px-3 py-2 rounded-xl hover:bg-white/10 backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]">Contact</a>
+        <div class="hidden lg:flex space-x-2 items-center">
+          <a href="#about" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-all duration-300 font-semibold text-sm px-3 py-2 rounded-xl hover:bg-white/10 backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]">About</a>
+          <a href="#services" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-all duration-300 font-semibold text-sm px-3 py-2 rounded-xl hover:bg-white/10 backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]">Services</a>
+          <a href="#contact" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-all duration-300 font-semibold text-sm px-3 py-2 rounded-xl hover:bg-white/10 backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]">Contact</a>
         </div>
-      
+
         <!-- Mobile Menu Button -->
-      <button
-        id="mobile-menu-button"
-      class="lg:hidden text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-all duration-200 rounded-xl p-2.5 hover:bg-white/10 backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
-        aria-label="Toggle mobile menu"
-        aria-expanded="false"
-        aria-controls="mobile-menu"
-      >
-        <svg id="menu-icon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-        <svg id="close-icon" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
-      </button>
+        <button
+          id="mobile-menu-button"
+          class="lg:hidden text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-all duration-200 rounded-xl p-2.5 hover:bg-white/10 backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
+          aria-label="Toggle mobile menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <svg id="menu-icon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <svg id="close-icon" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+        </div>
       </div>
     </nav>
   </div>
@@ -171,6 +204,43 @@
   </div>
 
 </header>
+
+<script is:inline>
+  (function () {
+    function updateHeaderClock() {
+      var datetimeEl = document.getElementById('header-datetime');
+      var timeEl = document.getElementById('header-time');
+      if (!timeEl) return;
+
+      var now = new Date();
+      if (datetimeEl && 'dateTime' in datetimeEl) {
+        datetimeEl.dateTime = now.toISOString();
+      }
+      timeEl.textContent = new Intl.DateTimeFormat('en-US', {
+        hour: 'numeric',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+      }).format(now);
+
+      var dateEl = document.getElementById('header-date');
+      if (dateEl) {
+        dateEl.textContent = new Intl.DateTimeFormat('en-US', {
+          weekday: 'short',
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric'
+        }).format(now);
+      }
+    }
+
+    updateHeaderClock();
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', updateHeaderClock);
+    }
+    window.setInterval(updateHeaderClock, 1000);
+  })();
+</script>
 
 <script>
   let closeMobileMenu: () => void = () => {};
