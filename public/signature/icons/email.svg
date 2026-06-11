@@ -6,7 +6,7 @@
     </linearGradient>
   </defs>
   <circle cx="64" cy="64" r="58" fill="url(#bg-email)"/>
-  <g transform="translate(34 38) scale(2.5)" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <g transform="translate(64 64) scale(2.333333) translate(-12 -12)" fill="none" stroke="#FFFFFF" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
     <path d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8"/>
     <path d="M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
   </g>

@@ -6,7 +6,7 @@
     </linearGradient>
   </defs>
   <circle cx="64" cy="64" r="58" fill="url(#bg-linkedin)"/>
-  <g transform="translate(34 34) scale(2.5)" fill="#FFFFFF">
+  <g transform="translate(64 64) scale(2.1) translate(-12 -12)" fill="#FFFFFF">
     <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>
     <rect x="2" y="9" width="4" height="12" rx="0.5"/>
     <circle cx="4" cy="4" r="2"/>
