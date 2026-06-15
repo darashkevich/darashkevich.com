@@ -1,5 +1,7 @@
 #!/usr/bin/env node
-/** Render 128x128 PNG icons from SVG (displayed at 28px in signatures). */
+/** Render 128x128 PNG icons from SVG (displayed at 28px in signatures).
+ *  Glyph scale lives in each SVG: stroke icons 2.85×, LinkedIn 2.58× (~50% of circle).
+ */
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
