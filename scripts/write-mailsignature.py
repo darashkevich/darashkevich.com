@@ -116,7 +116,7 @@ def build_inner_html(minimal: bool = False, use_hosted_icons: bool = True) -> st
         '<tr><td style="padding-top: 6px; padding-bottom: 0.01px;">'
         '<div style="margin: 0.1px; line-height: 1.35;">'
         '<span style="font-size: 12px; color: rgb(107, 114, 128);">'
-        "SaaS · eCommerce · Subscriptions · AI-Enabled Support&nbsp;"
+        "SaaS · eCommerce · Subscriptions · AI&nbsp;"
         "</span></div></td></tr>"
         '<tr><td style="padding-top: 6px; white-space: nowrap;">'
         f"{icon_row}"
