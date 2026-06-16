@@ -1,0 +1,76 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Yahor Darashkevich",
+    "url": "https://darashkevich.com/",
+    "description": "Customer Experience and Support Operations executive specializing in DTC, subscription, Zendesk, AI self-service, and scalable support teams."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Yahor Darashkevich",
+    "url": "https://darashkevich.com/",
+    "image": "https://darashkevich.com/og-image.svg",
+    "jobTitle": "Customer Experience and Support Operations Executive",
+    "description": "Customer Experience and Support Operations executive specializing in DTC, subscription, Zendesk, AI self-service, and scalable support teams.",
+    "sameAs": [
+      "https://www.linkedin.com/in/darashkevich",
+      "https://www.upwork.com/freelancers/~011b1479d238052c29?companyReference=613482611598331906&mp_source=share"
+    ],
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Darashkevich Consulting"
+    },
+    "knowsAbout": [
+      "Nutrition Customer Support",
+      "Supplements Industry",
+      "Meal Replacement",
+      "Wellness eCommerce",
+      "Subscription Commerce",
+      "DTC Nutrition",
+      "eCommerce Support",
+      "Customer Operations",
+      "Customer Experience Strategy",
+      "Customer Support Leadership",
+      "AI Self-Service",
+      "AI Support Agents",
+      "Voice of Customer",
+      "Zendesk Optimization",
+      "Support Team Scaling",
+      "BPO / Vendor Management",
+      "Customer Retention",
+      "Workforce Planning",
+      "KPI Reporting",
+      "CSAT",
+      "Customer Sentiment Analysis"
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Darashkevich Consulting",
+    "url": "https://darashkevich.com/",
+    "image": "https://darashkevich.com/og-image.svg",
+    "description": "Customer Experience and Support Operations executive specializing in DTC, subscription, Zendesk, AI self-service, and scalable support teams.",
+    "founder": {
+      "@type": "Person",
+      "name": "Yahor Darashkevich"
+    },
+    "areaServed": "Worldwide",
+    "serviceType": [
+      "Customer Operations Leadership",
+      "eCommerce Support Operations",
+      "DTC Subscription Support",
+      "Nutrition and Wellness Customer Experience",
+      "Customer Experience Strategy",
+      "Support Team Scaling",
+      "Zendesk Workflow Optimization",
+      "AI Self-Service and Support Automation"
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/in/darashkevich",
+      "https://www.upwork.com/freelancers/~011b1479d238052c29?companyReference=613482611598331906&mp_source=share"
+    ]
+  }
+]

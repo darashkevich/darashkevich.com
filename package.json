@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
+    "dev:lan": "ASTRO_DEV_HOST=true astro dev",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
@@ -11,13 +12,14 @@
     "check": "astro sync && tsc --noEmit -p tsconfig.json",
     "lint": "tsc --noEmit -p tsconfig.json",
     "verify": "npm run check && npm run build",
+    "audit:deps": "npm audit --audit-level=high",
     "audit:prod": "bash ./scripts/audit-production.sh",
     "indexnow:notify": "bash ./scripts/notify-indexnow.sh",
     "astro": "astro"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
-    "astro": "^6.3.1"
+    "astro": "^6.4.7"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
@@ -28,5 +30,8 @@
     "sharp": "^0.34.5",
     "tailwindcss": "^3.3.0",
     "typescript": "^5.9.2"
+  },
+  "overrides": {
+    "esbuild": "^0.28.1"
   }
 }

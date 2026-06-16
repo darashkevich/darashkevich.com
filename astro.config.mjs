@@ -6,9 +6,9 @@ export default defineConfig({
   site: 'https://darashkevich.com',
   base: '/',
   trailingSlash: 'never',
-  // Listen on all interfaces so Simple Browser / device preview can connect; Box Drive often breaks native FS watchers.
+  // Bind to localhost by default; use `npm run dev:lan` for device/Simple Browser preview.
   server: {
-    host: true,
+    host: process.env.ASTRO_DEV_HOST === 'true',
     port: 4321,
     strictPort: false
   },
