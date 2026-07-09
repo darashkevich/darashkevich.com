@@ -26,7 +26,7 @@ const coreStrengths = [
     group: 'Operations',
     items: [
       'SaaS Support Operations',
-      'DTC & Subscription Operations',
+      'eCommerce & Subscription Operations',
       'BPO / Vendor Management',
       'Workforce Planning',
       'Escalation Management',
@@ -59,7 +59,7 @@ const experience = [
     location: 'Remote',
     condensed: false,
     highlights: [
-      '<strong>Built and scaled the customer support organization</strong> from a 1-agent operation to 95+ agents at peak growth, establishing the staffing model, workflows, QA standards, and operating processes needed to support rapid DTC subscription growth.',
+      '<strong>Built and scaled the customer support organization</strong> from a 1-agent operation to 95+ agents at peak growth, establishing the staffing model, workflows, QA standards, and operating processes needed to support rapid subscription and eCommerce growth.',
       '<strong>Led operations through 1.5M+ resolved customer tickets</strong> and peak volume of 35K tickets/month while maintaining 89%+ CSAT across a high-volume, multi-channel consumer environment.',
       '<strong>Reduced first reply time to under 4 hours</strong> by improving Zendesk workflows, routing, macros, workforce planning, and performance management across internal and outsourced teams.',
       '<strong>Rolled out Zendesk Advanced AI agents</strong> across chat and email, expanding automation and self-service capabilities while maintaining quality standards and escalation control.',
@@ -114,7 +114,7 @@ const sectionLabel = 'text-xs font-semibold uppercase tracking-[0.14em] text-[va
 
 <Layout
   title="Resume | Yahor Darashkevich"
-  description="Executive resume for Yahor Darashkevich, Customer Support and Customer Experience leader across DTC, eCommerce, subscription, Zendesk Advanced AI, and support operations."
+  description="Executive resume for Yahor Darashkevich, Customer Support and Customer Experience leader across SaaS, eCommerce, subscription, Zendesk Advanced AI, and support operations."
 >
   <LegalHeader />
 
@@ -131,7 +131,7 @@ const sectionLabel = 'text-xs font-semibold uppercase tracking-[0.14em] text-[va
               Customer Support &amp; Customer Experience Executive
             </p>
             <p class="text-base text-[var(--color-text-muted)] max-w-3xl leading-relaxed">
-              SaaS, DTC &amp; Subscription Support Operations | Zendesk, AI, BPO &amp; Customer Experience Strategy
+              SaaS, eCommerce &amp; Subscription Support Operations | Zendesk, AI, BPO &amp; Customer Experience Strategy
             </p>
           </div>
           <a
@@ -188,7 +188,7 @@ const sectionLabel = 'text-xs font-semibold uppercase tracking-[0.14em] text-[va
           <h2 class={`${sectionLabel}`} style="border-color: var(--color-border);">Executive Profile</h2>
           <div class="space-y-4 text-[var(--color-text-muted)] leading-relaxed text-[0.95rem] md:text-base">
             <p>
-              Customer Support and Customer Experience executive with 15+ years leading high-volume SaaS, DTC, eCommerce, subscription, and technology-enabled support operations. Built Ka'Chava's support function from a 1-agent operation to 95+ agents at peak growth, supported 35K-ticket peak monthly volume, led 1.5M+ resolved tickets, and maintained 89%+ CSAT.
+              Customer Support and Customer Experience executive with 15+ years leading high-volume SaaS, eCommerce, subscription, and technology-enabled support operations. Built Ka'Chava's support function from a 1-agent operation to 95+ agents at peak growth, supported 35K-ticket peak monthly volume, led 1.5M+ resolved tickets, and maintained 89%+ CSAT.
             </p>
             <p>
               Known for building scalable support operating models across Zendesk Advanced AI, self-service, BPO/vendor operations, QA, workforce planning, escalation management, KPI reporting, and Voice of Customer programs that connect frontline support to retention, operations, and executive decision-making.
@@ -209,10 +209,9 @@ const sectionLabel = 'text-xs font-semibold uppercase tracking-[0.14em] text-[va
                   <span class="text-sm text-[var(--color-text-soft)] whitespace-nowrap">{item.period}</span>
                 </div>
                 <p class="text-sm text-[var(--color-text-soft)] mb-3">{item.company} · {item.location}</p>
-                <ul class="space-y-2">
+                <ul class="list-disc pl-5 space-y-2 marker:text-[var(--color-primary)]">
                   {item.highlights.map((point) => (
-                    <li class="text-[0.95rem] text-[var(--color-text-muted)] leading-relaxed flex gap-2.5">
-                      <span class="text-[var(--color-primary)] mt-0.5 shrink-0">•</span>
+                    <li class="text-[0.95rem] text-[var(--color-text-muted)] leading-relaxed">
                       <span set:html={point} class="[&_strong]:text-[var(--color-text)] [&_strong]:font-semibold" />
                     </li>
                   ))}
@@ -231,12 +230,9 @@ const sectionLabel = 'text-xs font-semibold uppercase tracking-[0.14em] text-[va
             {coreStrengths.map((group) => (
               <div>
                 <h3 class="text-[0.7rem] font-semibold uppercase tracking-[0.1em] text-[var(--color-text-soft)] mb-2">{group.group}</h3>
-                <ul class="space-y-1.5">
+                <ul class="list-disc pl-5 space-y-1.5 marker:text-[var(--color-primary)]">
                   {group.items.map((item) => (
-                    <li class="text-sm text-[var(--color-text-muted)] leading-relaxed flex gap-2">
-                      <span class="text-[var(--color-primary)] shrink-0">·</span>
-                      <span>{item}</span>
-                    </li>
+                    <li class="text-sm text-[var(--color-text-muted)] leading-relaxed">{item}</li>
                   ))}
                 </ul>
               </div>
@@ -263,10 +259,9 @@ const sectionLabel = 'text-xs font-semibold uppercase tracking-[0.14em] text-[va
                 <span class="text-sm text-[var(--color-text-soft)] whitespace-nowrap">{item.period}</span>
               </div>
               <p class="text-sm text-[var(--color-text-soft)] mb-3">{item.company} · {item.location}</p>
-              <ul class="space-y-2">
+              <ul class="list-disc pl-5 space-y-2 marker:text-[var(--color-primary)]">
                 {item.highlights.map((point) => (
-                  <li class="text-sm text-[var(--color-text-muted)] leading-relaxed flex gap-2.5">
-                    <span class="text-[var(--color-primary)] mt-0.5 shrink-0">•</span>
+                  <li class="text-sm text-[var(--color-text-muted)] leading-relaxed">
                     <span set:html={point} class="[&_strong]:text-[var(--color-text)] [&_strong]:font-semibold" />
                   </li>
                 ))}

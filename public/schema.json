@@ -4,7 +4,7 @@
     "@type": "WebSite",
     "name": "Yahor Darashkevich",
     "url": "https://darashkevich.com/",
-    "description": "Customer Experience and Support Operations executive specializing in DTC, subscription, Zendesk, AI self-service, and scalable support teams."
+    "description": "Customer Experience and Support Operations executive specializing in SaaS, eCommerce, subscription, Zendesk, AI self-service, and scalable support teams."
   },
   {
     "@context": "https://schema.org",
@@ -13,7 +13,7 @@
     "url": "https://darashkevich.com/",
     "image": "https://darashkevich.com/og-image.svg",
     "jobTitle": "Customer Experience and Support Operations Executive",
-    "description": "Customer Experience and Support Operations executive specializing in DTC, subscription, Zendesk, AI self-service, and scalable support teams.",
+    "description": "Customer Experience and Support Operations executive specializing in SaaS, eCommerce, subscription, Zendesk, AI self-service, and scalable support teams.",
     "sameAs": [
       "https://www.linkedin.com/in/darashkevich",
       "https://www.upwork.com/freelancers/~011b1479d238052c29?companyReference=613482611598331906&mp_source=share"
@@ -28,7 +28,7 @@
       "Meal Replacement",
       "Wellness eCommerce",
       "Subscription Commerce",
-      "DTC Nutrition",
+      "Nutrition eCommerce",
       "eCommerce Support",
       "Customer Operations",
       "Customer Experience Strategy",
@@ -52,7 +52,7 @@
     "name": "Darashkevich Consulting",
     "url": "https://darashkevich.com/",
     "image": "https://darashkevich.com/og-image.svg",
-    "description": "Customer Experience and Support Operations executive specializing in DTC, subscription, Zendesk, AI self-service, and scalable support teams.",
+    "description": "Customer Experience and Support Operations executive specializing in SaaS, eCommerce, subscription, Zendesk, AI self-service, and scalable support teams.",
     "founder": {
       "@type": "Person",
       "name": "Yahor Darashkevich"
@@ -61,7 +61,7 @@
     "serviceType": [
       "Customer Operations Leadership",
       "eCommerce Support Operations",
-      "DTC Subscription Support",
+      "eCommerce Subscription Support",
       "Nutrition and Wellness Customer Experience",
       "Customer Experience Strategy",
       "Support Team Scaling",
