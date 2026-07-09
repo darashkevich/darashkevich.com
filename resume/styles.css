@@ -1,0 +1,324 @@
+/* Executive resume — print-optimized, darashkevich.com palette */
+
+:root {
+  --accent: #4E6FA8;
+  --accent-muted: #6B84A8;
+  --text: #1a2332;
+  --text-muted: #4a5568;
+  --text-soft: #6b7280;
+  --border: #d8dee8;
+  --bg-band: #f4f6f9;
+  --page-margin: 0.7in;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 9.25pt;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-feature-settings: normal;
+  font-variant-ligatures: none;
+  color: var(--text);
+  line-height: 1.45;
+  background: #fff;
+}
+
+/* ── Page setup ── */
+
+@page {
+  size: letter;
+  margin: var(--page-margin);
+}
+
+.page {
+  width: 100%;
+}
+
+.page-break {
+  break-before: page;
+  page-break-before: always;
+}
+
+/* ── Header ── */
+
+.resume-header {
+  text-align: center;
+  margin-bottom: 1.1rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 2px solid var(--accent);
+}
+
+.resume-header h1 {
+  font-size: 22pt;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+}
+
+.resume-header .title {
+  font-size: 11pt;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 0.15rem;
+}
+
+.resume-header .positioning {
+  font-size: 8.5pt;
+  color: var(--text-muted);
+  margin-bottom: 0.55rem;
+}
+
+.resume-header .contact {
+  margin: 0 auto;
+  font-size: 8pt;
+  color: var(--text-soft);
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.resume-header .contact a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* ── Section headers ── */
+
+.section-title {
+  font-size: 7.5pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--accent-muted);
+  margin-bottom: 0.55rem;
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── Impact metrics band ── */
+
+.impact-band {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.5rem;
+  background: var(--bg-band);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.65rem 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.impact-metric {
+  text-align: center;
+}
+
+.impact-metric .value {
+  display: block;
+  font-size: 14pt;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1.1;
+}
+
+.impact-metric .label {
+  display: block;
+  font-size: 6.5pt;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  margin-top: 0.15rem;
+}
+
+/* ── Two-column layout (page 1) ── */
+
+.columns {
+  display: grid;
+  grid-template-columns: 67% 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.col-main section + section,
+.col-side section + section {
+  margin-top: 1rem;
+}
+
+/* ── Profile ── */
+
+.profile p {
+  font-size: 8.75pt;
+  color: var(--text-muted);
+  margin-bottom: 0.45rem;
+}
+
+.profile p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Core strengths (grouped) ── */
+
+.strength-group {
+  margin-bottom: 0.55rem;
+}
+
+.strength-group:last-child {
+  margin-bottom: 0;
+}
+
+.strength-group h4 {
+  font-size: 7pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  margin-bottom: 0.2rem;
+}
+
+.strength-group ul {
+  list-style: none;
+  font-size: 8pt;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.strength-group li::before {
+  content: '·';
+  color: var(--accent);
+  font-weight: 700;
+  margin-right: 0.3rem;
+}
+
+/* ── Roles ── */
+
+.role {
+  margin-bottom: 0.85rem;
+}
+
+.role:last-child {
+  margin-bottom: 0;
+}
+
+.role-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.1rem;
+}
+
+.role-header h3 {
+  font-size: 9.5pt;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.role-header .dates {
+  font-size: 8pt;
+  font-weight: 500;
+  color: var(--text-soft);
+  white-space: nowrap;
+}
+
+.role-company {
+  font-size: 8pt;
+  color: var(--text-soft);
+  margin-bottom: 0.35rem;
+}
+
+.role ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.role li {
+  font-size: 8.5pt;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+  padding-left: 0.65rem;
+  position: relative;
+}
+
+.role li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.role li strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ── Education & tech ── */
+
+.education-item {
+  margin-bottom: 0.5rem;
+  font-size: 8pt;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.education-item:last-child {
+  margin-bottom: 0;
+}
+
+.education-item .school {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.tech-block {
+  font-size: 8pt;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.tech-block + .tech-block {
+  margin-top: 0.45rem;
+}
+
+.tech-block .label {
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* ── Page 2 layout (single-column stack) ── */
+
+.page-2-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.page-2-stack section + section {
+  margin-top: 0;
+}
+
+.page-2 .role {
+  margin-bottom: 0.75rem;
+}
+
+.page-2 .role li {
+  font-size: 8.5pt;
+  margin-bottom: 0.3rem;
+}
+
+.page-2 .section-title {
+  margin-bottom: 0.45rem;
+}
+
+.page-2 .education-item,
+.page-2 .tech-block {
+  font-size: 8.25pt;
+}

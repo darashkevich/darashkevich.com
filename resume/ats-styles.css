@@ -1,0 +1,200 @@
+/* ATS resume — single column, plain formatting for Workday/Greenhouse parsing */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 11pt;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #000;
+  line-height: 1.4;
+  background: #fff;
+}
+
+@page {
+  size: letter;
+  margin: 0.7in;
+}
+
+section {
+  margin-bottom: 1rem;
+}
+
+section:last-child {
+  margin-bottom: 0;
+}
+
+/* Header */
+
+.resume-header {
+  margin-bottom: 1rem;
+}
+
+.resume-header h1 {
+  font-size: 18pt;
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: 0.25rem;
+}
+
+.resume-header .title {
+  font-size: 12pt;
+  font-weight: bold;
+  margin-bottom: 0.2rem;
+}
+
+.resume-header .positioning {
+  font-size: 10pt;
+  margin-bottom: 0.35rem;
+}
+
+.resume-header .contact {
+  font-size: 10pt;
+  line-height: 1.5;
+}
+
+.resume-header .contact a {
+  color: #000;
+  text-decoration: none;
+}
+
+/* Section headers */
+
+.section-title {
+  font-size: 11pt;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+  border-bottom: 1px solid #000;
+  padding-bottom: 0.15rem;
+}
+
+/* Selected impact — plain list, no boxes */
+
+.impact-list {
+  margin-bottom: 0.25rem;
+  padding-left: 1.25rem;
+  font-size: 10pt;
+}
+
+.impact-list li {
+  margin-bottom: 0.15rem;
+}
+
+/* Profile */
+
+.profile p {
+  font-size: 10pt;
+  margin-bottom: 0.4rem;
+}
+
+.profile p:last-child {
+  margin-bottom: 0;
+}
+
+/* Roles */
+
+.role {
+  margin-bottom: 0.85rem;
+}
+
+.role:last-child {
+  margin-bottom: 0;
+}
+
+.role h3 {
+  font-size: 11pt;
+  font-weight: bold;
+  margin-bottom: 0.1rem;
+}
+
+.role-dates {
+  font-size: 10pt;
+  margin-bottom: 0.1rem;
+}
+
+.role-company {
+  font-size: 10pt;
+  margin-bottom: 0.35rem;
+}
+
+.role ul {
+  list-style-type: disc;
+  padding-left: 1.25rem;
+  font-size: 10pt;
+}
+
+.role li {
+  margin-bottom: 0.25rem;
+}
+
+.role li strong {
+  font-weight: bold;
+}
+
+/* Core strengths */
+
+.strength-group {
+  margin-bottom: 0.5rem;
+}
+
+.strength-group:last-child {
+  margin-bottom: 0;
+}
+
+.strength-group h4 {
+  font-size: 10pt;
+  font-weight: bold;
+  margin-bottom: 0.15rem;
+}
+
+.strength-group ul {
+  list-style-type: disc;
+  padding-left: 1.25rem;
+  font-size: 10pt;
+  margin-bottom: 0.25rem;
+}
+
+.strength-group li {
+  margin-bottom: 0.1rem;
+}
+
+/* Education */
+
+.education-item {
+  font-size: 10pt;
+  margin-bottom: 0.4rem;
+  line-height: 1.4;
+}
+
+.education-item:last-child {
+  margin-bottom: 0;
+}
+
+.education-item .school {
+  font-weight: bold;
+}
+
+/* Technology */
+
+.tech-block {
+  font-size: 10pt;
+  line-height: 1.45;
+  margin-bottom: 0.35rem;
+}
+
+.tech-block:last-child {
+  margin-bottom: 0;
+}
+
+.tech-block .label {
+  font-weight: bold;
+}

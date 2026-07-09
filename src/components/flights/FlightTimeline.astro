@@ -1,0 +1,212 @@
+---
+import { flightSegments, type FlightSegment } from '../../data/flights';
+
+type BarcodeTick = {
+  id: string;
+  date: string;
+  label: string;
+  position: number;
+  offset: number;
+};
+
+type BarcodeYear = {
+  year: number;
+  total: number;
+  ticks: BarcodeTick[];
+};
+
+function flightLabel(segment: FlightSegment): string {
+  const origin = segment.originCode ?? segment.originCity;
+  const destination = segment.destinationCode ?? segment.destinationCity;
+  return `${origin} → ${destination}${segment.flightNumber ? ` · ${segment.flightNumber}` : ''}`;
+}
+
+function yearPosition(date: string): number {
+  const [year, month, day] = date.split('-').map(Number);
+  const current = Date.UTC(year, month - 1, day);
+  const start = Date.UTC(year, 0, 1);
+  const nextYear = Date.UTC(year + 1, 0, 1);
+  return ((current - start) / (nextYear - start)) * 100;
+}
+
+const duplicateOffsets = new Map<string, number>();
+const years = new Map<number, BarcodeYear>();
+
+for (const segment of [...flightSegments].sort((a, b) => a.date.localeCompare(b.date) || a.id.localeCompare(b.id))) {
+  const key = `${segment.year}|${segment.date}`;
+  const offset = duplicateOffsets.get(key) ?? 0;
+  duplicateOffsets.set(key, offset + 1);
+
+  const year = years.get(segment.year) ?? {
+    year: segment.year,
+    total: 0,
+    ticks: []
+  };
+
+  year.total += 1;
+  year.ticks.push({
+    id: segment.id,
+    date: segment.date,
+    label: flightLabel(segment),
+    position: yearPosition(segment.date),
+    offset: offset % 5
+  });
+  years.set(segment.year, year);
+}
+
+const timelineYears = [...years.values()].sort((a, b) => a.year - b.year);
+---
+
+<section aria-labelledby="flight-timeline-title" class="pb-10">
+  <div class="mb-6">
+    <h2 id="flight-timeline-title" class="text-2xl md:text-3xl font-bold text-[var(--color-text)] tracking-tight">Year timeline</h2>
+    <p class="text-sm text-[var(--color-text-muted)] mt-1">Every tick is one recorded flight, positioned by day of year.</p>
+  </div>
+
+  <div class="flight-barcode-shell">
+    <div class="barcode-months" aria-hidden="true">
+      <span>Jan</span>
+      <span>Apr</span>
+      <span>Jul</span>
+      <span>Oct</span>
+      <span>Dec</span>
+    </div>
+
+    <div class="space-y-3">
+      {timelineYears.map((year) => (
+        <div class="barcode-year">
+          <span class="barcode-year-label">{year.year}</span>
+          <div
+            class="barcode-track"
+            role="img"
+            aria-label={`${year.year}: ${year.total} flights distributed by date`}
+          >
+            {year.ticks.map((tick) => (
+              <span
+                class="barcode-tick"
+                style={`--x: ${tick.position}%; --offset: ${tick.offset};`}
+                title={`${tick.date} · ${tick.label}`}
+              />
+            ))}
+          </div>
+          <span class="barcode-count">{year.total} flights</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .flight-barcode-shell {
+    border: 1px solid var(--color-border);
+    border-radius: 1.25rem;
+    padding: 1rem;
+    background:
+      linear-gradient(90deg, transparent, color-mix(in srgb, var(--color-primary) 6%, transparent), transparent),
+      color-mix(in srgb, var(--color-surface) 94%, transparent);
+    box-shadow: 0 14px 32px var(--color-shadow);
+  }
+
+  .barcode-months,
+  .barcode-year {
+    display: grid;
+    grid-template-columns: 4.5rem minmax(0, 1fr) 5.75rem;
+    gap: 0.85rem;
+    align-items: center;
+  }
+
+  .barcode-months {
+    margin: 0 0 0.65rem;
+    color: var(--color-text-soft);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .barcode-months::before,
+  .barcode-months::after {
+    content: '';
+  }
+
+  .barcode-months > span {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .barcode-months > span:nth-child(1) {
+    justify-self: start;
+  }
+
+  .barcode-months > span:nth-child(2) {
+    justify-self: start;
+    margin-left: 25%;
+  }
+
+  .barcode-months > span:nth-child(3) {
+    justify-self: center;
+  }
+
+  .barcode-months > span:nth-child(4) {
+    justify-self: end;
+    margin-right: 20%;
+  }
+
+  .barcode-months > span:nth-child(5) {
+    justify-self: end;
+  }
+
+  .barcode-year-label {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .barcode-track {
+    position: relative;
+    height: 2.45rem;
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--color-border) 70%, transparent);
+    border-radius: 0.95rem;
+    background:
+      linear-gradient(90deg, color-mix(in srgb, var(--color-border) 38%, transparent) 1px, transparent 1px) 0 0 / 25% 100%,
+      color-mix(in srgb, var(--color-surface-strong) 78%, transparent);
+  }
+
+  .barcode-tick {
+    position: absolute;
+    top: 0.45rem;
+    bottom: 0.45rem;
+    left: var(--x);
+    width: 2px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, var(--color-primary), var(--color-primary-dark));
+    box-shadow: 0 0 12px color-mix(in srgb, var(--color-primary) 38%, transparent);
+    transform: translateX(calc(-50% + (var(--offset) - 2) * 2px));
+  }
+
+  .barcode-count {
+    color: var(--color-text-soft);
+    font-size: 0.76rem;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 640px) {
+    .flight-barcode-shell {
+      padding: 0.85rem;
+    }
+
+    .barcode-months,
+    .barcode-year {
+      grid-template-columns: 3.7rem minmax(0, 1fr);
+    }
+
+    .barcode-count {
+      grid-column: 2;
+      text-align: left;
+      margin-top: -0.45rem;
+    }
+  }
+</style>

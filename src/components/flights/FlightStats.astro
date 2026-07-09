@@ -1,0 +1,101 @@
+---
+import { computeFlightStats, formatDisplayDate } from '../../lib/flight-stats';
+
+const stats = computeFlightStats();
+
+const numberFormatter = new Intl.NumberFormat('en-US');
+const decimalFormatter = new Intl.NumberFormat('en-US', {
+  maximumFractionDigits: 1
+});
+
+function formatNumber(value: number): string {
+  return numberFormatter.format(Math.round(value));
+}
+
+function formatTonnes(kg: number): string {
+  return `${decimalFormatter.format(kg / 1000)} t`;
+}
+
+const cards = [
+  {
+    label: 'Confirmed flights',
+    value: String(stats.confirmedCount),
+    detail: 'Headline total uses confirmed records only'
+  },
+  {
+    label: 'Kilometers traveled',
+    value: `${formatNumber(stats.totalDistanceKm)} km`,
+    detail: `Great-circle distance across ${stats.distanceTrackedFlights} mapped flights`
+  },
+  {
+    label: 'Hours in the air',
+    value: `${formatNumber(stats.estimatedHoursInAir)} h`,
+    detail: 'Estimated from route distance at typical passenger jet speed'
+  },
+  {
+    label: 'Days in the air',
+    value: `${decimalFormatter.format(stats.estimatedDaysInAir)} days`,
+    detail: 'Equivalent continuous time above the ground'
+  },
+  {
+    label: 'CO2 contributed',
+    value: formatTonnes(stats.estimatedCo2Kg),
+    detail: 'Approximate per-passenger emissions estimate'
+  },
+  {
+    label: 'First confirmed',
+    value: stats.firstConfirmedDate ? formatDisplayDate(stats.firstConfirmedDate) : '—',
+    detail: 'Earliest dated flight'
+  },
+  {
+    label: 'Most recent confirmed',
+    value: stats.lastConfirmedDate ? formatDisplayDate(stats.lastConfirmedDate) : '—',
+    detail: 'Latest dated flight'
+  },
+  {
+    label: 'Unique airports',
+    value: String(stats.uniqueAirports),
+    detail: 'From confirmed flights'
+  },
+  {
+    label: 'Countries / regions',
+    value: String(stats.uniqueCountries),
+    detail: 'Mapped from airport codes'
+  },
+  {
+    label: 'Top airline',
+    value: stats.topAirline?.name ?? '—',
+    detail: stats.topAirline ? `${stats.topAirline.count} confirmed flights` : 'No data'
+  },
+  {
+    label: 'Most common route',
+    value: stats.topRoute?.route ?? '—',
+    detail: stats.topRoute ? `${stats.topRoute.count} confirmed flights` : 'No data'
+  },
+  {
+    label: 'Busiest hub',
+    value: stats.topHub ? stats.topHub.code : '—',
+    detail: stats.topHub ? `${stats.topHub.city} · ${stats.topHub.count} appearances` : 'No data'
+  }
+];
+---
+
+<section aria-labelledby="flight-stats-title" class="pb-10">
+  <div class="mb-6">
+    <h2 id="flight-stats-title" class="text-2xl md:text-3xl font-bold text-[var(--color-text)] tracking-tight">Flying stats</h2>
+    <p class="text-sm text-[var(--color-text-muted)] mt-1">Computed from confirmed flights unless noted.</p>
+  </div>
+
+  <div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-4">
+    {cards.map((card) => (
+      <div
+        class="rounded-[1.15rem] p-5 border transition-all duration-300 hover:-translate-y-0.5"
+        style="background: color-mix(in srgb, var(--color-surface-strong) 90%, transparent); border-color: var(--color-border); box-shadow: 0 12px 26px var(--color-shadow);"
+      >
+        <p class="text-2xl md:text-3xl font-bold text-[var(--color-text)] leading-tight">{card.value}</p>
+        <p class="text-xs mt-2 text-[var(--color-text-soft)] uppercase tracking-[0.12em]">{card.label}</p>
+        <p class="text-sm mt-2 text-[var(--color-text-muted)] leading-relaxed">{card.detail}</p>
+      </div>
+    ))}
+  </div>
+</section>

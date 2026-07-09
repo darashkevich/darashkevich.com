@@ -1,0 +1,179 @@
+---
+import {
+  buildAirportsGeoJSON,
+  buildRouteNetwork,
+  buildRoutesGeoJSON
+} from '../../lib/flight-stats';
+
+const mapProvider = import.meta.env.PUBLIC_MAP_TILES_PROVIDER ?? 'maptiler';
+const mapKey = import.meta.env.PUBLIC_MAP_TILES_KEY ?? '';
+
+const { nodes, edges } = buildRouteNetwork();
+const hubNodes = nodes.filter((n) => n.hub);
+
+const mapPayload = JSON.stringify({
+  routes: buildRoutesGeoJSON(edges),
+  airports: buildAirportsGeoJSON(nodes),
+  provider: mapProvider,
+  key: mapKey
+});
+---
+
+<section aria-labelledby="route-map-title" class="pb-10">
+  <div class="mb-6">
+    <h2 id="route-map-title" class="text-2xl md:text-3xl font-bold text-[var(--color-text)] tracking-tight">Route map</h2>
+  </div>
+
+  <div
+    id="route-map-shell"
+    class="route-map-shell rounded-[1.35rem] border overflow-hidden"
+    style="background: color-mix(in srgb, var(--color-surface) 92%, transparent); border-color: var(--color-border); box-shadow: 0 16px 38px var(--color-shadow);"
+  >
+    <div class="route-map-body p-3 md:p-4">
+      <div
+        class="relative rounded-xl overflow-hidden route-network-stage"
+        data-route-network
+      >
+        <div class="absolute top-2 right-2 z-10 flex gap-1.5">
+          <button
+            type="button"
+            data-route-zoom="in"
+            class="route-network-control"
+            aria-label="Zoom in"
+          >
+            +
+          </button>
+          <button
+            type="button"
+            data-route-zoom="out"
+            class="route-network-control"
+            aria-label="Zoom out"
+          >
+            −
+          </button>
+          <button
+            type="button"
+            data-route-zoom="reset"
+            class="route-network-control px-2.5"
+            aria-label="Reset map view"
+          >
+            Reset
+          </button>
+          <button
+            type="button"
+            data-route-zoom="fullscreen"
+            class="route-network-control route-network-control-icon"
+            aria-label="Enter fullscreen"
+            title="Fullscreen"
+          >
+            <svg class="route-fullscreen-enter" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+              <path d="M1 5V1h4M9 1h4v4M13 9v4H9M5 13H1V9" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <svg class="route-fullscreen-exit" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" hidden>
+              <path d="M5 1v4H1M9 5h4V1M5 9H1v4M13 9v4H9" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </div>
+
+        <div
+          id="route-map"
+          class="route-map-canvas"
+          role="region"
+          aria-label="Interactive world map showing flight routes between airports"
+        />
+      </div>
+    </div>
+
+    <div class="route-map-hubs px-4 pb-4 flex flex-wrap gap-2 text-xs text-[var(--color-text-soft)] border-t" style="border-color: var(--color-border);">
+      {hubNodes.map((hub) => (
+        <span class="rounded-full px-3 py-1 border mt-3" style="border-color: var(--color-border); background: color-mix(in srgb, var(--color-surface-strong) 80%, transparent);">
+          {hub.code} · {hub.count} flights
+        </span>
+      ))}
+    </div>
+  </div>
+
+  <script id="route-map-data" type="application/json" set:html={mapPayload} />
+</section>
+
+<style>
+  .route-map-canvas {
+    width: 100%;
+    height: min(68vh, 540px);
+    min-height: 320px;
+    background: var(--color-bg-deep);
+  }
+
+  .route-map-canvas :global(.maplibregl-ctrl-attrib) {
+    font-size: 0.65rem;
+    background: color-mix(in srgb, var(--color-surface-strong) 80%, transparent);
+    color: var(--color-text-muted);
+  }
+
+  .route-map-canvas :global(.maplibregl-ctrl-group button) {
+    background: color-mix(in srgb, var(--color-surface-strong) 88%, transparent);
+    color: var(--color-text);
+  }
+
+  .route-network-control {
+    min-width: 2rem;
+    height: 2rem;
+    border-radius: 9999px;
+    border: 1px solid var(--color-border);
+    background: color-mix(in srgb, var(--color-surface-strong) 88%, transparent);
+    color: var(--color-text);
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1;
+    backdrop-filter: blur(8px);
+  }
+
+  .route-network-control:hover {
+    background: color-mix(in srgb, var(--color-surface-strong) 96%, transparent);
+  }
+
+  .route-network-control-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .route-map-shell:fullscreen {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    background: var(--color-bg-deep);
+  }
+
+  .route-map-shell:fullscreen .route-map-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    padding: 1rem;
+  }
+
+  .route-map-shell:fullscreen .route-network-stage {
+    flex: 1;
+    min-height: 0;
+    border-radius: 0.75rem;
+  }
+
+  .route-map-shell:fullscreen .route-map-canvas {
+    height: 100%;
+    max-height: none;
+  }
+
+  .route-map-shell:fullscreen .route-map-hubs {
+    flex-shrink: 0;
+  }
+</style>
+
+<script>
+  import '../../scripts/route-map.ts';
+</script>

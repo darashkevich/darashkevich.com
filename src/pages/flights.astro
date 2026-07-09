@@ -1,0 +1,52 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LegalHeader from '../components/LegalHeader.astro';
+import Footer from '../components/Footer.astro';
+import FlightStats from '../components/flights/FlightStats.astro';
+import FlightPassport from '../components/flights/FlightPassport.astro';
+import FlightTimeline from '../components/flights/FlightTimeline.astro';
+import AirlineBreakdown from '../components/flights/AirlineBreakdown.astro';
+import RouteNetwork from '../components/flights/RouteNetwork.astro';
+import NotableItineraries from '../components/flights/NotableItineraries.astro';
+import FlightTable from '../components/flights/FlightTable.astro';
+---
+
+<Layout
+  title="Flights | Yahor Darashkevich"
+  description="A personal flight log reconstructed from tickets, boarding passes, PDFs, screenshots, and email receipts."
+>
+  <LegalHeader />
+
+  <div class="pt-10 pb-8 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div
+        class="rounded-3xl border p-8 md:p-12 mb-10"
+        style="background-color: var(--color-surface); border-color: var(--color-border); box-shadow: 0 16px 38px var(--color-shadow);"
+      >
+        <p class="text-sm uppercase tracking-[0.2em] text-[var(--color-text-soft)] mb-4">Personal archive</p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[var(--color-text)] mb-5">Flights</h1>
+        <p class="text-lg md:text-xl text-[var(--color-text-muted)] max-w-3xl leading-relaxed mb-4">
+          A personal flight log reconstructed from tickets, boarding passes, PDFs, screenshots, and email receipts.
+        </p>
+        <p class="text-sm text-[var(--color-text-soft)] max-w-3xl leading-relaxed">
+          Evidence-based, not a complete lifetime record. Missing emails, deleted tickets, and bookings made outside Gmail may be absent.
+        </p>
+      </div>
+
+      <div
+        class="rounded-3xl border p-6 md:p-10 space-y-12"
+        style="background-color: color-mix(in srgb, var(--color-surface) 92%, transparent); border-color: var(--color-border); box-shadow: 0 16px 38px var(--color-shadow);"
+      >
+        <FlightStats />
+        <FlightPassport />
+        <FlightTimeline />
+        <AirlineBreakdown />
+        <RouteNetwork />
+        <NotableItineraries />
+        <FlightTable />
+      </div>
+    </div>
+  </div>
+
+  <Footer />
+</Layout>

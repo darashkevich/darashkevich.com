@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
+    "dev:preview": "astro dev --host 127.0.0.1 --port 4321",
     "dev:lan": "ASTRO_DEV_HOST=true astro dev",
     "start": "astro dev",
     "build": "astro build",
@@ -11,6 +12,13 @@
     "preview:local": "bash ./scripts/preview-local.sh",
     "check": "astro sync && tsc --noEmit -p tsconfig.json",
     "lint": "tsc --noEmit -p tsconfig.json",
+    "flights:enrich:fr24": "node scripts/enrich-flights-fr24.mjs",
+    "generate:world-map": "node scripts/generate-world-map.mjs",
+    "im8:edit": "python3 ./deliverables/im8-cx-challenge/serve-editor.sh",
+    "im8:build": "node ./scripts/build-im8-doc.mjs",
+    "im8:pdf": "bash ./scripts/generate-im8-pdf.sh",
+    "resume:pdf": "bash ./scripts/generate-resume-pdf.sh",
+    "resume:pdf:ats": "bash ./scripts/generate-resume-pdf-ats.sh",
     "verify": "npm run check && npm run build",
     "audit:deps": "npm audit --audit-level=high",
     "audit:prod": "bash ./scripts/audit-production.sh",
@@ -19,17 +27,21 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
-    "astro": "^6.4.7"
+    "astro": "^6.4.7",
+    "maplibre-gl": "^5.24.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
     "@axe-core/cli": "^4.11.3",
     "@types/node": "^20.0.0",
     "autoprefixer": "^10.5.0",
+    "d3-geo": "^3.1.1",
     "postcss": "^8.5.14",
     "sharp": "^0.34.5",
     "tailwindcss": "^3.3.0",
-    "typescript": "^5.9.2"
+    "topojson-client": "^3.1.0",
+    "typescript": "^5.9.2",
+    "world-atlas": "^2.0.2"
   },
   "overrides": {
     "esbuild": "^0.28.1"

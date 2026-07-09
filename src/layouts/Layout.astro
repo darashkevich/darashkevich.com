@@ -47,13 +47,8 @@ const absoluteImageURL = new URL(image, siteUrl);
     <meta property="twitter:image" content={absoluteImageURL} />
     <script type="application/ld+json" src="/schema.json"></script>
     
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
     <!-- Preload critical assets -->
-    <link rel="preload" href="/images/avatar.jpg" as="image">
+    <link rel="preload" href="/images/avatar.webp" as="image" type="image/webp">
   </head>
   <body class="bg-[var(--color-bg)] text-[var(--color-text)] font-sans antialiased min-h-screen">
     <a href="#main-content" class="skip-link">Skip to main content</a>

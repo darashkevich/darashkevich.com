@@ -1,0 +1,24 @@
+---
+import { notableItineraries } from '../../data/flights';
+---
+
+<section aria-labelledby="notable-itineraries-title" class="pb-10">
+  <div class="mb-6">
+    <h2 id="notable-itineraries-title" class="text-2xl md:text-3xl font-bold text-[var(--color-text)] tracking-tight">Notable itineraries</h2>
+    <p class="text-sm text-[var(--color-text-muted)] mt-1">Trip-level patterns reconstructed from flight evidence.</p>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-4">
+    {notableItineraries.map((itinerary) => (
+      <article
+        class="rounded-[1.15rem] p-6 border h-full"
+        style="background: color-mix(in srgb, var(--color-surface) 94%, transparent); border-color: var(--color-border); box-shadow: 0 14px 32px var(--color-shadow);"
+      >
+        <p class="text-xs uppercase tracking-[0.16em] text-[var(--color-text-soft)] mb-2">{itinerary.period}</p>
+        <h3 class="text-xl font-semibold text-[var(--color-text)] mb-2">{itinerary.title}</h3>
+        <p class="text-sm font-mono text-[var(--color-primary)] mb-3">{itinerary.route}</p>
+        <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{itinerary.summary}</p>
+      </article>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,110 @@
+---
+import { flightSegments, type FlightSegment } from '../../data/flights';
+import { getFlightEnrichment } from '../../lib/flight-enrichment';
+import { rankAirlines, routeLabel } from '../../lib/flight-stats';
+
+const rankedAirlines = rankAirlines().filter((airline) => airline.total > 0);
+const confirmedSegments = flightSegments.filter((segment) => segment.confidence === 'confirmed');
+const totalConfirmed = rankedAirlines.reduce((sum, airline) => sum + airline.confirmed, 0);
+
+function segmentsForAirline(airline: string): FlightSegment[] {
+  return confirmedSegments.filter((segment) => segment.airline === airline);
+}
+
+function keyRouteForAirline(segments: FlightSegment[]): string {
+  const routes = new Map<string, number>();
+
+  for (const segment of segments) {
+    if (!segment.originCode || !segment.destinationCode) continue;
+    const route = routeLabel(segment);
+    routes.set(route, (routes.get(route) ?? 0) + 1);
+  }
+
+  return [...routes.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0]?.[0] ?? 'Mixed routes';
+}
+
+function activeYearsForAirline(segments: FlightSegment[]): string {
+  const years = [...new Set(segments.map((segment) => segment.year))].sort((a, b) => a - b);
+  if (years.length === 0) return '—';
+  if (years[0] === years[years.length - 1]) return String(years[0]);
+  return `${years[0]}–${years[years.length - 1]}`;
+}
+
+function enrichedCountForAirline(segments: FlightSegment[]): number {
+  return segments.filter((segment) => getFlightEnrichment(segment)).length;
+}
+
+const airlineProfiles = rankedAirlines.map((airline) => {
+  const segments = segmentsForAirline(airline.airline);
+
+  return {
+    ...airline,
+    keyRoute: keyRouteForAirline(segments),
+    activeYears: activeYearsForAirline(segments),
+    enriched: enrichedCountForAirline(segments),
+    share: totalConfirmed > 0 ? airline.confirmed / totalConfirmed : 0
+  };
+});
+
+const stampAirlines = airlineProfiles.slice(0, 8);
+---
+
+<section aria-labelledby="airline-breakdown-title" class="pb-10">
+  <div class="mb-6">
+    <h2 id="airline-breakdown-title" class="text-2xl md:text-3xl font-bold text-[var(--color-text)] tracking-tight">Airline breakdown</h2>
+    <p class="text-sm text-[var(--color-text-muted)] mt-1">Top carriers as passport-style stamps, ranked by confirmed flights.</p>
+  </div>
+
+  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+    {stampAirlines.map((airline, index) => (
+      <article
+        class="airline-stamp"
+        style={`--stamp-accent: ${Math.max(10, 26 - index * 2)}%;`}
+      >
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <h3 class="text-xl md:text-2xl font-bold text-[var(--color-text)] leading-tight">{airline.airline}</h3>
+          </div>
+          <div class="text-right">
+            <p class="text-2xl font-black text-[var(--color-text)] tabular-nums">{airline.confirmed}</p>
+            <p class="text-[0.68rem] uppercase tracking-[0.12em] text-[var(--color-text-soft)]">Flights</p>
+          </div>
+        </div>
+
+        <div class="mt-5 pt-4 border-t" style="border-color: color-mix(in srgb, var(--color-border) 70%, transparent);">
+          <p class="text-sm font-semibold text-[var(--color-text)]">{airline.keyRoute}</p>
+          <p class="text-sm text-[var(--color-text-muted)] mt-1">{airline.activeYears}</p>
+        </div>
+
+        <p class="mt-4 text-[0.7rem] font-mono uppercase tracking-[0.08em] text-[var(--color-text-soft)]">
+          {airline.confirmed} confirmed · {airline.partial} partial · {airline.enriched} fr24
+        </p>
+      </article>
+    ))}
+  </div>
+
+</section>
+
+<style>
+  .airline-stamp {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: 1.15rem;
+    padding: 1.15rem;
+    background:
+      radial-gradient(circle at top right, color-mix(in srgb, var(--color-primary) var(--stamp-accent), transparent), transparent 42%),
+      color-mix(in srgb, var(--color-surface-strong) 88%, transparent);
+    box-shadow: 0 12px 26px var(--color-shadow);
+  }
+
+  .airline-stamp::after {
+    content: '';
+    position: absolute;
+    inset: 0.7rem;
+    border: 1px dashed color-mix(in srgb, var(--color-border) 72%, transparent);
+    border-radius: 0.85rem;
+    pointer-events: none;
+  }
+
+</style>

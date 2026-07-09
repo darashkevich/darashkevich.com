@@ -1,0 +1,4 @@
+pikepdf>=9.0
+playwright>=1.42
+pymupdf>=1.24
+pypdf>=5.0

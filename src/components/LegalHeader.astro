@@ -1,14 +1,39 @@
+---
+function formatHeaderDate(date: Date) {
+  return new Intl.DateTimeFormat('en-US', {
+    weekday: 'short',
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric'
+  }).format(date);
+}
+
+function formatHeaderTime(date: Date) {
+  return new Intl.DateTimeFormat('en-US', {
+    hour: 'numeric',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: true
+  }).format(date);
+}
+
+const headerNow = new Date();
+const headerDateInitial = formatHeaderDate(headerNow);
+const headerTimeInitial = formatHeaderTime(headerNow);
+const headerDateTimeIso = headerNow.toISOString();
+---
+
 <header class="pt-6 px-6">
   <div class="max-w-6xl mx-auto">
-    <nav class="backdrop-blur-2xl rounded-3xl border px-6 py-4 flex items-center justify-between" style="background-color: var(--color-surface); border-color: var(--color-border); box-shadow: 0 12px 32px var(--color-shadow);">
+    <nav class="relative backdrop-blur-2xl rounded-3xl border px-6 py-4 flex items-center justify-between" style="background-color: var(--color-surface); border-color: var(--color-border); box-shadow: 0 12px 32px var(--color-shadow);">
       <a
         href="/"
-        class="inline-flex items-center gap-3 text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors duration-300"
+        class="inline-flex items-center gap-3 text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors duration-300 z-10"
         aria-label="Go to homepage"
       >
         <span class="w-10 h-10 rounded-full overflow-hidden border shadow-lg backdrop-blur-xl" style="border-color: var(--color-border); background-color: color-mix(in srgb, var(--color-surface-strong) 84%, transparent);">
           <img
-            src="/images/avatar.jpg"
+            src="/images/avatar.webp"
             alt="Yahor Darashkevich"
             class="w-full h-full object-cover"
             loading="eager"
@@ -20,7 +45,17 @@
         <span class="font-semibold text-lg">Home</span>
       </a>
 
-      <div class="hidden sm:flex items-center gap-4 text-sm font-medium">
+      <time
+        id="header-datetime"
+        class="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 text-center text-xs font-medium tabular-nums tracking-tight whitespace-nowrap px-1 sm:px-1.5 pointer-events-none"
+        style="color: var(--color-text-muted)"
+        datetime={headerDateTimeIso}
+        aria-live="polite"
+      >
+        <span class="hidden md:inline" id="header-date">{headerDateInitial}</span><span class="hidden md:inline mx-1.5" style="color: var(--color-text-soft)" aria-hidden="true">·</span><span id="header-time">{headerTimeInitial}</span>
+      </time>
+
+      <div class="hidden sm:flex items-center gap-4 text-sm font-medium z-10">
         <a href="/privacy-policy/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] underline underline-offset-2 transition-colors duration-300">Privacy</a>
         <a href="/terms-of-service/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] underline underline-offset-2 transition-colors duration-300">Terms</a>
         <a href="/accessibility/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] underline underline-offset-2 transition-colors duration-300">Accessibility</a>
@@ -28,3 +63,5 @@
     </nav>
   </div>
 </header>
+
+<script src="/js/header-clock.js" defer></script>

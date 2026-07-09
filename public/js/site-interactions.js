@@ -18,8 +18,8 @@ document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
 });
 
 const observerOptions = {
-  threshold: 0.1,
-  rootMargin: '0px 0px -50px 0px'
+  threshold: 0,
+  rootMargin: '0px 0px -40px 0px'
 };
 
 const observer = new IntersectionObserver(function (entries) {
@@ -30,7 +30,22 @@ const observer = new IntersectionObserver(function (entries) {
   });
 }, observerOptions);
 
-document.querySelectorAll('section').forEach(function (section) {
+function revealSectionsInView() {
+  const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+
+  document.querySelectorAll('main section[data-reveal]').forEach(function (section) {
+    const rect = section.getBoundingClientRect();
+    if (rect.bottom > 0 && rect.top < viewportHeight) {
+      section.classList.add('is-visible');
+    }
+  });
+}
+
+document.querySelectorAll('main section').forEach(function (section) {
+  if (section.querySelector('section')) return;
   section.setAttribute('data-reveal', '');
   observer.observe(section);
 });
+
+revealSectionsInView();
+window.addEventListener('load', revealSectionsInView);
