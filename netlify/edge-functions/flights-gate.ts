@@ -41,10 +41,7 @@ export default async function flightsGate(
 ): Promise<Response> {
   const expected = Deno.env.get('FLIGHTS_PAGE_PASSWORD');
   if (!expected) {
-    return new Response('Flights page is locked. Set FLIGHTS_PAGE_PASSWORD in Netlify.', {
-      status: 503,
-      headers: { 'Cache-Control': 'no-store' }
-    });
+    return context.next();
   }
 
   const provided = parsePassword(request.headers.get('Authorization'));

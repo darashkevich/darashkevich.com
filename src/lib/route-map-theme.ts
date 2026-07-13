@@ -28,7 +28,7 @@ export function buildMinimalBasemapStyle(): StyleSpecification {
 }
 
 export function resolveBasemapStyle(provider: string, key: string): BasemapStyleInput {
-  if (!key) return DEMOTILES_STYLE_URL;
+  if (!key) return buildMinimalBasemapStyle();
 
   if (provider === 'stadia') {
     return `https://tiles.stadiamaps.com/styles/stamen_toner_background.json?api_key=${encodeURIComponent(key)}`;
