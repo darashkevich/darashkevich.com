@@ -1,0 +1,12 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Set in Netlify UI (Site configuration → Environment variables):
+#   PUBLIC_MAP_TILES_PROVIDER = maptiler
+#   PUBLIC_MAP_TILES_KEY       = <domain-restricted key from cloud.maptiler.com>
+#
+# Without a key, /flights falls back to demotiles.maplibre.org (lower rate limits).
+
+[build.environment]
+  NODE_VERSION = "20"

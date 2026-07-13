@@ -19,6 +19,7 @@ required_paths=(
   "/privacy-policy/"
   "/terms-of-service/"
   "/accessibility/"
+  "/flights/"
   "/.well-known/security.txt"
   "/security.txt"
   "/robots.txt"

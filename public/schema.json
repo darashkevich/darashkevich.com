@@ -4,7 +4,7 @@
     "@type": "WebSite",
     "name": "Yahor Darashkevich",
     "url": "https://darashkevich.com/",
-    "description": "Customer Experience and Support Operations executive specializing in SaaS, eCommerce, subscription, Zendesk, AI self-service, and scalable support teams."
+    "description": "Customer Experience executive and operator specializing in scaling support organizations, implementing AI-enabled workflows, and turning customer insights into business outcomes."
   },
   {
     "@context": "https://schema.org",
@@ -13,7 +13,7 @@
     "url": "https://darashkevich.com/",
     "image": "https://darashkevich.com/og-image.svg",
     "jobTitle": "Customer Experience and Support Operations Executive",
-    "description": "Customer Experience and Support Operations executive specializing in SaaS, eCommerce, subscription, Zendesk, AI self-service, and scalable support teams.",
+    "description": "Customer Experience executive and operator specializing in scaling support organizations, implementing AI-enabled workflows, and turning customer insights into business outcomes.",
     "sameAs": [
       "https://www.linkedin.com/in/darashkevich",
       "https://www.upwork.com/freelancers/~011b1479d238052c29?companyReference=613482611598331906&mp_source=share"
@@ -23,27 +23,23 @@
       "name": "Darashkevich Consulting"
     },
     "knowsAbout": [
-      "Nutrition Customer Support",
-      "Supplements Industry",
-      "Meal Replacement",
-      "Wellness eCommerce",
-      "Subscription Commerce",
-      "Nutrition eCommerce",
-      "eCommerce Support",
-      "Customer Operations",
       "Customer Experience Strategy",
       "Customer Support Leadership",
-      "AI Self-Service",
-      "AI Support Agents",
+      "Support Operations",
+      "SaaS Support Operations",
+      "eCommerce Support",
+      "Subscription Commerce",
+      "Zendesk Suite",
+      "Zendesk Advanced AI",
+      "AI-Enabled Support Workflows",
+      "Self-Service and Automation",
       "Voice of Customer",
-      "Zendesk Optimization",
-      "Support Team Scaling",
-      "BPO / Vendor Management",
-      "Customer Retention",
+      "BPO and Vendor Management",
       "Workforce Planning",
-      "KPI Reporting",
-      "CSAT",
-      "Customer Sentiment Analysis"
+      "CSAT and QA",
+      "Support Analytics",
+      "Escalation Management",
+      "Customer Retention"
     ]
   },
   {
@@ -52,21 +48,20 @@
     "name": "Darashkevich Consulting",
     "url": "https://darashkevich.com/",
     "image": "https://darashkevich.com/og-image.svg",
-    "description": "Customer Experience and Support Operations executive specializing in SaaS, eCommerce, subscription, Zendesk, AI self-service, and scalable support teams.",
+    "description": "Customer Experience executive and operator specializing in scaling support organizations, implementing AI-enabled workflows, and turning customer insights into business outcomes.",
     "founder": {
       "@type": "Person",
       "name": "Yahor Darashkevich"
     },
     "areaServed": "U.S. and EU",
     "serviceType": [
-      "Customer Operations Leadership",
-      "eCommerce Support Operations",
-      "eCommerce Subscription Support",
-      "Nutrition and Wellness Customer Experience",
-      "Customer Experience Strategy",
-      "Support Team Scaling",
-      "Zendesk Workflow Optimization",
-      "AI Self-Service and Support Automation"
+      "Customer Experience Leadership",
+      "Support Operations Strategy",
+      "SaaS and eCommerce Support Operations",
+      "Zendesk Implementation and Optimization",
+      "AI Self-Service and Support Automation",
+      "BPO and Vendor Management",
+      "Support Team Scaling"
     ],
     "sameAs": [
       "https://www.linkedin.com/in/darashkevich",

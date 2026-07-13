@@ -1,0 +1,6 @@
+# Canonical trailing slashes (matches astro.config trailingSlash: 'always')
+/resume /resume/ 301
+/flights /flights/ 301
+/privacy-policy /privacy-policy/ 301
+/terms-of-service /terms-of-service/ 301
+/accessibility /accessibility/ 301
