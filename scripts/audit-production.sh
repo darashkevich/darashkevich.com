@@ -19,7 +19,6 @@ required_paths=(
   "/privacy-policy/"
   "/terms-of-service/"
   "/accessibility/"
-  "/flights/"
   "/.well-known/security.txt"
   "/security.txt"
   "/robots.txt"
@@ -69,6 +68,22 @@ for path in "${required_paths[@]}"; do
     exit 1
   fi
 done
+
+flights_status="$(curl -sS -o /dev/null -w "%{http_code}" "${SITE_URL}/flights/")"
+echo "${flights_status} /flights/ (unauthenticated)"
+if [[ "${flights_status}" != "401" ]]; then
+  echo "Expected /flights/ to require auth (401), got ${flights_status}"
+  exit 1
+fi
+
+if [[ -n "${FLIGHTS_PAGE_PASSWORD:-}" ]]; then
+  flights_auth_status="$(curl -sS -o /dev/null -w "%{http_code}" -u ":${FLIGHTS_PAGE_PASSWORD}" "${SITE_URL}/flights/")"
+  echo "${flights_auth_status} /flights/ (authenticated)"
+  if [[ "${flights_auth_status}" != "200" ]]; then
+    echo "Authenticated /flights/ check failed with status ${flights_auth_status}"
+    exit 1
+  fi
+fi
 
 security_txt="$(curl -sS "${SITE_URL}/.well-known/security.txt")"
 security_txt_lower="$(printf '%s' "${security_txt}" | tr '[:upper:]' '[:lower:]')"

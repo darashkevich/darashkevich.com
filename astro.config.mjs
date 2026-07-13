@@ -2,7 +2,11 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      filter: (page) => !page.includes('/flights')
+    })
+  ],
   site: 'https://darashkevich.com',
   base: '/',
   trailingSlash: 'always',

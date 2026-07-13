@@ -5,12 +5,14 @@ export interface Props {
   title: string;
   description?: string;
   image?: string;
+  noindex?: boolean;
 }
 
 const {
   title,
   description = "Customer Experience and Support Operations executive specializing in SaaS, eCommerce, subscription, Zendesk, AI self-service, and scalable support teams.",
-  image = "/og-image.svg"
+  image = "/og-image.svg",
+  noindex = false
 } = Astro.props;
 const siteUrl = Astro.site ?? new URL(Astro.url.origin);
 const canonicalURL = new URL(Astro.url.pathname, siteUrl);
@@ -27,6 +29,7 @@ const absoluteImageURL = new URL(image, siteUrl);
     <!-- SEO -->
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonicalURL} />
     
     <!-- Open Graph -->

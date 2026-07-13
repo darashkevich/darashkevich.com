@@ -9,6 +9,15 @@
   NODE_VERSION = "20"
   PUBLIC_MAP_TILES_PROVIDER = "maptiler"
 
+# /flights is private. Set FLIGHTS_PAGE_PASSWORD in Netlify env vars (not PUBLIC_).
+[[edge_functions]]
+  function = "flights-gate"
+  path = "/flights"
+
+[[edge_functions]]
+  function = "flights-gate"
+  path = "/flights/*"
+
 [[headers]]
   for = "/*"
   [headers.values]

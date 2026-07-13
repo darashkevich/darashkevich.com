@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /flights/
 
 Sitemap: https://darashkevich.com/sitemap-index.xml
+Sitemap: https://darashkevich.com/sitemap-priority.xml
 Sitemap: https://darashkevich.com/sitemap-priority.xml
