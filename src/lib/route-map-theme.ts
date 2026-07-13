@@ -1,12 +1,31 @@
-import type { Map as MaplibreMap } from 'maplibre-gl';
+import type { Map as MaplibreMap, StyleSpecification } from 'maplibre-gl';
 
 export function cssVar(name: string, fallback: string): string {
   const value = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
   return value || fallback;
 }
 
-export function resolveBasemapStyle(provider: string, key: string): string {
-  if (!key) return 'https://demotiles.maplibre.org/style.json';
+export type BasemapStyleInput = string | StyleSpecification;
+
+export function buildMinimalBasemapStyle(): StyleSpecification {
+  return {
+    version: 8,
+    name: 'portfolio-minimal',
+    sources: {},
+    layers: [
+      {
+        id: 'background',
+        type: 'background',
+        paint: {
+          'background-color': cssVar('--color-bg-deep', '#161A22')
+        }
+      }
+    ]
+  };
+}
+
+export function resolveBasemapStyle(provider: string, key: string): BasemapStyleInput {
+  if (!key) return buildMinimalBasemapStyle();
 
   if (provider === 'stadia') {
     return `https://tiles.stadiamaps.com/styles/stamen_toner_background.json?api_key=${encodeURIComponent(key)}`;
