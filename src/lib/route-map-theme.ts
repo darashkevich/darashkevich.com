@@ -7,6 +7,9 @@ export function cssVar(name: string, fallback: string): string {
 
 export type BasemapStyleInput = string | StyleSpecification;
 
+/** Public MapLibre demo style — allowed by netlify.toml CSP when no tile API key is set. */
+export const DEMOTILES_STYLE_URL = 'https://demotiles.maplibre.org/style.json';
+
 export function buildMinimalBasemapStyle(): StyleSpecification {
   return {
     version: 8,
@@ -25,7 +28,7 @@ export function buildMinimalBasemapStyle(): StyleSpecification {
 }
 
 export function resolveBasemapStyle(provider: string, key: string): BasemapStyleInput {
-  if (!key) return buildMinimalBasemapStyle();
+  if (!key) return DEMOTILES_STYLE_URL;
 
   if (provider === 'stadia') {
     return `https://tiles.stadiamaps.com/styles/stamen_toner_background.json?api_key=${encodeURIComponent(key)}`;
