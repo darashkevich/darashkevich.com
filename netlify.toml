@@ -2,11 +2,49 @@
   command = "npm run build"
   publish = "dist"
 
-# Set in Netlify UI (Site configuration → Environment variables):
-#   PUBLIC_MAP_TILES_PROVIDER = maptiler
-#   PUBLIC_MAP_TILES_KEY       = <domain-restricted key from cloud.maptiler.com>
-#
-# Without a key, /flights falls back to demotiles.maplibre.org (lower rate limits).
+# PUBLIC_MAP_TILES_KEY must be set in Netlify UI (Site configuration → Environment variables).
+# Provider is set here so builds always target MapTiler when a key is present.
 
 [build.environment]
   NODE_VERSION = "20"
+  PUBLIC_MAP_TILES_PROVIDER = "maptiler"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    Content-Security-Policy = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self'; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://api.maptiler.com https://cdn.maptiler.com https://demotiles.maplibre.org https://tiles.stadiamaps.com; font-src 'self' data: https://api.maptiler.com https://cdn.maptiler.com https://demotiles.maplibre.org https://tiles.stadiamaps.com; connect-src 'self' https://api.maptiler.com https://cdn.maptiler.com https://demotiles.maplibre.org https://tiles.stadiamaps.com; form-action 'self'; upgrade-insecure-requests"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "accelerometer=(), autoplay=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
+
+[[headers]]
+  for = "/_assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/*.json"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
