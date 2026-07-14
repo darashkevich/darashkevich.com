@@ -1,63 +1,55 @@
-# 🚀 Deployment Guide for darashkevich.com
+# Deployment — darashkevich.com
 
-## Quick Deploy to Netlify (Recommended)
+**Live:** https://darashkevich.com  
+**Netlify site:** `stalwart-profiterole-ca3dd0`  
+**DNS:** Cloudflare (proxied to Netlify)
 
-### Step 1: Build Your Project
+## Recommended: CLI production deploy
+
 ```bash
-npm run build
+npx netlify-cli login   # once
+npx netlify-cli link    # once — select stalwart-profiterole-ca3dd0
+./scripts/deploy-production.sh
 ```
 
-### Step 2: Deploy to Netlify
+That script runs `npm run build` and `netlify deploy --prod --dir=dist`.
 
-#### Option A: Drag & Drop (Easiest)
-1. Go to [netlify.com](https://netlify.com)
-2. Sign up/login with your account
-3. Drag the `dist` folder from your project to Netlify's dashboard
-4. Wait for deployment to complete
-5. Click "Domain settings" → "Add custom domain"
-6. Enter `darashkevich.com`
-7. Follow DNS setup instructions
+Git pushes to `main` can also trigger Netlify’s linked repo build if continuous deployment is enabled.
 
-#### Option B: GitHub Integration (Best for updates)
-1. Push your code to GitHub
-2. Go to [netlify.com](https://netlify.com)
-3. Click "New site from Git"
-4. Connect your GitHub account
-5. Select your repository
-6. Set build command: `npm run build`
-7. Set publish directory: `dist`
-8. Deploy and connect your domain
+## Build settings (Netlify)
 
-### Step 3: DNS Configuration
-You'll need to update your domain's DNS settings to point to Netlify:
-- Add a CNAME record: `darashkevich.com` → `your-site.netlify.app`
-- Or add A records pointing to Netlify's IP addresses
+| Setting | Value |
+| --- | --- |
+| Build command | `npm run build` |
+| Publish directory | `dist` |
+| Node | `20` (set in `netlify.toml`) |
 
-## Alternative: Deploy to Vercel
+## Environment variables
 
-1. Go to [vercel.com](https://vercel.com)
-2. Import your project from GitHub
-3. Set build command: `npm run build`
-4. Set output directory: `dist`
-5. Deploy and connect your domain
+Set in Netlify → Site configuration → Environment variables (and optionally local `.env`):
 
-## Alternative: Traditional Web Hosting
+- `FLIGHTS_PAGE_PASSWORD` — private `/flights` gate
+- `PUBLIC_MAP_TILES_KEY` / `PUBLIC_MAP_TILES_PROVIDER` — map tiles
+- `PUBLIC_CF_WEB_ANALYTICS_TOKEN` — optional analytics beacon
+- `PUBLIC_GOOGLE_SITE_VERIFICATION` / `PUBLIC_BING_SITE_VERIFICATION` — search verification ([docs](docs/search-engine-verification.md))
 
-1. Upload contents of `dist` folder to your hosting provider's `public_html` folder
-2. Point your domain to your hosting provider
+Helpers: `scripts/set-netlify-flights-auth.sh`, `scripts/set-netlify-map-env.sh`.
 
-## Updating Your Site
+## Headers / security
 
-After making changes:
-1. Run `npm run build` to rebuild
-2. If using Netlify/GitHub: Just push to GitHub (auto-deploy)
-3. If using drag & drop: Upload the new `dist` folder
-4. If using traditional hosting: Upload the new files
+`netlify.toml` sets HSTS (including `preload`), CSP, and related security headers.  
+Submitting to the Chromium HSTS preload list is a separate manual step: [`docs/hsts-preload.md`](docs/hsts-preload.md).
 
-## Need Help?
+## DNS / email hardening
 
-- Netlify Support: [help.netlify.com](https://help.netlify.com)
-- Vercel Support: [vercel.com/support](https://vercel.com/support)
-- Astro Documentation: [docs.astro.build](https://docs.astro.build)
+- Apex/`www` should point at Netlify (Cloudflare orange-cloud is fine)
+- DMARC starter record: [`scripts/setup-dmarc.md`](scripts/setup-dmarc.md) (`./scripts/setup-dmarc.sh` if `CLOUDFLARE_API_TOKEN` is available)
 
+## Post-deploy checks
 
+```bash
+npm run audit:prod
+curl -sI https://darashkevich.com/ | head
+```
+
+Optional: PageSpeed Insights and Search Console/Bing verification after env vars are set.

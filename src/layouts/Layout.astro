@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import siteSchema from '../../public/schema.json';
 
 export interface Props {
   title: string;
@@ -11,7 +12,7 @@ export interface Props {
 const {
   title,
   description = "Customer Experience and Support Operations executive specializing in SaaS, eCommerce, subscription, Zendesk, AI self-service, and scalable support teams.",
-  image = "/og-image.svg",
+  image = "/og-image.png",
   noindex = false
 } = Astro.props;
 const siteUrl = Astro.site ?? new URL(Astro.url.origin);
@@ -21,6 +22,9 @@ const cfAnalyticsToken = import.meta.env.PUBLIC_CF_WEB_ANALYTICS_TOKEN;
 const cfBeacon = cfAnalyticsToken
   ? JSON.stringify({ token: cfAnalyticsToken })
   : null;
+const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
+const bingSiteVerification = import.meta.env.PUBLIC_BING_SITE_VERIFICATION?.trim();
+const schemaJsonLd = JSON.stringify(siteSchema);
 ---
 
 <!DOCTYPE html>
@@ -35,6 +39,12 @@ const cfBeacon = cfAnalyticsToken
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonicalURL} />
+    {googleSiteVerification && (
+      <meta name="google-site-verification" content={googleSiteVerification} />
+    )}
+    {bingSiteVerification && (
+      <meta name="msvalidate.01" content={bingSiteVerification} />
+    )}
     
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -44,7 +54,7 @@ const cfBeacon = cfAnalyticsToken
     <meta property="og:image" content={absoluteImageURL} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:type" content="image/svg+xml" />
+    <meta property="og:image:type" content="image/png" />
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
@@ -52,7 +62,7 @@ const cfBeacon = cfAnalyticsToken
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={absoluteImageURL} />
-    <script type="application/ld+json" src="/schema.json"></script>
+    <script type="application/ld+json" set:html={schemaJsonLd} />
     
     <!-- Preload critical assets -->
     <link rel="preload" href="/images/avatar.webp" as="image" type="image/webp">

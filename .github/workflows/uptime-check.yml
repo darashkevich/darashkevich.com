@@ -1,0 +1,21 @@
+name: Uptime check
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+jobs:
+  homepage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check homepage returns HTTP 200
+        run: |
+          set -euo pipefail
+          code="$(curl -sS -o /tmp/uptime-body.html -w "%{http_code}" --max-time 25 https://darashkevich.com/)"
+          echo "HTTP ${code}"
+          if [[ "${code}" != "200" ]]; then
+            echo "Homepage check failed"
+            head -c 500 /tmp/uptime-body.html || true
+            exit 1
+          fi

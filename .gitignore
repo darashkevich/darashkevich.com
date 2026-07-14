@@ -13,7 +13,11 @@ pnpm-debug.log*
 
 # environment variables
 .env
+.env.local
 .env.production
+
+# Generated only when PUBLIC_BING_SITE_VERIFICATION is set at build time
+public/BingSiteAuth.xml
 
 # macOS-specific files
 .DS_Store
@@ -28,3 +32,6 @@ pnpm-debug.log*
 Thumbs.db
 
 
+
+# Local Netlify folder
+.netlify

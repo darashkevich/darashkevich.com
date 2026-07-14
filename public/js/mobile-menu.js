@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
     closeIcon.classList.remove('hidden');
     mobileMenuButton.setAttribute('aria-expanded', 'true');
     mobileMenu.setAttribute('aria-hidden', 'false');
+    mobileMenu.inert = false;
     previouslyFocusedElement = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     document.body.style.overflow = 'hidden';
 
@@ -48,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
     closeIcon.classList.add('hidden');
     mobileMenuButton.setAttribute('aria-expanded', 'false');
     mobileMenu.setAttribute('aria-hidden', 'true');
+    mobileMenu.inert = true;
     document.body.style.overflow = '';
 
     if (previouslyFocusedElement instanceof HTMLElement) {

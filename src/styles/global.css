@@ -10,7 +10,8 @@
   --color-surface-strong: #1D2330;
   --color-text: #F5F7FA;
   --color-text-muted: #A7B0C0;
-  --color-text-soft: #6B7280;
+  /* Soft labels must still meet WCAG AA on dark surfaces (~4.5:1 vs #181C24) */
+  --color-text-soft: #9AA3B2;
   --color-primary: #7DD3FC;
   --color-primary-dark: #60A5FA;
   --color-executive: #0F141D;

@@ -7,11 +7,13 @@
     "dev:preview": "astro dev --host 127.0.0.1 --port 4321",
     "dev:lan": "ASTRO_DEV_HOST=true astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "node ./scripts/write-site-verification.mjs && astro build",
     "preview": "astro preview",
     "preview:local": "bash ./scripts/preview-local.sh",
     "check": "astro sync && tsc --noEmit -p tsconfig.json",
     "lint": "tsc --noEmit -p tsconfig.json",
+    "a11y": "bash ./scripts/a11y-audit.sh",
+    "generate:og": "node ./scripts/generate-og-image.mjs",
     "flights:enrich:fr24": "node scripts/enrich-flights-fr24.mjs",
     "generate:world-map": "node scripts/generate-world-map.mjs",
     "im8:edit": "python3 ./deliverables/im8-cx-challenge/serve-editor.sh",
@@ -23,6 +25,7 @@
     "audit:deps": "npm audit --audit-level=high",
     "audit:prod": "bash ./scripts/audit-production.sh",
     "indexnow:notify": "bash ./scripts/notify-indexnow.sh",
+    "banner:linkedin": "python3 ./scripts/render-linkedin-banner.py",
     "astro": "astro"
   },
   "dependencies": {

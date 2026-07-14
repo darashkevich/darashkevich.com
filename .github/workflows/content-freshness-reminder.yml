@@ -56,7 +56,7 @@ jobs:
             }
 
             const body = [
-              "## Monthly SEO Content Freshness Checklist",
+              "## Monthly SEO + performance checklist",
               "",
               "- [ ] Publish or update at least 1 high-intent page/post",
               "- [ ] Review Search Console performance for top queries/pages",
@@ -64,7 +64,10 @@ jobs:
               "- [ ] Confirm sitemap and IndexNow submission after content updates",
               "- [ ] Add/update at least 2 internal links to new or refreshed content",
               "- [ ] Validate analytics conversions (Calendly, email, resume download)",
+              "- [ ] Run PageSpeed Insights (mobile + desktop) on https://darashkevich.com/",
+              "- [ ] Note LCP / INP / CLS; fix regressions if Core Web Vitals slip",
               "",
+              "PSI: https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fdarashkevich.com%2F",
               "Reference template: `templates/seo-landing-page-template.md`"
             ].join("\\n");
 

@@ -11,7 +11,9 @@
     "@type": "Person",
     "name": "Yahor Darashkevich",
     "url": "https://darashkevich.com/",
-    "image": "https://darashkevich.com/og-image.svg",
+    "image": "https://darashkevich.com/og-image.png",
+    "email": "mailto:yahor@darashkevich.com",
+    "telephone": "+1-617-528-9656",
     "jobTitle": "Customer Experience and Support Operations Executive",
     "description": "Customer Experience executive and operator specializing in scaling support organizations, implementing AI-enabled workflows, and turning customer insights into business outcomes.",
     "sameAs": [
@@ -47,7 +49,9 @@
     "@type": "ProfessionalService",
     "name": "Darashkevich Consulting",
     "url": "https://darashkevich.com/",
-    "image": "https://darashkevich.com/og-image.svg",
+    "image": "https://darashkevich.com/og-image.png",
+    "email": "mailto:yahor@darashkevich.com",
+    "telephone": "+1-617-528-9656",
     "description": "Customer Experience executive and operator specializing in scaling support organizations, implementing AI-enabled workflows, and turning customer insights into business outcomes.",
     "founder": {
       "@type": "Person",

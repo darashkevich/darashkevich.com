@@ -32,3 +32,20 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Accessibility audit (axe)
+        run: |
+          npx --yes serve dist -l tcp://127.0.0.1:4173 >/tmp/a11y-serve.log 2>&1 &
+          for i in $(seq 1 30); do
+            curl -fsS http://127.0.0.1:4173/ >/dev/null 2>&1 && break
+            sleep 0.5
+          done
+          npx --yes browser-driver-manager install chrome >/tmp/bdm-install.log
+          eval "$(npx --yes browser-driver-manager which)"
+          export CHROME_BIN="${CHROME_TEST_PATH}"
+          npx axe http://127.0.0.1:4173/ \
+            --chromedriver-path "${CHROMEDRIVER_TEST_PATH}" \
+            --chrome-path "${CHROME_TEST_PATH}" \
+            --exit \
+            --tags wcag2a,wcag2aa \
+            --timeout 90
