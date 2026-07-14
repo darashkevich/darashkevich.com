@@ -204,12 +204,16 @@ The contact form currently shows a success message. To make it functional:
 - XSS protection
 - CSRF protection for forms
 
-## 📊 Analytics
+## Analytics (Cloudflare Web Analytics)
 
-To add analytics:
-1. Create `src/components/Analytics.astro`
-2. Add your tracking code
-3. Import in `Layout.astro`
+Privacy-friendly, cookie-less page analytics via Cloudflare’s JS beacon. The beacon loads only when a token is set.
+
+1. Cloudflare Dashboard → **Analytics & logs** → **Web Analytics** → **Add a site** → enter `darashkevich.com`
+2. Copy the token from the JavaScript snippet (`data-cf-beacon` / `token`)
+3. Set `PUBLIC_CF_WEB_ANALYTICS_TOKEN` in Netlify (Site configuration → Environment variables); optionally add it to local `.env`
+4. Redeploy so the Astro build injects the beacon
+
+CSP already allows `https://static.cloudflareinsights.com` (script) and `https://cloudflareinsights.com` (beacon endpoint). No Google Analytics or Netlify Analytics is required in code.
 
 ## 🤝 Contributing
 

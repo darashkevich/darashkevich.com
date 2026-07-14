@@ -22,7 +22,7 @@
   for = "/*"
   [headers.values]
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
-    Content-Security-Policy = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self'; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://api.maptiler.com https://cdn.maptiler.com https://demotiles.maplibre.org https://tiles.stadiamaps.com; font-src 'self' data: https://api.maptiler.com https://cdn.maptiler.com https://demotiles.maplibre.org https://tiles.stadiamaps.com; connect-src 'self' https://api.maptiler.com https://cdn.maptiler.com https://demotiles.maplibre.org https://tiles.stadiamaps.com; form-action 'self'; upgrade-insecure-requests"
+    Content-Security-Policy = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' https://static.cloudflareinsights.com; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://api.maptiler.com https://cdn.maptiler.com https://demotiles.maplibre.org https://tiles.stadiamaps.com; font-src 'self' data: https://api.maptiler.com https://cdn.maptiler.com https://demotiles.maplibre.org https://tiles.stadiamaps.com; connect-src 'self' https://api.maptiler.com https://cdn.maptiler.com https://demotiles.maplibre.org https://tiles.stadiamaps.com https://cloudflareinsights.com; form-action 'self'; upgrade-insecure-requests"
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "DENY"
     Referrer-Policy = "strict-origin-when-cross-origin"
