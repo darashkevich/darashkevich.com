@@ -18,6 +18,9 @@ CLI=(npx --yes netlify-cli@latest)
 echo "Building site..."
 npm run build
 
+echo "Running smoke test against dist..."
+npm run smoke
+
 echo "Deploying to Netlify production..."
 "${CLI[@]}" deploy --prod --dir=dist --message "Production deploy $(date -u +%Y-%m-%dT%H:%MZ)"
 

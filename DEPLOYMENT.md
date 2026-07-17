@@ -12,7 +12,14 @@ npx netlify-cli link    # once — select stalwart-profiterole-ca3dd0
 ./scripts/deploy-production.sh
 ```
 
-That script runs `npm run build` and `netlify deploy --prod --dir=dist`.
+That script runs `npm run build`, `npm run smoke`, and `netlify deploy --prod --dir=dist`.
+
+**Always run `npm run build && npm run smoke` before any prod push.** The smoke
+test (`scripts/smoke-test.mjs`) checks the production bundle in `dist/`: no inline
+module scripts (the CSP has `script-src 'self'` without `'unsafe-inline'`, so
+inline scripts are silently blocked in prod even though they work in `astro dev`),
+critical interactive markup present, and click behavior for the Selected Impact
+tiles and CX Operating System stages (verified in jsdom).
 
 Git pushes to `main` can also trigger Netlify’s linked repo build if continuous deployment is enabled.
 

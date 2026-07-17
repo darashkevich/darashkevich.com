@@ -22,6 +22,12 @@ export default defineConfig({
         usePolling: true,
         interval: 1000
       }
+    },
+    build: {
+      // Never inline bundled scripts into HTML: the production CSP is
+      // script-src 'self' (no 'unsafe-inline'), so inline <script> blocks
+      // are silently blocked in prod even though they work in `astro dev`.
+      assetsInlineLimit: 0
     }
   },
   build: {
