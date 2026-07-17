@@ -6,7 +6,7 @@
 # Provider is set here so builds always target MapTiler when a key is present.
 
 [build.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION = "22"
   PUBLIC_MAP_TILES_PROVIDER = "maptiler"
 
 # /flights is private when FLIGHTS_PAGE_PASSWORD is set in Netlify env vars.
