@@ -1,0 +1,319 @@
+---
+const stages = [
+  {
+    id: 'signals',
+    title: 'Customer Signals',
+    blurb: 'Tickets, chat, surveys, and frontline themes enter a shared intake.',
+  },
+  {
+    id: 'ops',
+    title: 'Support Operations',
+    blurb: 'Routing, workforce, QA, and vendor coverage keep quality at volume.',
+  },
+  {
+    id: 'ai',
+    title: 'AI & Self-Service',
+    blurb: 'Knowledge, AI agents, and deflection cut friction without losing escalation control.',
+  },
+  {
+    id: 'voc',
+    title: 'Voice of Customer',
+    blurb: 'Sentiment and issue trends become structured insight for the business.',
+  },
+  {
+    id: 'decisions',
+    title: 'Business Decisions',
+    blurb: 'Product, retention, and ops act on what customers are telling you.',
+  },
+];
+---
+
+<section id="cx-os" class="pb-16 relative" aria-labelledby="cx-os-heading">
+  <div class="max-w-7xl mx-auto px-8 lg:px-12">
+    <div class="backdrop-blur-xl rounded-[1.6rem] p-8 md:p-12 border" style="background: color-mix(in srgb, var(--color-surface) 92%, transparent); border-color: var(--color-border); box-shadow: 0 18px 48px var(--color-shadow);">
+      <div class="text-center mb-10 max-w-3xl mx-auto">
+        <h2 id="cx-os-heading" class="text-4xl lg:text-5xl xl:text-6xl font-bold text-[var(--color-text)] mb-6 tracking-tight">
+          CX Operating System
+        </h2>
+        <p class="text-lg text-[var(--color-text-muted)] leading-relaxed">
+          One flow from signal to decision—how support becomes a strategic engine, not a cost center.
+          <span class="cx-os__instruction cx-os__instruction--desktop">Hover or focus a stage to follow the path.</span>
+          <span class="cx-os__instruction cx-os__instruction--mobile">Tap a stage to follow the path.</span>
+        </p>
+      </div>
+
+      <figure class="cx-os mx-auto max-w-5xl" data-cx-os>
+        <svg
+          class="cx-os__svg w-full h-auto"
+          viewBox="0 0 1000 260"
+          role="group"
+          aria-labelledby="cx-os-svg-title cx-os-svg-desc"
+        >
+          <title id="cx-os-svg-title">CX Operating System flow</title>
+          <desc id="cx-os-svg-desc">
+            Five connected stages: Customer Signals, Support Operations, AI and Self-Service, Voice of Customer, and Business Decisions.
+          </desc>
+
+          <defs>
+            <linearGradient id="cx-os-pipe" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="var(--color-primary)" stop-opacity="0.35" />
+              <stop offset="100%" stop-color="var(--color-primary-dark)" stop-opacity="0.55" />
+            </linearGradient>
+            <filter id="cx-os-glow" x="-20%" y="-40%" width="140%" height="180%">
+              <feGaussianBlur stdDeviation="6" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+
+          <path
+            class="cx-os__pipe"
+            d="M70 108 H930"
+            fill="none"
+            stroke="url(#cx-os-pipe)"
+            stroke-width="3"
+            stroke-linecap="round"
+            opacity="0.85"
+          />
+          <path
+            class="cx-os__pipe-dots"
+            d="M70 108 H930"
+            fill="none"
+            stroke="var(--color-primary)"
+            stroke-width="2"
+            stroke-dasharray="4 14"
+            stroke-linecap="round"
+            opacity="0.45"
+          >
+            <animate attributeName="stroke-dashoffset" from="0" to="-36" dur="2.8s" repeatCount="indefinite" />
+          </path>
+
+          {stages.map((stage, index) => {
+            const x = 70 + index * 215;
+            const nodeId = `cx-node-${stage.id}`;
+            return (
+              <g
+                class="cx-os__stage"
+                data-stage={stage.id}
+                data-title={stage.title}
+                data-blurb={stage.blurb}
+                data-interactive-stage
+                tabindex="0"
+                role="button"
+                aria-label={`${stage.title}: ${stage.blurb}`}
+              >
+                <circle class="cx-os__hit-area" cx={x} cy="108" r="44" fill="transparent" />
+                <circle
+                  class="cx-os__halo"
+                  cx={x}
+                  cy="108"
+                  r="42"
+                  fill="color-mix(in srgb, var(--color-primary) 12%, transparent)"
+                  opacity="0"
+                />
+                <circle
+                  class="cx-os__node"
+                  cx={x}
+                  cy="108"
+                  r="28"
+                  fill="var(--color-surface-strong)"
+                  stroke="var(--color-border)"
+                  stroke-width="2"
+                />
+                <circle class="cx-os__node-core" cx={x} cy="108" r="8" fill="var(--color-primary)" />
+                <text
+                  id={`${nodeId}-title`}
+                  x={x}
+                  y="178"
+                  text-anchor="middle"
+                  fill="var(--color-text)"
+                  font-size="15"
+                  font-weight="600"
+                  font-family="ui-sans-serif, system-ui, sans-serif"
+                >
+                  {stage.title}
+                </text>
+                {index < stages.length - 1 && (
+                  <path
+                    d={`M${x + 36} 108 L${x + 179} 108`}
+                    fill="none"
+                    stroke="var(--color-border)"
+                    stroke-width="1.5"
+                    class="cx-os__connector"
+                  />
+                )}
+              </g>
+            );
+          })}
+        </svg>
+
+        <ol class="cx-os__mobile-flow" aria-label="CX Operating System stages">
+          {stages.map((stage, index) => (
+            <li>
+              <button
+                type="button"
+                class="cx-os__mobile-stage"
+                data-stage={stage.id}
+                data-title={stage.title}
+                data-blurb={stage.blurb}
+                data-interactive-stage
+                aria-pressed="false"
+              >
+                <span class="cx-os__mobile-number" aria-hidden="true">{index + 1}</span>
+                <span>{stage.title}</span>
+              </button>
+            </li>
+          ))}
+        </ol>
+
+        <p
+          class="cx-os__live mt-5 text-center text-base text-[var(--color-text-muted)] leading-relaxed min-h-[3rem] max-w-2xl mx-auto transition-opacity duration-300"
+          data-cx-os-live
+          aria-live="polite"
+        >
+          Customer Signals → Support Operations → AI &amp; Self-Service → Voice of Customer → Business Decisions
+        </p>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cx-os__instruction--mobile,
+  .cx-os__mobile-flow {
+    display: none;
+  }
+
+  .cx-os__stage {
+    cursor: pointer;
+    outline: none;
+  }
+
+  .cx-os__stage:focus-visible .cx-os__node,
+  .cx-os__stage:hover .cx-os__node,
+  .cx-os__stage.is-lit .cx-os__node {
+    stroke: var(--color-primary);
+    filter: url(#cx-os-glow);
+  }
+
+  .cx-os__stage:focus-visible .cx-os__halo,
+  .cx-os__stage:hover .cx-os__halo,
+  .cx-os__stage.is-lit .cx-os__halo {
+    opacity: 1;
+  }
+
+  .cx-os__stage:focus-visible .cx-os__node-core,
+  .cx-os__stage:hover .cx-os__node-core,
+  .cx-os__stage.is-lit .cx-os__node-core {
+    fill: var(--color-primary-dark);
+  }
+
+  @media (max-width: 639px) {
+    .cx-os__instruction--desktop,
+    .cx-os__svg {
+      display: none;
+    }
+
+    .cx-os__instruction--mobile {
+      display: inline;
+    }
+
+    .cx-os__mobile-flow {
+      display: grid;
+      gap: 0.55rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .cx-os__mobile-stage {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      width: 100%;
+      min-height: 3rem;
+      padding: 0.65rem 0.8rem;
+      border: 1px solid var(--color-border);
+      border-radius: 0.85rem;
+      background: color-mix(in srgb, var(--color-surface-strong) 88%, transparent);
+      color: var(--color-text);
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-align: left;
+    }
+
+    .cx-os__mobile-stage:focus-visible,
+    .cx-os__mobile-stage.is-lit {
+      border-color: var(--color-primary);
+      background: color-mix(in srgb, var(--color-primary) 12%, var(--color-surface-strong));
+      outline: 2px solid color-mix(in srgb, var(--color-primary) 55%, transparent);
+      outline-offset: 2px;
+    }
+
+    .cx-os__mobile-number {
+      display: inline-grid;
+      place-items: center;
+      flex: 0 0 1.75rem;
+      width: 1.75rem;
+      height: 1.75rem;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--color-primary) 16%, transparent);
+      color: var(--color-primary);
+      font-size: 0.8rem;
+    }
+
+    .cx-os__live {
+      min-height: 5rem;
+      text-align: left;
+    }
+  }
+</style>
+
+<script>
+  const root = document.querySelector('[data-cx-os]');
+  if (root) {
+    const stages = root.querySelectorAll('[data-interactive-stage]');
+    const live = root.querySelector('[data-cx-os-live]');
+    const defaultCopy =
+      'Customer Signals → Support Operations → AI & Self-Service → Voice of Customer → Business Decisions';
+
+    function clearLit() {
+      stages.forEach((s) => {
+        s.classList.remove('is-lit');
+        if (s instanceof HTMLButtonElement) s.setAttribute('aria-pressed', 'false');
+      });
+      if (live) live.textContent = defaultCopy;
+    }
+
+    function light(stage) {
+      stages.forEach((s) => {
+        const active = s === stage;
+        s.classList.toggle('is-lit', active);
+        if (s instanceof HTMLButtonElement) s.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+      if (live && stage) {
+        const title = stage.dataset.title ?? '';
+        const blurb = stage.dataset.blurb ?? '';
+        live.textContent = title && blurb ? `${title} — ${blurb}` : defaultCopy;
+      }
+    }
+
+    stages.forEach((stage) => {
+      stage.addEventListener('mouseenter', () => light(stage));
+      stage.addEventListener('mouseleave', () => {
+        if (!stage.matches(':focus')) clearLit();
+      });
+      stage.addEventListener('focus', () => light(stage));
+      stage.addEventListener('blur', clearLit);
+      stage.addEventListener('click', () => light(stage));
+      stage.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          light(stage);
+        }
+      });
+    });
+  }
+</script>

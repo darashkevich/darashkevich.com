@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Resume - Yahor Darashkevich</title>
+  <desc id="desc">Executive resume for Customer Support and Customer Experience leadership.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B0D10" />
+      <stop offset="55%" stop-color="#111318" />
+      <stop offset="100%" stop-color="#161A22" />
+    </linearGradient>
+    <radialGradient id="cyan" cx="22%" cy="30%" r="42%">
+      <stop offset="0%" stop-color="#7DD3FC" stop-opacity="0.26" />
+      <stop offset="100%" stop-color="#7DD3FC" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="blue" cx="85%" cy="25%" r="38%">
+      <stop offset="0%" stop-color="#60A5FA" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#60A5FA" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect width="1200" height="630" fill="url(#cyan)" />
+  <rect width="1200" height="630" fill="url(#blue)" />
+
+  <rect x="72" y="72" width="1056" height="486" rx="28" fill="#181C24" fill-opacity="0.88" stroke="#A7B0C0" stroke-opacity="0.22" />
+
+  <text x="120" y="200" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="20" font-weight="600" fill="#7DD3FC" letter-spacing="0.2em">
+    RESUME
+  </text>
+  <text x="120" y="280" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="56" font-weight="700" fill="#F5F7FA">
+    Yahor Darashkevich
+  </text>
+  <text x="120" y="348" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="28" font-weight="500" fill="#A7B0C0">
+    Sr. Director-level CX &amp; Support Operations
+  </text>
+  <text x="120" y="420" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="22" font-weight="400" fill="#9AA3B2">
+    95+ agents | 1.5M+ tickets | 89%+ CSAT | Zendesk Advanced AI
+  </text>
+  <text x="120" y="470" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="20" font-weight="400" fill="#9AA3B2">
+    darashkevich.com/resume
+  </text>
+</svg>

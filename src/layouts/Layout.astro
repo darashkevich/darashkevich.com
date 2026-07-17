@@ -7,17 +7,25 @@ export interface Props {
   description?: string;
   image?: string;
   noindex?: boolean;
+  /** Optional BreadcrumbList segments (name + absolute or site-relative path). */
+  breadcrumbs?: { name: string; path: string }[];
 }
 
 const {
   title,
   description = "Customer Experience and Support Operations executive specializing in SaaS, eCommerce, subscription, Zendesk, AI self-service, and scalable support teams.",
   image = "/og-image.png",
-  noindex = false
+  noindex = false,
+  breadcrumbs = [],
 } = Astro.props;
 const siteUrl = Astro.site ?? new URL(Astro.url.origin);
 const canonicalURL = new URL(Astro.url.pathname, siteUrl);
 const absoluteImageURL = new URL(image, siteUrl);
+const ogImageType = image.endsWith('.svg')
+  ? 'image/svg+xml'
+  : image.endsWith('.webp')
+    ? 'image/webp'
+    : 'image/png';
 const cfAnalyticsToken = import.meta.env.PUBLIC_CF_WEB_ANALYTICS_TOKEN;
 const cfBeacon = cfAnalyticsToken
   ? JSON.stringify({ token: cfAnalyticsToken })
@@ -25,6 +33,19 @@ const cfBeacon = cfAnalyticsToken
 const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
 const bingSiteVerification = import.meta.env.PUBLIC_BING_SITE_VERIFICATION?.trim();
 const schemaJsonLd = JSON.stringify(siteSchema);
+const breadcrumbJsonLd =
+  breadcrumbs.length > 0
+    ? JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: breadcrumbs.map((crumb, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          name: crumb.name,
+          item: new URL(crumb.path, siteUrl).href,
+        })),
+      })
+    : null;
 ---
 
 <!DOCTYPE html>
@@ -54,7 +75,7 @@ const schemaJsonLd = JSON.stringify(siteSchema);
     <meta property="og:image" content={absoluteImageURL} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:type" content={ogImageType} />
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
@@ -63,6 +84,9 @@ const schemaJsonLd = JSON.stringify(siteSchema);
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={absoluteImageURL} />
     <script type="application/ld+json" set:html={schemaJsonLd} />
+    {breadcrumbJsonLd && (
+      <script type="application/ld+json" set:html={breadcrumbJsonLd} />
+    )}
     
     <!-- Preload critical assets -->
     <link rel="preload" href="/images/avatar.webp" as="image" type="image/webp">

@@ -4,6 +4,34 @@
       <div class="text-center mb-10">
         <h2 class="text-4xl lg:text-5xl xl:text-6xl font-bold text-[var(--color-text)] mb-6 tracking-tight">Executive Focus</h2>
       </div>
+      <figure class="executive-focus__visual" aria-label="Customer signals become stronger operations, trust, and growth">
+        <div class="executive-focus__line" aria-hidden="true"></div>
+        <div class="executive-focus__step">
+          <span class="executive-focus__node" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M4 12h3l2-5 4 10 2-5h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span>Customer signal</span>
+        </div>
+        <div class="executive-focus__step">
+          <span class="executive-focus__node" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.7" />
+              <path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1m-8.6 8.6-2.1 2.1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+            </svg>
+          </span>
+          <span>Operating system</span>
+        </div>
+        <div class="executive-focus__step">
+          <span class="executive-focus__node" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M5 17 10 12l3 3 6-8m0 0h-4m4 0v4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span>Trust &amp; growth</span>
+        </div>
+      </figure>
       <div class="max-w-4xl mx-auto space-y-6">
         <p class="text-lg text-[var(--color-text-muted)] leading-8">
           After more than 15 years in customer support, customer experience, and support operations leadership, my next chapter is focused on broader executive ownership across Customer Experience, Customer Operations, Support, and Voice of Customer strategy.
@@ -18,3 +46,61 @@
     </div>
   </div>
 </section>
+
+<style>
+  .executive-focus__visual {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: 38rem;
+    margin: 0 auto 2.5rem;
+  }
+
+  .executive-focus__line {
+    position: absolute;
+    top: 1.5rem;
+    left: 16.666%;
+    right: 16.666%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+    opacity: 0.55;
+  }
+
+  .executive-focus__step {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    justify-items: center;
+    gap: 0.65rem;
+    color: var(--color-text-soft);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .executive-focus__node {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid color-mix(in srgb, var(--color-primary) 35%, var(--color-border));
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--color-surface-strong) 90%, transparent);
+    color: var(--color-primary);
+    box-shadow: 0 8px 24px color-mix(in srgb, var(--color-primary) 10%, transparent);
+  }
+
+  .executive-focus__node svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  @media (max-width: 479px) {
+    .executive-focus__step {
+      font-size: 0.65rem;
+      letter-spacing: 0.05em;
+    }
+  }
+</style>

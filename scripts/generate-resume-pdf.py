@@ -113,7 +113,13 @@ def is_tagged(pdf_path: Path) -> tuple[bool, int]:
     return tagged, mcid_count
 
 
-def postprocess_pdf(pdf_path: Path, title: str = PDF_TITLE) -> None:
+def postprocess_pdf(
+    pdf_path: Path,
+    title: str = PDF_TITLE,
+    author: str | None = None,
+    subject: str | None = None,
+    keywords: str | None = None,
+) -> None:
     """Set neutral metadata, compress, and linearize for fast web view."""
     with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as tmp:
         staged = Path(tmp.name)
@@ -124,9 +130,21 @@ def postprocess_pdf(pdf_path: Path, title: str = PDF_TITLE) -> None:
                 meta["dc:title"] = title
                 meta["pdf:Producer"] = PDF_PRODUCER
                 meta["xmp:CreatorTool"] = PDF_CREATOR
+                if author:
+                    meta["dc:creator"] = [author]
+                if subject:
+                    meta["dc:description"] = subject
+                if keywords:
+                    meta["pdf:Keywords"] = keywords
             pdf.docinfo["/Title"] = title
             pdf.docinfo["/Producer"] = PDF_PRODUCER
             pdf.docinfo["/Creator"] = PDF_CREATOR
+            if author:
+                pdf.docinfo["/Author"] = author
+            if subject:
+                pdf.docinfo["/Subject"] = subject
+            if keywords:
+                pdf.docinfo["/Keywords"] = keywords
             pdf.save(
                 staged,
                 linearize=True,
@@ -204,6 +222,10 @@ def main() -> int:
         default=None,
         help="Desktop copy path (default: ~/Desktop/YD_resume.pdf or YD_resume_ATS.pdf)",
     )
+    parser.add_argument("--title", default=PDF_TITLE, help="PDF metadata title")
+    parser.add_argument("--author", default=None, help="PDF metadata author")
+    parser.add_argument("--subject", default=None, help="PDF metadata subject")
+    parser.add_argument("--keywords", default=None, help="PDF metadata keywords")
     args = parser.parse_args()
 
     if args.ats:
@@ -237,7 +259,13 @@ def main() -> int:
     )
 
     print("Post-processing (metadata, compression, linearization)...")
-    postprocess_pdf(args.output)
+    postprocess_pdf(
+        args.output,
+        title=args.title,
+        author=args.author,
+        subject=args.subject,
+        keywords=args.keywords,
+    )
 
     type3_count, font_list = count_type3_fonts(args.output)
     tagged_after, mcid_after = is_tagged(args.output)

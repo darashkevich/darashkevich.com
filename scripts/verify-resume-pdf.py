@@ -68,9 +68,15 @@ def spans_for_word(spans: list[tuple[str, fitz.Rect]], word: str) -> list[tuple[
 
 
 def spans_overlapping_rect(
-    spans: list[tuple[str, fitz.Rect]], rect: fitz.Rect
+    spans: list[tuple[str, fitz.Rect]], rect: fitz.Rect, min_overlap: float = 1.0
 ) -> list[tuple[str, fitz.Rect]]:
-    return [(text, span_rect) for text, span_rect in spans if span_rect.intersects(rect)]
+    """Spans with meaningful horizontal overlap; ignores sub-point boundary slivers."""
+    result = []
+    for text, span_rect in spans:
+        intersection = fitz.Rect(span_rect) & rect
+        if not intersection.is_empty and intersection.width >= min_overlap:
+            result.append((text, span_rect))
+    return result
 
 
 def is_linearized(pdf_path: Path) -> bool:

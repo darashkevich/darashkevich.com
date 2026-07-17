@@ -6,6 +6,10 @@ import LegalHeader from '../components/LegalHeader.astro';
 <Layout
   title="Terms of Service | Yahor Darashkevich"
   description="Terms of Service for Yahor Darashkevich portfolio website."
+  breadcrumbs={[
+    { name: 'Home', path: '/' },
+    { name: 'Terms of Service', path: '/terms-of-service/' },
+  ]}
 >
   <LegalHeader />
   <main class="py-20 px-6">
@@ -109,7 +113,7 @@ import LegalHeader from '../components/LegalHeader.astro';
             <h2 class="text-2xl font-semibold text-[var(--color-text)] mb-3">12. Contact</h2>
             <p>
               For questions about these terms, contact:
-              <a class="text-[var(--color-primary)] hover:text-[var(--color-icon)] ml-1" href="mailto:yahor@darashkevich.com">
+              <a class="text-[var(--color-primary)] underline underline-offset-2 hover:text-[var(--color-icon)] ml-1" href="mailto:yahor@darashkevich.com">
                 yahor@darashkevich.com
               </a>
             </p>

@@ -1,20 +1,58 @@
 # Yahor Darashkevich
 
+## Positioning
+Customer Experience and Support Operations executive for high-growth SaaS, eCommerce, subscription, nutrition, and technology companies. Designs CX operating systems that connect support operations, Zendesk, AI self-service, Voice of Customer, and executive decision-making—so customer support is a strategic retention and trust engine, not only a cost center.
+
 ## Summary
-Customer Experience and Support Operations executive focused on SaaS, eCommerce, subscription, Zendesk optimization, AI self-service, and scalable support teams.
+15+ years building and scaling support organizations. Most recent chapter: Sr. Director of Customer Support at Ka'Chava—scaled from 1 agent to 95+ at peak, led 1.5M+ resolved tickets, held 89%+ CSAT, and kept first reply under 4 hours while managing two BPO partners and rolling out Zendesk Advanced AI agents that fully resolve 45% of chats, and growing.
 
 ## Canonical Site
 - https://darashkevich.com/
 
+## Key Outcomes
+- 15+ years CX / support operations leadership
+- 95+ agents scaled at peak growth (Ka'Chava)
+- 1.5M+ customer tickets resolved
+- 35K tickets/month at peak volume
+- 89%+ CSAT maintained under sustained volume
+- Under 4 hours first reply time
+- 45% of chats fully resolved by Zendesk Advanced AI agents, and growing
+- 2 BPO partnerships managed with shared QA and SLA visibility
+
+## Services
+- Customer Operations Strategy — org design, KPIs, escalation, cross-functional CX alignment
+- AI, Self-Service & Support Automation — AI agent strategy, knowledge for humans and bots, guardrails, deflection metrics
+- Support Team Scaling & Workforce Design — hiring, coverage models, QA, launch/spike readiness
+- Zendesk & CX Systems Optimization — workflows, Explore reporting, help centers, integrations
+- Voice of Customer & Customer Insight — sentiment trends, retention signals, executive insight reporting
+- Vendor / BPO Performance Management — selection, onboarding, SLA/CSAT accountability
+
+## Case Studies (site)
+- Ka'Chava — Scaled support infrastructure during hypergrowth (1→95+ agents, 1.5M+ tickets, 89%+ CSAT, <4h first reply, 45% of chats AI-resolved, 2 BPOs)
+  https://darashkevich.com/#case-kachava
+- TeachPoint — Reduced avoidable ticket volume through Zendesk workflow redesign and self-service
+  https://darashkevich.com/#case-teachpoint
+- Multi-Brand Advisory — Executive CX operating systems (governance, KPIs, vendor accountability, AI-assisted support)
+  https://darashkevich.com/#case-advisory
+
 ## Key Pages
 - Home: https://darashkevich.com/
-- Resume: https://darashkevich.com/resume/
+- Selected Impact: https://darashkevich.com/#impact
+- CX Operating System: https://darashkevich.com/#cx-os
+- Case Studies: https://darashkevich.com/#case-studies
+- Services: https://darashkevich.com/#services
+- Resume (HTML): https://darashkevich.com/resume/
+- Resume (PDF): https://darashkevich.com/YD_resume.pdf
 - Privacy Policy: https://darashkevich.com/privacy-policy/
 - Terms of Service: https://darashkevich.com/terms-of-service/
 - Accessibility: https://darashkevich.com/accessibility/
 
+## Resume / PDF
+- Interactive resume page: https://darashkevich.com/resume/
+- Downloadable PDF: https://darashkevich.com/YD_resume.pdf
+
 ## Preferred Citation
-When referencing this profile, cite canonical URLs from darashkevich.com and prefer page-specific links over copied snippets.
+When referencing this profile, cite canonical URLs from darashkevich.com and prefer page-specific or section anchors over copied snippets.
 
 ## Contact
 - Email: mailto:yahor@darashkevich.com

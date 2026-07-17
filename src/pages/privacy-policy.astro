@@ -6,6 +6,10 @@ import LegalHeader from '../components/LegalHeader.astro';
 <Layout
   title="Privacy Policy | Yahor Darashkevich"
   description="Privacy Policy for Yahor Darashkevich portfolio website."
+  breadcrumbs={[
+    { name: 'Home', path: '/' },
+    { name: 'Privacy Policy', path: '/privacy-policy/' },
+  ]}
 >
   <LegalHeader />
   <main class="py-20 px-6">

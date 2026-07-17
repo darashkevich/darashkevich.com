@@ -1,30 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
-  <title id="title">Yahor Darashkevich - Customer Experience Portfolio</title>
-  <desc id="desc">Customer experience consulting portfolio and services by Yahor Darashkevich.</desc>
+  <title id="title">Yahor Darashkevich - Customer Experience and Support Operations</title>
+  <desc id="desc">Executive CX portfolio: scale support, AI self-service, and Voice of Customer systems.</desc>
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ffe4f4" />
-      <stop offset="45%" stop-color="#ede9fe" />
-      <stop offset="100%" stop-color="#cffafe" />
+      <stop offset="0%" stop-color="#0B0D10" />
+      <stop offset="55%" stop-color="#111318" />
+      <stop offset="100%" stop-color="#161A22" />
     </linearGradient>
-    <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="24" />
-    </filter>
+    <radialGradient id="cyan" cx="30%" cy="20%" r="45%">
+      <stop offset="0%" stop-color="#7DD3FC" stop-opacity="0.28" />
+      <stop offset="100%" stop-color="#7DD3FC" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="blue" cx="78%" cy="70%" r="40%">
+      <stop offset="0%" stop-color="#60A5FA" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#60A5FA" stop-opacity="0" />
+    </radialGradient>
   </defs>
 
   <rect width="1200" height="630" fill="url(#bg)" />
-  <circle cx="220" cy="120" r="120" fill="#d946ef" fill-opacity="0.30" filter="url(#blur)" />
-  <circle cx="1030" cy="170" r="150" fill="#6366f1" fill-opacity="0.25" filter="url(#blur)" />
-  <circle cx="820" cy="520" r="160" fill="#06b6d4" fill-opacity="0.22" filter="url(#blur)" />
+  <rect width="1200" height="630" fill="url(#cyan)" />
+  <rect width="1200" height="630" fill="url(#blue)" />
 
-  <rect x="80" y="80" width="1040" height="470" rx="36" fill="#ffffff" fill-opacity="0.45" stroke="#ffffff" stroke-opacity="0.7" />
-  <text x="140" y="250" font-family="Inter, Arial, sans-serif" font-size="72" font-weight="700" fill="#0f172a">
+  <rect x="72" y="72" width="1056" height="486" rx="28" fill="#181C24" fill-opacity="0.88" stroke="#A7B0C0" stroke-opacity="0.22" />
+
+  <text x="120" y="210" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="22" font-weight="600" fill="#7DD3FC" letter-spacing="0.18em">
+    DARASHKEVICH.COM
+  </text>
+  <text x="120" y="290" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="58" font-weight="700" fill="#F5F7FA">
     Yahor Darashkevich
   </text>
-  <text x="140" y="320" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="500" fill="#334155">
-    Customer Experience Consultant
+  <text x="120" y="360" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="30" font-weight="500" fill="#A7B0C0">
+    Customer Experience &amp; Support Operations Executive
   </text>
-  <text x="140" y="390" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="400" fill="#475569">
-    Helping businesses scale support and CX operations.
+  <text x="120" y="430" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="24" font-weight="400" fill="#9AA3B2">
+    Scaling support orgs | AI self-service | Voice of Customer
   </text>
 </svg>

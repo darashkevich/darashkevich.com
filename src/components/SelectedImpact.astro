@@ -1,42 +1,474 @@
-<section id="impact" class="pt-6 sm:pt-8 pb-8 relative">
+---
+const metrics = [
+  {
+    value: '15+',
+    label: 'Years Experience',
+    story:
+      'Built support and CX organizations across SaaS, eCommerce, subscription, and consumer brands—from frontline coaching to executive operating models.',
+    href: '#about',
+    linkLabel: 'About Yahor',
+  },
+  {
+    value: '95+',
+    label: 'Agents Scaled at Peak',
+    story:
+      "Grew Ka'Chava support from a one-agent desk to 95+ agents at peak, with staffing models, QA, and BPO coverage that held quality through hypergrowth.",
+    href: '#case-kachava',
+    linkLabel: "Ka'Chava case study",
+  },
+  {
+    value: '1.5M+',
+    label: 'Customer Tickets Resolved',
+    story:
+      'Led multi-channel operations through more than 1.5M resolved tickets—routing, macros, and workforce design that kept the queue manageable under load.',
+    href: '#case-kachava',
+    linkLabel: "Ka'Chava case study",
+  },
+  {
+    value: '35K',
+    label: 'Tickets / Month Peak',
+    story:
+      'Designed capacity and vendor coverage for peak months near 35K tickets—seasonal spikes and launches without collapsing first-reply SLAs.',
+    href: '#case-kachava',
+    linkLabel: "Ka'Chava case study",
+  },
+  {
+    value: '89%+',
+    label: 'CSAT Maintained',
+    story:
+      'Protected 89%+ CSAT at volume by pairing clear QA standards, coaching loops, and escalation control across internal and outsourced teams.',
+    href: '#case-kachava',
+    linkLabel: "Ka'Chava case study",
+  },
+  {
+    value: '<4h',
+    label: 'First Reply',
+    story:
+      'Cut first reply to under four hours by tightening Zendesk workflows, workforce planning, and performance management—not just hiring more seats.',
+    href: '#case-kachava',
+    linkLabel: "Ka'Chava case study",
+  },
+  {
+    value: '45%',
+    label: 'Chats Fully Resolved by AI',
+    story:
+      "Rolled out Zendesk Advanced AI agents across chat and email at Ka'Chava—45% of chats fully resolved by AI and growing, with QA standards and escalation control keeping quality intact.",
+    href: '#case-kachava',
+    linkLabel: "Ka'Chava case study",
+  },
+  {
+    value: '2',
+    label: 'BPOs Managed',
+    story:
+      'Ran two BPO partnerships with shared QA, onboarding, and SLA visibility so outsourced capacity scaled without diluting brand voice.',
+    href: '#case-advisory',
+    linkLabel: 'CX operating systems',
+  },
+];
+---
+
+<section id="impact" class="pt-6 sm:pt-8 pb-8 relative" aria-labelledby="impact-heading">
   <div class="max-w-7xl mx-auto px-8 lg:px-12">
-    <div class="backdrop-blur-xl rounded-[1.6rem] p-8 md:p-10 border" style="background-color: color-mix(in srgb, var(--color-surface) 92%, transparent); border-color: var(--color-border); box-shadow: 0 16px 44px var(--color-shadow);">
+    <div
+      class="impact-shell backdrop-blur-xl rounded-[1.6rem] p-8 md:p-10 border"
+      style="background-color: color-mix(in srgb, var(--color-surface) 92%, transparent); border-color: var(--color-border); box-shadow: 0 16px 44px var(--color-shadow);"
+    >
       <div class="text-center mb-10">
-        <h2 class="text-4xl lg:text-5xl xl:text-6xl font-bold text-[var(--color-text)] mb-6 tracking-tight">Selected Impact</h2>
+        <h2 id="impact-heading" class="text-4xl lg:text-5xl xl:text-6xl font-bold text-[var(--color-text)] mb-6 tracking-tight">
+          Selected Impact
+        </h2>
         <p class="text-[var(--color-text-muted)] text-lg max-w-2xl mx-auto leading-relaxed">
-          Operational scale delivered across high-growth eCommerce, subscription, and SaaS support environments.
+          Operational scale across high-growth eCommerce, subscription, and SaaS support. Tap a metric to reveal the operating story behind the number.
         </p>
       </div>
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-        <div class="rounded-[1.15rem] p-6 border backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5" style="background: color-mix(in srgb, var(--color-surface-strong) 90%, transparent); border-color: var(--color-border); box-shadow: 0 12px 26px var(--color-shadow);">
-          <p class="text-3xl lg:text-4xl font-bold text-[var(--color-text)]">15+</p>
-          <p class="text-sm mt-2 text-[var(--color-text-soft)] uppercase tracking-[0.12em]">Years Experience</p>
-        </div>
-        <div class="rounded-[1.15rem] p-6 border backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5" style="background: color-mix(in srgb, var(--color-surface-strong) 90%, transparent); border-color: var(--color-border); box-shadow: 0 12px 26px var(--color-shadow);">
-          <p class="text-3xl lg:text-4xl font-bold text-[var(--color-text)]">95+</p>
-          <p class="text-sm mt-2 text-[var(--color-text-soft)] uppercase tracking-[0.12em]">Agents Scaled at Peak</p>
-        </div>
-        <div class="rounded-[1.15rem] p-6 border backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5" style="background: color-mix(in srgb, var(--color-surface-strong) 90%, transparent); border-color: var(--color-border); box-shadow: 0 12px 26px var(--color-shadow);">
-          <p class="text-3xl lg:text-4xl font-bold text-[var(--color-text)]">1.5M+</p>
-          <p class="text-sm mt-2 text-[var(--color-text-soft)] uppercase tracking-[0.12em]">Customer Tickets Resolved</p>
-        </div>
-        <div class="rounded-[1.15rem] p-6 border backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5" style="background: color-mix(in srgb, var(--color-surface-strong) 90%, transparent); border-color: var(--color-border); box-shadow: 0 12px 26px var(--color-shadow);">
-          <p class="text-3xl lg:text-4xl font-bold text-[var(--color-text)]">35K</p>
-          <p class="text-sm mt-2 text-[var(--color-text-soft)] uppercase tracking-[0.12em]">Tickets / Month Peak</p>
-        </div>
-        <div class="rounded-[1.15rem] p-6 border backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5" style="background: color-mix(in srgb, var(--color-surface-strong) 90%, transparent); border-color: var(--color-border); box-shadow: 0 12px 26px var(--color-shadow);">
-          <p class="text-3xl lg:text-4xl font-bold text-[var(--color-text)]">89%+</p>
-          <p class="text-sm mt-2 text-[var(--color-text-soft)] uppercase tracking-[0.12em]">CSAT Maintained</p>
-        </div>
-        <div class="rounded-[1.15rem] p-6 border backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5" style="background: color-mix(in srgb, var(--color-surface-strong) 90%, transparent); border-color: var(--color-border); box-shadow: 0 12px 26px var(--color-shadow);">
-          <p class="text-3xl lg:text-4xl font-bold text-[var(--color-text)]">&lt;4h</p>
-          <p class="text-sm mt-2 text-[var(--color-text-soft)] uppercase tracking-[0.12em]">First Reply</p>
-        </div>
-        <div class="rounded-[1.15rem] p-6 border backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5" style="background: color-mix(in srgb, var(--color-surface-strong) 90%, transparent); border-color: var(--color-border); box-shadow: 0 12px 26px var(--color-shadow);">
-          <p class="text-3xl lg:text-4xl font-bold text-[var(--color-text)]">2</p>
-          <p class="text-sm mt-2 text-[var(--color-text-soft)] uppercase tracking-[0.12em]">BPOs Managed</p>
-        </div>
+
+      <div class="impact-grid" data-impact-metrics>
+        {metrics.map((metric, index) => (
+          <div class="impact-tile" data-impact-tile>
+            <button
+              type="button"
+              class="impact-tile__trigger"
+              id={`impact-trigger-${index}`}
+              aria-expanded="false"
+              aria-controls={`impact-panel-${index}`}
+              data-impact-trigger
+            >
+              <span class="impact-tile__value">{metric.value}</span>
+              <span class="impact-tile__label">{metric.label}</span>
+              <span class="impact-tile__affordance" aria-hidden="true">
+                <span class="impact-tile__affordance-open">
+                  <span class="impact-tile__affordance-full">View story</span>
+                  <span class="impact-tile__affordance-short">Story</span>
+                </span>
+                <span class="impact-tile__affordance-close">Close</span>
+                <svg class="impact-tile__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M4 6.5L8 10.5L12 6.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+            </button>
+
+            <div
+              class="impact-tile__panel"
+              id={`impact-panel-${index}`}
+              role="region"
+              aria-labelledby={`impact-trigger-${index}`}
+              data-impact-panel
+              hidden
+            >
+              <div class="impact-tile__panel-inner">
+                <p class="impact-tile__story">{metric.story}</p>
+                <a class="impact-tile__link" href={metric.href} data-impact-link>
+                  {metric.linkLabel}
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M3.5 8H12.5M12.5 8L9 4.5M12.5 8L9 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
+
+      <p class="mt-8 text-center text-sm text-[var(--color-text-soft)]">
+        Full transformation narratives live in
+        <a href="#case-studies" class="text-[var(--color-primary)] underline underline-offset-2 hover:text-[var(--color-icon)]">Selected Case Studies</a>.
+      </p>
     </div>
   </div>
 </section>
+
+<style>
+  .impact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.875rem;
+    align-items: start;
+  }
+
+  @media (min-width: 640px) {
+    .impact-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .impact-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  .impact-tile {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 1.15rem;
+    border: 1px solid var(--color-border);
+    background: color-mix(in srgb, var(--color-surface-strong) 90%, transparent);
+    box-shadow: 0 12px 26px var(--color-shadow);
+    overflow: hidden;
+    transition:
+      border-color 240ms ease,
+      box-shadow 240ms ease,
+      background-color 240ms ease;
+  }
+
+  .impact-tile:hover,
+  .impact-tile:focus-within {
+    border-color: color-mix(in srgb, var(--color-primary) 42%, var(--color-border));
+    box-shadow: 0 16px 32px rgba(2, 6, 12, 0.55);
+  }
+
+  .impact-tile.is-open {
+    border-color: color-mix(in srgb, var(--color-primary) 55%, var(--color-border));
+    background: color-mix(in srgb, var(--color-surface-strong) 82%, var(--color-primary) 6%);
+    box-shadow: 0 18px 36px rgba(2, 6, 12, 0.58);
+  }
+
+  .impact-tile__trigger {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.7rem;
+    width: 100%;
+    /* Equal collapsed face height across all tiles */
+    height: 12.75rem;
+    padding: 1.35rem 1.2rem 1.1rem;
+    text-align: left;
+    cursor: pointer;
+    color: inherit;
+    background: transparent;
+    border: 0;
+  }
+
+  .impact-tile__trigger:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: -2px;
+  }
+
+  .impact-tile__value {
+    display: block;
+    font-size: clamp(1.75rem, 2.4vw, 2.25rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--color-text);
+  }
+
+  .impact-tile__label {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    /* Reserve 3 lines so short labels still match tall ones */
+    height: 3.9em;
+    margin-top: auto;
+    font-size: 0.78rem;
+    line-height: 1.3;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-soft);
+  }
+
+  .impact-tile__affordance {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.05rem;
+    padding: 0.32rem 0.55rem 0.32rem 0.6rem;
+    border-radius: 0.55rem;
+    border: 1px solid color-mix(in srgb, var(--color-primary) 28%, var(--color-border));
+    background: color-mix(in srgb, var(--color-primary) 10%, transparent);
+    color: var(--color-primary);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition:
+      background-color 220ms ease,
+      border-color 220ms ease;
+  }
+
+  .impact-tile__affordance-short {
+    display: none;
+  }
+
+  @media (max-width: 639px) {
+    .impact-tile__trigger {
+      height: 12.25rem;
+      padding: 1.15rem 1rem 1rem;
+    }
+
+    .impact-tile__affordance {
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      padding: 0.28rem 0.45rem 0.28rem 0.5rem;
+    }
+
+    .impact-tile__affordance-full {
+      display: none;
+    }
+
+    .impact-tile__affordance-short {
+      display: inline;
+    }
+  }
+
+  .impact-tile:hover .impact-tile__affordance,
+  .impact-tile.is-open .impact-tile__affordance {
+    background: color-mix(in srgb, var(--color-primary) 16%, transparent);
+    border-color: color-mix(in srgb, var(--color-primary) 45%, var(--color-border));
+  }
+
+  .impact-tile__affordance-close {
+    display: none;
+  }
+
+  .impact-tile.is-open .impact-tile__affordance-open {
+    display: none;
+  }
+
+  .impact-tile.is-open .impact-tile__affordance-close {
+    display: inline;
+  }
+
+  .impact-tile__chevron {
+    width: 0.85rem;
+    height: 0.85rem;
+    flex-shrink: 0;
+    transition: transform 240ms ease;
+  }
+
+  .impact-tile.is-open .impact-tile__chevron {
+    transform: rotate(180deg);
+  }
+
+  .impact-tile__panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    border-top: 1px solid transparent;
+    transition:
+      grid-template-rows 260ms ease,
+      opacity 220ms ease,
+      border-color 220ms ease;
+  }
+
+  .impact-tile.is-open .impact-tile__panel {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    border-top-color: color-mix(in srgb, var(--color-border) 85%, transparent);
+  }
+
+  /* Keep grid animation workable while using the hidden attribute for a11y */
+  .impact-tile__panel[hidden] {
+    display: grid;
+  }
+
+  .impact-tile__panel-inner {
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  .impact-tile__story {
+    margin: 0;
+    padding: 0.95rem 1.2rem 0.4rem;
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--color-text-muted);
+  }
+
+  .impact-tile__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin: 0 1.2rem 1.15rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: color 180ms ease;
+  }
+
+  .impact-tile__link svg {
+    width: 0.85rem;
+    height: 0.85rem;
+  }
+
+  .impact-tile__link:hover,
+  .impact-tile__link:focus-visible {
+    color: var(--color-icon);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .impact-tile,
+    .impact-tile__affordance,
+    .impact-tile__chevron,
+    .impact-tile__panel {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  function preferHoverOpen() {
+    return window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  }
+
+  function isSticky(tile: HTMLElement) {
+    return tile.dataset.impactSticky === '1';
+  }
+
+  function setSticky(tile: HTMLElement, sticky: boolean) {
+    if (sticky) tile.dataset.impactSticky = '1';
+    else delete tile.dataset.impactSticky;
+  }
+
+  function setOpen(tile: HTMLElement, open: boolean) {
+    const trigger = tile.querySelector<HTMLButtonElement>('[data-impact-trigger]');
+    const panel = tile.querySelector<HTMLElement>('[data-impact-panel]');
+    if (!trigger || !panel) return;
+
+    tile.classList.toggle('is-open', open);
+    trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (!open) setSticky(tile, false);
+
+    if (open) {
+      panel.removeAttribute('hidden');
+    } else {
+      window.setTimeout(() => {
+        if (!tile.classList.contains('is-open')) panel.setAttribute('hidden', '');
+      }, 280);
+    }
+  }
+
+  function closeAll(except?: HTMLElement) {
+    document.querySelectorAll<HTMLElement>('[data-impact-tile]').forEach((tile) => {
+      if (tile !== except) setOpen(tile, false);
+    });
+  }
+
+  function initImpactMetrics() {
+    const root = document.querySelector<HTMLElement>('[data-impact-metrics]');
+    if (!root || root.dataset.impactReady === '1') return;
+    root.dataset.impactReady = '1';
+
+    root.querySelectorAll<HTMLElement>('[data-impact-tile]').forEach((tile) => {
+      const trigger = tile.querySelector<HTMLButtonElement>('[data-impact-trigger]');
+      if (!trigger) return;
+
+      trigger.addEventListener('click', () => {
+        const open = tile.classList.contains('is-open');
+
+        // Hover already opened the panel — first click locks it open instead of closing.
+        if (preferHoverOpen() && open && !isSticky(tile)) {
+          setSticky(tile, true);
+          return;
+        }
+
+        const next = !open;
+        closeAll(next ? tile : undefined);
+        setOpen(tile, next);
+        if (next) setSticky(tile, true);
+      });
+
+      tile.addEventListener('mouseenter', () => {
+        if (!preferHoverOpen()) return;
+        closeAll(tile);
+        setOpen(tile, true);
+      });
+
+      tile.addEventListener('mouseleave', () => {
+        if (!preferHoverOpen()) return;
+        if (isSticky(tile) || tile.contains(document.activeElement)) return;
+        setOpen(tile, false);
+      });
+
+      trigger.addEventListener('focus', () => {
+        if (!preferHoverOpen()) return;
+        closeAll(tile);
+        setOpen(tile, true);
+      });
+
+      trigger.addEventListener('blur', () => {
+        if (!preferHoverOpen()) return;
+        requestAnimationFrame(() => {
+          if (isSticky(tile) || tile.contains(document.activeElement)) return;
+          setOpen(tile, false);
+        });
+      });
+    });
+
+    root.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape') return;
+      const openTile = root.querySelector<HTMLElement>('.impact-tile.is-open');
+      closeAll();
+      openTile?.querySelector<HTMLButtonElement>('[data-impact-trigger]')?.focus();
+    });
+  }
+
+  initImpactMetrics();
+  document.addEventListener('astro:page-load', initImpactMetrics);
+</script>
