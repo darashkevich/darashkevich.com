@@ -47,9 +47,13 @@ export CHROME_BIN="${CHROME_TEST_PATH}"
 echo "Chrome: ${CHROME_TEST_PATH}"
 echo "ChromeDriver: ${CHROMEDRIVER_TEST_PATH}"
 echo "Running axe against ${BASE_URL}/"
+# Wait for CSS variables / layered color-mix surfaces to settle before contrast checks.
+# Without this, axe-cli intermittently reports ~90 false color-contrast hits (muted text on
+# an unset canvas) on both local serve and CI.
 npx axe "${BASE_URL}/" \
   --chromedriver-path "${CHROMEDRIVER_TEST_PATH}" \
   --chrome-path "${CHROME_TEST_PATH}" \
   --exit \
   --tags wcag2a,wcag2aa \
-  --timeout 90
+  --timeout 90 \
+  --load-delay 3000
