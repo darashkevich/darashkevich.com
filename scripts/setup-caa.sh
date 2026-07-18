@@ -46,9 +46,10 @@ existing="$(
     "https://api.cloudflare.com/client/v4/zones/${CLOUDFLARE_ZONE_ID}/dns_records?type=CAA&name=${ZONE_NAME}"
 )"
 
-mapfile -t record_ids < <(
+# Bash 3.2-compatible (macOS /bin/bash has no mapfile).
+record_ids="$(
   python3 -c 'import json,sys; d=json.load(sys.stdin); print("\n".join(r["id"] for r in (d.get("result") or [])))' <<<"${existing}"
-)
+)"
 
 desired_payload="$(python3 - <<PY
 import json
@@ -67,7 +68,7 @@ PY
 )"
 
 matched=""
-for rid in "${record_ids[@]:-}"; do
+while IFS= read -r rid; do
   [[ -z "${rid}" ]] && continue
   detail="$(
     curl -fsS "${auth[@]}" \
@@ -86,7 +87,7 @@ print("1" if data.get("tag")=="issue" and data.get("value")==sys.argv[1] and int
       "https://api.cloudflare.com/client/v4/zones/${CLOUDFLARE_ZONE_ID}/dns_records/${rid}" \
       | python3 -c 'import json,sys; d=json.load(sys.stdin); raise SystemExit(0 if d.get("success") else 1)'
   fi
-done
+done <<<"${record_ids}"
 
 if [[ -n "${matched}" ]]; then
   echo "Desired CAA already present (${matched})."
