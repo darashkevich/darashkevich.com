@@ -16,7 +16,8 @@ import LegalHeader from '../components/LegalHeader.astro';
     <div class="max-w-4xl mx-auto">
       <div class="backdrop-blur-xl rounded-3xl border p-8 md:p-12" style="background-color: var(--color-surface); border-color: var(--color-border); box-shadow: 0 16px 38px var(--color-shadow);">
         <h1 class="text-4xl md:text-5xl font-bold text-[var(--color-text)] mb-4 tracking-tight">Accessibility Statement</h1>
-        <p class="text-[var(--color-text-soft)] mb-10">Effective date: May 8, 2026</p>
+        <p class="text-[var(--color-text-soft)] mb-2">Effective date: May 8, 2026</p>
+        <p class="text-[var(--color-text-soft)] mb-10">Last reviewed: July 18, 2026</p>
 
         <div class="space-y-8 text-[var(--color-text-muted)] leading-relaxed">
           <section>
@@ -30,7 +31,7 @@ import LegalHeader from '../components/LegalHeader.astro';
           <section>
             <h2 class="text-2xl font-semibold text-[var(--color-text)] mb-3">2. Standards Targeted</h2>
             <p>
-              The site is developed with the goal of conforming to WCAG 2.1 Level AA best practices and related
+              The site is developed with the goal of conforming to WCAG 2.2 Level AA best practices and related
               accessibility obligations that may apply in relevant jurisdictions.
             </p>
           </section>
@@ -49,8 +50,8 @@ import LegalHeader from '../components/LegalHeader.astro';
           <section>
             <h2 class="text-2xl font-semibold text-[var(--color-text)] mb-3">4. Ongoing Testing</h2>
             <p>
-              Accessibility is reviewed periodically through manual checks and automated axe-core audits of the
-              homepage in CI (`npm run a11y` / GitHub Actions after build). Automated tests catch many issues but do
+              Accessibility is reviewed periodically through manual checks and automated accessibility audits of the
+              homepage in continuous integration after each production build. Automated tests catch many issues but do
               not replace periodic manual review with assistive technologies.
             </p>
           </section>
