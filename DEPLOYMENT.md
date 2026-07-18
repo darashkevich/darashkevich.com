@@ -40,7 +40,7 @@ Set in Netlify → Site configuration → Environment variables (and optionally 
 - `PUBLIC_CF_WEB_ANALYTICS_TOKEN` — optional analytics beacon
 - `PUBLIC_GOOGLE_SITE_VERIFICATION` / `PUBLIC_BING_SITE_VERIFICATION` — search verification ([docs](docs/search-engine-verification.md))
 
-Helpers: `scripts/set-netlify-flights-auth.sh`, `scripts/set-netlify-map-env.sh`.
+Set secrets via Netlify UI or `npx netlify-cli env:set … --secret` (do not commit helper scripts that pass passwords/keys on the CLI).
 
 ## Headers / security
 

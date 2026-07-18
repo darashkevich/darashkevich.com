@@ -11,27 +11,34 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# environment variables
+# environment variables / secrets
 .env
+.env.*
+!.env.example
 .env.local
 .env.production
 
 # Generated only when PUBLIC_BING_SITE_VERIFICATION is set at build time
 public/BingSiteAuth.xml
 
-# macOS-specific files
-.DS_Store
+# Local Netlify env helpers (keep on disk; do not publish auth/deploy patterns)
+scripts/set-netlify-flights-auth.sh
+scripts/set-netlify-map-env.sh
 
-# IDE files
+# Deno lock from Netlify edge CLI/tooling (site build uses npm)
+deno.lock
+
+# Cursor / editor local state
+.cursor/
 .vscode/
 .idea/
 *.swp
 *.swo
 
-# OS generated files
+# macOS / OS generated files
+.DS_Store
+**/.DS_Store
 Thumbs.db
-
-
 
 # Local Netlify folder
 .netlify
