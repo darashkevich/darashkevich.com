@@ -4,20 +4,16 @@
 Customer Experience and Support Operations executive for high-growth SaaS, eCommerce, subscription, nutrition, and technology companies. Designs CX operating systems that connect support operations, Zendesk, AI self-service, Voice of Customer, and executive decision-making—so customer support is a strategic retention and trust engine, not only a cost center.
 
 ## Summary
-15+ years building and scaling support organizations. Most recent chapter: Sr. Director of Customer Support at Ka'Chava—scaled from 1 agent to 95+ at peak, led 1.5M+ resolved tickets, held 89%+ CSAT, and kept first reply under 4 hours while managing two BPO partners and rolling out Zendesk Advanced AI agents that fully resolve 45% of chats, and growing.
+15+ years building and scaling support organizations. Most recent chapter: Sr. Director of Customer Support at Ka'Chava—built the support operating system through hypergrowth (scale, quality, AI self-service). Full outcome detail: https://darashkevich.com/#case-kachava
 
 ## Canonical Site
 - https://darashkevich.com/
 
 ## Key Outcomes
 - 15+ years CX / support operations leadership
-- 95+ agents scaled at peak growth (Ka'Chava)
-- 1.5M+ customer tickets resolved
-- 35K tickets/month at peak volume
-- 89%+ CSAT maintained under sustained volume
-- Under 4 hours first reply time
-- 45% of chats fully resolved by Zendesk Advanced AI agents, and growing
-- 2 BPO partnerships managed with shared QA and SLA visibility
+- Ka'Chava: 95+ agents at peak; 1.5M+ tickets; 89%+ CSAT; <4h first reply; 45% chats AI-resolved; 2 BPOs
+- TeachPoint: reduced avoidable ticket volume via Zendesk workflow + self-service redesign
+- Multi-brand advisory: executive CX operating systems (governance, KPIs, vendor accountability, AI-assisted support)
 
 ## Services
 - Customer Operations Strategy — org design, KPIs, escalation, cross-functional CX alignment
@@ -28,11 +24,11 @@ Customer Experience and Support Operations executive for high-growth SaaS, eComm
 - Vendor / BPO Performance Management — selection, onboarding, SLA/CSAT accountability
 
 ## Case Studies (site)
-- Ka'Chava — Scaled support infrastructure during hypergrowth (1→95+ agents, 1.5M+ tickets, 89%+ CSAT, <4h first reply, 45% of chats AI-resolved, 2 BPOs)
+- Ka'Chava — Support OS through hypergrowth (see Key Outcomes)
   https://darashkevich.com/#case-kachava
-- TeachPoint — Reduced avoidable ticket volume through Zendesk workflow redesign and self-service
+- TeachPoint — Zendesk workflow + self-service redesign
   https://darashkevich.com/#case-teachpoint
-- Multi-Brand Advisory — Executive CX operating systems (governance, KPIs, vendor accountability, AI-assisted support)
+- Multi-Brand Advisory — Executive CX operating systems
   https://darashkevich.com/#case-advisory
 
 ## Key Pages
