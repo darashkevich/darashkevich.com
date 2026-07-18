@@ -16,9 +16,6 @@
     "generate:og": "node ./scripts/generate-og-image.mjs",
     "flights:enrich:fr24": "node scripts/enrich-flights-fr24.mjs",
     "generate:world-map": "node scripts/generate-world-map.mjs",
-    "im8:edit": "python3 ./deliverables/im8-cx-challenge/serve-editor.sh",
-    "im8:build": "node ./scripts/build-im8-doc.mjs",
-    "im8:pdf": "bash ./scripts/generate-im8-pdf.sh",
     "resume:pdf": "bash ./scripts/generate-resume-pdf.sh",
     "resume:pdf:ats": "bash ./scripts/generate-resume-pdf-ats.sh",
     "smoke": "node ./scripts/smoke-test.mjs",
@@ -26,7 +23,6 @@
     "audit:deps": "npm audit --audit-level=high",
     "audit:prod": "bash ./scripts/audit-production.sh",
     "indexnow:notify": "bash ./scripts/notify-indexnow.sh",
-    "banner:linkedin": "python3 ./scripts/render-linkedin-banner.py",
     "astro": "astro"
   },
   "dependencies": {
