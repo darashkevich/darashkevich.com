@@ -5,7 +5,7 @@ Astro + Tailwind portfolio for **darashkevich.com** (Netlify: `stalwart-profiter
 ## Features
 
 - Responsive CX/support-ops portfolio with Calendly, email, phone, LinkedIn, and Upwork CTAs (no on-site contact form)
-- SEO: meta tags, Open Graph PNG, inline JSON-LD (`public/schema.json`), sitemaps, IndexNow
+- SEO: meta tags, Open Graph PNG, inline JSON-LD (`public/schema.json`), sitemap index (`sitemap-index.xml`) with `lastmod`, IndexNow
 - Accessibility: skip link, semantic landmarks, axe-core homepage audit in CI (`npm run a11y`)
 - Optional Cloudflare Web Analytics (cookie-less) via `PUBLIC_CF_WEB_ANALYTICS_TOKEN`
 - Private `/flights/` area gated by Netlify edge function when `FLIGHTS_PAGE_PASSWORD` is set
@@ -62,7 +62,8 @@ See `.env.example`. Important ones:
 | `FLIGHTS_PAGE_PASSWORD` | Basic-auth password for `/flights` |
 
 Search verification setup: [`docs/search-engine-verification.md`](docs/search-engine-verification.md).  
-DMARC DNS: [`scripts/setup-dmarc.md`](scripts/setup-dmarc.md).  
+DNS / TLS hardening checklist: [`docs/dns-security.md`](docs/dns-security.md).  
+DMARC / DNSSEC / CAA scripts: [`scripts/setup-dmarc.md`](scripts/setup-dmarc.md), [`scripts/setup-dnssec.md`](scripts/setup-dnssec.md), [`scripts/setup-caa.md`](scripts/setup-caa.md).  
 HSTS preload: [`docs/hsts-preload.md`](docs/hsts-preload.md).  
 Uptime: [`docs/uptime-monitoring.md`](docs/uptime-monitoring.md).
 

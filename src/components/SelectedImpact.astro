@@ -1,4 +1,5 @@
 ---
+// Four pillars only — volume / SLA / BPO detail lives in the Ka'Chava case study, not eight near-duplicate tiles.
 const metrics = [
   {
     value: '15+',
@@ -12,39 +13,15 @@ const metrics = [
     value: '95+',
     label: 'Agents Scaled at Peak',
     story:
-      "Grew Ka'Chava support from a one-agent desk to 95+ agents at peak, with staffing models, QA, and BPO coverage that held quality through hypergrowth.",
-    href: '#case-kachava',
-    linkLabel: "Ka'Chava case study",
-  },
-  {
-    value: '1.5M+',
-    label: 'Customer Tickets Resolved',
-    story:
-      'Led multi-channel operations through more than 1.5M resolved tickets—routing, macros, and workforce design that kept the queue manageable under load.',
-    href: '#case-kachava',
-    linkLabel: "Ka'Chava case study",
-  },
-  {
-    value: '35K',
-    label: 'Tickets / Month Peak',
-    story:
-      'Designed capacity and vendor coverage for peak months near 35K tickets—seasonal spikes and launches without collapsing first-reply SLAs.',
+      "Grew a one-agent desk into a multi-channel org with staffing models, QA, and BPO coverage that held through hypergrowth.",
     href: '#case-kachava',
     linkLabel: "Ka'Chava case study",
   },
   {
     value: '89%+',
-    label: 'CSAT Maintained',
+    label: 'CSAT at Volume',
     story:
-      'Protected 89%+ CSAT at volume by pairing clear QA standards, coaching loops, and escalation control across internal and outsourced teams.',
-    href: '#case-kachava',
-    linkLabel: "Ka'Chava case study",
-  },
-  {
-    value: '<4h',
-    label: 'First Reply',
-    story:
-      'Cut first reply to under four hours by tightening Zendesk workflows, workforce planning, and performance management—not just hiring more seats.',
+      'Protected CSAT under sustained load with clear QA standards, coaching loops, and escalation control across internal and outsourced teams.',
     href: '#case-kachava',
     linkLabel: "Ka'Chava case study",
   },
@@ -52,17 +29,9 @@ const metrics = [
     value: '45%',
     label: 'Chats Fully Resolved by AI',
     story:
-      "Rolled out Zendesk Advanced AI agents across chat and email at Ka'Chava—45% of chats fully resolved by AI and growing, with QA standards and escalation control keeping quality intact.",
+      'Rolled out Zendesk Advanced AI agents across chat and email—fully resolving nearly half of chats, and growing, without giving up quality control.',
     href: '#case-kachava',
     linkLabel: "Ka'Chava case study",
-  },
-  {
-    value: '2',
-    label: 'BPOs Managed',
-    story:
-      'Ran two BPO partnerships with shared QA, onboarding, and SLA visibility so outsourced capacity scaled without diluting brand voice.',
-    href: '#case-advisory',
-    linkLabel: 'CX operating systems',
   },
 ];
 ---
@@ -78,7 +47,7 @@ const metrics = [
           Selected Impact
         </h2>
         <p class="text-[var(--color-text-muted)] text-lg max-w-2xl mx-auto leading-relaxed">
-          Operational scale across high-growth eCommerce, subscription, and SaaS support. Tap a metric to reveal the operating story behind the number.
+          A few headline outcomes—not the full scorecard. Tap a tile for the operating story; detail lives in the case studies.
         </p>
       </div>
 
@@ -147,7 +116,6 @@ const metrics = [
 
   @media (min-width: 640px) {
     .impact-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1rem;
     }
   }

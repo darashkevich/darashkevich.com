@@ -23,11 +23,20 @@ Quick check:
 curl -sI https://darashkevich.com/ | grep -i strict-transport
 ```
 
-## Submit (manual)
+## Status
+
+As of 2026-07-18 the preload API reports `status: "pending"` for `darashkevich.com` (submitted; not yet on the Chromium list). Preloadable check returned no errors.
+
+```bash
+curl -sS 'https://hstspreload.org/api/v2/status?domain=darashkevich.com'
+curl -sS 'https://hstspreload.org/api/v2/preloadable?domain=darashkevich.com'
+```
+
+## Submit (manual, if status is `unknown` / not submitted)
 
 1. Open [https://hstspreload.org/](https://hstspreload.org/)
 2. Enter `darashkevich.com`
 3. Fix any blockers the checker reports
 4. Submit when eligible
 
-Do not claim the domain is preloaded until [hstspreload.org](https://hstspreload.org/) / Chromium status shows it accepted.
+Do not claim the domain is preloaded until [hstspreload.org](https://hstspreload.org/) / Chromium status shows `preloaded` / accepted.

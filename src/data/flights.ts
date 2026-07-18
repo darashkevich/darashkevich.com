@@ -1822,8 +1822,7 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'LO433',
     bookingRef: 'KIWRR4',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   {
     id: '2025-01-05-mad-lpa',
@@ -1836,8 +1835,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'Iberia',
     flightNumber: 'IB1613',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   {
     id: '2025-01-26-lpa-mad',
@@ -1850,8 +1848,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'Iberia',
     flightNumber: 'IB1606',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   {
     id: '2025-01-29-mad-waw',
@@ -1865,8 +1862,7 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'LO434',
     bookingRef: 'KIWRR4',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   // 2022 Iberia / Turkey loop (calendar)
   {
@@ -1930,8 +1926,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'Air France',
     flightNumber: 'AF1547',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   {
     id: '2022-06-11-cdg-waw',
@@ -1944,8 +1939,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'Air France',
     flightNumber: 'AF1246',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   // 2023 Mexico return via Miami (calendar)
   {
@@ -1975,8 +1969,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'American Airlines',
     flightNumber: 'AA505',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   {
     id: '2023-07-21-mia-bos',
@@ -1989,8 +1982,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'American Airlines',
     flightNumber: 'AA2057',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   // 2024 Qatar routing to Vietnam (calendar)
   {
@@ -2005,7 +1997,7 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'QR256',
     source: 'inferred',
     confidence: 'confirmed',
-    notes: 'iCloud Travel calendar; connects to QR974 DOH→SGN.'
+    notes: 'Connects to QR974 DOH→SGN.'
   },
   {
     id: '2024-02-10-doh-sgn',
@@ -2018,8 +2010,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'Qatar Airways',
     flightNumber: 'QR974',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   {
     id: '2024-02-26-sgn-doh',
@@ -2032,8 +2023,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'Qatar Airways',
     flightNumber: 'QR975',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   {
     id: '2024-02-26-doh-tbs',
@@ -2046,8 +2036,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'Qatar Airways',
     flightNumber: 'QR253',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   // 2016 — calendar backfill
   {
@@ -2061,8 +2050,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'Ryanair',
     flightNumber: 'FR1058',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   {
     id: '2016-05-23-crl-wmi',
@@ -2075,8 +2063,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'Ryanair',
     flightNumber: 'FR1055',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   {
     id: '2016-07-13-waw-mxp',
@@ -2089,7 +2076,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'Unknown',
     source: 'inferred',
     confidence: 'partial',
-    notes: 'iCloud Travel calendar; flight number not in event title.'
+    notes: 'Flight number not in event title.'
   },
   // 2017 — calendar backfill
   {
@@ -2103,8 +2090,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'Belavia',
     flightNumber: 'B2 865',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   {
     id: '2017-01-17-cdg-bos',
@@ -2117,8 +2103,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'Air France',
     flightNumber: 'AF334',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   {
     id: '2017-05-10-bos-ams',
@@ -2131,8 +2116,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'KLM',
     flightNumber: 'KL6016',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   {
     id: '2017-05-11-ams-msq',
@@ -2145,8 +2129,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'Belavia',
     flightNumber: 'B2 868',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   {
     id: '2017-05-25-msq-cdg',
@@ -2203,8 +2186,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'Ryanair',
     flightNumber: 'FR6945',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   {
     id: '2017-07-10-bcn-bgy',
@@ -2217,8 +2199,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'Ryanair',
     flightNumber: 'FR6305',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   {
     id: '2017-07-11-bgy-cag',
@@ -2231,8 +2212,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'Ryanair',
     flightNumber: 'FR7748',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   {
     id: '2017-07-16-cag-krk',
@@ -2245,8 +2225,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'Ryanair',
     flightNumber: 'FR7304',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   {
     id: '2017-11-01-bos-ams',
@@ -2332,8 +2311,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'Air France',
     flightNumber: 'AF333',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   {
     id: '2018-03-24-cdg-msq',
@@ -2393,8 +2371,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'Air France',
     flightNumber: 'AF333',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   {
     id: '2018-07-24-cdg-msq',
@@ -2407,8 +2384,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'Belavia',
     flightNumber: 'B2 866',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   {
     id: '2018-12-06-bos-cdg',
@@ -2421,8 +2397,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'Air France',
     flightNumber: 'AF333',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   {
     id: '2018-12-06-cdg-msq',
@@ -2435,8 +2410,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'Belavia',
     flightNumber: 'B2 866',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   // 2019 — calendar backfill
   {
@@ -2494,8 +2468,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'Air France',
     flightNumber: 'AF3764',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   {
     id: '2019-05-23-msq-cdg',
@@ -2730,7 +2703,7 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'AA2149',
     source: 'inferred',
     confidence: 'confirmed',
-    notes: 'iCloud Travel calendar; resolves prior unresolved AA boarding pass.'
+    notes: 'Resolves prior unresolved AA boarding pass.'
   },
   // 2023 — calendar backfill
   {
@@ -2745,8 +2718,7 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'LO3934',
     bookingRef: 'J7U5Z2',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   {
     id: '2023-06-16-tbs-ist',
@@ -2807,7 +2779,7 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'TK387',
     source: 'inferred',
     confidence: 'confirmed',
-    notes: 'iCloud Travel calendar. Return IST→TBS not found in archive.'
+    notes: 'Return IST→TBS not found in archive.'
   },
   {
     id: '2024-01-20-tbs-waw',
@@ -2821,8 +2793,7 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'LO724',
     bookingRef: 'SOUPLY',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   {
     id: '2024-02-03-waw-tbs',
@@ -2836,8 +2807,7 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'LO723',
     bookingRef: 'SOUPLY',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   {
     id: '2024-05-06-eas-mad',
@@ -2850,8 +2820,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'Iberia',
     flightNumber: 'IB507',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   {
     id: '2024-05-16-mad-waw',
@@ -2865,8 +2834,7 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'LO434',
     bookingRef: 'KJ8ICO',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   {
     id: '2024-08-03-wmi-cph',
@@ -2879,8 +2847,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'Ryanair',
     flightNumber: 'FR9750',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   {
     id: '2024-08-10-cph-edi',
@@ -2893,8 +2860,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'Ryanair',
     flightNumber: 'FR3759',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   {
     id: '2024-11-23-mla-wmi',
@@ -2907,8 +2873,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'Ryanair',
     flightNumber: 'FR9258',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   // 2025 — calendar backfill
   {
@@ -2922,8 +2887,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'TAP Air Portugal',
     flightNumber: 'TP1037',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   {
     id: '2025-06-02-waw-lis',
@@ -2936,8 +2900,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'TAP Air Portugal',
     flightNumber: 'TP1205',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   {
     id: '2025-07-15-vce-lis',
@@ -2950,8 +2913,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'TAP Air Portugal',
     flightNumber: 'TP861',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   {
     id: '2025-08-24-waw-lis',
@@ -2965,8 +2927,7 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'LO425',
     bookingRef: 'YJL6JZ',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   {
     id: '2025-09-01-fnc-lis',
@@ -2979,8 +2940,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'TAP Air Portugal',
     flightNumber: 'TP1694',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   // 2026 — calendar backfill
   {
@@ -2994,8 +2954,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'TAP Air Portugal',
     flightNumber: 'TP1205',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   {
     id: '2026-04-24-lis-waw',
@@ -3008,8 +2967,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'TAP Air Portugal',
     flightNumber: 'TP1206',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   },
   {
     id: '2026-05-04-waw-lis',
@@ -3022,8 +2980,7 @@ export const flightSegments: FlightSegment[] = [
     airline: 'TAP Air Portugal',
     flightNumber: 'TP1205',
     source: 'inferred',
-    confidence: 'confirmed',
-    notes: 'iCloud Travel calendar.'
+    confidence: 'confirmed'
   }
 ];
 

@@ -1,13 +1,62 @@
+import { execFileSync } from 'node:child_process';
+import { existsSync, statSync } from 'node:fs';
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+
+const SITE = 'https://darashkevich.com';
+
+/** Public URL → source page used for lastmod. */
+const PAGE_SOURCES = {
+  [`${SITE}/`]: 'src/pages/index.astro',
+  [`${SITE}/resume/`]: 'src/pages/resume.astro',
+  [`${SITE}/privacy-policy/`]: 'src/pages/privacy-policy.astro',
+  [`${SITE}/terms-of-service/`]: 'src/pages/terms-of-service.astro',
+  [`${SITE}/accessibility/`]: 'src/pages/accessibility.astro'
+};
+
+function pageLastmod(sourcePath) {
+  if (!sourcePath || !existsSync(sourcePath)) return undefined;
+  try {
+    const iso = execFileSync('git', ['log', '-1', '--format=%cI', '--', sourcePath], {
+      encoding: 'utf8'
+    }).trim();
+    if (iso) return new Date(iso);
+  } catch {
+    // Fall through to mtime when git history is unavailable.
+  }
+  return statSync(sourcePath).mtime;
+}
+
+const pageLastmods = Object.fromEntries(
+  Object.entries(PAGE_SOURCES).map(([url, source]) => [url, pageLastmod(source)])
+);
+
+const newestLastmod = Object.values(pageLastmods)
+  .filter(Boolean)
+  .reduce((latest, date) => (!latest || date > latest ? date : latest), undefined);
 
 export default defineConfig({
   integrations: [
     sitemap({
-      filter: (page) => !page.includes('/flights')
+      filter: (page) => !page.includes('/flights'),
+      // No priority/changefreq — search engines largely ignore them.
+      lastmod: newestLastmod,
+      namespaces: {
+        news: false,
+        xhtml: false,
+        image: false,
+        video: false
+      },
+      serialize(item) {
+        const lastmod = pageLastmods[item.url];
+        return {
+          url: item.url,
+          ...(lastmod ? { lastmod } : {})
+        };
+      }
     })
   ],
-  site: 'https://darashkevich.com',
+  site: SITE,
   base: '/',
   trailingSlash: 'always',
   // Bind to localhost by default; use `npm run dev:lan` for device/Simple Browser preview.

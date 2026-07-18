@@ -60,6 +60,8 @@ const logos: LogoTile[] = [
                 <div
                   class={`font-semibold ${(logo.label === '' || logo.label === '?') ? 'text-3xl md:text-4xl leading-none' : 'text-base md:text-lg'}`}
                   style={`color: ${logo.textColor || '#111827'};`}
+                  role="img"
+                  aria-label={logo.alt}
                 >
                   {logo.label}
                 </div>

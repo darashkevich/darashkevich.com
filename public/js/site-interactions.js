@@ -1,3 +1,8 @@
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const scrollBehavior = prefersReducedMotion ? 'auto' : 'smooth';
+
+document.documentElement.classList.add('js');
+
 document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
   anchor.addEventListener('click', function (e) {
     const href = anchor.getAttribute('href');
@@ -7,7 +12,7 @@ document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
 
     e.preventDefault();
     target.scrollIntoView({
-      behavior: 'smooth',
+      behavior: scrollBehavior,
       block: 'start'
     });
 
