@@ -32,13 +32,14 @@ section {
   outline-offset: 2px;
 }
 
-[data-reveal] {
+/* Scroll-reveal only after JS opts in — content stays visible without JS. */
+html.js [data-reveal] {
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 420ms ease, transform 420ms ease;
 }
 
-[data-reveal].is-visible {
+html.js [data-reveal].is-visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -87,5 +88,10 @@ section {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  html.js [data-reveal] {
+    opacity: 1;
+    transform: none;
   }
 }

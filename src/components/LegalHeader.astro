@@ -50,7 +50,6 @@ const headerDateTimeIso = headerNow.toISOString();
         class="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 text-center text-xs font-medium tabular-nums tracking-tight whitespace-nowrap px-1 sm:px-1.5 pointer-events-none"
         style="color: var(--color-text-muted)"
         datetime={headerDateTimeIso}
-        aria-live="polite"
       >
         <span class="hidden md:inline" id="header-date">{headerDateInitial}</span><span class="hidden md:inline mx-1.5" style="color: var(--color-text-soft)" aria-hidden="true">·</span><span id="header-time">{headerTimeInitial}</span>
       </time>

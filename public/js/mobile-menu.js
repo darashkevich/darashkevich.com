@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const scrollBehavior = prefersReducedMotion ? 'auto' : 'smooth';
   const mobileMenuButton = document.getElementById('mobile-menu-button');
   const mobileMenu = document.getElementById('mobile-menu');
   const mobileMenuClose = document.getElementById('mobile-menu-close');
@@ -69,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const targetElement = document.querySelector(href);
         if (targetElement) {
           targetElement.scrollIntoView({
-            behavior: 'smooth',
+            behavior: scrollBehavior,
             block: 'start'
           });
 
