@@ -45,12 +45,24 @@ Set secrets via Netlify UI or `npx netlify-cli env:set … --secret` (do not com
 ## Headers / security
 
 `netlify.toml` sets HSTS (including `preload`), CSP, and related security headers.  
-Submitting to the Chromium HSTS preload list is a separate manual step: [`docs/hsts-preload.md`](docs/hsts-preload.md).
+Site-wide CSP is baseline; MapLibre tile CDNs are allowed only on `/flights`.  
+HSTS preload list status / submission: [`docs/hsts-preload.md`](docs/hsts-preload.md).
 
 ## DNS / email hardening
 
+Full checklist: [`docs/dns-security.md`](docs/dns-security.md).
+
 - Apex/`www` should point at Netlify (Cloudflare orange-cloud is fine)
-- DMARC starter record: [`scripts/setup-dmarc.md`](scripts/setup-dmarc.md) (`./scripts/setup-dmarc.sh` if `CLOUDFLARE_API_TOKEN` is available)
+- DMARC (`p=none`, live): [`scripts/setup-dmarc.md`](scripts/setup-dmarc.md) — tighten only after reviewing RUA reports
+- DNSSEC: [`scripts/setup-dnssec.md`](scripts/setup-dnssec.md) (`./scripts/setup-dnssec.sh`)
+- CAA (Netlify Let’s Encrypt account): [`scripts/setup-caa.md`](scripts/setup-caa.md) (`./scripts/setup-caa.sh`)
+
+With `CLOUDFLARE_API_TOKEN` set (Zone → DNS → Edit):
+
+```bash
+./scripts/setup-dnssec.sh
+./scripts/setup-caa.sh
+```
 
 ## Post-deploy checks
 

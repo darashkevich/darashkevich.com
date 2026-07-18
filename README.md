@@ -62,7 +62,8 @@ See `.env.example`. Important ones:
 | `FLIGHTS_PAGE_PASSWORD` | Basic-auth password for `/flights` |
 
 Search verification setup: [`docs/search-engine-verification.md`](docs/search-engine-verification.md).  
-DMARC DNS: [`scripts/setup-dmarc.md`](scripts/setup-dmarc.md).  
+DNS / TLS hardening checklist: [`docs/dns-security.md`](docs/dns-security.md).  
+DMARC / DNSSEC / CAA scripts: [`scripts/setup-dmarc.md`](scripts/setup-dmarc.md), [`scripts/setup-dnssec.md`](scripts/setup-dnssec.md), [`scripts/setup-caa.md`](scripts/setup-caa.md).  
 HSTS preload: [`docs/hsts-preload.md`](docs/hsts-preload.md).  
 Uptime: [`docs/uptime-monitoring.md`](docs/uptime-monitoring.md).
 

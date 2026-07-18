@@ -1,3 +1,2 @@
-/*
-  Cache-Control rules are defined in netlify.toml.
-  Security headers are defined in netlify.toml so MapLibre tile CDNs apply reliably.
+# Cache-Control and security headers are defined in netlify.toml
+# (map tile CDNs are scoped to /flights CSP there).

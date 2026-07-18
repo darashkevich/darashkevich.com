@@ -29,6 +29,10 @@ export CLOUDFLARE_API_TOKEN=...   # optional: CLOUDFLARE_ZONE_ID=...
 dig +short TXT _dmarc.darashkevich.com
 ```
 
+## Live status
+
+`_dmarc.darashkevich.com` is already published as monitor-only (`p=none`). Re-run the script only to restore that starter value. Do **not** jump to `quarantine` / `reject` without reviewing RUA mail first.
+
 ## After `p=none` reports look clean
 
 Tighten gradually (weeks apart), only once SPF/DKIM are correct for sending domains:
@@ -37,4 +41,4 @@ Tighten gradually (weeks apart), only once SPF/DKIM are correct for sending doma
 2. `p=quarantine; pct=10` → increase `pct`
 3. `p=reject` when legitimate mail is consistently authenticated
 
-Also confirm SPF and DKIM exist for the hosts that send mail as `@darashkevich.com` (Google Workspace, transactional providers, etc.).
+Also confirm SPF and DKIM exist for the hosts that send mail as `@darashkevich.com` (iCloud / Apple, transactional providers, etc.). Apex SPF today: `v=spf1 include:icloud.com ~all`.
