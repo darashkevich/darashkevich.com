@@ -5,7 +5,7 @@ Astro + Tailwind portfolio for **darashkevich.com** (Netlify: `stalwart-profiter
 ## Features
 
 - Responsive CX/support-ops portfolio with Calendly, email, phone, LinkedIn, and Upwork CTAs (no on-site contact form)
-- SEO: meta tags, Open Graph PNG, inline JSON-LD (`public/schema.json`), sitemaps, IndexNow
+- SEO: meta tags, Open Graph PNG, inline JSON-LD (`public/schema.json`), sitemap index (`sitemap-index.xml`) with `lastmod`, IndexNow
 - Accessibility: skip link, semantic landmarks, axe-core homepage audit in CI (`npm run a11y`)
 - Optional Cloudflare Web Analytics (cookie-less) via `PUBLIC_CF_WEB_ANALYTICS_TOKEN`
 - Private `/flights/` area gated by Netlify edge function when `FLIGHTS_PAGE_PASSWORD` is set
