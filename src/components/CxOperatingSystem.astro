@@ -76,6 +76,7 @@ const stages = [
             stroke-width="3"
             stroke-linecap="round"
             opacity="0.85"
+            pointer-events="none"
           />
           <path
             class="cx-os__pipe-dots"
@@ -86,6 +87,7 @@ const stages = [
             stroke-dasharray="4 14"
             stroke-linecap="round"
             opacity="0.45"
+            pointer-events="none"
           >
             <animate attributeName="stroke-dashoffset" from="0" to="-36" dur="2.8s" repeatCount="indefinite" />
           </path>
@@ -93,6 +95,8 @@ const stages = [
           {stages.map((stage, index) => {
             const x = 70 + index * 215;
             const nodeId = `cx-node-${stage.id}`;
+            const hitX = Math.max(8, x - 102);
+            const hitW = Math.min(200, 992 - hitX);
             return (
               <g
                 class="cx-os__stage"
@@ -104,7 +108,15 @@ const stages = [
                 role="button"
                 aria-label={`${stage.title}: ${stage.blurb}`}
               >
-                <circle class="cx-os__hit-area" cx={x} cy="108" r="44" fill="transparent" />
+                {/* Full stage target (node + label) so clicks aren't stolen by the parent SVG */}
+                <rect
+                  class="cx-os__hit-area"
+                  x={hitX}
+                  y="58"
+                  width={hitW}
+                  height="140"
+                  fill="transparent"
+                />
                 <circle
                   class="cx-os__halo"
                   cx={x}
@@ -112,6 +124,7 @@ const stages = [
                   r="42"
                   fill="color-mix(in srgb, var(--color-primary) 12%, transparent)"
                   opacity="0"
+                  pointer-events="none"
                 />
                 <circle
                   class="cx-os__node"
@@ -121,8 +134,9 @@ const stages = [
                   fill="var(--color-surface-strong)"
                   stroke="var(--color-border)"
                   stroke-width="2"
+                  pointer-events="none"
                 />
-                <circle class="cx-os__node-core" cx={x} cy="108" r="8" fill="var(--color-primary)" />
+                <circle class="cx-os__node-core" cx={x} cy="108" r="8" fill="var(--color-primary)" pointer-events="none" />
                 <text
                   id={`${nodeId}-title`}
                   x={x}
@@ -132,6 +146,7 @@ const stages = [
                   font-size="15"
                   font-weight="600"
                   font-family="ui-sans-serif, system-ui, sans-serif"
+                  pointer-events="none"
                 >
                   {stage.title}
                 </text>
@@ -142,6 +157,7 @@ const stages = [
                     stroke="var(--color-border)"
                     stroke-width="1.5"
                     class="cx-os__connector"
+                    pointer-events="none"
                   />
                 )}
               </g>
@@ -186,9 +202,19 @@ const stages = [
     display: none;
   }
 
+  /* Let stage groups receive hits; decorative SVG chrome stays inert */
+  .cx-os__svg {
+    pointer-events: none;
+  }
+
   .cx-os__stage {
     cursor: pointer;
     outline: none;
+    pointer-events: auto;
+  }
+
+  .cx-os__hit-area {
+    pointer-events: auto;
   }
 
   .cx-os__stage:focus-visible .cx-os__node,

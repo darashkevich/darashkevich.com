@@ -88,8 +88,6 @@ const breadcrumbJsonLd =
       <script type="application/ld+json" set:html={breadcrumbJsonLd} />
     )}
     
-    <!-- Preload critical assets -->
-    <link rel="preload" href="/images/avatar.webp" as="image" type="image/webp">
   </head>
   <body class="bg-[var(--color-bg)] text-[var(--color-text)] font-sans antialiased min-h-screen">
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -101,7 +99,7 @@ const breadcrumbJsonLd =
       <div class="absolute top-[-10rem] left-[8%] w-[34rem] h-[34rem] rounded-full blur-3xl animate-float" style="background: radial-gradient(circle at center, var(--color-accent-cyan), transparent 66%);"></div>
       <div class="absolute top-[18%] right-[2%] w-[30rem] h-[30rem] rounded-full blur-3xl animate-float" style="background: radial-gradient(circle at center, var(--color-accent-blue), transparent 66%); animation-delay: 2.5s;"></div>
     </div>
-    <main id="main-content">
+    <main id="main-content" tabindex="-1">
       <slot />
     </main>
     <script src="/js/site-interactions.js" defer></script>

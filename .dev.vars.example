@@ -1,0 +1,3 @@
+# Local Wrangler secrets (never commit). Copy to `.dev.vars`.
+# Fail-closed: /flights returns 401 if this is unset in production.
+FLIGHTS_PAGE_PASSWORD=local-dev-only-change-me

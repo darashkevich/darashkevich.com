@@ -17,6 +17,12 @@ pnpm-debug.log*
 !.env.example
 .env.local
 .env.production
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
+
+# Wrangler local state
+.wrangler/
 
 # Generated only when PUBLIC_BING_SITE_VERIFICATION is set at build time
 public/BingSiteAuth.xml

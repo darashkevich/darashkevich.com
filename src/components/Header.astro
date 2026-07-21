@@ -1,28 +1,3 @@
----
-function formatHeaderDate(date: Date) {
-  return new Intl.DateTimeFormat('en-US', {
-    weekday: 'short',
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric'
-  }).format(date);
-}
-
-function formatHeaderTime(date: Date) {
-  return new Intl.DateTimeFormat('en-US', {
-    hour: 'numeric',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: true
-  }).format(date);
-}
-
-const headerNow = new Date();
-const headerDateInitial = formatHeaderDate(headerNow);
-const headerTimeInitial = formatHeaderTime(headerNow);
-const headerDateTimeIso = headerNow.toISOString();
----
-
 <header class="relative min-h-[72vh] lg:min-h-[82vh] flex items-center justify-center overflow-hidden pb-10 sm:pb-14 lg:pb-16">
   <!-- Ambient hero treatment -->
   <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
@@ -33,7 +8,7 @@ const headerDateTimeIso = headerNow.toISOString();
   <!-- Sticky/Fixed executive navigation -->
   <div class="fixed top-0 left-0 right-0 z-50 pointer-events-auto border-b backdrop-blur-2xl" style="background-color: color-mix(in srgb, var(--color-bg) 82%, transparent); border-color: var(--color-border); box-shadow: 0 8px 26px rgba(2, 6, 12, 0.45);">
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-4" aria-label="Primary">
-      <div class="relative rounded-[1.15rem] border px-4 sm:px-5 py-2.5 flex items-center justify-between gap-2 sm:gap-3 backdrop-blur-2xl" style="background-color: color-mix(in srgb, var(--color-surface) 88%, transparent); border-color: var(--color-border); box-shadow: 0 10px 24px rgba(2, 6, 12, 0.34);">
+      <div class="rounded-[1.15rem] border px-4 sm:px-5 py-2.5 flex items-center justify-between gap-2 sm:gap-3 backdrop-blur-2xl" style="background-color: color-mix(in srgb, var(--color-surface) 88%, transparent); border-color: var(--color-border); box-shadow: 0 10px 24px rgba(2, 6, 12, 0.34);">
         <!-- Brand photo + quick actions -->
         <div class="flex items-center gap-3 min-w-0 shrink">
           <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden border shadow-lg backdrop-blur-xl" style="border-color: var(--color-border); background-color: rgba(24, 33, 49, 0.75);">
@@ -41,10 +16,9 @@ const headerDateTimeIso = headerNow.toISOString();
               src="/images/avatar.webp"
               alt="Yahor Darashkevich"
               class="w-full h-full object-cover"
-              loading="eager"
+              loading="lazy"
               width="96"
               height="96"
-              fetchpriority="high"
               decoding="async"
             >
           </div>
@@ -66,15 +40,6 @@ const headerDateTimeIso = headerNow.toISOString();
           </a>
           </div>
         </div>
-
-        <time
-          id="header-datetime"
-          class="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 text-center text-xs font-medium tabular-nums tracking-tight whitespace-nowrap px-1 sm:px-1.5 pointer-events-none"
-          style="color: var(--color-text-muted)"
-          datetime={headerDateTimeIso}
-        >
-          <span class="hidden md:inline" id="header-date">{headerDateInitial}</span><span class="hidden md:inline mx-1.5" style="color: var(--color-text-soft)" aria-hidden="true">·</span><span id="header-time">{headerTimeInitial}</span>
-        </time>
 
         <div class="flex items-center justify-end gap-2 sm:gap-3 lg:gap-4 min-w-0 shrink">
         <!-- Desktop Navigation -->
@@ -178,8 +143,7 @@ const headerDateTimeIso = headerNow.toISOString();
     </div>
 
   <!-- Hero Content with Liquid Glass -->
-  <div class="relative z-10 text-center px-6 sm:px-8 lg:px-12 max-w-6xl mx-auto pt-32 sm:pt-36 lg:pt-40 pb-4 sm:pb-6">
-    <!-- Typography -->
+  <div class="relative z-10 text-center px-6 sm:px-8 lg:px-12 max-w-6xl mx-auto pt-24 sm:pt-28 lg:pt-36 pb-4 sm:pb-6">
     <h1 class="text-5xl sm:text-6xl lg:text-[5.75rem] xl:text-[6.65rem] font-extrabold text-[var(--color-text)] mb-6 sm:mb-7 leading-[0.92] tracking-[-0.03em] max-w-[14ch] mx-auto">
       Yahor Darashkevich
     </h1>
@@ -192,10 +156,13 @@ const headerDateTimeIso = headerNow.toISOString();
       Customer Experience executive and operator specializing in scaling support organizations, implementing AI-enabled workflows, and turning customer insights into business outcomes.
     </p>
     <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
-      <a href="#contact" class="inline-flex w-full sm:w-auto items-center justify-center rounded-[1.15rem] px-7 py-3.5 text-base font-semibold text-[var(--color-executive)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg" style="background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark)); box-shadow: 0 12px 28px color-mix(in srgb, var(--color-primary) 32%, transparent);">
+      <a href="#contact" class="hero-cta hero-cta--primary inline-flex w-full sm:w-auto items-center justify-center rounded-[1.15rem] px-7 py-3.5 text-base font-semibold transition-all duration-300 hover:-translate-y-0.5">
         Discuss Opportunities
       </a>
-      <a href="/YD_resume.pdf" download="YD_resume.pdf" class="inline-flex w-full sm:w-auto items-center justify-center rounded-[1.15rem] px-7 py-3.5 text-base font-semibold text-[var(--color-executive)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg" style="background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark)); box-shadow: 0 12px 28px color-mix(in srgb, var(--color-primary) 32%, transparent);">
+      <a href="/YD_resume.pdf" download="YD_resume.pdf" class="hero-cta hero-cta--secondary inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-[1.15rem] px-7 py-3.5 text-base font-semibold transition-all duration-300 hover:-translate-y-0.5">
+        <svg class="w-5 h-5 shrink-0" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M10 3.5v9m0 0L6.75 9.25M10 12.5l3.25-3.25M4.5 16.5h11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
         Download Resume
       </a>
     </div>
@@ -204,5 +171,34 @@ const headerDateTimeIso = headerNow.toISOString();
 
 </header>
 
-<script src="/js/header-clock.js" defer></script>
+<style>
+  .hero-cta:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+  }
+
+  .hero-cta--primary {
+    color: var(--color-executive);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    box-shadow: 0 12px 28px color-mix(in srgb, var(--color-primary) 32%, transparent);
+  }
+
+  .hero-cta--primary:hover {
+    box-shadow: 0 16px 34px color-mix(in srgb, var(--color-primary) 40%, transparent);
+  }
+
+  .hero-cta--secondary {
+    color: var(--color-text);
+    background: color-mix(in srgb, var(--color-surface-strong) 72%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 40%, var(--color-border));
+    box-shadow: 0 8px 20px rgba(2, 6, 12, 0.28);
+  }
+
+  .hero-cta--secondary:hover {
+    color: var(--color-primary);
+    border-color: color-mix(in srgb, var(--color-primary) 55%, var(--color-border));
+    background: color-mix(in srgb, var(--color-primary) 10%, var(--color-surface-strong));
+  }
+</style>
+
 <script src="/js/mobile-menu.js" defer></script>

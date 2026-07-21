@@ -18,7 +18,9 @@
     "resume:pdf": "bash ./scripts/generate-resume-pdf.sh",
     "resume:pdf:ats": "bash ./scripts/generate-resume-pdf-ats.sh",
     "smoke": "node ./scripts/smoke-test.mjs",
-    "verify": "npm run check && npm run build && npm run smoke",
+    "smoke:flights": "node ./scripts/smoke-flights-gate.mjs",
+    "deploy:cf": "bash ./scripts/deploy-cloudflare.sh",
+    "verify": "npm run check && npm run build && npm run smoke && npm run smoke:flights",
     "audit:deps": "npm audit --audit-level=high",
     "audit:prod": "bash ./scripts/audit-production.sh",
     "indexnow:notify": "bash ./scripts/notify-indexnow.sh",
@@ -32,13 +34,15 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
     "@axe-core/cli": "^4.11.3",
+    "@cloudflare/workers-types": "^5.20260714.1",
     "@types/node": "^20.0.0",
     "autoprefixer": "^10.5.0",
     "jsdom": "^29.1.1",
     "postcss": "^8.5.14",
     "sharp": "^0.34.5",
     "tailwindcss": "^3.3.0",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "wrangler": "^4.112.0"
   },
   "overrides": {
     "esbuild": "^0.28.1"

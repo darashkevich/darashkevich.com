@@ -9,7 +9,8 @@
   NODE_VERSION = "22"
   PUBLIC_MAP_TILES_PROVIDER = "maptiler"
 
-# /flights is private when FLIGHTS_PAGE_PASSWORD is set in Netlify env vars.
+# /flights is private via Netlify edge while this host remains production.
+# Cloudflare Workers uses workers/flights-gate.ts (fail-closed) — see docs/cloudflare-migration.md.
 [[edge_functions]]
   function = "flights-gate"
   path = "/flights"
@@ -48,7 +49,8 @@
 [[headers]]
   for = "/js/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    # Unhashed public scripts — short TTL so deploys are not sticky for a year.
+    Cache-Control = "public, max-age=300, must-revalidate"
 
 [[headers]]
   for = "/images/*"

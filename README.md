@@ -1,6 +1,6 @@
 # Yahor Darashkevich - Portfolio Website
 
-Astro + Tailwind portfolio for **darashkevich.com** (Netlify: `stalwart-profiterole-ca3dd0`; DNS on Cloudflare).
+Astro + Tailwind portfolio for **darashkevich.com** (DNS on Cloudflare; hosting: Netlify live, Cloudflare Workers migration in progress — `stalwart-profiterole-ca3dd0`).
 
 ## Features
 
@@ -8,13 +8,14 @@ Astro + Tailwind portfolio for **darashkevich.com** (Netlify: `stalwart-profiter
 - SEO: meta tags, Open Graph PNG, inline JSON-LD (`public/schema.json`), sitemap index (`sitemap-index.xml`) with `lastmod`, IndexNow
 - Accessibility: skip link, semantic landmarks, axe-core homepage audit in CI (`npm run a11y`)
 - Optional Cloudflare Web Analytics (cookie-less) via `PUBLIC_CF_WEB_ANALYTICS_TOKEN`
-- Private `/flights/` area gated by Netlify edge function when `FLIGHTS_PAGE_PASSWORD` is set
+- Private `/flights/` area gated by edge Basic auth when `FLIGHTS_PAGE_PASSWORD` is set (Cloudflare Worker fail-closed; Netlify edge while that host remains live)
 
 ## Tech stack
 
 - [Astro](https://astro.build/) + TypeScript
 - [Tailwind CSS](https://tailwindcss.com/)
-- Netlify (hosting + edge functions)
+- [Cloudflare Workers](https://workers.cloudflare.com/) (target host: static assets + flights gate)
+- Netlify (current production host until DNS cutover)
 - Cloudflare (DNS + optional Web Analytics)
 
 ## Getting started
@@ -69,13 +70,16 @@ Uptime: [`docs/uptime-monitoring.md`](docs/uptime-monitoring.md).
 
 ## Deployment
 
-Production deploys to Netlify. See [`DEPLOYMENT.md`](DEPLOYMENT.md).
+Production is still on Netlify until cutover. Cloudflare Workers deploy (no DNS change):
 
 ```bash
-./scripts/deploy-production.sh
+./scripts/deploy-cloudflare.sh
 ```
 
-Requires `npx netlify-cli login` and a linked site.
+Legacy Netlify: [`DEPLOYMENT.md`](DEPLOYMENT.md) / `./scripts/deploy-production.sh`.  
+Cutover checklist: [`docs/cloudflare-migration.md`](docs/cloudflare-migration.md).
+
+Requires `npx wrangler login` and `wrangler secret put FLIGHTS_PAGE_PASSWORD` for Cloudflare.
 
 ## SEO / ops notes
 

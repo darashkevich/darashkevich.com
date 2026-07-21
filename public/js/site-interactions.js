@@ -19,6 +19,14 @@ document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     if (window.location.hash !== href) {
       window.history.pushState(null, '', href);
     }
+
+    // Move keyboard focus for skip links / in-page nav (native hash does this).
+    if (typeof target.focus === 'function') {
+      if (!target.hasAttribute('tabindex')) {
+        target.setAttribute('tabindex', '-1');
+      }
+      target.focus({ preventScroll: true });
+    }
   });
 });
 

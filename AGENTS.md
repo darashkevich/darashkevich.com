@@ -1,6 +1,6 @@
 # AGENTS.md — darashkevich.com (astro-portfolio)
 
-Astro + Tailwind portfolio for **darashkevich.com**. Hosted on Netlify; DNS/analytics on Cloudflare.
+Astro + Tailwind portfolio for **darashkevich.com**. DNS/analytics on Cloudflare; hosting migrating from Netlify → Cloudflare Workers Static Assets (see `docs/cloudflare-migration.md`).
 
 ## Commands
 
@@ -32,7 +32,7 @@ Prefer `dev:preview` / `preview:local` over ad-hoc ports when verifying UI.
 ## Do not
 
 - Commit secrets (`.env`, tokens). Use `.env.example` as the template.
-- Change Netlify / Cloudflare production config without an explicit ask.
+- Change Netlify / Cloudflare production DNS or TLS without an explicit ask (Workers preview deploys are OK).
 - Add an on-site contact form.
 
 ## Verify before finishing UI work
