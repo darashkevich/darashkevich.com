@@ -1,8 +1,8 @@
 # Cloudflare Workers migration — darashkevich.com
 
-Controlled parallel cutover from Netlify → **Cloudflare Workers Static Assets** + fail-closed Basic-auth gate for `/flights`.
+Controlled cutover from Netlify → **Cloudflare Workers Static Assets** + fail-closed Basic-auth gate for `/flights`.
 
-Netlify stays live until DNS is switched and soak time passes.
+**Status:** apex traffic is on Cloudflare Workers (proxied). Netlify remains published as a rollback / `.netlify.app` duplicate until unpublished.
 
 ## Architecture
 
@@ -83,10 +83,12 @@ Route the domain back to Netlify while that deploy still exists. No need to dele
 ## Retire Netlify (later)
 
 - Turn off production auto-deploys
+- Confirm `.netlify.app` returns `X-Robots-Tag: noindex` (or is unpublished)
+- Prefer a Cloudflare Redirect Rule: `www` → apex (301/308)
 - Remove `netlify/` edge function usage from docs once CF is sole host
 - Update CAA if still Netlify-scoped
 - Cancel paid Netlify only after nothing else uses the account
 
 ## Fail-closed note
 
-Unlike the old Netlify gate (missing `FLIGHTS_PAGE_PASSWORD` → allow), the Worker **denies** when the secret is missing. That prevents accidental public exposure during migration.
+Both the Worker and the Netlify edge gate **deny** `/flights` when `FLIGHTS_PAGE_PASSWORD` is missing. That prevents accidental public exposure on the rollback host.

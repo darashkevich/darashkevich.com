@@ -33,6 +33,15 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Smoke (production bundle interactions)
+        run: npm run smoke
+
+      - name: Smoke (flights gate — helpers + live apex)
+        run: npm run smoke:flights
+        env:
+          # CI asserts the public Workers origin; skip only if GitHub is offline to CF.
+          FLIGHTS_SMOKE_SKIP_LIVE: ${{ vars.FLIGHTS_SMOKE_SKIP_LIVE || '' }}
+
       - name: Accessibility audit (axe)
         run: |
           npx --yes serve dist -l tcp://127.0.0.1:4173 >/tmp/a11y-serve.log 2>&1 &

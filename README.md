@@ -1,6 +1,6 @@
 # Yahor Darashkevich - Portfolio Website
 
-Astro + Tailwind portfolio for **darashkevich.com** (DNS on Cloudflare; hosting: Netlify live, Cloudflare Workers migration in progress — `stalwart-profiterole-ca3dd0`).
+Astro + Tailwind portfolio for **darashkevich.com** (DNS + hosting on Cloudflare Workers Static Assets; Netlify kept as rollback / `.netlify.app` only — `stalwart-profiterole-ca3dd0`).
 
 ## Features
 
@@ -8,14 +8,14 @@ Astro + Tailwind portfolio for **darashkevich.com** (DNS on Cloudflare; hosting:
 - SEO: meta tags, Open Graph PNG, inline JSON-LD (`public/schema.json`), sitemap index (`sitemap-index.xml`) with `lastmod`, IndexNow
 - Accessibility: skip link, semantic landmarks, axe-core homepage audit in CI (`npm run a11y`)
 - Optional Cloudflare Web Analytics (cookie-less) via `PUBLIC_CF_WEB_ANALYTICS_TOKEN`
-- Private `/flights/` area gated by edge Basic auth when `FLIGHTS_PAGE_PASSWORD` is set (Cloudflare Worker fail-closed; Netlify edge while that host remains live)
+- Private `/flights/` area gated by fail-closed Basic auth (`FLIGHTS_PAGE_PASSWORD`) on Cloudflare Workers and the Netlify rollback edge function
 
 ## Tech stack
 
 - [Astro](https://astro.build/) + TypeScript
 - [Tailwind CSS](https://tailwindcss.com/)
-- [Cloudflare Workers](https://workers.cloudflare.com/) (target host: static assets + flights gate)
-- Netlify (current production host until DNS cutover)
+- [Cloudflare Workers](https://workers.cloudflare.com/) (production: static assets + flights gate)
+- Netlify (rollback / `.netlify.app` until unpublished)
 - Cloudflare (DNS + optional Web Analytics)
 
 ## Getting started

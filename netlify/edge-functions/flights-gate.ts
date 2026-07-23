@@ -39,9 +39,17 @@ export default async function flightsGate(
   request: Request,
   context: Context
 ): Promise<Response> {
+  // Fail closed when the secret is missing — matches workers/flights-gate.ts.
+  // Netlify remains a rollback / .netlify.app host; never serve /flights openly.
   const expected = Deno.env.get('FLIGHTS_PAGE_PASSWORD');
   if (!expected) {
-    return context.next();
+    return new Response('Flights gate is misconfigured (secret missing).', {
+      status: 401,
+      headers: {
+        'WWW-Authenticate': `Basic realm="${REALM}", charset="UTF-8"`,
+        'Cache-Control': 'no-store',
+      },
+    });
   }
 
   const provided = parsePassword(request.headers.get('Authorization'));

@@ -9,8 +9,9 @@
   NODE_VERSION = "22"
   PUBLIC_MAP_TILES_PROVIDER = "maptiler"
 
-# /flights is private via Netlify edge while this host remains production.
-# Cloudflare Workers uses workers/flights-gate.ts (fail-closed) — see docs/cloudflare-migration.md.
+# /flights stays private via Netlify edge while this host is kept for rollback /
+# the public *.netlify.app hostname. Primary production is Cloudflare Workers
+# (workers/flights-gate.ts). Both gates fail closed when the secret is missing.
 [[edge_functions]]
   function = "flights-gate"
   path = "/flights"
@@ -19,6 +20,8 @@
   function = "flights-gate"
   path = "/flights/*"
 
+# Netlify is no longer the public canonical host — keep it out of search indexes
+# until the site is unpublished. Remove this header if Netlify is ever primary again.
 [[headers]]
   for = "/*"
   [headers.values]
@@ -29,6 +32,7 @@
     X-Frame-Options = "DENY"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "accelerometer=(), autoplay=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
+    X-Robots-Tag = "noindex, nofollow"
 
 # MapLibre tile CDNs only where the map loads (/flights is also edge-gated).
 [[headers]]

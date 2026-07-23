@@ -96,9 +96,13 @@ try {
     removeEventListener() {},
   });
 
-  // The bundled component scripts have no imports, so they can run directly
-  // in the window context (jsdom does not execute type="module" natively).
-  for (const code of scriptContents) window.eval(code);
+  // Bundled component scripts have no imports, but each is a separate ES module
+  // with its own scope. jsdom cannot run type="module", and bare window.eval of
+  // multiple minified bundles collides on shared top-level identifiers (e, t, …).
+  // Wrap each bundle in an IIFE so bindings stay isolated like real modules.
+  for (const code of scriptContents) {
+    window.eval(`(function () {\n${code}\n})();`);
+  }
 
   // Selected Impact: click first tile trigger → expanded
   const trigger = document.querySelector('[data-impact-trigger]');

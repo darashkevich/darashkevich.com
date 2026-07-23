@@ -2,6 +2,8 @@
 set -euo pipefail
 
 SITE_URL="${SITE_URL:-https://darashkevich.com}"
+WWW_URL="${WWW_URL:-https://www.darashkevich.com}"
+NETLIFY_FALLBACK_URL="${NETLIFY_FALLBACK_URL:-https://stalwart-profiterole-ca3dd0.netlify.app}"
 MAX_RETRIES="${MAX_RETRIES:-15}"
 RETRY_DELAY_SECONDS="${RETRY_DELAY_SECONDS:-20}"
 
@@ -98,6 +100,52 @@ fi
 if [[ "${security_txt_lower}" != *"canonical:"* ]]; then
   echo "security.txt missing Canonical line."
   exit 1
+fi
+
+# Duplicate-host posture (warnings become soft failures via HOST_DUP_STRICT=1).
+host_dup_issues=0
+www_code="$(curl -sS -o /dev/null -w "%{http_code}" -L --max-redirs 0 "${WWW_URL}/" || true)"
+echo "www host: ${www_code} ${WWW_URL}/"
+if [[ "${www_code}" == "301" || "${www_code}" == "308" ]]; then
+  echo "www permanently redirects (good)."
+elif [[ "${www_code}" == "200" ]]; then
+  echo "WARN: www returns 200 instead of a permanent redirect to the apex. Add a Cloudflare redirect rule."
+  host_dup_issues=$((host_dup_issues + 1))
+else
+  echo "WARN: unexpected www status ${www_code}"
+  host_dup_issues=$((host_dup_issues + 1))
+fi
+
+netlify_code="$(curl -sS -o /dev/null -w "%{http_code}" -L --max-redirs 0 "${NETLIFY_FALLBACK_URL}/" || true)"
+netlify_headers="$(curl -sS -I -L --max-redirs 0 "${NETLIFY_FALLBACK_URL}/" 2>/dev/null | tr '[:upper:]' '[:lower:]' || true)"
+echo "Netlify fallback: ${netlify_code} ${NETLIFY_FALLBACK_URL}/"
+if [[ "${netlify_code}" == "301" || "${netlify_code}" == "308" ]]; then
+  echo "Netlify fallback permanently redirects (good)."
+elif [[ "${netlify_headers}" == *"x-robots-tag:"*"noindex"* ]]; then
+  echo "Netlify fallback is noindex (acceptable while kept for rollback)."
+elif [[ "${netlify_code}" == "200" ]]; then
+  echo "WARN: Netlify fallback returns indexable 200. Redeploy Netlify with X-Robots-Tag noindex or unpublish the site."
+  host_dup_issues=$((host_dup_issues + 1))
+elif [[ "${netlify_code}" == "404" || "${netlify_code}" == "000" ]]; then
+  echo "Netlify fallback appears unpublished/unreachable (good)."
+else
+  echo "WARN: unexpected Netlify fallback status ${netlify_code}"
+  host_dup_issues=$((host_dup_issues + 1))
+fi
+
+netlify_flights="$(curl -sS -o /dev/null -w "%{http_code}" "${NETLIFY_FALLBACK_URL}/flights/" || true)"
+echo "${netlify_flights} ${NETLIFY_FALLBACK_URL}/flights/ (unauthenticated)"
+if [[ "${netlify_code}" == "200" && "${netlify_flights}" != "401" && "${netlify_flights}" != "404" && "${netlify_flights}" != "000" ]]; then
+  echo "WARN: Netlify /flights/ is reachable without 401 while the fallback host is live."
+  host_dup_issues=$((host_dup_issues + 1))
+fi
+
+if (( host_dup_issues > 0 )); then
+  if [[ "${HOST_DUP_STRICT:-0}" == "1" ]]; then
+    echo "Host duplication checks failed (${host_dup_issues})."
+    exit 1
+  fi
+  echo "Host duplication warnings: ${host_dup_issues} (set HOST_DUP_STRICT=1 to fail)."
 fi
 
 echo "Production audit passed for ${SITE_URL}"

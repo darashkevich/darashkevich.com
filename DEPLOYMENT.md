@@ -1,10 +1,12 @@
 # Deployment — darashkevich.com
 
-**Live (today):** https://darashkevich.com on **Netlify** (`stalwart-profiterole-ca3dd0`)  
+**Live (today):** https://darashkevich.com on **Cloudflare Workers Static Assets** (`darashkevich-com`)  
 **DNS:** Cloudflare (proxied)  
-**Target host:** Cloudflare Workers Static Assets — see [`docs/cloudflare-migration.md`](docs/cloudflare-migration.md)
+**Rollback host:** Netlify `stalwart-profiterole-ca3dd0` (`.netlify.app` only — keep fail-closed + `noindex` until unpublished)
 
-## Recommended: Cloudflare deploy (no DNS change yet)
+Migration notes: [`docs/cloudflare-migration.md`](docs/cloudflare-migration.md)
+
+## Cloudflare deploy
 
 ```bash
 npx wrangler login
@@ -14,11 +16,9 @@ npx wrangler secret put FLIGHTS_PAGE_PASSWORD   # required — fail-closed
 
 That runs `npm run build`, smoke tests (including flights gate helpers), and `wrangler deploy`.
 
-Point `darashkevich.com` at the Worker only after the cutover checklist in [`docs/cloudflare-migration.md`](docs/cloudflare-migration.md).
+## Legacy: Netlify CLI (rollback only)
 
-## Legacy: Netlify CLI production deploy
-
-Keep available for rollback while Netlify remains the DNS target:
+Keep available while the Netlify site remains published for emergency rollback:
 
 ```bash
 npx netlify-cli login   # once
@@ -26,12 +26,9 @@ npx netlify-cli link    # once — select stalwart-profiterole-ca3dd0
 ./scripts/deploy-production.sh
 ```
 
-**Always run `npm run build && npm run smoke` before any prod push.** The smoke
-test (`scripts/smoke-test.mjs`) checks the production bundle in `dist/`: no inline
-module scripts (the CSP has `script-src 'self'` without `'unsafe-inline'`, so
-inline scripts are silently blocked in prod even though they work in `astro dev`),
-critical interactive markup present, and click behavior for the Selected Impact
-tiles and CX Operating System stages (verified in jsdom).
+After any Netlify deploy, confirm `/flights/` still returns **401** without auth and responses include `X-Robots-Tag: noindex, nofollow`.
+
+**Always run `npm run build && npm run smoke && npm run smoke:flights` before any prod push.** The homepage smoke test (`scripts/smoke-test.mjs`) checks the production bundle in `dist/`: no inline module scripts (CSP is `script-src 'self'` without `'unsafe-inline'`), critical interactive markup, and click behavior for Selected Impact / CX OS (jsdom, isolated module scopes). Flights smoke asserts both Worker and Netlify gates fail closed and, by default, live-checks `https://darashkevich.com/flights/` → 401.
 
 ## Build settings
 
@@ -41,7 +38,7 @@ tiles and CX Operating System stages (verified in jsdom).
 | Publish / assets directory | `dist` |
 | Node | `22` |
 | Cloudflare config | `wrangler.jsonc` |
-| Netlify config (legacy) | `netlify.toml` |
+| Netlify config (rollback) | `netlify.toml` |
 
 ## Environment variables
 
@@ -52,20 +49,20 @@ tiles and CX Operating System stages (verified in jsdom).
 - `PUBLIC_CF_WEB_ANALYTICS_TOKEN` — optional analytics beacon
 - `PUBLIC_GOOGLE_SITE_VERIFICATION` / `PUBLIC_BING_SITE_VERIFICATION` — search verification ([docs](docs/search-engine-verification.md))
 
-**Netlify (legacy parallel)** — same `PUBLIC_*` names in Site configuration; edge gate uses `FLIGHTS_PAGE_PASSWORD` (allow-through if unset — do not rely on that after cutover).
+**Netlify (rollback)** — same `PUBLIC_*` names in Site configuration; edge gate uses `FLIGHTS_PAGE_PASSWORD` and **fails closed** if unset (same as Workers).
 
 ## Headers / security
 
 - Cloudflare: `public/_headers` (+ flights CSP/`no-store` applied in `workers/flights-gate.ts` for gated responses)
-- Netlify: `netlify.toml` `[[headers]]` while that host remains live
+- Netlify: `netlify.toml` `[[headers]]` including site-wide `X-Robots-Tag: noindex, nofollow` on the rollback host
 - HSTS preload list: [`docs/hsts-preload.md`](docs/hsts-preload.md)
 
 ## DNS / email hardening
 
 Full checklist: [`docs/dns-security.md`](docs/dns-security.md).
 
-- Email MX/SPF/DKIM/DMARC must stay intact across hosting cutover
-- Before switching origin to Cloudflare, confirm TLS/CAA ([migration doc](docs/cloudflare-migration.md))
+- Email MX/SPF/DKIM/DMARC must stay intact
+- Preferred SEO posture: permanent redirect `www` → apex (Cloudflare Redirect Rule); unpublish Netlify when rollback window ends
 
 ## Post-deploy checks
 
