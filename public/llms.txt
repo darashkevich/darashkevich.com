@@ -11,8 +11,9 @@ Customer Experience and Support Operations executive for high-growth SaaS, eComm
 
 ## Key Outcomes
 - 15+ years CX / support operations leadership
-- Ka'Chava: 95+ agents at peak; 1.5M+ tickets; 89%+ CSAT; <4h first reply; 45% chats AI-resolved; 2 BPOs
-- TeachPoint: reduced avoidable ticket volume via Zendesk workflow + self-service redesign
+- Ka'Chava (eCommerce/subscription): 95+ agents at peak; 1.5M+ tickets; 89%+ CSAT at sustained volume; under 4-hour first reply; 45% of chats fully resolved by AI; two BPO partners.
+- SaaS engagements: managed support programs against 95%+ CSAT targets.
+- TeachPoint: reduced avoidable ticket volume via Zendesk workflow + self-service redesign; operated against a 95%+ SaaS CSAT target
 - Multi-brand advisory: executive CX operating systems (governance, KPIs, vendor accountability, AI-assisted support)
 
 ## Services

@@ -139,6 +139,16 @@ body {
   margin-top: 0.15rem;
 }
 
+.impact-metric--wide .value {
+  font-size: 11pt;
+  letter-spacing: -0.02em;
+}
+
+.impact-metric--wide .label {
+  font-size: 5.75pt;
+  line-height: 1.2;
+}
+
 /* ── Two-column layout (page 1) ── */
 
 .columns {

@@ -7,7 +7,7 @@ const impactMetrics = [
   { value: '95+', label: 'agents' },
   { value: '1.5M+', label: 'tickets' },
   { value: '35K', label: 'tickets/month peak' },
-  { value: '89%+', label: 'CSAT' },
+  { value: '89% / 95%+', label: 'eComm / SaaS CSAT' },
   { value: '<4h', label: 'first reply' },
   { value: '45%', label: 'chats resolved by AI' },
 ];
@@ -60,7 +60,7 @@ const experience = [
     condensed: false,
     highlights: [
       '<strong>Built and scaled the customer support organization</strong> from a 1-agent operation to 95+ agents at peak growth, establishing the staffing model, workflows, QA standards, and operating processes needed to support rapid subscription and eCommerce growth.',
-      '<strong>Led operations through 1.5M+ resolved customer tickets</strong> and peak volume of 35K tickets/month while maintaining 89%+ CSAT across a high-volume, multi-channel consumer environment.',
+      '<strong>Led operations through 1.5M+ resolved customer tickets</strong> and peak volume of 35K tickets/month while maintaining 89%+ CSAT across a high-volume eCommerce and subscription environment.',
       '<strong>Reduced first reply time to under 4 hours</strong> by improving Zendesk workflows, routing, macros, workforce planning, and performance management across internal and outsourced teams.',
       '<strong>Rolled out Zendesk Advanced AI agents</strong> across chat and email, reaching 45% of chats fully resolved by AI—and growing—while maintaining quality standards and escalation control.',
       '<strong>Owned support operations</strong> for subscriptions, billing, refunds, returns, shipping issues, product questions, escalations, and retention-related customer friction.',
@@ -78,7 +78,7 @@ const experience = [
     highlights: [
       '<strong>Implemented and optimized Zendesk Suite environments</strong> for growing support teams, including workflows, automations, macros, reporting, help centers, and integrations.',
       '<strong>Designed SOPs, support processes, and reporting dashboards</strong> aligned with operational goals and customer experience best practices.',
-      '<strong>Recruited, trained, and managed support agents</strong> while advising clients on support quality, KPI tracking, and operational scalability.',
+      '<strong>Recruited, trained, and managed support agents</strong> against 95%+ SaaS CSAT targets while advising clients on KPI tracking and scalability.',
     ],
   },
   {
@@ -90,7 +90,7 @@ const experience = [
     highlights: [
       '<strong>Developed support, onboarding, and customer education strategies</strong> for a SaaS education technology platform.',
       '<strong>Delivered technical support through Zendesk and phone channels</strong> while managing onboarding, training webinars, scheduling, and help center content.',
-      '<strong>Collected support metrics and customer feedback</strong> to help improve the product and customer experience.',
+      '<strong>Collected support metrics and customer feedback</strong> to help improve the product and customer experience. Operated against a 95%+ SaaS CSAT target.',
     ],
   },
   {
@@ -185,7 +185,7 @@ const sectionLabel = 'text-xs font-semibold uppercase tracking-[0.14em] text-[va
               class="rounded-[1.15rem] p-4 md:p-5 border text-center transition-all duration-300 hover:-translate-y-0.5"
               style="background: color-mix(in srgb, var(--color-surface-strong) 90%, transparent); border-color: var(--color-border);"
             >
-              <p class="text-2xl md:text-3xl font-bold text-[var(--color-primary)] tracking-tight leading-none">{metric.value}</p>
+              <p class={`font-bold text-[var(--color-primary)] tracking-tight leading-none ${metric.value.includes('/') ? 'text-lg md:text-xl' : 'text-2xl md:text-3xl'}`}>{metric.value}</p>
               <p class="text-[0.65rem] md:text-xs mt-2 text-[var(--color-text-soft)] uppercase tracking-[0.08em] leading-snug">{metric.label}</p>
             </div>
           ))}
@@ -203,7 +203,7 @@ const sectionLabel = 'text-xs font-semibold uppercase tracking-[0.14em] text-[va
           <h2 class={`${sectionLabel}`} style="border-color: var(--color-border);">Executive Profile</h2>
           <div class="space-y-4 text-[var(--color-text-muted)] leading-relaxed text-[0.95rem] md:text-base">
             <p>
-              Customer Support and Customer Experience executive with 15+ years leading high-volume SaaS, eCommerce, subscription, and technology-enabled support operations. Built Ka'Chava's support function from a 1-agent operation to 95+ agents at peak growth, supported 35K-ticket peak monthly volume, led 1.5M+ resolved tickets, maintained 89%+ CSAT, and rolled out Zendesk Advanced AI agents that fully resolve 45% of chats—and growing.
+              Customer Support and Customer Experience executive with 15+ years leading high-volume SaaS, eCommerce, subscription, and technology-enabled support operations. Built Ka'Chava's support function from 1 to 95+ agents, led 1.5M+ resolved tickets, maintained 89%+ CSAT at eCommerce scale, and managed SaaS support programs against 95%+ CSAT targets. Rolled out Zendesk Advanced AI agents that fully resolve 45% of chats.
             </p>
             <p>
               Known for building scalable support operating models across Zendesk Advanced AI, self-service, BPO/vendor operations, QA, workforce planning, escalation management, KPI reporting, and Voice of Customer programs that connect frontline support to retention, operations, and executive decision-making.
