@@ -1,6 +1,15 @@
 ---
+type ImpactMetric = {
+  value: string;
+  label: string;
+  story: string;
+  href: string;
+  linkLabel: string;
+  compactValue?: boolean;
+};
+
 // Four pillars only — volume / SLA / BPO detail lives in the Ka'Chava case study, not eight near-duplicate tiles.
-const metrics = [
+const metrics: ImpactMetric[] = [
   {
     value: '15+',
     label: 'Years Experience',
@@ -18,12 +27,13 @@ const metrics = [
     linkLabel: "Ka'Chava case study",
   },
   {
-    value: '89%+',
-    label: 'CSAT at Volume',
+    value: '89%+ / 95%+',
+    label: 'eCommerce / SaaS CSAT',
     story:
-      'Protected CSAT under sustained load with clear QA standards, coaching loops, and escalation control across internal and outsourced teams.',
-    href: '#case-kachava',
-    linkLabel: "Ka'Chava case study",
+      'Maintained 89%+ CSAT at high-volume eCommerce and subscription scale, while managing SaaS support programs against 95%+ CSAT targets.',
+    href: '#case-studies',
+    linkLabel: 'Selected case studies',
+    compactValue: true,
   },
   {
     value: '45%',
@@ -62,7 +72,7 @@ const metrics = [
               aria-controls={`impact-panel-${index}`}
               data-impact-trigger
             >
-              <span class="impact-tile__value">{metric.value}</span>
+              <span class={`impact-tile__value${metric.compactValue ? ' impact-tile__value--compact' : ''}`}>{metric.value}</span>
               <span class="impact-tile__label">{metric.label}</span>
               <span class="impact-tile__affordance" aria-hidden="true">
                 <span class="impact-tile__affordance-open">
@@ -184,6 +194,12 @@ const metrics = [
     color: var(--color-text);
   }
 
+  .impact-tile__value--compact {
+    font-size: clamp(1.35rem, 1.9vw, 1.85rem);
+    letter-spacing: -0.03em;
+    white-space: nowrap;
+  }
+
   .impact-tile__label {
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -226,6 +242,11 @@ const metrics = [
     .impact-tile__trigger {
       height: 12.25rem;
       padding: 1.15rem 1rem 1rem;
+    }
+
+    .impact-tile__value--compact {
+      font-size: 1.2rem;
+      white-space: normal;
     }
 
     .impact-tile__affordance {
