@@ -1,14 +1,3 @@
-import maplibregl from 'maplibre-gl';
-import 'maplibre-gl/dist/maplibre-gl.css';
-import {
-  applyPortfolioBasemapTheme,
-  buildGraticuleGeoJSON,
-  cssVar,
-  paintRouteOverlays,
-  resolveBasemapStyle,
-  ROUTE_MAP_OVERLAY_LAYERS
-} from '../lib/route-map-theme';
-
 type RouteMapPayload = {
   routes: GeoJSON.FeatureCollection;
   airports: GeoJSON.FeatureCollection;
@@ -29,7 +18,8 @@ function getFullscreenElement(): Element | null {
   return doc.fullscreenElement ?? doc.webkitFullscreenElement ?? null;
 }
 
-function initRouteMap() {
+/** Lazy-loads MapLibre when the route map enters (or nears) the viewport. */
+export async function initRouteMap() {
   const shell = document.getElementById('route-map-shell');
   const stage = document.querySelector<HTMLElement>('[data-route-network]');
   const container = document.getElementById('route-map');
@@ -39,6 +29,23 @@ function initRouteMap() {
   );
 
   if (!shell || !stage || !container || !payload) return;
+  if (shell.dataset.mapReady === '1') return;
+  shell.dataset.mapReady = '1';
+
+  const [{ default: maplibregl }, theme] = await Promise.all([
+    import('maplibre-gl'),
+    import('../lib/route-map-theme'),
+    import('maplibre-gl/dist/maplibre-gl.css'),
+  ]);
+
+  const {
+    applyPortfolioBasemapTheme,
+    buildGraticuleGeoJSON,
+    cssVar,
+    paintRouteOverlays,
+    resolveBasemapStyle,
+    ROUTE_MAP_OVERLAY_LAYERS
+  } = theme;
 
   const mapData = payload;
 
@@ -263,4 +270,33 @@ function initRouteMap() {
   updateFullscreenButton();
 }
 
-document.addEventListener('DOMContentLoaded', initRouteMap);
+function scheduleRouteMapInit() {
+  const shell = document.getElementById('route-map-shell');
+  if (!shell) return;
+
+  const boot = () => {
+    void initRouteMap();
+  };
+
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          io.disconnect();
+          boot();
+        }
+      },
+      { rootMargin: '240px 0px' }
+    );
+    io.observe(shell);
+    return;
+  }
+
+  boot();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', scheduleRouteMapInit);
+} else {
+  scheduleRouteMapInit();
+}

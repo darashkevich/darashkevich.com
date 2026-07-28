@@ -1,9 +1,8 @@
-# CAA records for darashkevich.com (Netlify + Let’s Encrypt)
+# CAA records for darashkevich.com (Cloudflare Universal SSL)
 
-Netlify provisions certificates with Let’s Encrypt account  
-`https://acme-v02.api.letsencrypt.org/acme/acct/54403714`.
-
-Publishing CAA with that `accounturi` allows only Netlify’s LE account to issue for the apex (covers `www` SANs). Confirmed against [Netlify HTTPS docs](https://docs.netlify.com/manage/domains/secure-domains-with-https/https-ssl/).
+Primary hosting is Cloudflare Workers Static Assets. Universal SSL issues
+certificates via **Let’s Encrypt** and **Google Trust Services** — not a
+Netlify-scoped Let’s Encrypt `accounturi`.
 
 ## Apply via script (preferred)
 
@@ -12,15 +11,19 @@ export CLOUDFLARE_API_TOKEN=...   # Zone → DNS → Edit
 ./scripts/setup-caa.sh
 ```
 
+The script publishes:
+
+- `0 issue "letsencrypt.org"`
+- `0 issue "pki.goog;cansignhttpexchanges=yes"`
+
 ## Apply in Cloudflare Dashboard
 
-1. **DNS** → **Records** → **Add record** → type **CAA**
-2. **Name:** `@`
-3. **Tag:** `Only allow specific hostnames` / `issue`
-4. **CA domain name / value:**  
-   `letsencrypt.org;accounturi=https://acme-v02.api.letsencrypt.org/acme/acct/54403714`
-5. **Flags:** `0`
-6. Save. Do **not** add other `issue` / `issuewild` rows unless you intentionally authorize another CA.
+1. **DNS** → **Records** → remove any apex CAA still bound to a Netlify
+   `accounturi=https://acme-v02.api.letsencrypt.org/acme/acct/…`
+2. **Add record** → type **CAA**, **Name:** `@`, **Tag:** `issue`
+3. Value: `letsencrypt.org` (flags `0`)
+4. Add a second `issue` record for `pki.goog;cansignhttpexchanges=yes`
+5. Save. See [Cloudflare CAA docs](https://developers.cloudflare.com/ssl/edge-certificates/caa-records/).
 
 ## Verify
 
@@ -28,8 +31,10 @@ export CLOUDFLARE_API_TOKEN=...   # Zone → DNS → Edit
 dig +short CAA darashkevich.com
 ```
 
-Expect a single `issue` value pointing at `letsencrypt.org` with Netlify’s `accounturi`.
+Expect `letsencrypt.org` and `pki.goog` `issue` values (no Netlify-only accounturi).
 
 ## Caution
 
-Wrong CAA breaks certificate renewal. If HTTPS provisioning fails after this change, remove the CAA record or fix the value, then retry Netlify → Domain management → HTTPS.
+Wrong CAA breaks certificate renewal. If HTTPS provisioning fails after this
+change, remove the CAA records or fix the values, then wait for Cloudflare
+Universal SSL to re-issue.

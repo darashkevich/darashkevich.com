@@ -31,28 +31,28 @@ function rowClasses(confidence: FlightSegment['confidence']): string {
     <p class="text-sm text-[var(--color-text-muted)] mt-1">Newest first. Filter by confidence or year.</p>
   </div>
 
-  <div class="flex flex-wrap gap-2 mb-5" role="tablist" aria-label="Flight filters">
-    <button type="button" class="flight-filter is-active" data-filter="all">All</button>
-    <button type="button" class="flight-filter" data-filter="confirmed">Confirmed</button>
-    <button type="button" class="flight-filter" data-filter="partial">Partial</button>
-    <button type="button" class="flight-filter" data-filter="unresolved">Unresolved</button>
+  <div class="flex flex-wrap gap-2 mb-5" role="group" aria-label="Flight filters">
+    <button type="button" class="flight-filter is-active" data-filter="all" aria-pressed="true">All</button>
+    <button type="button" class="flight-filter" data-filter="confirmed" aria-pressed="false">Confirmed</button>
+    <button type="button" class="flight-filter" data-filter="partial" aria-pressed="false">Partial</button>
+    <button type="button" class="flight-filter" data-filter="unresolved" aria-pressed="false">Unresolved</button>
     {years.slice(0, 8).map((year) => (
-      <button type="button" class="flight-filter" data-filter={`year:${year}`}>{year}</button>
+      <button type="button" class="flight-filter" data-filter={`year:${year}`} aria-pressed="false">{year}</button>
     ))}
     {decades.map((decade) => (
-      <button type="button" class="flight-filter" data-filter={`decade:${decade}`}>{decade}s</button>
+      <button type="button" class="flight-filter" data-filter={`decade:${decade}`} aria-pressed="false">{decade}s</button>
     ))}
   </div>
 
-  <div class="hidden md:block overflow-x-auto rounded-[1.15rem] border" style="border-color: var(--color-border);">
-    <table class="w-full text-sm">
+  <div class="flight-log-wrap overflow-x-auto rounded-[1.15rem] border" style="border-color: var(--color-border);">
+    <table class="flight-log w-full text-sm">
       <thead>
         <tr class="text-left text-xs uppercase tracking-[0.12em] text-[var(--color-text-soft)]" style="background: color-mix(in srgb, var(--color-surface-strong) 88%, transparent);">
-          <th class="px-4 py-3 font-medium">Date</th>
-          <th class="px-4 py-3 font-medium">Route</th>
-          <th class="px-4 py-3 font-medium">Airline</th>
-          <th class="px-4 py-3 font-medium">Flight</th>
-          <th class="px-4 py-3 font-medium">Aircraft / FR24</th>
+          <th class="px-4 py-3 font-medium" scope="col">Date</th>
+          <th class="px-4 py-3 font-medium" scope="col">Route</th>
+          <th class="px-4 py-3 font-medium" scope="col">Airline</th>
+          <th class="px-4 py-3 font-medium" scope="col">Flight</th>
+          <th class="px-4 py-3 font-medium" scope="col">Aircraft / FR24</th>
         </tr>
       </thead>
       <tbody id="flight-table-body">
@@ -61,6 +61,9 @@ function rowClasses(confidence: FlightSegment['confidence']): string {
           const aircraft = enrichment?.aircraftType ?? segment.aircraft;
           const registration = enrichment?.aircraftRegistration;
           const detail = enrichment ? enrichmentDetail(enrichment) : null;
+          const aircraftText = aircraft
+            ? `${aircraft}${registration ? ` · ${registration}` : ''}${detail ? ` · ${detail}` : ''}`
+            : '—';
 
           return (
             <tr
@@ -69,20 +72,21 @@ function rowClasses(confidence: FlightSegment['confidence']): string {
               data-year={segment.year}
               data-decade={Math.floor(segment.year / 10) * 10}
             >
-              <td class="px-4 py-3 text-[var(--color-text-muted)] whitespace-nowrap">{formatDisplayDate(segment.date)}</td>
-              <td class="px-4 py-3 text-[var(--color-text)] font-medium">
+              <td class="px-4 py-3 text-[var(--color-text-muted)] whitespace-nowrap" data-label="Date">{formatDisplayDate(segment.date)}</td>
+              <td class="px-4 py-3 text-[var(--color-text)] font-medium" data-label="Route">
                 {routeLabel(segment)}
                 {segment.notes && (
                   <p class="text-xs text-[var(--color-text-soft)] mt-1 max-w-md leading-relaxed font-normal">{segment.notes}</p>
                 )}
               </td>
-              <td class="px-4 py-3 text-[var(--color-text-muted)]">{segment.airline}</td>
-              <td class="px-4 py-3 text-[var(--color-text-muted)]">{segment.flightNumber ?? '—'}</td>
-              <td class="px-4 py-3 text-[var(--color-text-muted)]">
+              <td class="px-4 py-3 text-[var(--color-text-muted)]" data-label="Airline">{segment.airline}</td>
+              <td class="px-4 py-3 text-[var(--color-text-muted)]" data-label="Flight">{segment.flightNumber ?? '—'}</td>
+              <td class="px-4 py-3 text-[var(--color-text-muted)]" data-label="Aircraft / FR24">
                 {aircraft ? (
                   <>
-                    <span>{aircraft}{registration ? ` · ${registration}` : ''}</span>
-                    {detail && <p class="text-xs text-[var(--color-text-soft)] mt-1 max-w-sm leading-relaxed">{detail}</p>}
+                    <span class="flight-aircraft-primary">{aircraft}{registration ? ` · ${registration}` : ''}</span>
+                    {detail && <p class="text-xs text-[var(--color-text-soft)] mt-1 max-w-sm leading-relaxed flight-aircraft-detail">{detail}</p>}
+                    <span class="sr-only md:hidden">{aircraftText}</span>
                   </>
                 ) : '—'}
               </td>
@@ -91,37 +95,6 @@ function rowClasses(confidence: FlightSegment['confidence']): string {
         })}
       </tbody>
     </table>
-  </div>
-
-  <div id="flight-card-list" class="md:hidden space-y-3">
-    {tableSegments.map((segment) => {
-      const enrichment = getFlightEnrichment(segment);
-      const aircraft = enrichment?.aircraftType ?? segment.aircraft;
-      const registration = enrichment?.aircraftRegistration;
-      const detail = enrichment ? enrichmentDetail(enrichment) : null;
-
-      return (
-        <article
-          class={`rounded-[1.15rem] border p-4 ${rowClasses(segment.confidence)}`}
-          style="border-color: var(--color-border); background: color-mix(in srgb, var(--color-surface) 94%, transparent);"
-          data-confidence={segment.confidence}
-          data-year={segment.year}
-          data-decade={Math.floor(segment.year / 10) * 10}
-        >
-          <div class="mb-2">
-            <p class="text-sm text-[var(--color-text-muted)]">{formatDisplayDate(segment.date)}</p>
-          </div>
-          <p class="text-base font-semibold text-[var(--color-text)]">{routeLabel(segment)}</p>
-          <p class="text-sm text-[var(--color-text-muted)] mt-1">{segment.airline}{segment.flightNumber ? ` · ${segment.flightNumber}` : ''}</p>
-          {aircraft && (
-            <p class="text-xs text-[var(--color-text-soft)] mt-2">
-              {aircraft}{registration ? ` · ${registration}` : ''}{detail ? ` · ${detail}` : ''}
-            </p>
-          )}
-          {segment.notes && <p class="text-xs text-[var(--color-text-soft)] mt-2 leading-relaxed">{segment.notes}</p>}
-        </article>
-      );
-    })}
   </div>
 </section>
 
@@ -150,9 +123,76 @@ function rowClasses(confidence: FlightSegment['confidence']): string {
     vertical-align: top;
   }
 
-  .flight-row.is-hidden,
-  #flight-card-list .is-hidden {
+  .flight-row.is-hidden {
     display: none;
+  }
+
+  .flight-row--partial {
+    background: color-mix(in srgb, #f59e0b 6%, transparent);
+  }
+
+  .flight-row--unresolved {
+    background: color-mix(in srgb, #ef4444 6%, transparent);
+  }
+
+  @media (max-width: 767px) {
+    .flight-log-wrap {
+      border: none;
+      overflow: visible;
+    }
+
+    .flight-log thead {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .flight-log,
+    .flight-log tbody,
+    .flight-log tr,
+    .flight-log td {
+      display: block;
+      width: 100%;
+    }
+
+    .flight-log tr {
+      margin-bottom: 0.75rem;
+      border: 1px solid var(--color-border);
+      border-radius: 1.15rem;
+      padding: 1rem;
+      background: color-mix(in srgb, var(--color-surface) 94%, transparent);
+    }
+
+    .flight-log td {
+      border-top: none;
+      padding: 0.2rem 0;
+    }
+
+    .flight-log td::before {
+      content: attr(data-label);
+      display: block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-soft);
+      margin-bottom: 0.15rem;
+    }
+
+    .flight-log td:first-child {
+      margin-bottom: 0.35rem;
+    }
+
+    .flight-aircraft-primary,
+    .flight-aircraft-detail {
+      display: none;
+    }
   }
 </style>
 

@@ -11,7 +11,7 @@ import LegalHeader from '../components/LegalHeader.astro';
     { name: 'Privacy Policy', path: '/privacy-policy/' },
   ]}
 >
-  <LegalHeader />
+  <LegalHeader slot="header" />
   <article class="py-20 px-6">
     <div class="max-w-4xl mx-auto">
       <div class="backdrop-blur-xl rounded-3xl border p-8 md:p-12" style="background-color: var(--color-surface); border-color: var(--color-border); box-shadow: 0 16px 38px var(--color-shadow);">
@@ -124,9 +124,10 @@ import LegalHeader from '../components/LegalHeader.astro';
               technical cookies that may be set by hosting infrastructure are used for core website functionality.
             </p>
             <p class="mt-3">
-              Privacy-friendly web analytics are collected via Cloudflare Web Analytics on every page. This uses a
-              lightweight JavaScript beacon and does not set cookies. It provides aggregated, anonymized usage metrics
-              (such as page views and basic performance data). Personal advertising profiles are not created.
+              When enabled in production, privacy-friendly web analytics may be collected via Cloudflare Web Analytics.
+              This uses a lightweight JavaScript beacon and does not set cookies. It provides aggregated, anonymized
+              usage metrics (such as page views and basic performance data). Personal advertising profiles are not
+              created. The beacon is only loaded when an analytics token is configured for the deployment.
             </p>
           </section>
 

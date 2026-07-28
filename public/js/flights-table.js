@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
   const filters = document.querySelectorAll('.flight-filter');
   const rows = document.querySelectorAll('.flight-row');
-  const cards = document.querySelectorAll('#flight-card-list article');
 
   if (filters.length === 0) return;
 
@@ -27,18 +26,16 @@ document.addEventListener('DOMContentLoaded', function () {
     rows.forEach(function (row) {
       row.classList.toggle('is-hidden', !match(row));
     });
-
-    cards.forEach(function (card) {
-      card.classList.toggle('is-hidden', !match(card));
-    });
   }
 
   filters.forEach(function (button) {
     button.addEventListener('click', function () {
       filters.forEach(function (item) {
         item.classList.remove('is-active');
+        item.setAttribute('aria-pressed', 'false');
       });
       button.classList.add('is-active');
+      button.setAttribute('aria-pressed', 'true');
       applyFilter(button.getAttribute('data-filter') || 'all');
     });
   });

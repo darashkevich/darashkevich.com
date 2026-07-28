@@ -53,12 +53,13 @@ record_id="$(
   python3 -c 'import json,sys; d=json.load(sys.stdin); print(d["result"][0]["id"] if d.get("success") and d.get("result") else "")' <<<"${existing}"
 )"
 
-payload="$(python3 - <<PY
-import json
+payload="$(
+  RECORD_NAME="${RECORD_NAME}" DMARC_VALUE="${DMARC_VALUE}" python3 - <<'PY'
+import json, os
 print(json.dumps({
   "type": "TXT",
-  "name": "${RECORD_NAME}",
-  "content": "${DMARC_VALUE}",
+  "name": os.environ["RECORD_NAME"],
+  "content": os.environ["DMARC_VALUE"],
   "ttl": 3600,
   "comment": "DMARC starter policy (p=none) for darashkevich.com"
 }))

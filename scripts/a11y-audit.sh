@@ -9,6 +9,7 @@ cd "$root"
 
 PORT="${A11Y_PORT:-4173}"
 BASE_URL="http://127.0.0.1:${PORT}"
+BDM_PKG="browser-driver-manager@2.0.1"
 
 npm run build
 
@@ -34,10 +35,27 @@ if ! curl -fsS "${BASE_URL}/" >/dev/null 2>&1; then
 fi
 
 # Keep Chrome for Testing + ChromeDriver in sync (local + CI).
-npx --yes browser-driver-manager install chrome >/tmp/bdm-install.log
-eval "$(npx --yes browser-driver-manager which)"
+# Never eval installer stdout — parse KEY="value" lines only.
+npx --yes "${BDM_PKG}" install chrome >/tmp/bdm-install.log
 
-if [[ -z "${CHROMEDRIVER_TEST_PATH:-}" || -z "${CHROME_TEST_PATH:-}" ]]; then
+CHROME_TEST_PATH=""
+CHROMEDRIVER_TEST_PATH=""
+while IFS= read -r line || [[ -n "${line}" ]]; do
+  case "${line}" in
+    CHROME_TEST_PATH=*)
+      CHROME_TEST_PATH="${line#CHROME_TEST_PATH=}"
+      CHROME_TEST_PATH="${CHROME_TEST_PATH#\"}"
+      CHROME_TEST_PATH="${CHROME_TEST_PATH%\"}"
+      ;;
+    CHROMEDRIVER_TEST_PATH=*)
+      CHROMEDRIVER_TEST_PATH="${line#CHROMEDRIVER_TEST_PATH=}"
+      CHROMEDRIVER_TEST_PATH="${CHROMEDRIVER_TEST_PATH#\"}"
+      CHROMEDRIVER_TEST_PATH="${CHROMEDRIVER_TEST_PATH%\"}"
+      ;;
+  esac
+done < <(npx --yes "${BDM_PKG}" which 2>/dev/null || true)
+
+if [[ -z "${CHROMEDRIVER_TEST_PATH}" || -z "${CHROME_TEST_PATH}" ]]; then
   echo "Could not resolve Chrome/ChromeDriver via browser-driver-manager."
   cat /tmp/bdm-install.log || true
   exit 1

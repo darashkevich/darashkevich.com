@@ -69,7 +69,7 @@ jobs:
               "",
               "PSI: https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fdarashkevich.com%2F",
               "Reference template: `templates/seo-landing-page-template.md`"
-            ].join("\\n");
+            ].join("\n");
 
             await github.rest.issues.create({
               owner,

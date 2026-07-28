@@ -9,6 +9,9 @@ on:
   schedule:
     - cron: "0 12 * * *"
 
+permissions:
+  contents: read
+
 jobs:
   audit-production:
     runs-on: ubuntu-latest
@@ -21,4 +24,5 @@ jobs:
           SITE_URL: https://darashkevich.com
           MAX_RETRIES: "15"
           RETRY_DELAY_SECONDS: "20"
+          HOST_DUP_STRICT: "1"
         run: bash ./scripts/audit-production.sh

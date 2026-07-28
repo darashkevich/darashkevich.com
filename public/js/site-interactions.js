@@ -4,6 +4,9 @@ const scrollBehavior = prefersReducedMotion ? 'auto' : 'smooth';
 document.documentElement.classList.add('js');
 
 document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+  // Mobile nav links are owned by mobile-menu.js (focus + scroll after drawer close).
+  if (anchor.classList.contains('mobile-nav-link')) return;
+
   anchor.addEventListener('click', function (e) {
     const href = anchor.getAttribute('href');
     if (!href || href === '#') return;

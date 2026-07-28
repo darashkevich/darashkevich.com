@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Create or replace apex CAA for darashkevich.com (Netlify Let's Encrypt account).
+# Create or replace apex CAA for darashkevich.com (Cloudflare Universal SSL issuers).
 #
 # Required env:
 #   CLOUDFLARE_API_TOKEN  — Zone:DNS:Edit on the darashkevich.com zone
@@ -15,7 +15,12 @@
 set -euo pipefail
 
 ZONE_NAME="darashkevich.com"
-CAA_VALUE='letsencrypt.org;accounturi=https://acme-v02.api.letsencrypt.org/acme/acct/54403714'
+# Cloudflare Universal SSL issues via Let's Encrypt and Google Trust Services.
+# No Netlify-only accounturi — that blocked CF renewal after Workers cutover.
+CAA_ISSUERS=(
+  "letsencrypt.org"
+  "pki.goog;cansignhttpexchanges=yes"
+)
 
 if [[ -z "${CLOUDFLARE_API_TOKEN:-}" ]]; then
   echo "CLOUDFLARE_API_TOKEN is not set."
@@ -39,64 +44,48 @@ if [[ -z "${CLOUDFLARE_ZONE_ID:-}" ]]; then
 fi
 
 echo "Zone: ${CLOUDFLARE_ZONE_ID}"
-echo "CAA issue: ${CAA_VALUE}"
+echo "CAA issuers: ${CAA_ISSUERS[*]}"
 
 existing="$(
   curl -fsS "${auth[@]}" \
     "https://api.cloudflare.com/client/v4/zones/${CLOUDFLARE_ZONE_ID}/dns_records?type=CAA&name=${ZONE_NAME}"
 )"
 
-# Bash 3.2-compatible (macOS /bin/bash has no mapfile).
+# Remove all existing apex CAA issue records, then recreate the desired set.
 record_ids="$(
   python3 -c 'import json,sys; d=json.load(sys.stdin); print("\n".join(r["id"] for r in (d.get("result") or [])))' <<<"${existing}"
 )"
 
-desired_payload="$(python3 - <<PY
-import json
+while IFS= read -r rid; do
+  [[ -z "${rid}" ]] && continue
+  echo "Removing existing CAA ${rid}..."
+  curl -fsS -X DELETE "${auth[@]}" \
+    "https://api.cloudflare.com/client/v4/zones/${CLOUDFLARE_ZONE_ID}/dns_records/${rid}" \
+    | python3 -c 'import json,sys; d=json.load(sys.stdin); raise SystemExit(0 if d.get("success") else 1)'
+done <<<"${record_ids}"
+
+for issuer in "${CAA_ISSUERS[@]}"; do
+  desired_payload="$(
+    CAA_VALUE="${issuer}" python3 - <<'PY'
+import json, os
 print(json.dumps({
   "type": "CAA",
   "name": "@",
   "data": {
     "flags": 0,
     "tag": "issue",
-    "value": "${CAA_VALUE}"
+    "value": os.environ["CAA_VALUE"]
   },
   "ttl": 3600,
-  "comment": "Netlify Let's Encrypt account binding for darashkevich.com"
+  "comment": "Cloudflare Universal SSL issuer for darashkevich.com"
 }))
 PY
-)"
-
-matched=""
-while IFS= read -r rid; do
-  [[ -z "${rid}" ]] && continue
-  detail="$(
-    curl -fsS "${auth[@]}" \
-      "https://api.cloudflare.com/client/v4/zones/${CLOUDFLARE_ZONE_ID}/dns_records/${rid}"
   )"
-  same="$(
-    python3 -c 'import json,sys; d=json.load(sys.stdin); r=d.get("result") or {}; data=r.get("data") or {};
-print("1" if data.get("tag")=="issue" and data.get("value")==sys.argv[1] and int(data.get("flags",0))==0 else "0")' \
-      "${CAA_VALUE}" <<<"${detail}"
-  )"
-  if [[ "${same}" == "1" ]]; then
-    matched="${rid}"
-  else
-    echo "Removing non-matching CAA ${rid}..."
-    curl -fsS -X DELETE "${auth[@]}" \
-      "https://api.cloudflare.com/client/v4/zones/${CLOUDFLARE_ZONE_ID}/dns_records/${rid}" \
-      | python3 -c 'import json,sys; d=json.load(sys.stdin); raise SystemExit(0 if d.get("success") else 1)'
-  fi
-done <<<"${record_ids}"
-
-if [[ -n "${matched}" ]]; then
-  echo "Desired CAA already present (${matched})."
-else
-  echo "Creating CAA issue record..."
+  echo "Creating CAA issue: ${issuer}"
   curl -fsS -X POST "${auth[@]}" \
     --data "${desired_payload}" \
     "https://api.cloudflare.com/client/v4/zones/${CLOUDFLARE_ZONE_ID}/dns_records" \
     | python3 -c 'import json,sys; d=json.load(sys.stdin); raise SystemExit(0 if d.get("success") else 1)'
-fi
+done
 
 echo "Done. Verify with: dig +short CAA ${ZONE_NAME}"

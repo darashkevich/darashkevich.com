@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
+import SiteNav from '../components/SiteNav.astro';
+import Hero from '../components/Hero.astro';
 import SelectedImpact from '../components/SelectedImpact.astro';
 import CaseStudies from '../components/CaseStudies.astro';
 import PortfolioLogos from '../components/PortfolioLogos.astro';
@@ -17,7 +18,8 @@ import Footer from '../components/Footer.astro';
   description="Customer Experience and Support Operations executive specializing in SaaS, eCommerce, subscription, Zendesk, AI self-service, and scalable support teams."
   image="/og-image.png"
 >
-  <Header />
+  <SiteNav slot="header" />
+  <Hero />
   <SelectedImpact />
   <PortfolioLogos />
   <About />
@@ -26,5 +28,5 @@ import Footer from '../components/Footer.astro';
   <ExecutiveFocus />
   <Services />
   <Contact />
-  <Footer />
+  <Footer slot="footer" />
 </Layout>

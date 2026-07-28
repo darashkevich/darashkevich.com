@@ -14,8 +14,6 @@ export type FlightSegment = {
   departureTime?: string;
   arrivalTime?: string;
   aircraft?: string;
-  bookingRef?: string;
-  ticketNumber?: string;
   source: FlightSource;
   confidence: FlightConfidence;
   notes?: string;
@@ -44,10 +42,9 @@ export const flightSegments: FlightSegment[] = [
     departureTime: '10:05 AM',
     arrivalTime: '10:55 AM',
     aircraft: 'B737-500',
-    bookingRef: '2ETAIZ',
     source: 'pdf',
     confidence: 'confirmed',
-    notes: 'Ventotour itinerary; CSA record OK/YZL83.'
+    notes: 'Ventotour itinerary; CSA record on file.'
   },
   {
     id: '2006-08-20-prg-ewr',
@@ -62,10 +59,9 @@ export const flightSegments: FlightSegment[] = [
     departureTime: '12:35 PM',
     arrivalTime: '3:45 PM',
     aircraft: 'A310',
-    bookingRef: '2ETAIZ',
     source: 'pdf',
     confidence: 'confirmed',
-    notes: 'Ventotour itinerary; CSA record OK/YZL83.'
+    notes: 'Ventotour itinerary; CSA record on file.'
   },
   {
     id: '2006-08-20-ewr-syr',
@@ -80,10 +76,9 @@ export const flightSegments: FlightSegment[] = [
     departureTime: '9:20 PM',
     arrivalTime: '10:38 PM',
     aircraft: 'ERJ135',
-    bookingRef: '2ETAIZ',
     source: 'pdf',
     confidence: 'confirmed',
-    notes: 'Ventotour itinerary; operated by ExpressJet; CO record BW0RRY.'
+    notes: 'Ventotour itinerary; operated by ExpressJet; CO record on file.'
   },
   // 2007 / 2008 Delta
   {
@@ -163,8 +158,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'LX1249',
     departureTime: '09:00',
     arrivalTime: '09:45',
-    bookingRef: 'AH5AN4',
-    ticketNumber: '2202347294378',
     source: 'pdf',
     confidence: 'confirmed'
   },
@@ -180,8 +173,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'LX052',
     departureTime: '16:50',
     arrivalTime: '17:30',
-    bookingRef: 'AH5AN4',
-    ticketNumber: '2202347294378',
     source: 'pdf',
     confidence: 'confirmed'
   },
@@ -196,8 +187,6 @@ export const flightSegments: FlightSegment[] = [
     airline: 'Lufthansa',
     flightNumber: 'LH425',
     arrivalTime: '20:20',
-    bookingRef: 'AH5AN4',
-    ticketNumber: '2202347294378',
     source: 'pdf',
     confidence: 'confirmed'
   },
@@ -212,8 +201,6 @@ export const flightSegments: FlightSegment[] = [
     airline: 'Lufthansa',
     flightNumber: 'LH2416',
     arrivalTime: '12:10',
-    bookingRef: 'AH5AN4',
-    ticketNumber: '2202347294378',
     source: 'pdf',
     confidence: 'confirmed'
   },
@@ -230,7 +217,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'US434',
     departureTime: '21:55',
     arrivalTime: '8 Aug 06:19',
-    bookingRef: '1113423068261',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -246,7 +232,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'US4467',
     departureTime: '08:15',
     arrivalTime: '09:39',
-    bookingRef: '1113423068261',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -264,10 +249,9 @@ export const flightSegments: FlightSegment[] = [
     departureTime: '10:30',
     arrivalTime: '11:10',
     aircraft: 'Boeing 737',
-    bookingRef: 'FPDIPE',
     source: 'gmail',
     confidence: 'confirmed',
-    notes: 'CheapTickets booking PBCTIX-826-798-9854; requested seats unavailable.'
+    notes: 'CheapTickets booking; requested seats unavailable.'
   },
   {
     id: '2015-11-21-ams-bos',
@@ -282,10 +266,9 @@ export const flightSegments: FlightSegment[] = [
     departureTime: '10:30',
     arrivalTime: '12:36',
     aircraft: 'Airbus A333',
-    bookingRef: '5AIFKV',
     source: 'gmail',
     confidence: 'confirmed',
-    notes: 'Operated by Delta Air Lines; seat 30-C. CheapTickets booking PBCTIX-826-798-9854.'
+    notes: 'Operated by Delta Air Lines; assigned seat. CheapTickets booking.'
   },
   {
     id: '2015-12-13-bos-ams',
@@ -300,10 +283,9 @@ export const flightSegments: FlightSegment[] = [
     departureTime: '19:20',
     arrivalTime: '14 Dec 08:15',
     aircraft: 'Airbus A333',
-    bookingRef: '5AIFKV',
     source: 'gmail',
     confidence: 'confirmed',
-    notes: 'Operated by Delta Air Lines; seat 36-H. CheapTickets booking PBCTIX-826-798-9854.'
+    notes: 'Operated by Delta Air Lines; assigned seat. CheapTickets booking.'
   },
   {
     id: '2015-12-14-ams-msq',
@@ -318,10 +300,9 @@ export const flightSegments: FlightSegment[] = [
     departureTime: '12:00',
     arrivalTime: '16:30',
     aircraft: 'Boeing 737',
-    bookingRef: 'FPDIPE',
     source: 'gmail',
     confidence: 'confirmed',
-    notes: 'CheapTickets booking PBCTIX-826-798-9854; requested seats unavailable.'
+    notes: 'CheapTickets booking; requested seats unavailable.'
   },
   // 2016
   {
@@ -336,7 +317,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'FR6121',
     departureTime: '10:15',
     arrivalTime: '15:05',
-    bookingRef: 'VPKBPT',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -352,7 +332,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'PC635',
     departureTime: '16:40',
     arrivalTime: '18:45',
-    bookingRef: 'OB7503',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -368,7 +347,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'PC450',
     departureTime: '22:25',
     arrivalTime: '1 Mar 02:25',
-    bookingRef: '0B7F46',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -384,8 +362,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'PS612',
     departureTime: '07:05',
     arrivalTime: '08:15',
-    bookingRef: '2OZ8Y7',
-    ticketNumber: '5662401790436',
     source: 'pdf',
     confidence: 'confirmed'
   },
@@ -401,8 +377,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'PS9344',
     departureTime: '09:20',
     arrivalTime: '11:10',
-    bookingRef: '2OZ8Y7',
-    ticketNumber: '5662401790436',
     source: 'pdf',
     confidence: 'confirmed',
     notes: 'Operated by Belavia B2 844.'
@@ -506,7 +480,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'B2 830',
     departureTime: '18:05',
     arrivalTime: '20:00',
-    bookingRef: 'PDCNIU',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -522,7 +495,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'B2 839',
     departureTime: '13:30',
     arrivalTime: '14:30',
-    bookingRef: 'QDOCMB',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -538,8 +510,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'AF0333',
     departureTime: '19:20',
     arrivalTime: '3 Jul 08:15',
-    bookingRef: '6US4YJ',
-    ticketNumber: '0577994283994',
     source: 'pdf',
     confidence: 'confirmed'
   },
@@ -553,7 +523,6 @@ export const flightSegments: FlightSegment[] = [
     destinationCity: 'Amsterdam',
     airline: 'Belavia',
     flightNumber: 'B2 867',
-    bookingRef: 'CBHNQP',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -584,8 +553,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'PS892',
     departureTime: '17:20',
     arrivalTime: '18:25',
-    bookingRef: 'KT428Q',
-    ticketNumber: '5662411744193',
     source: 'pdf',
     confidence: 'confirmed',
     notes: 'Booked 22 Jul 2018.'
@@ -604,7 +571,7 @@ export const flightSegments: FlightSegment[] = [
     arrivalTime: '29 Jul 00:50',
     source: 'pdf',
     confidence: 'confirmed',
-    notes: 'Charter ticket 670658.'
+    notes: 'Charter ticket.'
   },
   {
     id: '2018-08-04-tia-iev',
@@ -620,7 +587,7 @@ export const flightSegments: FlightSegment[] = [
     arrivalTime: '23:20',
     source: 'pdf',
     confidence: 'confirmed',
-    notes: 'Charter ticket 670658.'
+    notes: 'Charter ticket.'
   },
   {
     id: '2018-08-05-iev-msq',
@@ -634,7 +601,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'B2 848',
     departureTime: '05:55',
     arrivalTime: '06:55',
-    bookingRef: 'ZEHXQF',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -650,8 +616,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'SN2372',
     departureTime: '17:15',
     arrivalTime: '18:40',
-    bookingRef: 'R8DICN',
-    ticketNumber: '0822182454553',
     source: 'pdf',
     confidence: 'confirmed'
   },
@@ -667,8 +631,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'SN2371',
     departureTime: '13:15',
     arrivalTime: '16:30',
-    bookingRef: 'R8DICN',
-    ticketNumber: '0822182454553',
     source: 'pdf',
     confidence: 'confirmed'
   },
@@ -682,10 +644,9 @@ export const flightSegments: FlightSegment[] = [
     destinationCity: 'Paris CDG',
     airline: 'Belavia',
     flightNumber: 'B2 865',
-    bookingRef: 'W4MTJ4',
     source: 'gmail',
     confidence: 'confirmed',
-    notes: 'CheapOair booking 55142037; booked Nov 15, 2018.'
+    notes: 'CheapOair booking; booked Nov 15, 2018.'
   },
   {
     id: '2018-11-20-cdg-bos',
@@ -697,10 +658,9 @@ export const flightSegments: FlightSegment[] = [
     destinationCity: 'Boston',
     airline: 'Air France',
     flightNumber: 'AF334',
-    bookingRef: 'W4MTJ4',
     source: 'gmail',
     confidence: 'confirmed',
-    notes: 'CheapOair booking 55142037; booked Nov 15, 2018.'
+    notes: 'CheapOair booking; booked Nov 15, 2018.'
   },
   {
     id: '2019-10-04-msq-ams',
@@ -714,7 +674,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'KL3086',
     departureTime: '09:30',
     arrivalTime: '11:10',
-    bookingRef: 'S8P5DG',
     source: 'gmail',
     confidence: 'confirmed',
     notes: 'Operated by Belavia.'
@@ -731,7 +690,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'KL0607',
     departureTime: '12:35',
     arrivalTime: '14:35',
-    bookingRef: 'S8P5DG',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -747,7 +705,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'AS30',
     departureTime: '08:25',
     arrivalTime: '16:45',
-    bookingRef: 'XTDBNH',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -763,7 +720,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'DL 404',
     departureTime: '19:04',
     arrivalTime: '26 Oct 08:10',
-    bookingRef: 'G6ILBN',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -779,7 +735,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'AF3766',
     departureTime: '11:15',
     arrivalTime: '15:15',
-    bookingRef: 'G6ILBN',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -810,7 +765,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'B2 735',
     departureTime: '22:40',
     arrivalTime: '28 Mar 02:40',
-    bookingRef: 'XUHYDS',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -826,7 +780,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'B2 736',
     departureTime: '03:45',
     arrivalTime: '05:45',
-    bookingRef: 'XUHYDS',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -903,7 +856,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'B2 939',
     departureTime: '12:40',
     arrivalTime: '13:55',
-    bookingRef: 'WLEBOB',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -919,7 +871,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'B2 940',
     departureTime: '14:45',
     arrivalTime: '16:10',
-    bookingRef: 'WLEBOB',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -967,7 +918,6 @@ export const flightSegments: FlightSegment[] = [
     destinationCode: 'FCO',
     destinationCity: 'Rome',
     airline: 'Wizz Air',
-    bookingRef: 'EG97TT',
     source: 'pdf',
     confidence: 'confirmed',
     notes: 'Invoice 108698434Z; purchased 12 May 2022.'
@@ -1010,7 +960,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'B2 735',
     departureTime: '22:50',
     arrivalTime: '22 Oct 03:55',
-    bookingRef: 'FFDDGE',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -1026,7 +975,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'B2 736',
     departureTime: '05:05',
     arrivalTime: '08:15',
-    bookingRef: 'FFDDGE',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -1043,7 +991,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'B2 735',
     departureTime: '22:50',
     arrivalTime: '1 Apr 03:55',
-    bookingRef: 'VAAKGO',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -1059,7 +1006,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'B2 736',
     departureTime: '05:00',
     arrivalTime: '08:10',
-    bookingRef: 'VAAKGO',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -1072,7 +1018,6 @@ export const flightSegments: FlightSegment[] = [
     destinationCode: 'MSG',
     destinationCity: 'Mestia',
     airline: 'Vanilla Sky / Air Georgia',
-    ticketNumber: '2980110',
     departureTime: '09:30',
     source: 'user-confirmed',
     confidence: 'confirmed'
@@ -1086,7 +1031,6 @@ export const flightSegments: FlightSegment[] = [
     destinationCode: 'UGS',
     destinationCity: 'Natakhtari',
     airline: 'Vanilla Sky / Air Georgia',
-    ticketNumber: '2163568',
     departureTime: '14:00',
     source: 'user-confirmed',
     confidence: 'confirmed',
@@ -1105,11 +1049,9 @@ export const flightSegments: FlightSegment[] = [
     departureTime: '11:00',
     arrivalTime: '15:45',
     aircraft: 'Airbus A320',
-    bookingRef: '200185197',
-    ticketNumber: '2532300187407',
     source: 'pdf',
     confidence: 'confirmed',
-    notes: 'Fly Arna itinerary; seat 1D, 20 kg baggage.'
+    notes: 'Fly Arna itinerary; assigned seat, 20 kg baggage.'
   },
   {
     id: '2023-05-01-evn-tbs',
@@ -1123,7 +1065,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'A93724',
     departureTime: '18:20',
     arrivalTime: '18:50',
-    bookingRef: 'NM2IUP',
     source: 'gmail',
     confidence: 'confirmed',
     notes: 'Order M7VTET.'
@@ -1138,7 +1079,6 @@ export const flightSegments: FlightSegment[] = [
     destinationCity: 'Warsaw',
     airline: 'LOT',
     flightNumber: 'LO726',
-    bookingRef: 'TQSGMR',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -1152,7 +1092,6 @@ export const flightSegments: FlightSegment[] = [
     destinationCity: 'Szczecin',
     airline: 'LOT',
     flightNumber: 'LO3933',
-    bookingRef: 'J7U5Z2',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -1166,7 +1105,6 @@ export const flightSegments: FlightSegment[] = [
     destinationCity: 'Tbilisi',
     airline: 'LOT',
     flightNumber: 'LO723',
-    bookingRef: 'TQSGMR',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -1182,7 +1120,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'B2 785',
     departureTime: '14:55',
     arrivalTime: '20:35',
-    bookingRef: 'CZLYPM',
     source: 'gmail',
     confidence: 'confirmed',
     notes: 'CZLYPM outbound only. Scheduled IST→MSQ return Jul 22 was not flown; continued BOS→IST→TBS Jul 21–23 instead.'
@@ -1212,7 +1149,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'Y4134',
     departureTime: '10:47',
     arrivalTime: '11:47',
-    bookingRef: 'BCFK7G',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -1228,7 +1164,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'Y4327',
     departureTime: '17:50',
     arrivalTime: '19:25',
-    bookingRef: 'P923MV',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -1254,7 +1189,6 @@ export const flightSegments: FlightSegment[] = [
     destinationCode: 'WAW',
     destinationCity: 'Warsaw',
     airline: 'Wizz Air',
-    bookingRef: 'VLB6UA',
     source: 'pdf',
     confidence: 'partial',
     notes: 'Invoice 142517011Z; travel date not on invoice (date from performance field).'
@@ -1269,7 +1203,6 @@ export const flightSegments: FlightSegment[] = [
     destinationCity: 'Warsaw',
     airline: 'LOT',
     flightNumber: 'LO724',
-    bookingRef: 'SSDZWF',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -1283,7 +1216,6 @@ export const flightSegments: FlightSegment[] = [
     destinationCity: 'Tbilisi',
     airline: 'LOT',
     flightNumber: 'LO723',
-    bookingRef: 'N6JA5U',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -1325,8 +1257,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'LO724',
     departureTime: '05:25',
     arrivalTime: '06:20',
-    bookingRef: 'MVE5KA',
-    ticketNumber: '0802417727070',
     source: 'pdf',
     confidence: 'confirmed',
     notes: 'One-way relocation to Warsaw (MVE5KA). No TBS return logged in 2024.'
@@ -1382,10 +1312,9 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'LO282',
     departureTime: '10:15 AM',
     arrivalTime: '1:45 PM',
-    bookingRef: '372SST',
     source: 'gmail',
     confidence: 'confirmed',
-    notes: 'CheapOair booking 87185320; booked Sep 10, 2024. Departed LHR Terminal 2, Gate A16; arrived WAW Terminal A.'
+    notes: 'CheapOair booking; booked Sep 10, 2024. Departed LHR Terminal 2, Gate A16; arrived WAW Terminal A.'
   },
   {
     id: '2024-11-02-waw-ath',
@@ -1397,7 +1326,6 @@ export const flightSegments: FlightSegment[] = [
     destinationCity: 'Athens',
     airline: 'LOT',
     flightNumber: 'LO603',
-    bookingRef: 'VUKCK8',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -1540,7 +1468,6 @@ export const flightSegments: FlightSegment[] = [
     destinationCity: 'Warsaw',
     airline: 'LOT',
     flightNumber: 'LO426',
-    bookingRef: 'YJL6JZ',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -1650,10 +1577,9 @@ export const flightSegments: FlightSegment[] = [
     destinationCode: 'WAW',
     destinationCity: 'Warsaw',
     airline: 'LOT',
-    bookingRef: 'Z3KP9F',
     source: 'gmail',
     confidence: 'confirmed',
-    notes: 'Same-day replacement after missing TAP LIS→WAW outbound on booking YZ97SP.'
+    notes: 'Same-day replacement after missing TAP LIS→WAW outbound on a prior booking.'
   },
   {
     id: '2025-12-15-waw-lis',
@@ -1667,7 +1593,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'TP1205',
     departureTime: '13:00',
     arrivalTime: '16:25',
-    bookingRef: 'YZ97SP',
     source: 'user-confirmed',
     confidence: 'confirmed',
     notes: 'Executive (J). Return leg of YZ97SP; missed outbound 2025-11-21 (flew LOT instead).'
@@ -1685,7 +1610,6 @@ export const flightSegments: FlightSegment[] = [
     departureTime: '12:05',
     arrivalTime: '17:05',
     aircraft: 'A321neo',
-    bookingRef: 'YDM6BX',
     source: 'user-confirmed',
     confidence: 'confirmed',
     notes: 'CLASSIC fare. Outbound of YDM6BX round trip; return 2025-12-28.'
@@ -1703,7 +1627,6 @@ export const flightSegments: FlightSegment[] = [
     departureTime: '13:00',
     arrivalTime: '16:25',
     aircraft: 'A321',
-    bookingRef: 'YDM6BX',
     source: 'user-confirmed',
     confidence: 'confirmed',
     notes: 'CLASSIC fare. Return of YDM6BX round trip; outbound 2025-12-19.'
@@ -1719,7 +1642,6 @@ export const flightSegments: FlightSegment[] = [
     destinationCity: 'Istanbul',
     airline: 'Turkish Airlines',
     flightNumber: 'TK1756',
-    bookingRef: 'SCAXTK',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -1733,7 +1655,6 @@ export const flightSegments: FlightSegment[] = [
     destinationCity: 'Lisbon',
     airline: 'Turkish Airlines',
     flightNumber: 'TK1759',
-    bookingRef: 'SCAXTK',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -1749,8 +1670,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'TP1336',
     departureTime: '13:10',
     arrivalTime: '15:50',
-    bookingRef: 'Y6E75E',
-    ticketNumber: '0472523879918',
     source: 'user-confirmed',
     confidence: 'confirmed',
     notes: 'TAP e-ticket: LIS→London Gatwick (not Manchester).'
@@ -1765,7 +1684,6 @@ export const flightSegments: FlightSegment[] = [
     destinationCity: 'Lisbon',
     airline: 'TAP Air Portugal',
     flightNumber: 'TP1313',
-    bookingRef: 'Y6E75E',
     source: 'user-confirmed',
     confidence: 'confirmed',
     notes: 'Return from Manchester; outbound on Mar 6 was London Gatwick.'
@@ -1820,7 +1738,6 @@ export const flightSegments: FlightSegment[] = [
     destinationCity: 'Madrid',
     airline: 'LOT',
     flightNumber: 'LO433',
-    bookingRef: 'KIWRR4',
     source: 'inferred',
     confidence: 'confirmed'
   },
@@ -1860,7 +1777,6 @@ export const flightSegments: FlightSegment[] = [
     destinationCity: 'Warsaw',
     airline: 'LOT',
     flightNumber: 'LO434',
-    bookingRef: 'KIWRR4',
     source: 'inferred',
     confidence: 'confirmed'
   },
@@ -2141,10 +2057,9 @@ export const flightSegments: FlightSegment[] = [
     destinationCity: 'Paris CDG',
     airline: 'Air France',
     flightNumber: 'AF3767',
-    bookingRef: 'BKRNJP',
     source: 'gmail',
     confidence: 'confirmed',
-    notes: 'CheapOair booking 41530820; booked Apr 2, 2017.'
+    notes: 'CheapOair booking; booked Apr 2, 2017.'
   },
   {
     id: '2017-05-25-cdg-bos',
@@ -2156,10 +2071,9 @@ export const flightSegments: FlightSegment[] = [
     destinationCity: 'Boston',
     airline: 'Air France',
     flightNumber: 'AF334',
-    bookingRef: 'BKRNJP',
     source: 'gmail',
     confidence: 'confirmed',
-    notes: 'CheapOair booking 41530820; booked Apr 2, 2017.'
+    notes: 'CheapOair booking; booked Apr 2, 2017.'
   },
   {
     id: '2017-07-03-cdg-msq',
@@ -2171,7 +2085,6 @@ export const flightSegments: FlightSegment[] = [
     destinationCity: 'Minsk',
     airline: 'Air France',
     flightNumber: 'AF3764',
-    bookingRef: '6US4YJ',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -2239,7 +2152,7 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'KL6016',
     source: 'inferred',
     confidence: 'confirmed',
-    notes: 'CheapOair booking 43637433; booked Jul 13, 2017. Itinerary departed BOS Nov 1 and arrived MSQ Nov 2.'
+    notes: 'CheapOair booking; booked Jul 13, 2017. Itinerary departed BOS Nov 1 and arrived MSQ Nov 2.'
   },
   {
     id: '2017-11-02-ams-msq',
@@ -2253,7 +2166,7 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'B2 868',
     source: 'inferred',
     confidence: 'confirmed',
-    notes: 'CheapOair booking 43637433; booked Jul 13, 2017. Connects from BOS→AMS.'
+    notes: 'CheapOair booking; booked Jul 13, 2017. Connects from BOS→AMS.'
   },
   {
     id: '2017-12-05-iev-msq',
@@ -2267,7 +2180,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'B2 830',
     departureTime: '18:05',
     arrivalTime: '20:00',
-    bookingRef: 'PDCNIU',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -2284,7 +2196,7 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'B2 867',
     source: 'inferred',
     confidence: 'confirmed',
-    notes: 'CheapOair booking 47083260; booked Dec 16, 2017.'
+    notes: 'CheapOair booking; booked Dec 16, 2017.'
   },
   {
     id: '2018-01-14-ams-bos',
@@ -2298,7 +2210,7 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'KL6017',
     source: 'inferred',
     confidence: 'confirmed',
-    notes: 'CheapOair booking 47083260; booked Dec 16, 2017.'
+    notes: 'CheapOair booking; booked Dec 16, 2017.'
   },
   {
     id: '2018-03-24-bos-cdg',
@@ -2325,7 +2237,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'B2 864',
     departureTime: '10:30',
     arrivalTime: '15:30',
-    bookingRef: 'TGKHZN',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -2341,10 +2252,9 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'B2 867',
     departureTime: '09:30',
     arrivalTime: '11:10',
-    bookingRef: 'CBJZTH',
     source: 'gmail',
     confidence: 'confirmed',
-    notes: 'CheapOair booking 50476551; booked May 11, 2018.'
+    notes: 'CheapOair booking; booked May 11, 2018.'
   },
   {
     id: '2018-05-23-ams-bos',
@@ -2358,7 +2268,7 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'KL6031',
     source: 'inferred',
     confidence: 'confirmed',
-    notes: 'CheapOair booking 50476551; booked May 11, 2018.'
+    notes: 'CheapOair booking; booked May 11, 2018.'
   },
   {
     id: '2018-07-24-bos-cdg',
@@ -2425,7 +2335,7 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'AF3767',
     source: 'inferred',
     confidence: 'confirmed',
-    notes: 'CheapOair booking 57425917; booked Feb 26, 2019.'
+    notes: 'CheapOair booking; booked Feb 26, 2019.'
   },
   {
     id: '2019-03-08-cdg-bos',
@@ -2439,7 +2349,7 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'AF334',
     source: 'inferred',
     confidence: 'confirmed',
-    notes: 'CheapOair booking 57425917; booked Feb 26, 2019.'
+    notes: 'CheapOair booking; booked Feb 26, 2019.'
   },
   {
     id: '2019-03-22-bos-cdg',
@@ -2453,7 +2363,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'AF3663',
     departureTime: '20:01',
     arrivalTime: '23 Mar 08:10',
-    bookingRef: 'OVH8Y9',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -2482,7 +2391,7 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'AF3767',
     source: 'inferred',
     confidence: 'confirmed',
-    notes: 'CheapOair booking 59689150; booked May 19, 2019.'
+    notes: 'CheapOair booking; booked May 19, 2019.'
   },
   {
     id: '2019-05-23-cdg-bos',
@@ -2496,7 +2405,7 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'AF334',
     source: 'inferred',
     confidence: 'confirmed',
-    notes: 'CheapOair booking 59689150; booked May 19, 2019.'
+    notes: 'CheapOair booking; booked May 19, 2019.'
   },
   {
     id: '2019-06-12-bos-cdg',
@@ -2510,7 +2419,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'AF3663',
     departureTime: '19:03',
     arrivalTime: '13 Jun 08:10',
-    bookingRef: 'KMZ67O',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -2526,7 +2434,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'AF3766',
     departureTime: '11:15',
     arrivalTime: '15:15',
-    bookingRef: 'KMZ67O',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -2542,7 +2449,7 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'LH1489',
     source: 'inferred',
     confidence: 'confirmed',
-    notes: 'CheapOair booking 64823863; booked Nov 19, 2019.'
+    notes: 'CheapOair booking; booked Nov 19, 2019.'
   },
   {
     id: '2019-11-23-fra-bos',
@@ -2556,7 +2463,7 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'LH422',
     source: 'inferred',
     confidence: 'confirmed',
-    notes: 'CheapOair booking 64823863; booked Nov 19, 2019.'
+    notes: 'CheapOair booking; booked Nov 19, 2019.'
   },
   {
     id: '2019-12-09-fra-msq',
@@ -2586,7 +2493,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'W68043',
     departureTime: '06:10',
     arrivalTime: '09:45',
-    bookingRef: 'A81M6F',
     source: 'gmail',
     confidence: 'confirmed',
     notes: 'Invoice 075695913Z; purchased 27 Jan 2020.'
@@ -2603,7 +2509,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'W68044',
     departureTime: '10:25',
     arrivalTime: '14:10',
-    bookingRef: 'A81M6F',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -2619,7 +2524,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'FR2836',
     departureTime: '07:30',
     arrivalTime: '11:45',
-    bookingRef: 'QZMNYB',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -2635,7 +2539,6 @@ export const flightSegments: FlightSegment[] = [
     flightNumber: 'W6 8094',
     departureTime: '11:00',
     arrivalTime: '15:10',
-    bookingRef: 'JFGS6A',
     source: 'gmail',
     confidence: 'confirmed'
   },
@@ -2716,7 +2619,6 @@ export const flightSegments: FlightSegment[] = [
     destinationCity: 'Warsaw',
     airline: 'LOT',
     flightNumber: 'LO3934',
-    bookingRef: 'J7U5Z2',
     source: 'inferred',
     confidence: 'confirmed'
   },
@@ -2791,7 +2693,6 @@ export const flightSegments: FlightSegment[] = [
     destinationCity: 'Warsaw',
     airline: 'LOT',
     flightNumber: 'LO724',
-    bookingRef: 'SOUPLY',
     source: 'inferred',
     confidence: 'confirmed'
   },
@@ -2805,7 +2706,6 @@ export const flightSegments: FlightSegment[] = [
     destinationCity: 'Tbilisi',
     airline: 'LOT',
     flightNumber: 'LO723',
-    bookingRef: 'SOUPLY',
     source: 'inferred',
     confidence: 'confirmed'
   },
@@ -2832,7 +2732,6 @@ export const flightSegments: FlightSegment[] = [
     destinationCity: 'Warsaw',
     airline: 'LOT',
     flightNumber: 'LO434',
-    bookingRef: 'KJ8ICO',
     source: 'inferred',
     confidence: 'confirmed'
   },
@@ -2925,7 +2824,6 @@ export const flightSegments: FlightSegment[] = [
     destinationCity: 'Lisbon',
     airline: 'LOT',
     flightNumber: 'LO425',
-    bookingRef: 'YJL6JZ',
     source: 'inferred',
     confidence: 'confirmed'
   },

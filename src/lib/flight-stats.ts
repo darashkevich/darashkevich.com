@@ -398,7 +398,7 @@ export function greatCircleLine(
   lat1: number,
   lon2: number,
   lat2: number,
-  steps = 64
+  steps = 24
 ): [number, number][] {
   const toRad = (deg: number) => (deg * Math.PI) / 180;
   const toDeg = (rad: number) => (rad * 180) / Math.PI;
@@ -416,6 +416,7 @@ export function greatCircleLine(
 
   if (d === 0) return [[lon1, lat1], [lon2, lat2]];
 
+  const round = (n: number) => Math.round(n * 1e4) / 1e4;
   const coords: [number, number][] = [];
   for (let i = 0; i <= steps; i += 1) {
     const f = i / steps;
@@ -428,7 +429,7 @@ export function greatCircleLine(
     const z = a * Math.sin(phi1) + b * Math.sin(phi2);
     const phi = Math.atan2(z, Math.hypot(x, y));
     const lambda = Math.atan2(y, x);
-    coords.push([toDeg(lambda), toDeg(phi)]);
+    coords.push([round(toDeg(lambda)), round(toDeg(phi))]);
   }
 
   return coords;
