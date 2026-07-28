@@ -14,6 +14,7 @@
  */
 
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -41,17 +42,19 @@ function parsePassword(authHeader) {
   }
 }
 
-function safeEqual(a, b) {
-  if (a.length !== b.length) return false;
+function safeEqualSync(a, b) {
+  // Mirror workers/flights-auth.ts: compare SHA-256 digests (fixed length).
+  const ha = createHash('sha256').update(a, 'utf8').digest();
+  const hb = createHash('sha256').update(b, 'utf8').digest();
   let mismatch = 0;
-  for (let i = 0; i < a.length; i++) mismatch |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  for (let i = 0; i < ha.length; i++) mismatch |= ha[i] ^ hb[i];
   return mismatch === 0;
 }
 
 function isAuthorized(authHeader, expectedPassword) {
   if (!expectedPassword) return false;
   const provided = parsePassword(authHeader);
-  return Boolean(provided && safeEqual(provided, expectedPassword));
+  return Boolean(provided && safeEqualSync(provided, expectedPassword));
 }
 
 function isFlightsPath(pathname) {
@@ -134,6 +137,13 @@ console.log('4. Source contains fail-closed gates + wrangler routing');
   else if (!wrangler.includes('"/flights"') || !wrangler.includes('"/flights/*"')) {
     fail('wrangler run_worker_first must cover /flights and /flights/*');
   } else pass('run_worker_first covers /flights paths');
+
+  if (!gate.includes('isFlightsPath')) fail('Worker gate missing isFlightsPath defense-in-depth');
+  else pass('Worker enforces isFlightsPath');
+
+  if (!gate.includes('recordAuthFailureAndLimited') && !gate.includes('rateLimitedResponse')) {
+    fail('Worker gate missing auth rate limiting');
+  } else pass('Worker rate-limits failed auth');
 }
 
 /** Live bases always checked unless FLIGHTS_SMOKE_SKIP_LIVE=1. Extra hosts via FLIGHTS_SMOKE_BASE_URL. */

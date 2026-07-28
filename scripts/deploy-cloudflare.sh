@@ -22,7 +22,7 @@ if [[ "${1:-}" == "--dry-run" ]]; then
   DRY_RUN=1
 fi
 
-CLI=(npx --yes wrangler@latest)
+CLI=(npx --yes wrangler@4.112.0)
 
 echo "Building site..."
 npm run build

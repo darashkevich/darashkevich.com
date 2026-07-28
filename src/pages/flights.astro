@@ -16,7 +16,7 @@ import FlightTable from '../components/flights/FlightTable.astro';
   description="A personal flight log reconstructed from tickets, boarding passes, PDFs, screenshots, and email receipts."
   noindex
 >
-  <LegalHeader />
+  <LegalHeader slot="header" />
 
   <div class="pt-10 pb-8 px-6">
     <div class="max-w-6xl mx-auto">
@@ -46,5 +46,5 @@ import FlightTable from '../components/flights/FlightTable.astro';
     </div>
   </div>
 
-  <Footer />
+  <Footer slot="footer" />
 </Layout>

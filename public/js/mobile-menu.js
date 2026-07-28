@@ -42,7 +42,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (focusable[0] || mobileMenuPanel).focus();
   }
 
-  function closeMobileMenu() {
+  function closeMobileMenu(options) {
+    const restoreFocus = !options || options.restoreFocus !== false;
+
     mobileMenu.classList.add('translate-x-full');
     mobileMenu.classList.remove('pointer-events-auto');
     mobileMenu.classList.add('pointer-events-none');
@@ -54,9 +56,28 @@ document.addEventListener('DOMContentLoaded', function () {
     mobileMenu.inert = true;
     document.body.style.overflow = '';
 
-    if (previouslyFocusedElement instanceof HTMLElement) {
+    if (restoreFocus && previouslyFocusedElement instanceof HTMLElement) {
       previouslyFocusedElement.focus();
     }
+  }
+
+  function focusHashTarget(href) {
+    const targetElement = document.querySelector(href);
+    if (!(targetElement instanceof HTMLElement)) return;
+
+    targetElement.scrollIntoView({
+      behavior: scrollBehavior,
+      block: 'start'
+    });
+
+    if (window.location.hash !== href) {
+      window.history.pushState(null, '', href);
+    }
+
+    if (!targetElement.hasAttribute('tabindex')) {
+      targetElement.setAttribute('tabindex', '-1');
+    }
+    targetElement.focus({ preventScroll: true });
   }
 
   mobileNavLinks.forEach(function (link) {
@@ -64,21 +85,13 @@ document.addEventListener('DOMContentLoaded', function () {
       const href = link.getAttribute('href');
       if (!href || href === '#') return;
 
+      // Own in-page navigation so site-interactions.js does not fight focus restore.
       e.preventDefault();
-      closeMobileMenu();
+      e.stopImmediatePropagation();
+      closeMobileMenu({ restoreFocus: false });
 
       setTimeout(function () {
-        const targetElement = document.querySelector(href);
-        if (targetElement) {
-          targetElement.scrollIntoView({
-            behavior: scrollBehavior,
-            block: 'start'
-          });
-
-          if (window.location.hash !== href) {
-            window.history.pushState(null, '', href);
-          }
-        }
+        focusHashTarget(href);
       }, 180);
     });
   });
@@ -119,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   window.addEventListener('resize', function () {
     if (window.innerWidth >= 1024) {
-      closeMobileMenu();
+      closeMobileMenu({ restoreFocus: false });
     }
   });
 });

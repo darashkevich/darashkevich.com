@@ -32,7 +32,7 @@ const cfBeacon = cfAnalyticsToken
   : null;
 const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
 const bingSiteVerification = import.meta.env.PUBLIC_BING_SITE_VERIFICATION?.trim();
-const schemaJsonLd = JSON.stringify(siteSchema);
+const schemaJsonLd = JSON.stringify(siteSchema).replace(/</g, '\\u003c');
 const breadcrumbJsonLd =
   breadcrumbs.length > 0
     ? JSON.stringify({
@@ -44,7 +44,7 @@ const breadcrumbJsonLd =
           name: crumb.name,
           item: new URL(crumb.path, siteUrl).href,
         })),
-      })
+      }).replace(/</g, '\\u003c')
     : null;
 ---
 
@@ -99,9 +99,11 @@ const breadcrumbJsonLd =
       <div class="absolute top-[-10rem] left-[8%] w-[34rem] h-[34rem] rounded-full blur-3xl animate-float" style="background: radial-gradient(circle at center, var(--color-accent-cyan), transparent 66%);"></div>
       <div class="absolute top-[18%] right-[2%] w-[30rem] h-[30rem] rounded-full blur-3xl animate-float" style="background: radial-gradient(circle at center, var(--color-accent-blue), transparent 66%); animation-delay: 2.5s;"></div>
     </div>
+    <slot name="header" />
     <main id="main-content" tabindex="-1">
       <slot />
     </main>
+    <slot name="footer" />
     <script src="/js/site-interactions.js" defer></script>
     {cfBeacon && (
       <script

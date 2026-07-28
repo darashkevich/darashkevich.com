@@ -7,6 +7,9 @@ on:
       - master
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   verify:
     runs-on: ubuntu-latest
@@ -49,8 +52,23 @@ jobs:
             curl -fsS http://127.0.0.1:4173/ >/dev/null 2>&1 && break
             sleep 0.5
           done
-          npx --yes browser-driver-manager install chrome >/tmp/bdm-install.log
-          eval "$(npx --yes browser-driver-manager which)"
+          npx --yes browser-driver-manager@2.0.1 install chrome >/tmp/bdm-install.log
+          CHROME_TEST_PATH=""
+          CHROMEDRIVER_TEST_PATH=""
+          while IFS= read -r line || [[ -n "${line}" ]]; do
+            case "${line}" in
+              CHROME_TEST_PATH=*)
+                CHROME_TEST_PATH="${line#CHROME_TEST_PATH=}"
+                CHROME_TEST_PATH="${CHROME_TEST_PATH#\"}"
+                CHROME_TEST_PATH="${CHROME_TEST_PATH%\"}"
+                ;;
+              CHROMEDRIVER_TEST_PATH=*)
+                CHROMEDRIVER_TEST_PATH="${line#CHROMEDRIVER_TEST_PATH=}"
+                CHROMEDRIVER_TEST_PATH="${CHROMEDRIVER_TEST_PATH#\"}"
+                CHROMEDRIVER_TEST_PATH="${CHROMEDRIVER_TEST_PATH%\"}"
+                ;;
+            esac
+          done < <(npx --yes browser-driver-manager@2.0.1 which 2>/dev/null || true)
           export CHROME_BIN="${CHROME_TEST_PATH}"
           # Load delay avoids intermittent false color-contrast failures before CSS settles.
           npx axe http://127.0.0.1:4173/ \

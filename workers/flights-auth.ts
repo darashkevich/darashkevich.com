@@ -5,6 +5,12 @@ export const REALM = 'Flights (private)';
 export const FLIGHTS_CSP =
   "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' https://static.cloudflareinsights.com; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://api.maptiler.com https://cdn.maptiler.com https://demotiles.maplibre.org https://tiles.stadiamaps.com; font-src 'self' data: https://api.maptiler.com https://cdn.maptiler.com https://demotiles.maplibre.org https://tiles.stadiamaps.com; connect-src 'self' https://api.maptiler.com https://cdn.maptiler.com https://demotiles.maplibre.org https://tiles.stadiamaps.com https://cloudflareinsights.com; form-action 'self'; upgrade-insecure-requests";
 
+/** Failed-auth attempts per client (best-effort per isolate). */
+export const RATE_LIMIT_WINDOW_MS = 60_000;
+export const RATE_LIMIT_MAX_FAILURES = 20;
+
+const authFailures = new Map<string, { count: number; resetAt: number }>();
+
 export function parsePassword(authHeader: string | null): string | null {
   if (!authHeader?.startsWith('Basic ')) return null;
 
@@ -17,24 +23,53 @@ export function parsePassword(authHeader: string | null): string | null {
   }
 }
 
-export function safeEqual(a: string, b: string): boolean {
-  if (a.length !== b.length) return false;
-
+/** Constant-time compare via fixed-length SHA-256 digests (avoids length oracle). */
+export async function safeEqual(a: string, b: string): Promise<boolean> {
+  const enc = new TextEncoder();
+  const [ha, hb] = await Promise.all([
+    crypto.subtle.digest('SHA-256', enc.encode(a)),
+    crypto.subtle.digest('SHA-256', enc.encode(b)),
+  ]);
+  const ua = new Uint8Array(ha);
+  const ub = new Uint8Array(hb);
   let mismatch = 0;
-  for (let i = 0; i < a.length; i++) {
-    mismatch |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  for (let i = 0; i < ua.length; i++) {
+    mismatch |= ua[i] ^ ub[i];
   }
-
   return mismatch === 0;
 }
 
-export function isAuthorized(
+export async function isAuthorized(
   authHeader: string | null,
   expectedPassword: string,
-): boolean {
+): Promise<boolean> {
   if (!expectedPassword) return false;
   const provided = parsePassword(authHeader);
-  return Boolean(provided && safeEqual(provided, expectedPassword));
+  return Boolean(provided && (await safeEqual(provided, expectedPassword)));
+}
+
+export function clientKeyFromRequest(request: Request): string {
+  const cf = (request as Request & { cf?: { colo?: string } }).cf;
+  const forwarded = request.headers.get('CF-Connecting-IP')
+    ?? request.headers.get('X-Forwarded-For')?.split(',')[0]?.trim()
+    ?? '';
+  return forwarded || `anon:${cf?.colo ?? 'unknown'}`;
+}
+
+/** Returns true when this client should be blocked for too many failed auths. */
+export function recordAuthFailureAndLimited(clientKey: string): boolean {
+  const now = Date.now();
+  let entry = authFailures.get(clientKey);
+  if (!entry || now >= entry.resetAt) {
+    entry = { count: 0, resetAt: now + RATE_LIMIT_WINDOW_MS };
+    authFailures.set(clientKey, entry);
+  }
+  entry.count += 1;
+  return entry.count > RATE_LIMIT_MAX_FAILURES;
+}
+
+export function clearAuthFailures(clientKey: string): void {
+  authFailures.delete(clientKey);
 }
 
 export function unauthorizedResponse(body = 'Authentication required.'): Response {
@@ -44,6 +79,20 @@ export function unauthorizedResponse(body = 'Authentication required.'): Respons
       'WWW-Authenticate': `Basic realm="${REALM}", charset="UTF-8"`,
       'Cache-Control': 'no-store',
       'Content-Type': 'text/plain; charset=UTF-8',
+      'X-Content-Type-Options': 'nosniff',
+      'X-Frame-Options': 'DENY',
+      'Referrer-Policy': 'strict-origin-when-cross-origin',
+    },
+  });
+}
+
+export function rateLimitedResponse(): Response {
+  return new Response('Too many authentication attempts. Try again later.', {
+    status: 429,
+    headers: {
+      'Cache-Control': 'no-store',
+      'Content-Type': 'text/plain; charset=UTF-8',
+      'Retry-After': String(Math.ceil(RATE_LIMIT_WINDOW_MS / 1000)),
       'X-Content-Type-Options': 'nosniff',
       'X-Frame-Options': 'DENY',
       'Referrer-Policy': 'strict-origin-when-cross-origin',

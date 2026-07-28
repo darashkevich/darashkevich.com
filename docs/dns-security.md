@@ -9,7 +9,7 @@ Ops checklist from the site security review. Headers live in `netlify.toml`; DNS
 | SPF | Live (`v=spf1 include:icloud.com ~all`) | Keep aligned with senders |
 | DMARC | Live `p=none` + RUA to `yahor@darashkevich.com` | Review aggregates, then quarantine → reject ([setup-dmarc.md](../scripts/setup-dmarc.md)) |
 | DNSSEC | No public DS yet | Enable in Cloudflare ([setup-dnssec.md](../scripts/setup-dnssec.md)) |
-| CAA | None published | Add Netlify Let’s Encrypt account binding ([setup-caa.md](../scripts/setup-caa.md)) |
+| CAA | Cloudflare Universal SSL issuers | Keep `letsencrypt.org` + `pki.goog` ([setup-caa.md](../scripts/setup-caa.md)); do not use Netlify-only `accounturi` |
 | CSP | Site-wide baseline; map tile CDNs only on `/flights` | Keep map allowlist scoped |
 
 ## Apply DNS changes

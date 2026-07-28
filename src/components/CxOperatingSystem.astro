@@ -88,8 +88,16 @@ const stages = [
             stroke-linecap="round"
             opacity="0.45"
             pointer-events="none"
+            class="cx-os__pipe"
           >
-            <animate attributeName="stroke-dashoffset" from="0" to="-36" dur="2.8s" repeatCount="indefinite" />
+            <animate
+              class="cx-os__pipe-animate"
+              attributeName="stroke-dashoffset"
+              from="0"
+              to="-36"
+              dur="2.8s"
+              repeatCount="indefinite"
+            />
           </path>
 
           {stages.map((stage, index) => {
@@ -106,6 +114,7 @@ const stages = [
                 data-interactive-stage
                 tabindex="0"
                 role="button"
+                aria-pressed="false"
                 aria-label={`${stage.title}: ${stage.blurb}`}
               >
                 {/* Full stage target (node + label) so clicks aren't stolen by the parent SVG */}
@@ -298,6 +307,10 @@ const stages = [
 </style>
 
 <script>
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.cx-os__pipe-animate').forEach((el) => el.remove());
+  }
+
   const root = document.querySelector('[data-cx-os]');
   if (root) {
     const stages = root.querySelectorAll('[data-interactive-stage]');
@@ -308,7 +321,7 @@ const stages = [
     function clearLit() {
       stages.forEach((s) => {
         s.classList.remove('is-lit');
-        if (s instanceof HTMLButtonElement) s.setAttribute('aria-pressed', 'false');
+        s.setAttribute('aria-pressed', 'false');
       });
       if (live) live.textContent = defaultCopy;
     }
@@ -317,7 +330,7 @@ const stages = [
       stages.forEach((s) => {
         const active = s === stage;
         s.classList.toggle('is-lit', active);
-        if (s instanceof HTMLButtonElement) s.setAttribute('aria-pressed', active ? 'true' : 'false');
+        s.setAttribute('aria-pressed', active ? 'true' : 'false');
       });
       if (live && stage) {
         const title = stage.dataset.title ?? '';

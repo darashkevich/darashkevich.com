@@ -1,22 +1,17 @@
-<header class="relative min-h-[72vh] lg:min-h-[82vh] flex items-center justify-center overflow-hidden pb-10 sm:pb-14 lg:pb-16">
-  <!-- Ambient hero treatment -->
-  <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
-    <div class="absolute -top-16 left-[12%] w-[34rem] h-[34rem] rounded-full blur-3xl animate-float" style="background: radial-gradient(circle at center, color-mix(in srgb, var(--color-primary) 18%, transparent), transparent 68%);"></div>
-    <div class="absolute bottom-[-9rem] right-[6%] w-[30rem] h-[30rem] rounded-full blur-3xl animate-float" style="background: radial-gradient(circle at center, color-mix(in srgb, var(--color-primary-dark) 16%, transparent), transparent 70%); animation-delay: 3s;"></div>
-  </div>
-
+<header>
   <!-- Sticky/Fixed executive navigation -->
-  <div class="fixed top-0 left-0 right-0 z-50 pointer-events-auto border-b backdrop-blur-2xl" style="background-color: color-mix(in srgb, var(--color-bg) 82%, transparent); border-color: var(--color-border); box-shadow: 0 8px 26px rgba(2, 6, 12, 0.45);">
+  <div class="fixed top-0 left-0 right-0 z-50 pointer-events-auto border-b" style="background-color: color-mix(in srgb, var(--color-bg) 94%, transparent); border-color: var(--color-border); box-shadow: 0 8px 26px rgba(2, 6, 12, 0.45);">
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-4" aria-label="Primary">
-      <div class="rounded-[1.15rem] border px-4 sm:px-5 py-2.5 flex items-center justify-between gap-2 sm:gap-3 backdrop-blur-2xl" style="background-color: color-mix(in srgb, var(--color-surface) 88%, transparent); border-color: var(--color-border); box-shadow: 0 10px 24px rgba(2, 6, 12, 0.34);">
+      <div class="rounded-[1.15rem] border px-4 sm:px-5 py-2.5 flex items-center justify-between gap-2 sm:gap-3" style="background-color: color-mix(in srgb, var(--color-surface) 96%, transparent); border-color: var(--color-border); box-shadow: 0 10px 24px rgba(2, 6, 12, 0.34);">
         <!-- Brand photo + quick actions -->
         <div class="flex items-center gap-3 min-w-0 shrink">
-          <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden border shadow-lg backdrop-blur-xl" style="border-color: var(--color-border); background-color: rgba(24, 33, 49, 0.75);">
+          <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden border shadow-lg" style="border-color: var(--color-border); background-color: rgba(24, 33, 49, 0.75);">
             <img
               src="/images/avatar.webp"
               alt="Yahor Darashkevich"
               class="w-full h-full object-cover"
-              loading="lazy"
+              loading="eager"
+              fetchpriority="high"
               width="96"
               height="96"
               decoding="async"
@@ -142,63 +137,6 @@
       </div>
     </div>
 
-  <!-- Hero Content with Liquid Glass -->
-  <div class="relative z-10 text-center px-6 sm:px-8 lg:px-12 max-w-6xl mx-auto pt-24 sm:pt-28 lg:pt-36 pb-4 sm:pb-6">
-    <h1 class="text-5xl sm:text-6xl lg:text-[5.75rem] xl:text-[6.65rem] font-extrabold text-[var(--color-text)] mb-6 sm:mb-7 leading-[0.92] tracking-[-0.03em] max-w-[14ch] mx-auto">
-      Yahor Darashkevich
-    </h1>
-
-    <p class="text-lg sm:text-xl lg:text-2xl font-semibold text-[var(--color-text)] mb-4 sm:mb-5 leading-snug max-w-[42ch] mx-auto">
-      Scaling Customer Support for high-growth SaaS, eCommerce, and subscription businesses.
-    </p>
-
-    <p class="text-base sm:text-lg lg:text-[1.22rem] text-[var(--color-text-muted)] mb-8 sm:mb-10 leading-[1.78] max-w-[38ch] sm:max-w-[42ch] mx-auto font-normal">
-      Customer Experience executive and operator specializing in scaling support organizations, implementing AI-enabled workflows, and turning customer insights into business outcomes.
-    </p>
-    <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
-      <a href="#contact" class="hero-cta hero-cta--primary inline-flex w-full sm:w-auto items-center justify-center rounded-[1.15rem] px-7 py-3.5 text-base font-semibold transition-all duration-300 hover:-translate-y-0.5">
-        Discuss Opportunities
-      </a>
-      <a href="/YD_resume.pdf" download="YD_resume.pdf" class="hero-cta hero-cta--secondary inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-[1.15rem] px-7 py-3.5 text-base font-semibold transition-all duration-300 hover:-translate-y-0.5">
-        <svg class="w-5 h-5 shrink-0" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-          <path d="M10 3.5v9m0 0L6.75 9.25M10 12.5l3.25-3.25M4.5 16.5h11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-        Download Resume
-      </a>
-    </div>
-    
-  </div>
-
 </header>
-
-<style>
-  .hero-cta:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 3px;
-  }
-
-  .hero-cta--primary {
-    color: var(--color-executive);
-    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
-    box-shadow: 0 12px 28px color-mix(in srgb, var(--color-primary) 32%, transparent);
-  }
-
-  .hero-cta--primary:hover {
-    box-shadow: 0 16px 34px color-mix(in srgb, var(--color-primary) 40%, transparent);
-  }
-
-  .hero-cta--secondary {
-    color: var(--color-text);
-    background: color-mix(in srgb, var(--color-surface-strong) 72%, transparent);
-    border: 1px solid color-mix(in srgb, var(--color-primary) 40%, var(--color-border));
-    box-shadow: 0 8px 20px rgba(2, 6, 12, 0.28);
-  }
-
-  .hero-cta--secondary:hover {
-    color: var(--color-primary);
-    border-color: color-mix(in srgb, var(--color-primary) 55%, var(--color-border));
-    background: color-mix(in srgb, var(--color-primary) 10%, var(--color-surface-strong));
-  }
-</style>
 
 <script src="/js/mobile-menu.js" defer></script>

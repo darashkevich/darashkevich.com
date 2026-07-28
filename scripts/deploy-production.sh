@@ -13,7 +13,7 @@ set -euo pipefail
 root="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$root"
 
-CLI=(npx --yes netlify-cli@latest)
+CLI=(npx --yes netlify-cli@27.0.1)
 
 echo "Building site..."
 npm run build

@@ -16,7 +16,7 @@ const mapPayload = JSON.stringify({
   airports: buildAirportsGeoJSON(nodes),
   provider: mapProvider,
   key: mapKey
-});
+}).replace(/</g, '\\u003c');
 ---
 
 <section aria-labelledby="route-map-title" class="pb-10">
