@@ -1,0 +1,2 @@
+ContactID,CompanyID,FullName,Title,LinkedInURL,Email,EmailStatus,PreferredChannel,IsPrimary,Notes
+P001,C001,Alex Example,Co-Founder & CEO,https://www.linkedin.com/in/alex-example,,Unknown,LinkedIn,TRUE,Primary under-300 contact; avoid recruiting@ inbox
