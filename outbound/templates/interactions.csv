@@ -1,2 +1,0 @@
-InteractionID,Date,CompanyID,ContactID,Channel,SequenceStep,Outcome,NextAction,NextActionDate,Notes
-I001,2026-07-01,C001,P001,LinkedIn,D1_initial,Sent,Send D7 insight follow-up,2026-07-08,Anonymized example only — replace with real log rows in Sheets
