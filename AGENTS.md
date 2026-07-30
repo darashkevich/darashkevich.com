@@ -34,7 +34,7 @@ Prefer `dev:preview` / `preview:local` over ad-hoc ports when verifying UI.
 - Commit secrets (`.env`, tokens). Use `.env.example` as the template.
 - Change Netlify / Cloudflare production DNS or TLS without an explicit ask (Workers preview deploys are OK).
 - Add an on-site contact form.
-- Delete `public/signature/icons/*` — they are hotlinked by the macOS Mail / Gmail signature.
+- Delete `public/signature/icons/*` — they are hotlinked by the macOS Mail / Gmail signature (`/signature/icons/v2/*.png`).
 
 ## Verify before finishing UI work
 

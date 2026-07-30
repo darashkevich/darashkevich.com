@@ -1,9 +1,10 @@
 # Email signature assets
 
 Hosted icons for the macOS Mail / Gmail signature (hotlinked from
-`https://darashkevich.com/signature/icons/*.png`).
+`https://darashkevich.com/signature/icons/v2/*.png`).
 
-**Do not delete.** Mail clients load these remotely; removing them breaks the
-signature in Gmail and other clients (broken-image placeholders).
+**Do not delete.** Mail clients (and Apple Mail Privacy Protection) load these
+remotely; removing them breaks the signature.
 
-Keep at least the PNG set: `email.png`, `phone.png`, `linkedin.png`, `website.png`.
+Prefer `/signature/icons/v2/` (transparent PNGs). Legacy files in the parent
+folder remain for old messages.
