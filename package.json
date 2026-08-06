@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
-    "@axe-core/cli": "^4.11.3",
+    "@axe-core/cli": "^4.12.1",
     "@cloudflare/workers-types": "^5.20260714.1",
     "@types/node": "^20.0.0",
     "autoprefixer": "^10.5.0",
