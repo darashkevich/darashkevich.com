@@ -59,6 +59,8 @@ export default defineConfig({
   site: SITE,
   base: '/',
   trailingSlash: 'always',
+  // Astro 7's default "jsx" whitespace collapsing turns "in <a>" into "in<a>".
+  compressHTML: false,
   // Bind to localhost by default; use `npm run dev:lan` for device/Simple Browser preview.
   server: {
     host: process.env.ASTRO_DEV_HOST === 'true',

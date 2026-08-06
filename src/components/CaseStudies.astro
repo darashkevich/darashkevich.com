@@ -20,10 +20,10 @@ const caseStudies = [
     summary:
       'Re-architected Zendesk workflows, self-service content, and agent operating practices to reduce support friction and improve resolution consistency.',
     outcomes: [
-      'Helped reduce avoidable ticket volume through workflow and self-service improvements.',
+      'Helped reduce avoidable ticket volume through workflow and self-service improvements',
       'Faster first-response performance',
       'Improved quality and consistency of resolutions',
-      'Operated against a 95%+ SaaS CSAT target.',
+      'Operated against a 95%+ SaaS CSAT target',
     ]
   },
   {
@@ -37,7 +37,7 @@ const caseStudies = [
 ];
 ---
 
-<section id="case-studies" class="pb-20 md:pb-24 relative">
+<section id="case-studies" class="pb-20 md:pb-24 relative scroll-mt-28">
   <div class="max-w-7xl mx-auto px-8 lg:px-12">
     <div class="text-center mb-16">
       <h2 class="text-4xl lg:text-5xl xl:text-6xl font-bold text-[var(--color-text)] mb-6 tracking-tight">Selected Case Studies</h2>
@@ -51,7 +51,7 @@ const caseStudies = [
         <article id={item.id} class="h-full rounded-[1.35rem] border p-7 md:p-8 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 hover:border-[color:var(--color-primary-dark)] hover:shadow-[0_22px_44px_rgba(2,6,12,0.58)] scroll-mt-28" style="background: color-mix(in srgb, var(--color-surface) 94%, transparent); border-color: var(--color-border); box-shadow: 0 16px 34px var(--color-shadow);">
           <p class="text-xs uppercase tracking-[0.18em] text-[var(--color-text-soft)] mb-3">{item.company}</p>
           <h3 class="text-[1.6rem] font-semibold text-[var(--color-text)] tracking-[-0.01em] leading-tight mb-4">{item.title}</h3>
-          <p class="text-base text-[var(--color-text-muted)] leading-7 mb-6 max-w-[34ch]">{item.summary}</p>
+          <p class="text-base text-[var(--color-text-muted)] leading-7 mb-6">{item.summary}</p>
           <ul class="space-y-2">
             {item.outcomes.map((outcome) => (
               <li class="text-sm text-[var(--color-text-muted)] flex items-start gap-2.5">

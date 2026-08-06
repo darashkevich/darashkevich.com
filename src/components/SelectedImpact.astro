@@ -46,7 +46,7 @@ const metrics: ImpactMetric[] = [
 ];
 ---
 
-<section id="impact" class="pt-6 sm:pt-8 pb-8 relative" aria-labelledby="impact-heading">
+<section id="impact" class="pt-6 sm:pt-8 pb-8 relative scroll-mt-28" aria-labelledby="impact-heading">
   <div class="max-w-7xl mx-auto px-8 lg:px-12">
     <div
       class="impact-shell backdrop-blur-xl rounded-[1.6rem] p-8 md:p-10 border"
@@ -57,7 +57,7 @@ const metrics: ImpactMetric[] = [
           Selected Impact
         </h2>
         <p class="text-[var(--color-text-muted)] text-lg max-w-2xl mx-auto leading-relaxed">
-          A few headline outcomes—not the full scorecard. Tap a tile for the operating story; detail lives in the case studies.
+          A few headline outcomes—not the full scorecard. Open a tile for the operating story; detail lives in the case studies.
         </p>
       </div>
 
@@ -109,8 +109,7 @@ const metrics: ImpactMetric[] = [
       </div>
 
       <p class="mt-8 text-center text-sm text-[var(--color-text-soft)]">
-        Full transformation narratives live in
-        <a href="#case-studies" class="text-[var(--color-primary)] underline underline-offset-2 hover:text-[var(--color-icon)]">Selected Case Studies</a>.
+        Full transformation narratives live in <a href="#case-studies" class="text-[var(--color-primary)] underline underline-offset-2 hover:text-[var(--color-icon)]">Selected Case Studies</a>.
       </p>
     </div>
   </div>
@@ -249,6 +248,11 @@ const metrics: ImpactMetric[] = [
       white-space: normal;
     }
 
+    .impact-tile__label {
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+    }
+
     .impact-tile__affordance {
       font-size: 0.75rem;
       letter-spacing: 0.04em;
@@ -357,17 +361,30 @@ const metrics: ImpactMetric[] = [
 </style>
 
 <script>
-  function preferHoverOpen() {
-    return window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  function preferReducedMotion() {
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   }
 
-  function isSticky(tile: HTMLElement) {
-    return tile.dataset.impactSticky === '1';
-  }
+  /** If the expanded story sits outside the viewport, scroll the minimum amount to reveal it. */
+  function ensurePanelVisible(tile: HTMLElement) {
+    const panel = tile.querySelector<HTMLElement>('[data-impact-panel]');
+    if (!panel) return;
 
-  function setSticky(tile: HTMLElement, sticky: boolean) {
-    if (sticky) tile.dataset.impactSticky = '1';
-    else delete tile.dataset.impactSticky;
+    const reveal = () => {
+      const rect = panel.getBoundingClientRect();
+      const pad = 24;
+      const needsScroll = rect.bottom > window.innerHeight - pad || rect.top < pad;
+      if (!needsScroll) return;
+      panel.scrollIntoView({
+        block: 'nearest',
+        inline: 'nearest',
+        behavior: preferReducedMotion() ? 'auto' : 'smooth',
+      });
+    };
+
+    requestAnimationFrame(() => requestAnimationFrame(reveal));
+    // Re-check after the expand transition so final panel height is measured.
+    window.setTimeout(reveal, preferReducedMotion() ? 0 : 280);
   }
 
   function setOpen(tile: HTMLElement, open: boolean) {
@@ -377,10 +394,10 @@ const metrics: ImpactMetric[] = [
 
     tile.classList.toggle('is-open', open);
     trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
-    if (!open) setSticky(tile, false);
 
     if (open) {
       panel.removeAttribute('hidden');
+      ensurePanelVisible(tile);
     } else {
       window.setTimeout(() => {
         if (!tile.classList.contains('is-open')) panel.setAttribute('hidden', '');
@@ -404,44 +421,9 @@ const metrics: ImpactMetric[] = [
       if (!trigger) return;
 
       trigger.addEventListener('click', () => {
-        const open = tile.classList.contains('is-open');
-
-        // Hover already opened the panel — first click locks it open instead of closing.
-        if (preferHoverOpen() && open && !isSticky(tile)) {
-          setSticky(tile, true);
-          return;
-        }
-
-        const next = !open;
+        const next = !tile.classList.contains('is-open');
         closeAll(next ? tile : undefined);
         setOpen(tile, next);
-        if (next) setSticky(tile, true);
-      });
-
-      tile.addEventListener('mouseenter', () => {
-        if (!preferHoverOpen()) return;
-        closeAll(tile);
-        setOpen(tile, true);
-      });
-
-      tile.addEventListener('mouseleave', () => {
-        if (!preferHoverOpen()) return;
-        if (isSticky(tile) || tile.contains(document.activeElement)) return;
-        setOpen(tile, false);
-      });
-
-      trigger.addEventListener('focus', () => {
-        if (!preferHoverOpen()) return;
-        closeAll(tile);
-        setOpen(tile, true);
-      });
-
-      trigger.addEventListener('blur', () => {
-        if (!preferHoverOpen()) return;
-        requestAnimationFrame(() => {
-          if (isSticky(tile) || tile.contains(document.activeElement)) return;
-          setOpen(tile, false);
-        });
       });
     });
 
