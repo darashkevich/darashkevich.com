@@ -42,6 +42,18 @@ Prefer `dev:preview` / `preview:local` over ad-hoc ports when verifying UI.
 2. Use the Agent browser to check layout on desktop + mobile widths when visuals changed.
 3. `npm run check` (and `npm run a11y` for homepage / landmark changes).
 
+## Push to prod / main
+
+Do **not** leave `main` red — CI failure emails are noise Yahor does not want.
+
+Before `git push` to `main` or `npm run deploy:cf`:
+
+1. Run CI-equivalent gates locally: `npm run audit:deps`, then `npm run verify` (or at least `check` + `build` + `smoke`).
+2. If dependencies or the lockfile changed, regenerate with **npm 10** (`npx npm@10 install`) so Actions `npm ci` matches.
+3. After push, `gh run watch` the CI workflow until **verify succeeds**; fix and re-push in the same ship if it fails.
+
+Prefer one green landing over a red commit + hotfix.
+
 ## Cursor Cloud specific instructions
 
 - Static Astro site; no backend/DB. Setup is just `npm install` (Node 20+; VM has Node 22). Commands live in `package.json` / README.
