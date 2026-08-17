@@ -1,5 +1,13 @@
 ---
-const stages = [
+type StageIcon = 'signals' | 'ops' | 'ai' | 'voc' | 'decisions';
+
+type Stage = {
+  id: StageIcon;
+  title: string;
+  blurb: string;
+};
+
+const stages: Stage[] = [
   {
     id: 'signals',
     title: 'Customer Signals',
@@ -28,7 +36,7 @@ const stages = [
 ];
 ---
 
-<section id="cx-os" class="pb-16 relative" aria-labelledby="cx-os-heading">
+<section id="cx-os" class="pb-16 relative scroll-mt-28" aria-labelledby="cx-os-heading">
   <div class="max-w-7xl mx-auto px-8 lg:px-12">
     <div class="backdrop-blur-xl rounded-[1.6rem] p-8 md:p-12 border" style="background: color-mix(in srgb, var(--color-surface) 92%, transparent); border-color: var(--color-border); box-shadow: 0 18px 48px var(--color-shadow);">
       <div class="text-center mb-10 max-w-3xl mx-auto">
@@ -88,7 +96,6 @@ const stages = [
             stroke-linecap="round"
             opacity="0.45"
             pointer-events="none"
-            class="cx-os__pipe"
           >
             <animate
               class="cx-os__pipe-animate"
@@ -105,6 +112,8 @@ const stages = [
             const nodeId = `cx-node-${stage.id}`;
             const hitX = Math.max(8, x - 102);
             const hitW = Math.min(200, 992 - hitX);
+            const iconX = x - 12;
+            const iconY = 96;
             return (
               <g
                 class="cx-os__stage"
@@ -117,7 +126,6 @@ const stages = [
                 aria-pressed="false"
                 aria-label={`${stage.title}: ${stage.blurb}`}
               >
-                {/* Full stage target (node + label) so clicks aren't stolen by the parent SVG */}
                 <rect
                   class="cx-os__hit-area"
                   x={hitX}
@@ -145,7 +153,15 @@ const stages = [
                   stroke-width="2"
                   pointer-events="none"
                 />
-                <circle class="cx-os__node-core" cx={x} cy="108" r="8" fill="var(--color-primary)" pointer-events="none" />
+                <use
+                  class="cx-os__glyph"
+                  href={`#cx-icon-${stage.id}`}
+                  x={iconX}
+                  y={iconY}
+                  width="24"
+                  height="24"
+                  pointer-events="none"
+                />
                 <text
                   id={`${nodeId}-title`}
                   x={x}
@@ -175,7 +191,7 @@ const stages = [
         </svg>
 
         <ol class="cx-os__mobile-flow" aria-label="CX Operating System stages">
-          {stages.map((stage, index) => (
+          {stages.map((stage) => (
             <li>
               <button
                 type="button"
@@ -186,7 +202,11 @@ const stages = [
                 data-interactive-stage
                 aria-pressed="false"
               >
-                <span class="cx-os__mobile-number" aria-hidden="true">{index + 1}</span>
+                <span class="cx-os__mobile-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <use href={`#cx-icon-${stage.id}`} width="24" height="24" />
+                  </svg>
+                </span>
                 <span>{stage.title}</span>
               </button>
             </li>
@@ -197,18 +217,63 @@ const stages = [
           class="cx-os__live mt-5 text-center text-base text-[var(--color-text-muted)] leading-relaxed min-h-[3rem] max-w-2xl mx-auto transition-opacity duration-300"
           data-cx-os-live
           aria-live="polite"
-        >
-          Customer Signals → Support Operations → AI &amp; Self-Service → Voice of Customer → Business Decisions
-        </p>
+        ></p>
       </figure>
     </div>
   </div>
 </section>
 
+{/* Shared glyphs for desktop chart + mobile list (must stay in DOM when chart is hidden) */}
+<svg class="cx-os__symbol-store" aria-hidden="true" focusable="false">
+  <symbol id="cx-icon-signals" viewBox="0 0 24 24">
+    <path d="M2 12h2" />
+    <path d="M20 12h2" />
+    <path d="M6.3 6.3 7.7 7.7" />
+    <path d="m16.3 16.3 1.4 1.4" />
+    <path d="M12 2v2" />
+    <path d="M12 20v2" />
+    <path d="m16.3 7.7 1.4-1.4" />
+    <path d="m6.3 17.7 1.4-1.4" />
+    <circle cx="12" cy="12" r="3.25" />
+  </symbol>
+  <symbol id="cx-icon-ops" viewBox="0 0 24 24">
+    <path d="M4 13a8 8 0 0 1 16 0" />
+    <path d="M4 13v3a2 2 0 0 0 2 2h1v-5H6a2 2 0 0 0-2 2Z" />
+    <path d="M20 13v3a2 2 0 0 1-2 2h-1v-5h1a2 2 0 0 1 2 2Z" />
+    <path d="M9 19h6" />
+    <path d="M12 19v2" />
+  </symbol>
+  <symbol id="cx-icon-ai" viewBox="0 0 24 24">
+    <path d="M12 2v4" />
+    <rect x="4" y="6" width="16" height="12" rx="3" />
+    <path d="M2 12h2M20 12h2" />
+    <circle cx="9" cy="12" r="1.15" fill="currentColor" stroke="none" />
+    <circle cx="15" cy="12" r="1.15" fill="currentColor" stroke="none" />
+    <path d="M9 16h6" />
+  </symbol>
+  <symbol id="cx-icon-voc" viewBox="0 0 24 24">
+    <path d="M4 19V9" />
+    <path d="M10 19V5" />
+    <path d="M16 19v-7" />
+    <path d="M22 19H2" />
+  </symbol>
+  <symbol id="cx-icon-decisions" viewBox="0 0 24 24">
+    <path d="M22 7 13.5 15.5 8.5 10.5 2 17" />
+    <path d="M16 7h6v6" />
+  </symbol>
+</svg>
+
 <style>
   .cx-os__instruction--mobile,
   .cx-os__mobile-flow {
     display: none;
+  }
+
+  .cx-os__symbol-store {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
   }
 
   /* Let stage groups receive hits; decorative SVG chrome stays inert */
@@ -226,6 +291,16 @@ const stages = [
     pointer-events: auto;
   }
 
+  .cx-os__glyph {
+    color: color-mix(in srgb, var(--color-primary) 72%, var(--color-text-soft));
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.75;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: color 180ms ease;
+  }
+
   .cx-os__stage:focus-visible .cx-os__node,
   .cx-os__stage:hover .cx-os__node,
   .cx-os__stage.is-lit .cx-os__node {
@@ -239,10 +314,10 @@ const stages = [
     opacity: 1;
   }
 
-  .cx-os__stage:focus-visible .cx-os__node-core,
-  .cx-os__stage:hover .cx-os__node-core,
-  .cx-os__stage.is-lit .cx-os__node-core {
-    fill: var(--color-primary-dark);
+  .cx-os__stage:focus-visible .cx-os__glyph,
+  .cx-os__stage:hover .cx-os__glyph,
+  .cx-os__stage.is-lit .cx-os__glyph {
+    color: var(--color-primary);
   }
 
   @media (max-width: 639px) {
@@ -287,21 +362,41 @@ const stages = [
       outline-offset: 2px;
     }
 
-    .cx-os__mobile-number {
+    .cx-os__mobile-icon {
       display: inline-grid;
       place-items: center;
-      flex: 0 0 1.75rem;
-      width: 1.75rem;
-      height: 1.75rem;
+      flex: 0 0 1.85rem;
+      width: 1.85rem;
+      height: 1.85rem;
       border-radius: 999px;
       background: color-mix(in srgb, var(--color-primary) 16%, transparent);
       color: var(--color-primary);
-      font-size: 0.8rem;
+    }
+
+    .cx-os__mobile-icon svg {
+      width: 1rem;
+      height: 1rem;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.75;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .cx-os__mobile-stage.is-lit .cx-os__mobile-icon,
+    .cx-os__mobile-stage:focus-visible .cx-os__mobile-icon {
+      background: color-mix(in srgb, var(--color-primary) 28%, transparent);
     }
 
     .cx-os__live {
       min-height: 5rem;
       text-align: left;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cx-os__glyph {
+      transition: none;
     }
   }
 </style>
@@ -315,15 +410,13 @@ const stages = [
   if (root) {
     const stages = root.querySelectorAll('[data-interactive-stage]');
     const live = root.querySelector('[data-cx-os-live]');
-    const defaultCopy =
-      'Customer Signals → Support Operations → AI & Self-Service → Voice of Customer → Business Decisions';
 
     function clearLit() {
       stages.forEach((s) => {
         s.classList.remove('is-lit');
         s.setAttribute('aria-pressed', 'false');
       });
-      if (live) live.textContent = defaultCopy;
+      if (live) live.textContent = '';
     }
 
     function light(stage) {
@@ -335,7 +428,7 @@ const stages = [
       if (live && stage) {
         const title = stage.dataset.title ?? '';
         const blurb = stage.dataset.blurb ?? '';
-        live.textContent = title && blurb ? `${title} — ${blurb}` : defaultCopy;
+        live.textContent = title && blurb ? `${title} — ${blurb}` : '';
       }
     }
 
