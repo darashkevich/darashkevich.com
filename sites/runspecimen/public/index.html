@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RunSpecimen — One approved run. One receipt.</title>
+  <meta name="description" content="Local safety and evidence layer for consequential agent-driven research and engineering commands. Human TTY approval, exclusive workspace lease, mandatory postflight, tamper-evident receipts." />
+  <meta name="theme-color" content="#070A0F" />
+  <link rel="canonical" href="https://runspecimen.darashkevich.com/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://runspecimen.darashkevich.com/" />
+  <meta property="og:title" content="RunSpecimen — One approved run. One receipt." />
+  <meta property="og:description" content="Flight ops for local agent campaigns: approve once on a real TTY, run once under lease, advance only after postflight." />
+  <meta property="og:site_name" content="RunSpecimen" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="RunSpecimen — One approved run. One receipt." />
+  <meta name="twitter:description" content="Local run assurance for agent-driven campaigns. Not another AI firewall." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="wordmark" href="/" aria-label="RunSpecimen home">
+        <span class="wordmark-mark" aria-hidden="true"></span>
+        <span>RunSpecimen</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#promise">Promise</a>
+        <a href="#lifecycle">Lifecycle</a>
+        <a href="#features">Features</a>
+        <a href="#faq">FAQ</a>
+        <a href="#use-cases">Use cases</a>
+        <a href="#start" class="nav-cta">Get started</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="brand">
+      <div class="hero-atmosphere" aria-hidden="true">
+        <div class="hero-grid"></div>
+        <div class="hero-glow hero-glow--a"></div>
+        <div class="hero-glow hero-glow--b"></div>
+        <div class="hero-scan"></div>
+      </div>
+
+      <div class="shell hero-inner">
+        <p class="eyebrow">v0.2.0-rc.9 · published on PyPI</p>
+        <h1 id="brand" class="brand">RunSpecimen</h1>
+        <p class="headline">One approved run. One receipt. No silent second launch.</p>
+        <p class="lede">
+          Flight ops for consequential local agent campaigns — human TTY approval,
+          exclusive workspace lease, mandatory postflight, and a tamper-evident certificate.
+          Not a sandbox. Not a scheduler.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://pypi.org/project/runspecimen/">Install from PyPI</a>
+          <a class="btn btn-secondary" href="https://github.com/darashkevich/runspecimen/releases/tag/v0.2.0-rc.9">View rc9 release</a>
+        </div>
+        <div class="install-command" aria-label="Recommended install command">
+          <code>python3 -m pip install runspecimen==0.2.0rc9</code>
+        </div>
+        <div class="marketplace-row" aria-label="Adapter and marketplace availability">
+          <span class="marketplace-pending">Repository adapters are available for <a href="https://github.com/darashkevich/runspecimen/tree/main/plugins/runspecimen">local installation</a>. Cursor submission pending review; Codex public listing not yet verified.</span>
+        </div>
+        <p class="hero-meta">
+          Stdlib-only Python CLI · Apache-2.0 · Local-only, no telemetry · Cursor &amp; Codex adapters stay adapters
+        </p>
+      </div>
+    </section>
+
+    <section id="promise" class="section promise" aria-labelledby="promise-title">
+      <div class="shell">
+        <p class="section-kicker">The wedge</p>
+        <h2 id="promise-title">When “the command succeeded” isn’t enough evidence</h2>
+        <p class="section-lede">
+          Agents draft scripts and launch jobs. They are terrible at proving which code and binary
+          actually ran — or at refusing a duplicate worker after a crash.
+        </p>
+
+        <div class="promise-grid">
+          <article class="promise-card" data-reveal>
+            <h3>Authorize</h3>
+            <p>A human types <code>APPROVE</code> on a real TTY, binding contract, source, and resolved executable hashes with an expiry.</p>
+          </article>
+          <article class="promise-card" data-reveal>
+            <h3>Exclusive</h3>
+            <p>One workspace-wide execution lease. Exactly one mutating lifecycle step at a time — no parallel workers, no silent second launch.</p>
+          </article>
+          <article class="promise-card" data-reveal>
+            <h3>Verify &amp; advance</h3>
+            <p>Postflight asserts outcomes and issues a certificate. Successors refuse an unpostflighted or failed predecessor.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="lifecycle" class="section lifecycle" aria-labelledby="lifecycle-title">
+      <div class="shell">
+        <p class="section-kicker">Core lifecycle</p>
+        <h2 id="lifecycle-title">Approve → preflight → run → postflight → verify</h2>
+        <p class="section-lede">Campaign steps that refuse to skip the paperwork.</p>
+
+        <ol class="phases">
+          <li class="phase" data-reveal>
+            <span class="phase-num" aria-hidden="true">01</span>
+            <div>
+              <h3>Approve</h3>
+              <p>Interactive TTY approval binds contract + provenance. Agents must not type <code>APPROVE</code>.</p>
+            </div>
+          </li>
+          <li class="phase" data-reveal>
+            <span class="phase-num" aria-hidden="true">02</span>
+            <div>
+              <h3>Preflight</h3>
+              <p>Recheck approval freshness, provenance, outputs, predecessor, and the workspace lease before launch.</p>
+            </div>
+          </li>
+          <li class="phase" data-reveal>
+            <span class="phase-num" aria-hidden="true">03</span>
+            <div>
+              <h3>Run</h3>
+              <p>Execute the declared argument vector once (<code>shell=False</code>), within wall-clock and capture bounds.</p>
+            </div>
+          </li>
+          <li class="phase" data-reveal>
+            <span class="phase-num" aria-hidden="true">04</span>
+            <div>
+              <h3>Postflight</h3>
+              <p>Assert exit code, required outputs, and declared checks. Issue the certificate required before a successor.</p>
+            </div>
+          </li>
+          <li class="phase" data-reveal>
+            <span class="phase-num" aria-hidden="true">05</span>
+            <div>
+              <h3>Verify</h3>
+              <p>Rehash live contract, source, runtime, outputs, and the SHA-256 hash-chained event log against the receipt.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="features" class="section features" aria-labelledby="features-title">
+      <div class="shell">
+        <p class="section-kicker">Feature set</p>
+        <h2 id="features-title">Built for exclusive, receipt-backed steps</h2>
+        <p class="section-lede">Narrow promise. Explicit non-goals. The CLI is the enforcement boundary.</p>
+
+        <div class="feature-grid">
+          <article class="feature" data-reveal>
+            <h3>TTY-bound approval</h3>
+            <p>Interactive approval with expiry. Refuses pipes/CI without a real terminal. Marketplace plugins cannot approve for you.</p>
+          </article>
+          <article class="feature" data-reveal>
+            <h3>Provenance binding</h3>
+            <p>Contract, source roots, and resolved executable hashes are bound into the approval document and rechecked at launch.</p>
+          </article>
+          <article class="feature" data-reveal>
+            <h3>Workspace lease</h3>
+            <p>POSIX <code>fcntl</code> lease serializes approve / preflight / run / postflight across the whole workspace.</p>
+          </article>
+          <article class="feature" data-reveal>
+            <h3>Audited crash recovery</h3>
+            <p>Detect an interrupted run, then abandon it through a real-TTY decision recorded in the event chain. The abandoned run ID stays terminal.</p>
+          </article>
+          <article class="feature" data-reveal>
+            <h3>Predecessor gating</h3>
+            <p>Successors require a valid postflighted predecessor. Failed or missing certificates block advancement.</p>
+          </article>
+          <article class="feature" data-reveal>
+            <h3>Authenticated receipts</h3>
+            <p>Append-only SHA-256 hash chain plus optional HMAC-SHA256 authentication. HMAC is a symmetric-key MAC, not an asymmetric digital signature.</p>
+          </article>
+          <article class="feature" data-reveal>
+            <h3>Extended runtime provenance</h3>
+            <p>Bind a declared interpreter, hashes of allowlisted environment values, and optional trusted-system library hashes into the runtime identity.</p>
+          </article>
+          <article class="feature" data-reveal>
+            <h3>Loopback dashboard</h3>
+            <p>Read-only <code>127.0.0.1</code> guide for phase and evidence. It cannot approve or execute. No remote service.</p>
+          </article>
+          <article class="feature" data-reveal>
+            <h3>Agent adapters</h3>
+            <p>Repository adapters help draft and drive the lifecycle while staying constrained to the local CLI. Cursor review is pending; no public Codex listing is verified.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section faq" aria-labelledby="faq-title">
+      <div class="shell">
+        <p class="section-kicker">Release-candidate FAQ</p>
+        <h2 id="faq-title">What rc9 proves — and what it does not</h2>
+        <div class="faq-grid">
+          <details data-reveal>
+            <summary>Are HMAC-authenticated receipts digital signatures?</summary>
+            <p>No. HMAC-SHA256 uses one shared secret for authentication and verification. Anyone holding that key can forge a valid MAC, so it does not provide non-repudiation or independent third-party verification.</p>
+          </details>
+          <details data-reveal>
+            <summary>What does crash recovery do?</summary>
+            <p>It identifies a run left in <code>running</code> with no active workspace lease. A human can then confirm abandonment on a real TTY; the decision is audited and that run ID cannot be reused. It does not resume arbitrary payload execution.</p>
+          </details>
+          <details data-reveal>
+            <summary>What runtime context is recorded?</summary>
+            <p>The resolved executable is hashed. rc9 can also bind a configured interpreter, hashes of explicitly allowlisted environment values, and optional libraries for trusted system interpreters. It does not automatically capture every dependency, dataset, service, or environment variable.</p>
+          </details>
+          <details data-reveal>
+            <summary>Can the dashboard approve or execute?</summary>
+            <p>No. It is a read-only loopback view on <code>127.0.0.1</code>. Approval remains an interactive real-TTY CLI action, and the CLI remains the enforcement boundary.</p>
+          </details>
+        </div>
+        <p class="faq-more"><a href="https://github.com/darashkevich/runspecimen/blob/main/docs/FAQ.md">Read the complete FAQ and threat model</a></p>
+      </div>
+    </section>
+
+    <section id="use-cases" class="section use-cases" aria-labelledby="use-cases-title">
+      <div class="shell">
+        <p class="section-kicker">Use cases</p>
+        <h2 id="use-cases-title">Where a green exit code is not the story</h2>
+        <p class="section-lede">Best fit: small teams already letting agents operate long-running local jobs.</p>
+
+        <div class="use-grid">
+          <article class="use-card" data-reveal>
+            <h3>Computational research</h3>
+            <p>Prove the approved source and interpreter ran, required outputs appeared with declared fields, and the next campaign step waited for a certified predecessor.</p>
+          </article>
+          <article class="use-card" data-reveal>
+            <h3>ML evaluation &amp; validation</h3>
+            <p>Gate eval jobs so provenance drift, duplicate workers, and “looks done” handoffs cannot silently advance a campaign.</p>
+          </article>
+          <article class="use-card" data-reveal>
+            <h3>Quant / backtesting</h3>
+            <p>One exclusive run under recorded config and source hashes — then a certificate before the successor strategy step.</p>
+          </article>
+          <article class="use-card" data-reveal>
+            <h3>Security research &amp; fuzzing</h3>
+            <p>Keep human approval in the terminal while agents prepare contracts; reconstruct what was authorized after an incident.</p>
+          </article>
+          <article class="use-card" data-reveal>
+            <h3>Cursor / Codex supervision</h3>
+            <p>Let the agent draft, validate, run, postflight, and verify. You keep the only gate that matters: type <code>APPROVE</code>.</p>
+          </article>
+          <article class="use-card" data-reveal>
+            <h3>Regulated engineering evidence</h3>
+            <p>Locally reconstructable receipts for consequential steps. Useful evidence today — not a compliance product yet.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="boundary" class="section boundary" aria-labelledby="boundary-title">
+      <div class="shell">
+        <p class="section-kicker">Honest boundary</p>
+        <h2 id="boundary-title">What RunSpecimen is — and is not</h2>
+        <div class="boundary-grid">
+          <div class="boundary-col" data-reveal>
+            <h3>Answers</h3>
+            <ul>
+              <li>Was this step authorized?</li>
+              <li>Was it exclusive under the workspace lease?</li>
+              <li>Did declared checks pass under recorded provenance?</li>
+              <li>Is the successor eligible to advance?</li>
+            </ul>
+          </div>
+          <div class="boundary-col boundary-col--muted" data-reveal>
+            <h3>Does not replace</h3>
+            <ul>
+              <li>OS sandboxes / process containment</li>
+              <li>Runtime firewalls for tool-call blocking</li>
+              <li>CI pipelines or observability traces</li>
+              <li>Asymmetric signatures or transparency logs</li>
+            </ul>
+          </div>
+        </div>
+        <p class="boundary-note">
+          A green postflight means declared assertions passed under recorded provenance —
+          not that the scientific or engineering claim is true. Pair with containers when you need isolation.
+        </p>
+      </div>
+    </section>
+
+    <section id="start" class="section start" aria-labelledby="start-title">
+      <div class="shell">
+        <p class="section-kicker">Get started</p>
+        <h2 id="start-title">Install rc9, approve once, verify a receipt</h2>
+        <p class="section-lede">Success metric: first verified local receipt — not marketplace impressions.</p>
+
+        <div class="code-block" data-reveal>
+          <pre><code># Recommended install from PyPI
+python3 -m pip install runspecimen==0.2.0rc9
+runspecimen --version
+
+# Host + contract checks
+runspecimen doctor --workspace .
+runspecimen validate --workspace . --contract examples/demo_contract.json
+
+# Lifecycle (human TTY required for approve; dashboard cannot approve or run)
+runspecimen approve --workspace . --contract examples/demo_contract.json
+runspecimen preflight --workspace . --contract examples/demo_contract.json
+runspecimen run --workspace . --contract examples/demo_contract.json
+runspecimen postflight --workspace . --contract examples/demo_contract.json
+runspecimen verify --workspace . --contract examples/demo_contract.json \
+  --campaign-id demo-campaign --run-id run-001</code></pre>
+        </div>
+
+        <div class="cta-row start-ctas">
+          <a class="btn btn-primary" href="https://pypi.org/project/runspecimen/">Open PyPI</a>
+          <a class="btn btn-secondary" href="https://github.com/darashkevich/runspecimen/releases/tag/v0.2.0-rc.9">Release notes &amp; assets</a>
+          <a class="btn btn-ghost" href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.9/SHA256SUMS">SHA256SUMS</a>
+        </div>
+        <p class="release-assets">
+          Verified rc9 release assets:
+          <a href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.9/runspecimen-0.2.0rc9-py3-none-any.whl">wheel</a>,
+          <a href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.9/runspecimen-0.2.0rc9.tar.gz">source distribution</a>,
+          <a href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.9/runspecimen-plugin-0.2.0-rc.9.zip">repository adapter ZIP</a>,
+          and <a href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.9/SHA256SUMS">checksums</a>.
+        </p>
+        <p class="start-note">
+          Optional visibility only: <code>runspecimen dashboard --workspace . --contract examples/demo_contract.json --open</code>
+          binds to loopback, is read-only, and cannot approve or execute a run.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <p>
+        <strong>RunSpecimen</strong> is a working name · Apache-2.0 ·
+        by <a href="https://darashkevich.com">Yahor Darashkevich</a>
+      </p>
+      <p class="footer-meta">
+        Local safety and evidence layer — records evidence; does not sandbox the payload.
+        Local-only. No telemetry. Not a compliance product or external-signature system.
+      </p>
+      <nav class="footer-links" aria-label="Legal and support">
+        <a href="/support/">Support</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="/main.js" defer></script>
+</body>
+</html>

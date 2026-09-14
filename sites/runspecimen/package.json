@@ -1,0 +1,11 @@
+{
+  "name": "runspecimen-site",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Marketing site for RunSpecimen at runspecimen.darashkevich.com",
+  "scripts": {
+    "dev": "npx --yes wrangler@4.112.0 dev --port 8788 --ip 127.0.0.1",
+    "deploy": "bash ./scripts/deploy.sh",
+    "deploy:dry-run": "bash ./scripts/deploy.sh --dry-run"
+  }
+}

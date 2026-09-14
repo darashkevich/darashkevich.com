@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Support — RunSpecimen</title>
+  <meta name="description" content="How to get help with RunSpecimen: documentation, GitHub issues, and security reporting." />
+  <link rel="canonical" href="https://runspecimen.darashkevich.com/support/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="wordmark" href="/" aria-label="RunSpecimen home">
+        <span class="wordmark-mark" aria-hidden="true"></span>
+        <span>RunSpecimen</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="/#start">Get started</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="page">
+    <div class="shell page-prose">
+      <h1>Support</h1>
+      <p class="lede">RunSpecimen is a local CLI. Help is documentation- and issue-based — there is no hosted support portal or guaranteed response SLA.</p>
+
+      <h2>Documentation</h2>
+      <ul>
+        <li><a href="https://pypi.org/project/runspecimen/">PyPI package (current version: 0.2.0rc9)</a></li>
+        <li><a href="https://github.com/darashkevich/runspecimen/releases/tag/v0.2.0-rc.9">v0.2.0-rc.9 release notes and assets</a></li>
+        <li><a href="https://github.com/darashkevich/runspecimen/blob/main/docs/USER_GUIDE.md">User guide</a></li>
+        <li><a href="https://github.com/darashkevich/runspecimen/blob/main/docs/ABOUT.md">About</a></li>
+        <li><a href="https://github.com/darashkevich/runspecimen/blob/main/docs/FAQ.md">FAQ</a></li>
+        <li><a href="https://github.com/darashkevich/runspecimen/blob/main/docs/THREAT_MODEL.md">Threat model</a></li>
+      </ul>
+
+      <h2>Bugs and product questions</h2>
+      <p>
+        Open an issue on
+        <a href="https://github.com/darashkevich/runspecimen/issues">github.com/darashkevich/runspecimen</a>.
+        Include the RunSpecimen version, Python version, OS, and the relevant command when you can.
+      </p>
+
+      <h2>Interrupted runs</h2>
+      <p>
+        In rc9, use <code>runspecimen recovery-status</code> to determine whether a run was interrupted.
+        Abandonment is an audited, real-TTY decision; the old run ID remains permanently terminal.
+        Do not remove state files or assume recovery makes an untrusted payload safe.
+      </p>
+
+      <h2>Security reports</h2>
+      <p>
+        RunSpecimen is an orchestration and evidence layer, not an OS sandbox.
+        For a suspected vulnerability, do not include secrets, private receipts, or proprietary contracts in a public report.
+        Provide a minimal reproduction and keep the report private to the maintainers of the distribution you received,
+        until a dedicated private reporting address is published. See
+        <a href="https://github.com/darashkevich/runspecimen/blob/main/SECURITY.md">SECURITY.md</a>.
+      </p>
+
+      <p class="page-updated">Last updated: 2026-09-14</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <nav class="footer-links" aria-label="Legal and support">
+        <a href="/support/" aria-current="page">Support</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
