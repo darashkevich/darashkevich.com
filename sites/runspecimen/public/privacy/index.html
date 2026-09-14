@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy — RunSpecimen</title>
+  <meta name="description" content="Privacy information for RunSpecimen: local-only operation and no product telemetry." />
+  <link rel="canonical" href="https://runspecimen.darashkevich.com/privacy/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="wordmark" href="/" aria-label="RunSpecimen home">
+        <span class="wordmark-mark" aria-hidden="true"></span>
+        <span>RunSpecimen</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="/#start">Get started</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="page">
+    <div class="shell page-prose">
+      <h1>Privacy</h1>
+      <p class="lede">This page describes the RunSpecimen product and this marketing site. It does not invent account, analytics, or compliance claims.</p>
+
+      <h2>The RunSpecimen CLI</h2>
+      <ul>
+        <li>Runs locally in your workspace.</li>
+        <li>Does not phone home and ships with no product telemetry.</li>
+        <li>Does not require a RunSpecimen account or cloud control plane in the current release candidate.</li>
+        <li>Stores approval, state, event logs, captures, and certificates under your workspace (typically <code>.runspecimen/</code>).</li>
+        <li>The optional dashboard binds only to <code>127.0.0.1</code>, is read-only, and has no remote service.</li>
+      </ul>
+
+      <h2>This website</h2>
+      <p>
+        <code>runspecimen.darashkevich.com</code> is a static marketing site.
+        It does not offer user accounts or an on-site contact form.
+        Your browser and network path (including any CDN or DNS provider in front of the site) may process standard request metadata such as IP address and User-Agent as part of serving pages — that is infrastructure behavior, not RunSpecimen product telemetry.
+      </p>
+
+      <h2>Third-party services you choose</h2>
+      <p>
+        If you visit linked third-party sites (for example GitHub documentation or issues), those services apply their own privacy practices.
+        Marketplace adapters, when listed, are install surfaces only; they are not the enforcement boundary and do not change the local-only nature of the CLI.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        Privacy questions about this site or the open-source project can be raised via
+        <a href="/support/">Support</a> channels (GitHub issues for non-sensitive topics).
+      </p>
+
+      <p class="page-updated">Last updated: 2026-09-08</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <nav class="footer-links" aria-label="Legal and support">
+        <a href="/support/">Support</a>
+        <a href="/privacy/" aria-current="page">Privacy</a>
+        <a href="/terms/">Terms</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

@@ -32,7 +32,8 @@ export async function initRouteMap() {
   if (shell.dataset.mapReady === '1') return;
   shell.dataset.mapReady = '1';
 
-  const [{ default: maplibregl }, theme] = await Promise.all([
+  // MapLibre GL JS v6 is ESM-only with named exports (no default).
+  const [maplibregl, theme] = await Promise.all([
     import('maplibre-gl'),
     import('../lib/route-map-theme'),
     import('maplibre-gl/dist/maplibre-gl.css'),
@@ -200,7 +201,10 @@ export async function initRouteMap() {
   map.on('style.load', () => {
     const symbolLayer = map
       .getStyle()
-      .layers?.find((layer) => layer.type === 'symbol' && 'text-font' in (layer.layout ?? {}));
+      .layers?.find(
+        (layer: { type: string; layout?: Record<string, unknown> }) =>
+          layer.type === 'symbol' && 'text-font' in (layer.layout ?? {})
+      );
     styleFonts =
       (symbolLayer?.layout as { 'text-font'?: string[] } | undefined)?.['text-font'] ??
       styleFonts;

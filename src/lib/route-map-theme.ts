@@ -102,7 +102,8 @@ function hideLayer(map: MaplibreMap, id: string) {
 
 function paintLayer(map: MaplibreMap, id: string, property: string, value: unknown) {
   try {
-    map.setPaintProperty(id, property, value);
+    // Dynamic theming walks style layers; MapLibre v6 types require specific paint keys.
+    map.setPaintProperty(id, property as never, value as never);
   } catch {
     /* Layer may not expose this paint property. */
   }
