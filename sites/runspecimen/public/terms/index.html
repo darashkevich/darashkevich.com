@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png" />
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
@@ -16,7 +18,7 @@
   <header class="site-header">
     <div class="shell header-inner">
       <a class="wordmark" href="/" aria-label="RunSpecimen home">
-        <span class="wordmark-mark" aria-hidden="true"></span>
+        <span class="wordmark-mark" aria-hidden="true"><img src="/brand/mark.svg" alt="" width="18" height="18" /></span>
         <span>RunSpecimen</span>
       </a>
       <nav class="nav" aria-label="Primary">
@@ -40,8 +42,9 @@
       <h2>What the software is (and is not)</h2>
       <ul>
         <li>A local safety and evidence layer for consequential agent-driven commands.</li>
-        <li>Not an operating-system sandbox, job scheduler, compliance certification product, or externally signed transparency system in the current release candidate.</li>
+        <li>Not an operating-system sandbox, job scheduler, compliance certification product, or transparency-log system in the current release candidate.</li>
         <li>Optional HMAC-SHA256 receipt authentication is a symmetric-key MAC, not an asymmetric digital signature; anyone with the shared key can authenticate or forge a receipt.</li>
+        <li>Optional Ed25519 (<code>runspecimen[ed25519]</code>) enables offline public-key verification; trusted success requires an externally trusted public key, not a key embedded only in the receipt. Soft keys on disk are not absolute non-repudiation.</li>
         <li>Approval requires a human on a real TTY. The loopback dashboard is read-only and cannot approve or execute runs.</li>
         <li>A green postflight and valid certificate mean declared assertions passed under recorded provenance — not that a scientific or engineering claim is true.</li>
       </ul>

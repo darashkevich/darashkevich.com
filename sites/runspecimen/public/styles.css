@@ -108,11 +108,18 @@ code {
 }
 
 .wordmark-mark {
-  width: 0.7rem;
-  height: 0.7rem;
-  border-radius: 999px;
-  background: radial-gradient(circle at 30% 30%, #d8ffb0, var(--signal) 55%, var(--signal-deep));
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--signal) 18%, transparent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.wordmark-mark img {
+  display: block;
+  width: 18px;
+  height: 18px;
 }
 
 .nav {

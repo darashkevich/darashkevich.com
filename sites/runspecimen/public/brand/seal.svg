@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 256 256" fill="none" role="img" aria-labelledby="rs-seal-title">
+  <title id="rs-seal-title">RunSpecimen seal</title>
+  <defs>
+    <path id="rs-arc-top" d="M49.2 66.43A100 100 0 0 1 206.8 66.43"/>
+    <path id="rs-arc-bot" d="M37.37 170.26A100 100 0 0 0 218.63 170.26"/>
+  </defs>
+
+  <circle cx="128" cy="128" r="126" fill="#070a0f"/>
+  <circle cx="128" cy="128" r="123" stroke="#9be56a" stroke-width="2.25"/>
+
+  <path stroke="#9be56a" stroke-width="2.4" stroke-linecap="square"
+        d="M128 6L128 20 M189 22.34L182 34.47 M233.66 67L221.53 74 M250 128L236 128 M233.66 189L221.53 182 M189 233.66L182 221.53 M128 250L128 236 M67 233.66L74 221.53 M22.34 189L34.47 182 M6 128L20 128 M22.34 67L34.47 74 M67 22.34L74 34.47"/>
+  <path stroke="#6ec8ff" stroke-width="1.35" stroke-linecap="butt" opacity="0.85"
+        d="M149.19 7.85L147.97 14.75 M169.73 13.36L167.33 19.94 M206.42 34.54L201.92 39.9 M221.46 49.58L216.1 54.08 M242.64 86.27L236.06 88.67 M248.15 106.81L241.25 108.03 M248.15 149.19L241.25 147.97 M242.64 169.73L236.06 167.33 M221.46 206.42L216.1 201.92 M206.42 221.46L201.92 216.1 M169.73 242.64L167.33 236.06 M149.19 248.15L147.97 241.25 M106.81 248.15L108.03 241.25 M86.27 242.64L88.67 236.06 M49.58 221.46L54.08 216.1 M34.54 206.42L39.9 201.92 M13.36 169.73L19.94 167.33 M7.85 149.19L14.75 147.97 M7.85 106.81L14.75 108.03 M13.36 86.27L19.94 88.67 M34.54 49.58L39.9 54.08 M49.58 34.54L54.08 39.9 M86.27 13.36L88.67 19.94 M106.81 7.85L108.03 14.75"/>
+
+  <text fill="#9be56a"
+        font-family="IBM Plex Mono, ui-monospace, monospace"
+        font-size="13"
+        font-weight="600"
+        letter-spacing="3.2">
+    <textPath href="#rs-arc-top" xlink:href="#rs-arc-top" startOffset="50%" text-anchor="middle">RUNSPECIMEN</textPath>
+  </text>
+  <text fill="#6ec8ff"
+        font-family="IBM Plex Mono, ui-monospace, monospace"
+        font-size="9.5"
+        font-weight="500"
+        letter-spacing="1.4">
+    <textPath href="#rs-arc-bot" xlink:href="#rs-arc-bot" startOffset="50%" text-anchor="middle">ONE RUN &#183; ONE RECEIPT</textPath>
+  </text>
+
+  <circle cx="128" cy="128" r="78" stroke="#6ec8ff" stroke-width="1.6"/>
+  <circle cx="128" cy="128" r="72" stroke="#9be56a" stroke-width="1.15" opacity="0.45"/>
+
+  <g transform="translate(128 128) scale(2.55) translate(-16 -16)">
+    <rect x="10" y="8.5" width="12" height="19" rx="6"
+          fill="#0d1219" stroke="#9be56a" stroke-width="1.75"/>
+    <path d="M13.25 14.25V7.1c0-3.15 5.5-3.15 5.5 0v7.15"
+          stroke="#6ec8ff" stroke-width="1.75" stroke-linecap="round"/>
+    <rect x="11.85" y="12.15" width="8.3" height="4.1" rx="1.05"
+          fill="#111821" stroke="#6ec8ff" stroke-width="1.35"/>
+    <path d="M13.35 20.7 15.2 22.65 19.15 17.7"
+          stroke="#9be56a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
