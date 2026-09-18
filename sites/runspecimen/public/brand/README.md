@@ -6,7 +6,7 @@ Hand-authored production SVGs for the marketing site, plus marketplace raster pa
 
 | File | Purpose |
 |------|---------|
-| `mark.svg` | Color specimen-capsule / lease-latch icon (header, app-icon glyph) |
+| `mark.svg` | Hypnotic D6 mark: depth-3 hexaflake, hexagram tunnel, 6 recursive petal wells, amber cores |
 | `mark-mono.svg` | Same mark, `currentColor` strokes for theming |
 | `wordmark.svg` | Horizontal lockup: mark + “RunSpecimen” on dark backgrounds |
 | `wordmark-mono.svg` | `currentColor` lockup |
@@ -21,13 +21,14 @@ Wordmark and seal `<text>` prefer Sora / IBM Plex Mono with `system-ui` / `ui-mo
 | Token | Hex | In these files |
 |-------|-----|----------------|
 | `--bg` | `#070A0F` | Favicon field, seal ground, **all store masters** |
-| `--bg-elevated` | `#0d1219` | Capsule fill |
-| `--bg-panel` | `#111821` | Latch-plate fill |
+| `--bg-elevated` | `#0d1219` | Hex plate fill, core void |
+| `--bg-panel` | `#111821` | Site panels (not in the mark) |
 | `--ink` | `#eef3f8` | Wordmark text |
-| `--signal` | `#9be56a` | Capsule stroke, tick, seal majors / top legend |
-| `--cyan` | `#6ec8ff` | Lease shackle, latch plate, seal minors / bottom legend |
+| `--signal` | `#9be56a` | Outer hex, green petals, seal majors |
+| `--cyan` | `#6ec8ff` | Inner petal lattice, hexagram |
+| `--amber` | `#e8b84a` | Specimen core |
 
-`--signal-deep` (`#6fbf45`) and `--amber` (`#e8b84a`) are site palette tokens not required by this glyph set.
+`--signal-deep` (`#6fbf45`) is a site palette token not required by this glyph set.
 
 Store rasters are flattened **RGB** (no alpha) on `#070A0F`. Corners are **square** — macOS / iOS apply their own masks.
 
@@ -35,6 +36,7 @@ Store rasters are flattened **RGB** (no alpha) on `#070A0F`. Corners are **squar
 
 Masters live here for copy into other repos. Do not invent a `package.json` in those repos from this site; wire the fields below when those manifests already exist.
 
+Regenerate vectors: `python3 marketplace/generate_fractal_mark.py`
 Regenerate rasters: `python3 marketplace/render_icons.py` (CoreSVG 2048px render → RGB flatten → Lanczos downscale → `iconutil`).
 
 ### Cursor / VS Code extension
