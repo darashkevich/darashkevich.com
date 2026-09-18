@@ -472,7 +472,8 @@ code {
 .promise-grid,
 .feature-grid,
 .use-grid,
-.faq-grid {
+.faq-grid,
+.price-grid {
   display: grid;
   gap: 1rem;
 }
@@ -482,7 +483,8 @@ code {
 }
 
 .feature-grid,
-.use-grid {
+.use-grid,
+.price-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
@@ -519,7 +521,8 @@ code {
 .promise-card,
 .feature,
 .use-card,
-.boundary-col {
+.boundary-col,
+.price-card {
   padding: 1.35rem 1.3rem;
   border-radius: var(--radius);
   background: linear-gradient(180deg, color-mix(in srgb, var(--bg-panel) 92%, white 2%), var(--bg-elevated));
@@ -530,7 +533,8 @@ code {
 .feature h3,
 .use-card h3,
 .boundary-col h3,
-.phase h3 {
+.phase h3,
+.price-card .price-tier {
   margin: 0 0 0.55rem;
   font-size: 1.08rem;
   letter-spacing: -0.02em;
@@ -539,10 +543,38 @@ code {
 .promise-card p,
 .feature p,
 .use-card p,
-.phase p {
+.phase p,
+.price-card p {
   margin: 0;
   color: var(--muted);
   font-size: 0.98rem;
+}
+
+.price-card .price-tier {
+  color: var(--signal);
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.price-card .price-amount {
+  margin: 0 0 0.7rem;
+  color: var(--ink);
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.price-card .price-amount span {
+  margin-left: 0.25rem;
+  color: var(--soft);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.pricing .boundary-note {
+  margin-top: 1.25rem;
 }
 
 .phases {
@@ -668,7 +700,8 @@ html.js [data-reveal].is-visible {
   .feature-grid,
   .use-grid,
   .faq-grid,
-  .boundary-grid {
+  .boundary-grid,
+  .price-grid {
     grid-template-columns: 1fr;
   }
 

@@ -38,8 +38,8 @@
         <a href="#promise">Promise</a>
         <a href="#lifecycle">Lifecycle</a>
         <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
         <a href="#faq">FAQ</a>
-        <a href="#use-cases">Use cases</a>
         <a href="#start" class="nav-cta">Get started</a>
       </nav>
     </div>
@@ -55,13 +55,13 @@
       </div>
 
       <div class="shell hero-inner">
-        <p class="eyebrow">v0.2.0-rc.10 · published on PyPI</p>
+        <p class="eyebrow">v0.2.0-rc.10 on PyPI · GitHub main: incident bundle + remote-confirm refuse</p>
         <h1 id="brand" class="brand">RunSpecimen</h1>
         <p class="headline">One approved run. One receipt. No silent second launch.</p>
         <p class="lede">
           Flight ops for consequential local agent campaigns — human TTY approval,
           exclusive workspace lease, mandatory postflight, and a tamper-evident certificate.
-          Not a sandbox. Not a scheduler.
+          Optional Mac-armed remote human confirm is not TTY-equivalent. Not a sandbox. Not a scheduler.
         </p>
         <div class="cta-row">
           <a class="btn btn-primary" href="https://pypi.org/project/runspecimen/">Install from PyPI</a>
@@ -91,7 +91,7 @@
         <div class="promise-grid">
           <article class="promise-card" data-reveal>
             <h3>Authorize</h3>
-            <p>A human types <code>APPROVE</code> on a real TTY, binding contract, source, and resolved executable hashes with an expiry.</p>
+            <p>A human types <code>APPROVE</code> on a real TTY, binding contract, source, and resolved executable hashes with an expiry. Phone confirm is optional, Mac-armed, and recorded as a distinct channel.</p>
           </article>
           <article class="promise-card" data-reveal>
             <h3>Exclusive</h3>
@@ -144,7 +144,7 @@
             <span class="phase-num" aria-hidden="true">05</span>
             <div>
               <h3>Verify</h3>
-              <p>Rehash live contract, source, runtime, outputs, and the SHA-256 hash-chained event log against the receipt.</p>
+              <p>Rehash live contract, source, runtime, outputs, and the SHA-256 hash-chained event log against the receipt. Verify reports <code>confirm_channel</code> so TTY and remote confirm stay distinct.</p>
             </div>
           </li>
         </ol>
@@ -191,6 +191,18 @@
             <p>Read-only <code>127.0.0.1</code> guide for phase and evidence. It cannot approve or execute. No remote service.</p>
           </article>
           <article class="feature" data-reveal>
+            <h3>Incident bundle</h3>
+            <p>Community CLI <code>runspecimen bundle</code> packs one run (and optional predecessor chain) for offline reconstruct. History on disk stays visible. Not a 7-day Veto vault.</p>
+          </article>
+          <article class="feature" data-reveal>
+            <h3>Remote human confirm</h3>
+            <p>Mac arms a one-shot challenge; the paired phone types that challenge plus <code>APPROVE</code>. No one-tap Approve. Plugins cannot approve. Receipts say this is not local TTY APPROVE.</p>
+          </article>
+          <article class="feature" data-reveal>
+            <h3>Refuse + reason</h3>
+            <p>Typed refuse consumes the pending without writing approval. Same Mac challenge is required. Quiet hours block <em>arm only</em> — never auto-APPROVE.</p>
+          </article>
+          <article class="feature" data-reveal>
             <h3>Agent adapters</h3>
             <p>Repository adapters help draft and drive the lifecycle while staying constrained to the local CLI. Cursor review is pending; no public Codex listing is verified.</p>
           </article>
@@ -223,8 +235,51 @@
             <summary>Can the dashboard approve or execute?</summary>
             <p>No. It is a read-only loopback view on <code>127.0.0.1</code>. Approval remains an interactive real-TTY CLI action, and the CLI remains the enforcement boundary.</p>
           </details>
+          <details data-reveal>
+            <summary>Is phone confirm the same as TTY APPROVE?</summary>
+            <p>No. Remote human confirm is Mac-armed: a one-shot challenge is shown only on the Mac, then typed on a paired companion with the word <code>APPROVE</code>. Verify records <code>confirm_channel=remote_human_confirm</code> and states it is not equivalent to local TTY APPROVE. There is no one-tap Approve. Plugins cannot approve, settle, or refuse.</p>
+          </details>
+          <details data-reveal>
+            <summary>What is an incident bundle?</summary>
+            <p><code>runspecimen bundle</code> copies local run evidence (state, events, approval, certificate, verify output, refusals) into a folder a stranger can check offline. It is Community and free. It is not a hosted 7-day vault and not a compliance product. Team later is shared retention off the laptop — not hiding files you already have.</p>
+          </details>
+          <details data-reveal>
+            <summary>Does this include Veto pricing or an Intent API?</summary>
+            <p>No. RunSpecimen keeps its own price book (Community / Pro / Team). Veto is a separate product. This site does not sell Veto Teams, Intent, or unsigned-side-effect watchdog SKUs.</p>
+          </details>
         </div>
         <p class="faq-more"><a href="https://github.com/darashkevich/runspecimen/blob/main/docs/FAQ.md">Read the complete FAQ and threat model</a></p>
+      </div>
+    </section>
+
+    <section id="pricing" class="section pricing" aria-labelledby="pricing-title">
+      <div class="shell">
+        <p class="section-kicker">Price book</p>
+        <h2 id="pricing-title">Community on the laptop. Team for what leaves it.</h2>
+        <p class="section-lede">
+          Hypothesis for design-partner conversations — not a checkout. Marketplace adapters stay free.
+          Distinct from Veto Free / Pro / Teams / Intent.
+        </p>
+        <div class="price-grid">
+          <article class="price-card" data-reveal>
+            <p class="price-tier">Community</p>
+            <p class="price-amount">Free</p>
+            <p>Local CLI, exclusive lease, receipts, verification, <code>runspecimen bundle</code>, and the free companion remote-confirm card. History on disk stays visible.</p>
+          </article>
+          <article class="price-card" data-reveal>
+            <p class="price-tier">Pro</p>
+            <p class="price-amount">~$19–29<span>/user/mo</span></p>
+            <p>Richer history, reusable policy packs, signed receipts, TUI/IDE review, support. Remote confirm stays free — the phone card is not paywalled.</p>
+          </article>
+          <article class="price-card" data-reveal>
+            <p class="price-tier">Team</p>
+            <p class="price-amount">~$49–79<span>/user/mo</span></p>
+            <p>Shared policies, identity-attributed human review, off-laptop retention, incident review with design partners. Annual minimum. Not a Veto vault.</p>
+          </article>
+        </div>
+        <p class="boundary-note">
+          Enterprise is custom. No public internet control plane until buyers repeatedly require fleet policy or hosted retention.
+        </p>
       </div>
     </section>
 
@@ -284,6 +339,8 @@
               <li>Runtime firewalls for tool-call blocking</li>
               <li>CI pipelines or observability traces</li>
               <li>Transparency logs or absolute non-repudiation (optional Ed25519 still needs an external trust anchor)</li>
+              <li>A public internet control plane or one-tap Approve</li>
+              <li>Veto’s 7-day receipt vault, Intent API, or Teams CX queue</li>
             </ul>
           </div>
         </div>
@@ -301,9 +358,12 @@
         <p class="section-lede">Success metric: first verified local receipt — not marketplace impressions.</p>
 
         <div class="code-block" data-reveal>
-          <pre><code># Recommended install from PyPI
+          <pre><code># Last published candidate
 python3 -m pip install runspecimen==0.2.0rc10
 runspecimen --version
+
+# GitHub main (incident bundle, refuse+reason, confirm_channel)
+python3 -m pip install git+https://github.com/darashkevich/runspecimen.git
 
 # Host + contract checks
 runspecimen doctor --workspace .
@@ -315,7 +375,11 @@ runspecimen preflight --workspace . --contract examples/demo_contract.json
 runspecimen run --workspace . --contract examples/demo_contract.json
 runspecimen postflight --workspace . --contract examples/demo_contract.json
 runspecimen verify --workspace . --contract examples/demo_contract.json \
-  --campaign-id demo-campaign --run-id run-001</code></pre>
+  --campaign-id demo-campaign --run-id run-001
+
+# Optional local incident pack (Community; not a hosted vault)
+runspecimen bundle --workspace . --campaign-id demo-campaign --run-id run-001 \
+  --out /tmp/rs-incident --contract examples/demo_contract.json</code></pre>
         </div>
 
         <div class="cta-row start-ctas">
@@ -333,6 +397,7 @@ runspecimen verify --workspace . --contract examples/demo_contract.json \
         <p class="start-note">
           Optional visibility only: <code>runspecimen dashboard --workspace . --contract examples/demo_contract.json --open</code>
           binds to loopback, is read-only, and cannot approve or execute a run.
+          Optional remote confirm: Mac <code>remote-confirm arm</code>, then type the Mac challenge and <code>APPROVE</code> on the paired phone — not TTY-equivalent.
         </p>
       </div>
     </section>
@@ -348,6 +413,7 @@ runspecimen verify --workspace . --contract examples/demo_contract.json \
         Local safety and evidence layer — records evidence; does not sandbox the payload.
         Local-only. No telemetry. Not a compliance product or transparency-log system.
         Optional Ed25519 still requires an external trust anchor.
+        Incident bundles stay on your disk. Remote confirm is not TTY-equivalent.
       </p>
       <nav class="footer-links" aria-label="Legal and support">
         <a href="/support/">Support</a>
