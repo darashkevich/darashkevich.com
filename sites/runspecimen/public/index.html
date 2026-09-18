@@ -55,7 +55,7 @@
       </div>
 
       <div class="shell hero-inner">
-        <p class="eyebrow">v0.2.0-rc.10 on PyPI · GitHub main: 0.2.0rc11 (bundle, refuse, hexaflake)</p>
+        <p class="eyebrow">v0.2.0-rc.12 on PyPI and GitHub (identical bytes)</p>
         <h1 id="brand" class="brand">RunSpecimen</h1>
         <p class="headline">One approved run. One receipt. No silent second launch.</p>
         <p class="lede">
@@ -64,14 +64,14 @@
           Optional Mac-armed remote human confirm is not TTY-equivalent. Not a sandbox. Not a scheduler.
         </p>
         <div class="cta-row">
-          <a class="btn btn-primary" href="https://pypi.org/project/runspecimen/">Install from PyPI</a>
-          <a class="btn btn-secondary" href="https://github.com/darashkevich/runspecimen/releases/tag/v0.2.0-rc.10">View rc10 release</a>
+          <a class="btn btn-primary" href="https://pypi.org/project/runspecimen/0.2.0rc12/">Install from PyPI</a>
+          <a class="btn btn-secondary" href="https://github.com/darashkevich/runspecimen/releases/tag/v0.2.0-rc.12">View rc12 release</a>
         </div>
         <div class="install-command" aria-label="Recommended install command">
-          <code>python3 -m pip install runspecimen==0.2.0rc10</code>
+          <code>python3 -m pip install runspecimen==0.2.0rc12</code>
         </div>
         <div class="marketplace-row" aria-label="Adapter and marketplace availability">
-          <span class="marketplace-pending">Repository adapters are available for <a href="https://github.com/darashkevich/runspecimen/tree/main/plugins/runspecimen">local installation</a>. Cursor submission pending review; Codex public listing not yet verified.</span>
+          <span class="marketplace-pending">Repository adapters are available for <a href="https://github.com/darashkevich/runspecimen/tree/main/plugins/runspecimen">local installation</a>. Cursor Marketplace and the Codex plugin directory do not list RunSpecimen. Mac App Store is not public yet.</span>
         </div>
         <p class="hero-meta">
           Stdlib-only Python CLI · Apache-2.0 · Local-only, no telemetry · Cursor &amp; Codex adapters stay adapters
@@ -204,7 +204,7 @@
           </article>
           <article class="feature" data-reveal>
             <h3>Agent adapters</h3>
-            <p>Repository adapters help draft and drive the lifecycle while staying constrained to the local CLI. Cursor review is pending; no public Codex listing is verified.</p>
+            <p>Repository adapters help draft and drive the lifecycle while staying constrained to the local CLI. Cursor Marketplace and the Codex directory do not list RunSpecimen yet.</p>
           </article>
         </div>
       </div>
@@ -358,12 +358,9 @@
         <p class="section-lede">Success metric: first verified local receipt — not marketplace impressions.</p>
 
         <div class="code-block" data-reveal>
-          <pre><code># Last published candidate
-python3 -m pip install runspecimen==0.2.0rc10
+          <pre><code># Current published candidate (PyPI == GitHub Release bytes)
+python3 -m pip install runspecimen==0.2.0rc12
 runspecimen --version
-
-# GitHub main (0.2.0rc11: incident bundle, refuse+reason, hexaflake)
-python3 -m pip install git+https://github.com/darashkevich/runspecimen.git
 
 # Host + contract checks
 runspecimen doctor --workspace .
@@ -383,16 +380,16 @@ runspecimen bundle --workspace . --campaign-id demo-campaign --run-id run-001 \
         </div>
 
         <div class="cta-row start-ctas">
-          <a class="btn btn-primary" href="https://pypi.org/project/runspecimen/">Open PyPI</a>
-          <a class="btn btn-secondary" href="https://github.com/darashkevich/runspecimen/releases/tag/v0.2.0-rc.10">Release notes &amp; assets</a>
-          <a class="btn btn-ghost" href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.10/SHA256SUMS">SHA256SUMS</a>
+          <a class="btn btn-primary" href="https://pypi.org/project/runspecimen/0.2.0rc12/">Open PyPI</a>
+          <a class="btn btn-secondary" href="https://github.com/darashkevich/runspecimen/releases/tag/v0.2.0-rc.12">Release notes &amp; assets</a>
+          <a class="btn btn-ghost" href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.12/SHA256SUMS">SHA256SUMS</a>
         </div>
         <p class="release-assets">
-          Verified rc10 release assets:
-          <a href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.10/runspecimen-0.2.0rc10-py3-none-any.whl">wheel</a>,
-          <a href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.10/runspecimen-0.2.0rc10.tar.gz">source distribution</a>,
-          <a href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.10/runspecimen-plugin-0.2.0-rc.10.zip">repository adapter ZIP</a>,
-          and <a href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.10/SHA256SUMS">checksums</a>.
+          Verified rc12 release assets (same SHA-256 on GitHub and PyPI):
+          <a href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.12/runspecimen-0.2.0rc12-py3-none-any.whl">wheel</a>,
+          <a href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.12/runspecimen-0.2.0rc12.tar.gz">source distribution</a>,
+          <a href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.12/runspecimen-plugin-0.2.0-rc.12.zip">repository adapter ZIP</a>,
+          and <a href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.12/SHA256SUMS">checksums</a>.
         </p>
         <p class="start-note">
           Optional visibility only: <code>runspecimen dashboard --workspace . --contract examples/demo_contract.json --open</code>
