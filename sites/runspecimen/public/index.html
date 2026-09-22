@@ -38,7 +38,7 @@
         <a href="#promise">Promise</a>
         <a href="#lifecycle">Lifecycle</a>
         <a href="#features">Features</a>
-        <a href="#pricing">Pricing</a>
+        <a href="#release">Release</a>
         <a href="#faq">FAQ</a>
         <a href="#start" class="nav-cta">Get started</a>
       </nav>
@@ -241,44 +241,26 @@
           </details>
           <details data-reveal>
             <summary>What is an incident bundle?</summary>
-            <p><code>runspecimen bundle</code> copies local run evidence (state, events, approval, certificate, verify output, refusals) into a folder a stranger can check offline. It is Community and free. It is not a hosted 7-day vault and not a compliance product. Team later is shared retention off the laptop — not hiding files you already have.</p>
+            <p><code>runspecimen bundle</code> copies local run evidence (state, events, approval, certificate, verify output, refusals) into a folder a stranger can check offline. It is free. It is not a hosted vault and not a compliance product. Nothing on this site uploads that pack.</p>
           </details>
           <details data-reveal>
-            <summary>Does this include Veto pricing or an Intent API?</summary>
-            <p>No. RunSpecimen keeps its own price book (Community / Pro / Team). Veto is a separate product. This site does not sell Veto Teams, Intent, or unsigned-side-effect watchdog SKUs.</p>
+            <summary>Does this include Veto or a paid control plane?</summary>
+            <p>No. This site does not sell a RunSpecimen checkout, and it does not sell Veto Teams, Intent, or an unsigned-side-effect watchdog. The published package is the local CLI.</p>
           </details>
         </div>
         <p class="faq-more"><a href="https://github.com/darashkevich/runspecimen/blob/main/docs/FAQ.md">Read the complete FAQ and threat model</a></p>
       </div>
     </section>
 
-    <section id="pricing" class="section pricing" aria-labelledby="pricing-title">
+    <section id="release" class="section pricing" aria-labelledby="release-title">
       <div class="shell">
-        <p class="section-kicker">Price book</p>
-        <h2 id="pricing-title">Community on the laptop. Team for what leaves it.</h2>
+        <p class="section-kicker">Published release</p>
+        <h2 id="release-title">What pip installs today</h2>
         <p class="section-lede">
-          Hypothesis for design-partner conversations — not a checkout. Marketplace adapters stay free.
-          Distinct from Veto Free / Pro / Teams / Intent.
+          <code>runspecimen==0.2.0rc12</code> is the local CLI: one approved run, a workspace lease, postflight, and a receipt. There is no checkout on this site.
         </p>
-        <div class="price-grid">
-          <article class="price-card" data-reveal>
-            <p class="price-tier">Community</p>
-            <p class="price-amount">Free</p>
-            <p>Local CLI, exclusive lease, receipts, verification, <code>runspecimen bundle</code>, and the free companion remote-confirm card. History on disk stays visible.</p>
-          </article>
-          <article class="price-card" data-reveal>
-            <p class="price-tier">Pro</p>
-            <p class="price-amount">~$19–29<span>/user/mo</span></p>
-            <p>Richer history, reusable policy packs, signed receipts, TUI/IDE review, support. Remote confirm stays free — the phone card is not paywalled.</p>
-          </article>
-          <article class="price-card" data-reveal>
-            <p class="price-tier">Team</p>
-            <p class="price-amount">~$49–79<span>/user/mo</span></p>
-            <p>Shared policies, identity-attributed human review, off-laptop retention, incident review with design partners. Annual minimum. Not a Veto vault.</p>
-          </article>
-        </div>
         <p class="boundary-note">
-          Enterprise is custom. No public internet control plane until buyers repeatedly require fleet policy or hosted retention.
+          Opt-in confinement, a workspace policy file, <code>retain</code>, <code>digest</code>, and <code>diff</code> are in the source tree and are not in that published package. The default backend remains unconfined. Those backends are not an OS sandbox, and this site does not claim they ship in rc12.
         </p>
       </div>
     </section>
@@ -346,7 +328,7 @@
         </div>
         <p class="boundary-note">
           A green postflight means declared assertions passed under recorded provenance —
-          not that the scientific or engineering claim is true. Pair with containers when you need isolation.
+          not that the scientific or engineering claim is true. Published rc12 does not confine the payload. Pair with your own container when you need isolation.
         </p>
       </div>
     </section>
