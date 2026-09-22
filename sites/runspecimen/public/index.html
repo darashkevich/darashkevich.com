@@ -344,6 +344,9 @@
 python3 -m pip install runspecimen==0.2.0rc13
 runspecimen --version
 
+# Or from Homebrew (same v0.2.0-rc.13 sdist)
+# brew tap darashkevich/runspecimen && brew install runspecimen
+
 # Host + contract checks
 runspecimen doctor --workspace .
 runspecimen validate --workspace . --contract examples/demo_contract.json
@@ -363,6 +366,7 @@ runspecimen bundle --workspace . --campaign-id demo-campaign --run-id run-001 \
 
         <div class="cta-row start-ctas">
           <a class="btn btn-primary" href="https://pypi.org/project/runspecimen/0.2.0rc13/">Open PyPI</a>
+          <a class="btn btn-secondary" href="https://github.com/darashkevich/homebrew-runspecimen">Homebrew tap</a>
           <a class="btn btn-secondary" href="https://github.com/darashkevich/runspecimen/releases/tag/v0.2.0-rc.13">Release notes &amp; assets</a>
           <a class="btn btn-ghost" href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.13/SHA256SUMS">SHA256SUMS</a>
         </div>
