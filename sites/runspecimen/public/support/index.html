@@ -34,15 +34,32 @@
 
       <h2>Documentation</h2>
       <ul>
-        <li><a href="https://pypi.org/project/runspecimen/0.2.0rc12/">PyPI package (0.2.0rc12)</a></li>
-        <li><a href="https://github.com/darashkevich/runspecimen/releases/tag/v0.2.0-rc.12">v0.2.0-rc.12 release notes and assets</a></li>
+        <li><a href="https://pypi.org/project/runspecimen/0.2.0rc13/">PyPI package (0.2.0rc13)</a></li>
+        <li><a href="https://github.com/darashkevich/runspecimen/releases/tag/v0.2.0-rc.13">v0.2.0-rc.13 release notes and assets</a></li>
+        <li><a href="https://github.com/darashkevich/homebrew-runspecimen">Homebrew tap (0.2.0rc13 sdist)</a></li>
         <li><a href="https://github.com/darashkevich/runspecimen/blob/main/docs/USER_GUIDE.md">User guide</a></li>
         <li><a href="https://github.com/darashkevich/runspecimen/blob/main/docs/ABOUT.md">About</a></li>
         <li><a href="https://github.com/darashkevich/runspecimen/blob/main/docs/FAQ.md">FAQ</a></li>
         <li><a href="https://github.com/darashkevich/runspecimen/blob/main/docs/SPEC_INCIDENT_BUNDLE.md">Incident bundle spec</a></li>
         <li><a href="https://github.com/darashkevich/runspecimen/blob/main/docs/SPEC_REMOTE_CONFIRM_CARD.md">Remote confirm card spec</a></li>
         <li><a href="https://github.com/darashkevich/runspecimen/blob/main/docs/ADR-004-remote-human-confirm.md">ADR-004 remote human confirm</a></li>
+        <li><a href="https://github.com/darashkevich/runspecimen/tree/main/plugins/runspecimen">Agent adapters (<code>plugins/runspecimen</code>)</a></li>
       </ul>
+
+      <h2>Install</h2>
+      <p>Published candidate is <code>0.2.0rc13</code> (not a stable <code>0.2.0</code>). Prefer Homebrew, or pin PyPI:</p>
+      <pre><code>brew install darashkevich/runspecimen/runspecimen
+# or: python3 -m pip install runspecimen==0.2.0rc13
+command -v runspecimen
+runspecimen --version</code></pre>
+      <p>
+        If <code>--version</code> still shows an older RC (for example <code>0.2.0rc11</code>) after brew,
+        an old <code>~/.local/bin/runspecimen</code> shim (pip <code>--user</code> or a prior bootstrap) may
+        shadow <code>/opt/homebrew/bin/runspecimen</code>. Rename that shim aside
+        (<code>mv ~/.local/bin/runspecimen ~/.local/bin/runspecimen.bak</code>) rather than deleting
+        unrelated user data, then <code>hash -r</code> and re-check. Adapters install from the
+        GitHub tree under <code>plugins/runspecimen</code> — they are not listed on Cursor Marketplace or Codex.
+      </p>
 
       <h2>Bugs and product questions</h2>
       <p>
@@ -69,7 +86,7 @@
         <a href="https://github.com/darashkevich/runspecimen/blob/main/SECURITY.md">SECURITY.md</a>.
       </p>
 
-      <p class="page-updated">Last updated: 2026-09-18</p>
+      <p class="page-updated">Last updated: 2026-09-22</p>
     </div>
   </main>
 

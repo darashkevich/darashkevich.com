@@ -68,10 +68,13 @@
           <a class="btn btn-secondary" href="https://github.com/darashkevich/runspecimen/releases/tag/v0.2.0-rc.13">View rc13 release</a>
         </div>
         <div class="install-command" aria-label="Recommended install command">
+          <code>brew install darashkevich/runspecimen/runspecimen</code>
+        </div>
+        <div class="install-command" aria-label="PyPI install command">
           <code>python3 -m pip install runspecimen==0.2.0rc13</code>
         </div>
         <div class="marketplace-row" aria-label="Adapter and marketplace availability">
-          <span class="marketplace-pending">Adapters install from the <a href="https://github.com/darashkevich/runspecimen/tree/main/plugins/runspecimen">GitHub tree</a>. Not listed on Cursor Marketplace or Codex. Mac App Store is not public.</span>
+          <span class="marketplace-pending">Adapters install from the <a href="https://github.com/darashkevich/runspecimen/tree/main/plugins/runspecimen">GitHub tree</a> (<code>plugins/runspecimen</code>). Not listed on Cursor Marketplace or Codex. Mac App Store is not public.</span>
         </div>
         <p class="hero-meta">
           Stdlib-only Python CLI · Apache-2.0 · Local-only, no telemetry · Cursor &amp; Codex adapters stay adapters
@@ -247,6 +250,10 @@
             <summary>Does this include Veto or a paid control plane?</summary>
             <p>No. This site does not sell a RunSpecimen checkout, and it does not sell Veto Teams, Intent, or an unsigned-side-effect watchdog. The published package is the local CLI.</p>
           </details>
+          <details data-reveal>
+            <summary>Why does <code>runspecimen --version</code> still show an older RC after Homebrew?</summary>
+            <p>An older <code>~/.local/bin/runspecimen</code> (pip <code>--user</code> or a prior bootstrap) can shadow Homebrew’s <code>/opt/homebrew/bin/runspecimen</code>. Prefer <code>brew install darashkevich/runspecimen/runspecimen</code>, then check <code>command -v runspecimen</code>. If it still points under <code>~/.local/bin</code>, rename that shim aside (backup is fine) and re-check. Published candidate is <code>0.2.0rc13</code> — not a stable <code>0.2.0</code>. Full note: <a href="https://github.com/darashkevich/runspecimen/blob/main/docs/FAQ.md">FAQ</a> / <a href="https://github.com/darashkevich/runspecimen/blob/main/docs/USER_GUIDE.md">user guide</a>.</p>
+          </details>
         </div>
         <p class="faq-more"><a href="https://github.com/darashkevich/runspecimen/blob/main/docs/FAQ.md">Read the complete FAQ and threat model</a></p>
       </div>
@@ -340,12 +347,16 @@
         <p class="section-lede">Success metric: first verified local receipt — not marketplace impressions.</p>
 
         <div class="code-block" data-reveal>
-          <pre><code># Current published candidate (PyPI == GitHub Release bytes)
-python3 -m pip install runspecimen==0.2.0rc13
+          <pre><code># Prefer Homebrew (same v0.2.0-rc.13 sdist as PyPI / GitHub)
+brew install darashkevich/runspecimen/runspecimen
+command -v runspecimen
 runspecimen --version
 
-# Or from Homebrew (same v0.2.0-rc.13 sdist)
-# brew tap darashkevich/runspecimen && brew install runspecimen
+# Or pin PyPI (still a release candidate — not stable 0.2.0)
+# python3 -m pip install runspecimen==0.2.0rc13
+
+# If --version stays on an older RC, ~/.local/bin may shadow Homebrew:
+# mv ~/.local/bin/runspecimen ~/.local/bin/runspecimen.bak && hash -r
 
 # Host + contract checks
 runspecimen doctor --workspace .
