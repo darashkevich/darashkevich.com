@@ -347,21 +347,25 @@ runspecimen --version
 # Or from Homebrew (same v0.2.0-rc.13 sdist)
 # brew tap darashkevich/runspecimen && brew install runspecimen
 
+# Pip/Homebrew installs do not create a cwd examples/ tree — use init-demo
+runspecimen init-demo --workspace ./runspecimen-demo
+cd runspecimen-demo
+
 # Host + contract checks
 runspecimen doctor --workspace .
-runspecimen validate --workspace . --contract examples/demo_contract.json
+runspecimen validate --workspace . --contract contract.json
 
 # Lifecycle (human TTY required for approve; dashboard cannot approve or run)
-runspecimen approve --workspace . --contract examples/demo_contract.json
-runspecimen preflight --workspace . --contract examples/demo_contract.json
-runspecimen run --workspace . --contract examples/demo_contract.json
-runspecimen postflight --workspace . --contract examples/demo_contract.json
-runspecimen verify --workspace . --contract examples/demo_contract.json \
+runspecimen approve --workspace . --contract contract.json
+runspecimen preflight --workspace . --contract contract.json
+runspecimen run --workspace . --contract contract.json
+runspecimen postflight --workspace . --contract contract.json
+runspecimen verify --workspace . --contract contract.json \
   --campaign-id demo-campaign --run-id run-001
 
 # Optional local incident pack (Community; not a hosted vault)
 runspecimen bundle --workspace . --campaign-id demo-campaign --run-id run-001 \
-  --out /tmp/rs-incident --contract examples/demo_contract.json</code></pre>
+  --out /tmp/rs-incident --contract contract.json</code></pre>
         </div>
 
         <div class="cta-row start-ctas">
@@ -378,7 +382,7 @@ runspecimen bundle --workspace . --campaign-id demo-campaign --run-id run-001 \
           and <a href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.13/SHA256SUMS">checksums</a>.
         </p>
         <p class="start-note">
-          Optional visibility only: <code>runspecimen dashboard --workspace . --contract examples/demo_contract.json --open</code>
+          Optional visibility only: <code>runspecimen dashboard --workspace . --contract contract.json --open</code>
           binds to loopback, is read-only, and cannot approve or execute a run.
           Optional remote confirm: Mac <code>remote-confirm arm</code>, then type the Mac challenge and <code>APPROVE</code> on the paired phone — not TTY-equivalent.
         </p>
