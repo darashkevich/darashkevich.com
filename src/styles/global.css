@@ -77,6 +77,29 @@ html.js [data-reveal].is-visible {
   transform: translateY(0);
 }
 
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.btn-primary {
+  color: var(--color-executive);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  box-shadow: 0 12px 28px color-mix(in srgb, var(--color-primary) 32%, transparent);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 16px 34px color-mix(in srgb, var(--color-primary) 40%, transparent);
+}
+
+.btn-primary:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
