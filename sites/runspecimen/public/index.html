@@ -4,19 +4,19 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>RunSpecimen — One approved run. One receipt.</title>
-  <meta name="description" content="Local safety and evidence layer for consequential agent-driven research and engineering commands. Human TTY approval, exclusive workspace lease, mandatory postflight, tamper-evident receipts." />
+  <meta name="description" content="When you let an AI agent run commands on your machine, you want to know exactly what was approved, what ran, and whether it succeeded. RunSpecimen makes sure one human-approved command runs at a time and creates a receipt you can check later." />
   <meta name="theme-color" content="#070A0F" />
   <link rel="canonical" href="https://runspecimen.darashkevich.com/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://runspecimen.darashkevich.com/" />
   <meta property="og:title" content="RunSpecimen — One approved run. One receipt." />
-  <meta property="og:description" content="Flight ops for local agent campaigns: approve once on a real TTY, run once under lease, advance only after postflight." />
+  <meta property="og:description" content="One human-approved command at a time. One receipt you can verify later." />
   <meta property="og:site_name" content="RunSpecimen" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="RunSpecimen — One approved run. One receipt." />
-  <meta name="twitter:description" content="Local run assurance for agent-driven campaigns. Not another AI firewall." />
+  <meta name="twitter:description" content="One human-approved command at a time. One receipt you can verify later." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -55,51 +55,51 @@
       </div>
 
       <div class="shell hero-inner">
-        <p class="eyebrow">v0.2.0-rc.14 on PyPI and GitHub (identical bytes)</p>
+        <p class="eyebrow">v0.2.0-rc.15 on PyPI and GitHub</p>
         <h1 id="brand" class="brand">RunSpecimen</h1>
         <p class="headline">One approved run. One receipt. No silent second launch.</p>
         <p class="lede">
-          Flight ops for consequential local agent campaigns — human TTY approval,
-          exclusive workspace lease, mandatory postflight, and a tamper-evident certificate.
-          Optional Mac-armed remote human confirm is not TTY-equivalent. Not a sandbox. Not a scheduler.
+          When you let an AI agent run commands on your machine, you want to know exactly what
+          was approved, what ran, and whether it succeeded. RunSpecimen makes sure one human-approved
+          command runs at a time and creates a receipt you can check later.
         </p>
         <div class="cta-row">
-          <a class="btn btn-primary" href="https://pypi.org/project/runspecimen/0.2.0rc14/">Install from PyPI</a>
-          <a class="btn btn-secondary" href="https://github.com/darashkevich/runspecimen/releases/tag/v0.2.0-rc.14">View rc14 release</a>
+          <a class="btn btn-primary" href="https://pypi.org/project/runspecimen/0.2.0rc15/">Install from PyPI</a>
+          <a class="btn btn-secondary" href="https://github.com/darashkevich/runspecimen/releases/tag/v0.2.0-rc.15">View rc15 release</a>
         </div>
         <div class="install-command" aria-label="Recommended install command">
-          <code>python3 -m pip install runspecimen==0.2.0rc14</code>
+          <code>python3 -m pip install --pre runspecimen==0.2.0rc15</code>
         </div>
         <div class="marketplace-row" aria-label="Adapter and marketplace availability">
-          <span class="marketplace-pending">Adapters install from the <a href="https://github.com/darashkevich/runspecimen/tree/main/plugins/runspecimen">GitHub tree</a>. Not listed on Cursor Marketplace or Codex. Mac App Store is not public.</span>
+          <span class="marketplace-pending">Adapters install from the <a href="https://github.com/darashkevich/runspecimen/tree/main/plugins/runspecimen">GitHub tree</a>.</span>
         </div>
         <p class="hero-meta">
-          Stdlib-only Python CLI · Apache-2.0 · Local-only, no telemetry · Cursor &amp; Codex adapters stay adapters
+          Python 3.9+ · Apache-2.0 · Local-only, no telemetry · No third-party dependencies
         </p>
       </div>
     </section>
 
     <section id="promise" class="section promise" aria-labelledby="promise-title">
       <div class="shell">
-        <p class="section-kicker">The wedge</p>
+        <p class="section-kicker">The problem</p>
         <h2 id="promise-title">When “the command succeeded” isn’t enough evidence</h2>
         <p class="section-lede">
-          Agents draft scripts and launch jobs. They are terrible at proving which code and binary
-          actually ran — or at refusing a duplicate worker after a crash.
+          AI agents can draft scripts and launch jobs, but they're not great at proving which code
+          actually ran — or at refusing a duplicate after a crash.
         </p>
 
         <div class="promise-grid">
           <article class="promise-card" data-reveal>
-            <h3>Authorize</h3>
-            <p>A human types <code>APPROVE</code> on a real TTY, binding contract, source, and resolved executable hashes with an expiry. Phone confirm is optional, Mac-armed, and recorded as a distinct channel.</p>
+            <h3>You approve first</h3>
+            <p>Type <code>APPROVE</code> in a terminal to authorize the command. The approval binds the script, source code, and executable with an expiry time you control.</p>
           </article>
           <article class="promise-card" data-reveal>
-            <h3>Exclusive</h3>
-            <p>One workspace-wide execution lease. Exactly one mutating lifecycle step at a time — no parallel workers, no silent second launch.</p>
+            <h3>One run at a time</h3>
+            <p>A workspace lock prevents duplicate or overlapping runs — no parallel workers, no silent second launch.</p>
           </article>
           <article class="promise-card" data-reveal>
-            <h3>Verify &amp; advance</h3>
-            <p>Postflight asserts outcomes and issues a certificate. Successors refuse an unpostflighted or failed predecessor.</p>
+            <h3>Check results</h3>
+            <p>A mandatory postflight step verifies outputs before allowing the next command. Failed or missing checks block advancement.</p>
           </article>
         </div>
       </div>
@@ -109,42 +109,42 @@
       <div class="shell">
         <p class="section-kicker">Core lifecycle</p>
         <h2 id="lifecycle-title">Approve → preflight → run → postflight → verify</h2>
-        <p class="section-lede">Campaign steps that refuse to skip the paperwork.</p>
+        <p class="section-lede">Steps that refuse to skip the paperwork.</p>
 
         <ol class="phases">
           <li class="phase" data-reveal>
             <span class="phase-num" aria-hidden="true">01</span>
             <div>
               <h3>Approve</h3>
-              <p>Interactive TTY approval binds contract + provenance. Agents must not type <code>APPROVE</code>.</p>
+              <p>You type <code>APPROVE</code> in a terminal. Agents cannot approve for you.</p>
             </div>
           </li>
           <li class="phase" data-reveal>
             <span class="phase-num" aria-hidden="true">02</span>
             <div>
               <h3>Preflight</h3>
-              <p>Recheck approval freshness, provenance, outputs, predecessor, and the workspace lease before launch.</p>
+              <p>Recheck that the approval is still valid and the workspace is ready before launch.</p>
             </div>
           </li>
           <li class="phase" data-reveal>
             <span class="phase-num" aria-hidden="true">03</span>
             <div>
               <h3>Run</h3>
-              <p>Execute the declared argument vector once (<code>shell=False</code>), within wall-clock and capture bounds.</p>
+              <p>Execute the command once, with time limits and output capture.</p>
             </div>
           </li>
           <li class="phase" data-reveal>
             <span class="phase-num" aria-hidden="true">04</span>
             <div>
               <h3>Postflight</h3>
-              <p>Assert exit code, required outputs, and declared checks. Issue the certificate required before a successor.</p>
+              <p>Check exit code, required outputs, and any declared assertions. Issue a receipt required before the next step.</p>
             </div>
           </li>
           <li class="phase" data-reveal>
             <span class="phase-num" aria-hidden="true">05</span>
             <div>
               <h3>Verify</h3>
-              <p>Rehash live contract, source, runtime, outputs, and the SHA-256 hash-chained event log against the receipt. Verify reports <code>confirm_channel</code> so TTY and remote confirm stay distinct.</p>
+              <p>Compare the receipt against live files to confirm nothing changed. Reports which approval method was used.</p>
             </div>
           </li>
         </ol>
@@ -153,58 +153,50 @@
 
     <section id="features" class="section features" aria-labelledby="features-title">
       <div class="shell">
-        <p class="section-kicker">Feature set</p>
-        <h2 id="features-title">Built for exclusive, receipt-backed steps</h2>
-        <p class="section-lede">Narrow promise. Explicit non-goals. The CLI is the enforcement boundary.</p>
+        <p class="section-kicker">Features</p>
+        <h2 id="features-title">What you get</h2>
+        <p class="section-lede">A focused toolset for approving, running, and tracking agent commands.</p>
 
         <div class="feature-grid">
           <article class="feature" data-reveal>
-            <h3>TTY-bound approval</h3>
-            <p>Interactive approval with expiry. Refuses pipes/CI without a real terminal. Marketplace plugins cannot approve for you.</p>
+            <h3>Terminal approval</h3>
+            <p>Interactive approval with expiry. Works only in a real terminal — scripts and plugins cannot approve for you.</p>
           </article>
           <article class="feature" data-reveal>
-            <h3>Provenance binding</h3>
-            <p>Contract, source roots, and resolved executable hashes are bound into the approval document and rechecked at launch.</p>
+            <h3>Source tracking</h3>
+            <p>The script, source code, and executable are recorded at approval and checked again at launch.</p>
           </article>
           <article class="feature" data-reveal>
-            <h3>Workspace lease</h3>
-            <p>POSIX <code>fcntl</code> lease serializes approve / preflight / run / postflight across the whole workspace.</p>
+            <h3>Workspace lock</h3>
+            <p>Prevents overlapping runs across the workspace — one step at a time.</p>
           </article>
           <article class="feature" data-reveal>
-            <h3>Audited crash recovery</h3>
-            <p>Detect an interrupted run, then abandon it through a real-TTY decision recorded in the event chain. The abandoned run ID stays terminal.</p>
+            <h3>Crash recovery</h3>
+            <p>Detects an interrupted run and lets you abandon it with a recorded decision. The old run ID cannot be reused.</p>
           </article>
           <article class="feature" data-reveal>
-            <h3>Predecessor gating</h3>
-            <p>Successors require a valid postflighted predecessor. Failed or missing certificates block advancement.</p>
+            <h3>Step sequencing</h3>
+            <p>Successors require a valid completed predecessor. Failed or missing receipts block advancement.</p>
           </article>
           <article class="feature" data-reveal>
-            <h3>Authenticated receipts</h3>
-            <p>Append-only SHA-256 hash chain plus optional HMAC-SHA256 (shared-secret MAC) or optional Ed25519 (`runspecimen[ed25519]`) with an external public-key trust anchor. Embedded-key-only consistency is not trusted success. Neither is an OS sandbox.</p>
+            <h3>Receipts</h3>
+            <p>Creates a tamper-evident log you can verify later. Optional signing for extra assurance.</p>
+            <details>
+              <summary>Technical details</summary>
+              <p>Append-only SHA-256 hash chain plus optional HMAC-SHA256 or Ed25519 (<code>pip install 'runspecimen[ed25519]'</code>) with an external public-key trust anchor.</p>
+            </details>
           </article>
           <article class="feature" data-reveal>
-            <h3>Extended runtime provenance</h3>
-            <p>Bind a declared interpreter, hashes of allowlisted environment values, and optional trusted-system library hashes into the runtime identity.</p>
-          </article>
-          <article class="feature" data-reveal>
-            <h3>Loopback dashboard</h3>
-            <p>Read-only <code>127.0.0.1</code> guide for phase and evidence. It cannot approve or execute. No remote service.</p>
+            <h3>Local dashboard</h3>
+            <p>Read-only browser view of current phase and evidence. Cannot approve or execute — no remote service.</p>
           </article>
           <article class="feature" data-reveal>
             <h3>Incident bundle</h3>
-            <p>Community CLI <code>runspecimen bundle</code> packs one run (and optional predecessor chain) for offline reconstruct. History on disk stays visible. Not a 7-day Veto vault.</p>
-          </article>
-          <article class="feature" data-reveal>
-            <h3>Remote human confirm</h3>
-            <p>Mac arms a one-shot challenge; the paired phone types that challenge plus <code>APPROVE</code>. No one-tap Approve. Plugins cannot approve. Receipts say this is not local TTY APPROVE.</p>
-          </article>
-          <article class="feature" data-reveal>
-            <h3>Refuse + reason</h3>
-            <p>Typed refuse consumes the pending without writing approval. Same Mac challenge is required. Quiet hours block <em>arm only</em> — never auto-APPROVE.</p>
+            <p><code>runspecimen bundle</code> packs one run for offline sharing. History stays on disk. Free.</p>
           </article>
           <article class="feature" data-reveal>
             <h3>Agent adapters</h3>
-            <p>Repository adapters help draft and drive the lifecycle while staying constrained to the local CLI. Cursor Marketplace and the Codex directory do not list RunSpecimen yet.</p>
+            <p>Repository adapters help draft and drive the lifecycle while staying constrained to the local CLI.</p>
           </article>
         </div>
       </div>
@@ -212,43 +204,39 @@
 
     <section id="faq" class="section faq" aria-labelledby="faq-title">
       <div class="shell">
-        <p class="section-kicker">Release-candidate FAQ</p>
+        <p class="section-kicker">FAQ</p>
         <h2 id="faq-title">What RunSpecimen proves — and what it does not</h2>
         <div class="faq-grid">
           <details data-reveal>
-            <summary>Are HMAC-authenticated receipts digital signatures?</summary>
-            <p>No. HMAC-SHA256 uses one shared secret for authentication and verification. Anyone holding that key can forge a valid MAC, so it does not provide non-repudiation or independent third-party verification.</p>
+            <summary>How is this different from a sandbox?</summary>
+            <p>A sandbox limits what a process can reach. RunSpecimen records whether an approved, exclusive step happened and whether declared outcomes passed. <strong>RunSpecimen is not an OS sandbox</strong> — use a container when you need real process isolation.</p>
           </details>
           <details data-reveal>
-            <summary>What about optional Ed25519?</summary>
-            <p>Install <code>runspecimen[ed25519]</code> for offline public-key verify without sharing the private key. Trusted success requires an external trust anchor (<code>--public-key</code> or workspace key id)—a key embedded only in the receipt is not enough. Soft keys on disk are not absolute non-repudiation, and Ed25519 is not a sandbox or transparency log.</p>
+            <summary>Can AI agents approve runs?</summary>
+            <p>Not through the app. Plugins for Cursor, Codex, Claude, and others deliberately exclude the approve command. A human must run <code>runspecimen approve</code> in a real terminal.</p>
           </details>
           <details data-reveal>
             <summary>What does crash recovery do?</summary>
-            <p>It identifies a run left in <code>running</code> with no active workspace lease. A human can then confirm abandonment on a real TTY; the decision is audited and that run ID cannot be reused. It does not resume arbitrary payload execution.</p>
-          </details>
-          <details data-reveal>
-            <summary>What runtime context is recorded?</summary>
-            <p>The resolved executable is hashed. RunSpecimen can also bind a configured interpreter, hashes of explicitly allowlisted environment values, and optional libraries for trusted system interpreters. It does not automatically capture every dependency, dataset, service, or environment variable.</p>
+            <p>It identifies a run that was interrupted. You can then abandon it in a terminal; the decision is recorded and that run ID cannot be reused.</p>
           </details>
           <details data-reveal>
             <summary>Can the dashboard approve or execute?</summary>
-            <p>No. It is a read-only loopback view on <code>127.0.0.1</code>. Approval remains an interactive real-TTY CLI action, and the CLI remains the enforcement boundary.</p>
-          </details>
-          <details data-reveal>
-            <summary>Is phone confirm the same as TTY APPROVE?</summary>
-            <p>No. Remote human confirm is Mac-armed: a one-shot challenge is shown only on the Mac, then typed on a paired companion with the word <code>APPROVE</code>. Verify records <code>confirm_channel=remote_human_confirm</code> and states it is not equivalent to local TTY APPROVE. There is no one-tap Approve. Plugins cannot approve, settle, or refuse.</p>
+            <p>No. It is a read-only view on your machine only. Approval stays in the terminal.</p>
           </details>
           <details data-reveal>
             <summary>What is an incident bundle?</summary>
-            <p><code>runspecimen bundle</code> copies local run evidence (state, events, approval, certificate, verify output, refusals) into a folder a stranger can check offline. It is free. It is not a hosted vault and not a compliance product. Nothing on this site uploads that pack.</p>
+            <p><code>runspecimen bundle</code> copies local run evidence into a folder anyone can check offline. It is free and stays on your disk.</p>
           </details>
           <details data-reveal>
-            <summary>Does this include Veto or a paid control plane?</summary>
-            <p>No. This site does not sell a RunSpecimen checkout, and it does not sell Veto Teams, Intent, or an unsigned-side-effect watchdog. The published package is the local CLI.</p>
+            <summary>Can I run two jobs in parallel?</summary>
+            <p>Not in the same workspace. A lock covers the whole workspace for approve / preflight / run / postflight. Use separate workspaces if you need concurrency.</p>
+          </details>
+          <details data-reveal>
+            <summary>Does this include a paid control plane?</summary>
+            <p>No. This site does not sell a RunSpecimen checkout. The published package is the free local CLI.</p>
           </details>
         </div>
-        <p class="faq-more"><a href="https://github.com/darashkevich/runspecimen/blob/main/docs/FAQ.md">Read the complete FAQ and threat model</a></p>
+        <p class="faq-more"><a href="https://github.com/darashkevich/runspecimen/blob/main/docs/FAQ.md">Read the complete FAQ</a></p>
       </div>
     </section>
 
@@ -257,11 +245,16 @@
         <p class="section-kicker">Published release</p>
         <h2 id="release-title">What pip installs today</h2>
         <p class="section-lede">
-          <code>runspecimen==0.2.0rc14</code> is the local CLI: one approved run, a workspace lease, postflight, and a receipt. There is no checkout on this site.
+          <code>runspecimen==0.2.0rc15</code> is the local CLI: one approved run, a workspace lock, postflight check, and a receipt. There is no checkout on this site.
         </p>
-        <p class="boundary-note">
-          This package includes opt-in confinement, a workspace policy file, <code>retain</code>, <code>digest</code>, and <code>diff</code>. The default backend remains unconfined. Those backends are not an OS sandbox. Published rc12 does not include them.
-        </p>
+        <details class="boundary-note">
+          <summary>What's new in rc15</summary>
+          <p>
+            Evidence-expansion commands for richer verification workflows: <code>requirements</code>, <code>freshness</code>, <code>scenes</code>, <code>config</code>, and <code>usage</code>.
+            Also includes opt-in isolation backends (<code>sandbox-exec</code> on macOS, <code>bwrap</code> on Linux), workspace policy files, <code>retain</code>, <code>digest</code>, and <code>diff</code>.
+            The default isolation backend is <code>none</code>, which does not confine the process.
+          </p>
+        </details>
       </div>
     </section>
 
@@ -269,7 +262,7 @@
       <div class="shell">
         <p class="section-kicker">Use cases</p>
         <h2 id="use-cases-title">Where a green exit code is not the story</h2>
-        <p class="section-lede">Best fit: small teams already letting agents operate long-running local jobs.</p>
+        <p class="section-lede">Best fit: small teams already letting AI agents run local commands.</p>
 
         <div class="use-grid">
           <article class="use-card" data-reveal>
@@ -302,33 +295,31 @@
 
     <section id="boundary" class="section boundary" aria-labelledby="boundary-title">
       <div class="shell">
-        <p class="section-kicker">Honest boundary</p>
+        <p class="section-kicker">Honest limits</p>
         <h2 id="boundary-title">What RunSpecimen is — and is not</h2>
         <div class="boundary-grid">
           <div class="boundary-col" data-reveal>
-            <h3>Answers</h3>
+            <h3>What it answers</h3>
             <ul>
               <li>Was this step authorized?</li>
-              <li>Was it exclusive under the workspace lease?</li>
-              <li>Did declared checks pass under recorded provenance?</li>
-              <li>Is the successor eligible to advance?</li>
+              <li>Did only one run happen at a time?</li>
+              <li>Did declared checks pass?</li>
+              <li>Is the next step eligible to proceed?</li>
             </ul>
           </div>
           <div class="boundary-col boundary-col--muted" data-reveal>
             <h3>Does not replace</h3>
             <ul>
-              <li>OS sandboxes / process containment</li>
-              <li>Runtime firewalls for tool-call blocking</li>
-              <li>CI pipelines or observability traces</li>
-              <li>Transparency logs or absolute non-repudiation (optional Ed25519 still needs an external trust anchor)</li>
-              <li>A public internet control plane or one-tap Approve</li>
-              <li>Veto’s 7-day receipt vault, Intent API, or Teams CX queue</li>
+              <li>OS sandboxes or containers</li>
+              <li>CI pipelines</li>
+              <li>Transparency logs</li>
+              <li>One-tap approval (typing <code>APPROVE</code> is intentional)</li>
             </ul>
           </div>
         </div>
         <p class="boundary-note">
-          A green postflight means declared assertions passed under recorded provenance —
-          not that the scientific or engineering claim is true. The default backend does not confine the payload. Opt-in confinement in rc14 is not an OS sandbox.
+          A green postflight means declared assertions passed under recorded settings —
+          not that the scientific or engineering claim is true. The default backend does not confine the process.
         </p>
       </div>
     </section>
@@ -341,11 +332,11 @@
 
         <div class="code-block" data-reveal>
           <pre><code># Current published candidate (PyPI == GitHub Release bytes)
-python3 -m pip install runspecimen==0.2.0rc14
+python3 -m pip install --pre runspecimen==0.2.0rc15
 runspecimen --version
 
-# Or from Homebrew (same v0.2.0-rc.14 sdist)
-# brew tap darashkevich/runspecimen && brew install runspecimen
+# Or from Homebrew
+brew install darashkevich/runspecimen/runspecimen
 
 # Pip/Homebrew installs do not create a cwd examples/ tree — use init-demo
 runspecimen init-demo --workspace ./runspecimen-demo
@@ -355,7 +346,7 @@ cd runspecimen-demo
 runspecimen doctor --workspace .
 runspecimen validate --workspace . --contract contract.json
 
-# Lifecycle (human TTY required for approve; dashboard cannot approve or run)
+# Lifecycle (you type APPROVE in a terminal; dashboard cannot approve or run)
 runspecimen approve --workspace . --contract contract.json
 runspecimen preflight --workspace . --contract contract.json
 runspecimen run --workspace . --contract contract.json
@@ -369,22 +360,24 @@ runspecimen bundle --workspace . --campaign-id demo-campaign --run-id run-001 \
         </div>
 
         <div class="cta-row start-ctas">
-          <a class="btn btn-primary" href="https://pypi.org/project/runspecimen/0.2.0rc14/">Open PyPI</a>
+          <a class="btn btn-primary" href="https://pypi.org/project/runspecimen/0.2.0rc15/">Open PyPI</a>
           <a class="btn btn-secondary" href="https://github.com/darashkevich/homebrew-runspecimen">Homebrew tap</a>
-          <a class="btn btn-secondary" href="https://github.com/darashkevich/runspecimen/releases/tag/v0.2.0-rc.14">Release notes &amp; assets</a>
-          <a class="btn btn-ghost" href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.14/SHA256SUMS">SHA256SUMS</a>
+          <a class="btn btn-secondary" href="https://github.com/darashkevich/runspecimen/releases/tag/v0.2.0-rc.15">Release notes &amp; assets</a>
+          <a class="btn btn-ghost" href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.15/SHA256SUMS">SHA256SUMS</a>
         </div>
-        <p class="release-assets">
-          Verified rc14 release assets (same SHA-256 on GitHub and PyPI):
-          <a href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.14/runspecimen-0.2.0rc14-py3-none-any.whl">wheel</a>,
-          <a href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.14/runspecimen-0.2.0rc14.tar.gz">source distribution</a>,
-          <a href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.14/runspecimen-plugin-0.2.0-rc.14.zip">repository adapter ZIP</a>,
-          and <a href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.14/SHA256SUMS">checksums</a>.
-        </p>
+        <details class="release-assets-details">
+          <summary>Release assets and checksums</summary>
+          <p class="release-assets">
+            Verified rc15 release assets (same SHA-256 on GitHub and PyPI):
+            <a href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.15/runspecimen-0.2.0rc15-py3-none-any.whl">wheel</a>,
+            <a href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.15/runspecimen-0.2.0rc15.tar.gz">source distribution</a>,
+            <a href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.15/runspecimen-plugin-0.2.0-rc.15.zip">repository adapter ZIP</a>,
+            and <a href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.15/SHA256SUMS">checksums</a>.
+          </p>
+        </details>
         <p class="start-note">
-          Optional visibility only: <code>runspecimen dashboard --workspace . --contract contract.json --open</code>
-          binds to loopback, is read-only, and cannot approve or execute a run.
-          Optional remote confirm: Mac <code>remote-confirm arm</code>, then type the Mac challenge and <code>APPROVE</code> on the paired phone — not TTY-equivalent.
+          Optional: <code>runspecimen dashboard --workspace . --contract contract.json --open</code>
+          opens a read-only browser view. It cannot approve or execute a run.
         </p>
       </div>
     </section>
@@ -397,10 +390,8 @@ runspecimen bundle --workspace . --campaign-id demo-campaign --run-id run-001 \
         by <a href="https://darashkevich.com">Yahor Darashkevich</a>
       </p>
       <p class="footer-meta">
-        Local safety and evidence layer — records evidence; does not sandbox the payload.
-        Local-only. No telemetry. Not a compliance product or transparency-log system.
-        Optional Ed25519 still requires an external trust anchor.
-        Incident bundles stay on your disk. Remote confirm is not TTY-equivalent.
+        Local safety and evidence layer — records evidence; does not sandbox the process.
+        Local-only. No telemetry. Incident bundles stay on your disk.
       </p>
       <nav class="footer-links" aria-label="Legal and support">
         <a href="/support/">Support</a>
