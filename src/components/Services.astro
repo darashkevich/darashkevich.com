@@ -1,195 +1,51 @@
 ---
-type ServiceIcon = 'briefcase' | 'bot' | 'users' | 'workflow' | 'chart' | 'handshake';
-
-const services: {
-  title: string;
-  description: string;
-  bullets: string[];
-  icon: ServiceIcon;
-}[] = [
+const services = [
   {
     title: 'Customer Operations Strategy',
     description: 'Design scalable support operating models that align people, process, systems, KPIs, and customer experience around business growth.',
-    bullets: [
-      'Support org design and operating models',
-      'KPI frameworks and executive reporting',
-      'Process improvement and escalation strategy',
-      'Cross-functional CX alignment'
-    ],
-    icon: 'briefcase'
   },
   {
     title: 'AI, Self-Service & Support Automation',
     description: 'Design and optimize AI-powered support experiences that reduce contact volume, improve resolution speed, and help customers get accurate answers faster.',
-    bullets: [
-      'AI agent strategy and workflow design',
-      'Knowledge bases optimized for AI agents and human self-service',
-      'Intent mapping, guardrails, and escalation logic',
-      'Deflection, containment, CSAT, and resolution-rate tracking'
-    ],
-    icon: 'bot'
   },
   {
     title: 'Support Team Scaling & Workforce Design',
     description: 'Build and scale support teams that can handle growth without sacrificing quality, consistency, or customer trust.',
-    bullets: [
-      'Hiring, onboarding, and training frameworks',
-      'Workforce planning and coverage models',
-      'QA programs and agent enablement',
-      'Seasonal spike and launch readiness'
-    ],
-    icon: 'users'
   },
   {
     title: 'Zendesk & CX Systems Optimization',
     description: 'Optimize Zendesk and connected support tools to improve speed, consistency, reporting, and customer visibility.',
-    bullets: [
-      'Zendesk workflows, triggers, automations, and macros',
-      'Explore dashboards and KPI reporting',
-      'Help center and knowledge management structure',
-      'CRM, chat, messaging, and third-party integrations'
-    ],
-    icon: 'workflow'
   },
   {
     title: 'Voice of Customer & Customer Insight',
     description: 'Turn support data into actionable customer intelligence for product, retention, marketing, operations, and leadership teams.',
-    bullets: [
-      'Customer sentiment and issue trend analysis',
-      'CSAT/NPS feedback loops',
-      'Retention and cancellation signal analysis',
-      'Executive-ready customer insight reporting'
-    ],
-    icon: 'chart'
   },
   {
     title: 'Vendor / BPO Performance Management',
     description: 'Create accountable outsourced support partnerships that scale efficiently while protecting customer experience quality.',
-    bullets: [
-      'Vendor selection and onboarding',
-      'Performance management and QA standards',
-      'SLA, CSAT, productivity, and escalation reporting',
-      'Process alignment across internal and external teams'
-    ],
-    icon: 'handshake'
-  }
+  },
 ];
 ---
 
-<section id="services" class="py-20 relative scroll-mt-28">
-  <div class="max-w-7xl mx-auto px-8 lg:px-12">
-    <div class="text-center mb-16">
-      <h2 class="text-4xl lg:text-5xl xl:text-6xl font-bold text-[var(--color-text)] mb-10 tracking-tight">
+<section id="services" class="pb-8 pt-4 relative scroll-mt-28">
+  <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+    <div class="max-w-3xl mx-auto mb-10 text-center">
+      <p class="eyebrow mb-3">Selective consulting</p>
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--color-text)]">
         How I Can Help
       </h2>
-      <p class="text-lg lg:text-xl text-[var(--color-text-muted)] max-w-4xl mx-auto font-normal leading-relaxed mb-10">
+      <p class="mt-3 text-base text-[var(--color-text-muted)] leading-relaxed">
         Executive-level customer operations support across strategy, systems, AI-enabled support, team scaling, and performance management.
       </p>
     </div>
 
-    <div class="grid lg:grid-cols-2 gap-8">
-      {services.map((service) => {
-        return (
-        <article class="group rounded-[1.35rem] p-8 md:p-10 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 border hover:shadow-[0_20px_42px_rgba(2,6,12,0.55)] hover:border-[color:var(--color-primary-dark)]" style="background: color-mix(in srgb, var(--color-surface) 94%, transparent); border-color: var(--color-border); box-shadow: 0 14px 32px var(--color-shadow);">
-          <div class="service-icon-well w-14 h-14 md:w-16 md:h-16 rounded-[1rem] flex items-center justify-center border mb-6" style="background: color-mix(in srgb, var(--color-surface-strong) 90%, transparent); border-color: var(--color-border); box-shadow: 0 10px 20px rgba(2, 6, 12, 0.4);">
-            <svg class="service-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              {service.icon === 'briefcase' && (
-                <>
-                  <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-                  <rect x="3" y="7" width="18" height="13" rx="2" />
-                  <path d="M3 12h18" />
-                </>
-              )}
-              {service.icon === 'bot' && (
-                <>
-                  <path d="M12 2v4" />
-                  <rect x="4" y="6" width="16" height="12" rx="3" />
-                  <path d="M2 12h2M20 12h2" />
-                  <circle cx="9" cy="12" r="1.25" fill="currentColor" stroke="none" />
-                  <circle cx="15" cy="12" r="1.25" fill="currentColor" stroke="none" />
-                  <path d="M9 16h6" />
-                </>
-              )}
-              {service.icon === 'users' && (
-                <>
-                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                  <circle cx="9" cy="7" r="3.5" />
-                  <path d="M22 21v-2a3.5 3.5 0 0 0-2.5-3.35" />
-                  <path d="M16 3.7a3.5 3.5 0 0 1 0 6.6" />
-                </>
-              )}
-              {service.icon === 'workflow' && (
-                <>
-                  <rect x="3" y="3" width="7" height="7" rx="1.5" />
-                  <rect x="14" y="3" width="7" height="7" rx="1.5" />
-                  <rect x="8.5" y="14" width="7" height="7" rx="1.5" />
-                  <path d="M6.5 10v2.5A1.5 1.5 0 0 0 8 14h1.5M17.5 10v2.5A1.5 1.5 0 0 1 16 14h-1.5" />
-                </>
-              )}
-              {service.icon === 'chart' && (
-                <>
-                  <path d="M4 19V9" />
-                  <path d="M10 19V5" />
-                  <path d="M16 19v-7" />
-                  <path d="M22 19H2" />
-                </>
-              )}
-              {service.icon === 'handshake' && (
-                <>
-                  <path d="m11 17 2 2a1 1 0 1 0 3-3" />
-                  <path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4" />
-                  <path d="m21 3 1 11h-2" />
-                  <path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3" />
-                  <path d="M3 4h8" />
-                </>
-              )}
-            </svg>
-          </div>
-          <h3 class="text-2xl font-bold tracking-[-0.01em] text-[var(--color-text)] mb-4 text-balance">{service.title}</h3>
-          <p class="text-base md:text-lg text-[var(--color-text-muted)] leading-[1.75] mb-6">{service.description}</p>
-          <ul class="space-y-3">
-            {service.bullets.map((bullet) => (
-              <li class="flex gap-3 items-start">
-                <svg class="service-bullet-icon shrink-0 mt-1" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <circle cx="12" cy="12" r="9" />
-                  <path d="m9 12 2 2 4-4" />
-                </svg>
-                <span class="text-sm md:text-base text-[var(--color-text-muted)]">{bullet}</span>
-              </li>
-            ))}
-          </ul>
-          </article>
-        );
-      })}
-    </div>
+    <ul class="grid md:grid-cols-2 gap-x-12 gap-y-6">
+      {services.map((service) => (
+        <li class="border-t border-[color:var(--color-border)] pt-4">
+          <h3 class="text-lg font-semibold text-[var(--color-text)] tracking-tight">{service.title}</h3>
+          <p class="mt-1.5 text-sm sm:text-base text-[var(--color-text-muted)] leading-relaxed">{service.description}</p>
+        </li>
+      ))}
+    </ul>
   </div>
 </section>
-
-<style>
-  .service-icon,
-  .service-bullet-icon {
-    color: var(--color-icon);
-    stroke: currentColor;
-    stroke-width: 1.75;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
-  .service-icon {
-    width: 1.75rem;
-    height: 1.75rem;
-  }
-
-  .service-bullet-icon {
-    width: 1rem;
-    height: 1rem;
-  }
-
-  .group:hover .service-icon-well {
-    border-color: color-mix(in srgb, var(--color-primary) 45%, var(--color-border));
-  }
-
-  .group:hover .service-icon {
-    color: var(--color-primary);
-  }
-</style>
