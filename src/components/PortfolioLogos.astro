@@ -1,81 +1,106 @@
 ---
-type LogoTile = {
-  src?: string;
-  label?: string;
+type Logo = {
+  src: string;
   alt: string;
-  bgColor: string;
-  textColor?: string;
-  sublabel?: string;
+  href?: string;
 };
 
-const logos: LogoTile[] = [
-  { src: '/images/brands/picBB.webp', alt: 'ButcherBox logo', bgColor: '#272526' },
-  { src: '/images/brands/picBoia.webp', alt: 'Boia logo', bgColor: '#ffffff' },
-  { src: '/images/brands/picEfyTal.webp', alt: 'EfyTal logo', bgColor: '#ffffff' },
-  { src: '/images/brands/picFCF.webp', alt: 'TeachPoint logo', bgColor: '#111111' },
-  { src: '/images/brands/picGoshly.webp', alt: 'Goshly logo', bgColor: '#6d6d6d' },
-  { src: '/images/brands/picIORAD.webp', alt: 'IORAD logo', bgColor: '#ffffff' },
-  { src: '/images/brands/picJB.webp', alt: 'JB logo', bgColor: '#ffffff' },
-  { src: '/images/brands/picKachava.webp', alt: "Ka'Chava logo", bgColor: '#f8efea' },
-  { src: '/images/brands/picKiwiCo.webp', alt: 'KiwiCo logo', bgColor: '#ffffff' },
-  { src: '/images/brands/picLawnLove.webp', alt: 'Lawn Love logo', bgColor: '#328363' },
-  { src: '/images/brands/picPOTV.webp', alt: 'POTV logo', bgColor: '#f9f5f2' },
-  { src: '/images/brands/picPedalSure.webp', alt: 'PedalSure logo', bgColor: '#07161d' },
-  { src: '/images/brands/picRotoQL.webp', alt: 'RotoQL logo', bgColor: '#000000' },
-  { src: '/images/brands/picSatechi.webp', alt: 'Satechi logo', bgColor: '#ffffff' },
-  { label: '', alt: 'Apple logo', bgColor: '#f3f4f6', textColor: '#111111' }
+const logos: Logo[] = [
+  { src: '/images/brands/mono/picBB.webp', alt: 'ButcherBox' },
+  { src: '/images/brands/mono/picBoia.webp', alt: 'Boia' },
+  { src: '/images/brands/mono/picEfyTal.webp', alt: 'EfyTal' },
+  { src: '/images/brands/mono/picFCF.webp', alt: 'TeachPoint' },
+  { src: '/images/brands/mono/picGoshly.webp', alt: 'Goshly' },
+  { src: '/images/brands/mono/picIORAD.webp', alt: 'IORAD' },
+  { src: '/images/brands/mono/picJB.webp', alt: 'JB' },
+  { src: '/images/brands/mono/picKachava.webp', alt: "Ka'Chava", href: '#case-kachava' },
+  { src: '/images/brands/mono/picKiwiCo.webp', alt: 'KiwiCo' },
+  { src: '/images/brands/mono/picLawnLove.webp', alt: 'Lawn Love' },
+  { src: '/images/brands/mono/picPOTV.webp', alt: 'POTV' },
+  { src: '/images/brands/mono/picPedalSure.webp', alt: 'PedalSure' },
+  { src: '/images/brands/mono/picRotoQL.webp', alt: 'RotoQL' },
+  { src: '/images/brands/mono/picSatechi.webp', alt: 'Satechi' },
 ];
 ---
 
-<section id="portfolio-logos" class="pt-4 pb-12 relative scroll-mt-28">
-  <div class="max-w-7xl mx-auto px-8 lg:px-12">
-    <div class="backdrop-blur-xl rounded-3xl p-10 md:p-14 border" style="background-color: var(--color-surface); border-color: var(--color-border); box-shadow: 0 14px 34px var(--color-shadow);">
-      <div class="text-center mb-12">
-        <h2 class="text-4xl lg:text-5xl xl:text-6xl font-bold text-[var(--color-text)] mb-6 tracking-tight">
-          Selected Brands &amp; Organizations
-        </h2>
-        <p class="text-[var(--color-text-muted)] text-lg mb-6 max-w-3xl mx-auto leading-relaxed">
-          Experience across nutrition, supplements, meal replacement, eCommerce, subscription, SaaS, technology, education, and consumer support environments.
-        </p>
-        <div class="w-40 h-1.5 bg-gradient-to-r from-slate-500/60 via-blue-500/60 to-indigo-500/60 mx-auto rounded-full"></div>
-      </div>
-
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
-        {logos.map((logo) => (
-          <div
-            class="h-24 md:h-28 backdrop-blur-xl rounded-2xl border transition-all duration-300 flex items-center justify-center p-4 hover:-translate-y-0.5"
-            style={`background-color: ${logo.bgColor}; border-color: var(--color-border); box-shadow: 0 8px 22px var(--color-shadow);`}
-          >
-            {logo.src ? (
-              <img
-                src={logo.src}
-                alt={logo.alt}
-                loading="lazy"
-                decoding="async"
-                width="180"
-                height="96"
-                class="max-h-12 md:max-h-14 w-auto max-w-full object-contain"
-              />
-            ) : (
-              <div class="text-center leading-tight">
-                <div
-                  class={`font-semibold ${(logo.label === '' || logo.label === '?') ? 'text-3xl md:text-4xl leading-none' : 'text-base md:text-lg'}`}
-                  style={`color: ${logo.textColor || '#111827'};`}
-                  role="img"
-                  aria-label={logo.alt}
-                >
-                  {logo.label}
-                </div>
-                {logo.sublabel && (
-                  <div class="text-xs md:text-sm mt-1 opacity-80" style={`color: ${logo.textColor || '#111827'};`}>
-                    {logo.sublabel}
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
+<section id="portfolio-logos" class="py-12 relative scroll-mt-28">
+  <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--color-text)]">
+        Selected Brands
+      </h2>
+      <p class="mt-3 text-base text-[var(--color-text-muted)] max-w-2xl mx-auto leading-relaxed">
+        Nutrition, subscription, eCommerce, SaaS, education, and consumer organizations.
+      </p>
     </div>
+
+    <ul class="brand-strip">
+      {logos.map((logo) => (
+        <li>
+          {logo.href ? (
+            <a href={logo.href} class="brand-link" title="Ka'Chava case study">
+              <img src={logo.src} alt="" width="180" height="48" />
+              <span class="sr-only">Ka'Chava case study</span>
+            </a>
+          ) : (
+            <img src={logo.src} alt={`${logo.alt} logo`} width="180" height="48" />
+          )}
+        </li>
+      ))}
+      <li>
+        <span class="brand-apple" role="img" aria-label="Apple logo">
+          <svg viewBox="0 0 14 17" fill="currentColor" aria-hidden="true">
+            <path d="M11.35 9.02c.02-1.62 1.32-2.4 1.38-2.44-.76-1.1-1.93-1.25-2.34-1.27-1-.1-1.94.58-2.44.58-.51 0-1.28-.57-2.11-.55-.99.02-1.96.58-2.48 1.48-1.06 1.84-.27 4.55.76 6.04.51.73 1.1 1.54 1.89 1.51.76-.03 1.04-.48 1.96-.48.91 0 1.17.48 1.97.46.82-.01 1.33-.73 1.83-1.47.57-.84.81-1.65.82-1.69-.02-.01-1.57-.6-1.59-2.17zM9.62 4.14c.42-.51.7-1.21.62-1.92-.6.03-1.33.4-1.76.9-.38.45-.72 1.17-.63 1.86.67.05 1.35-.34 1.77-.84z" />
+          </svg>
+        </span>
+      </li>
+    </ul>
   </div>
 </section>
+
+<style>
+  .brand-strip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1.15rem 1.85rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .brand-strip img,
+  .brand-apple svg {
+    height: 1.65rem;
+    width: auto;
+  }
+
+  .brand-strip img {
+    object-fit: contain;
+  }
+
+  .brand-link {
+    display: inline-flex;
+    border-radius: 0.35rem;
+    box-shadow: inset 0 -1px 0 color-mix(in srgb, var(--color-primary) 75%, transparent);
+    padding-bottom: 0.2rem;
+  }
+
+  .brand-link:hover img,
+  .brand-link:focus-visible img {
+    opacity: 1;
+  }
+
+  .brand-apple {
+    display: inline-flex;
+    color: #e7edf5;
+  }
+
+  @media (min-width: 768px) {
+    .brand-strip img,
+    .brand-apple svg {
+      height: 2rem;
+    }
+  }
+</style>

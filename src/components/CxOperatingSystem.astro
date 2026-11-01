@@ -216,8 +216,9 @@ const stages: Stage[] = [
         <p
           class="cx-os__live mt-5 text-center text-base text-[var(--color-text-muted)] leading-relaxed min-h-[3rem] max-w-2xl mx-auto transition-opacity duration-300"
           data-cx-os-live
+          data-cx-os-default="Five stages, from the ticket to the decision."
           aria-live="polite"
-        ></p>
+        >Five stages, from the ticket to the decision.</p>
       </figure>
     </div>
   </div>
@@ -410,13 +411,14 @@ const stages: Stage[] = [
   if (root) {
     const stages = root.querySelectorAll('[data-interactive-stage]');
     const live = root.querySelector('[data-cx-os-live]');
+    const fallback = live?.getAttribute('data-cx-os-default') ?? '';
 
     function clearLit() {
       stages.forEach((s) => {
         s.classList.remove('is-lit');
         s.setAttribute('aria-pressed', 'false');
       });
-      if (live) live.textContent = '';
+      if (live) live.textContent = fallback;
     }
 
     function light(stage) {
