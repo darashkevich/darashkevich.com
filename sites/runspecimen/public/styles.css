@@ -509,9 +509,19 @@ code {
   margin-bottom: 0.7rem;
 }
 
-.faq-grid p {
+.faq-grid p,
+.faq-grid ul {
   margin: 0;
   color: var(--muted);
+}
+
+.faq-grid p + p,
+.faq-grid ul {
+  margin-top: 0.7rem;
+}
+
+.faq-grid ul {
+  padding-left: 1.2rem;
 }
 
 .faq-more {
@@ -632,6 +642,10 @@ code {
   font-size: 0.98rem;
 }
 
+.boundary-note p + p {
+  margin-top: 0.7rem;
+}
+
 .code-block {
   margin-bottom: 1.5rem;
   border-radius: calc(var(--radius) + 0.15rem);
@@ -707,6 +721,15 @@ html.js [data-reveal].is-visible {
 
   .nav a:not(.nav-cta) {
     display: none;
+  }
+
+  .install-command {
+    width: 100%;
+  }
+
+  .install-command code {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
   }
 
   .hero {
