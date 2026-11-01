@@ -23,7 +23,7 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" href="/brand/favicon.svg?v=20260918h" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png?v=20260918h" />
-  <link rel="stylesheet" href="/styles.css?v=20260918" />
+  <link rel="stylesheet" href="/styles.css?v=20261101" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -55,7 +55,7 @@
       </div>
 
       <div class="shell hero-inner">
-        <p class="eyebrow">v0.2.0-rc.15 on PyPI and GitHub</p>
+        <p class="eyebrow">v0.2.0-rc.16 on PyPI and GitHub</p>
         <h1 id="brand" class="brand">RunSpecimen</h1>
         <p class="headline">One approved run. One receipt. No silent second launch.</p>
         <p class="lede">
@@ -64,11 +64,11 @@
           command runs at a time and creates a receipt you can check later.
         </p>
         <div class="cta-row">
-          <a class="btn btn-primary" href="https://pypi.org/project/runspecimen/0.2.0rc15/">Install from PyPI</a>
-          <a class="btn btn-secondary" href="https://github.com/darashkevich/runspecimen/releases/tag/v0.2.0-rc.15">View rc15 release</a>
+          <a class="btn btn-primary" href="https://pypi.org/project/runspecimen/0.2.0rc16/">Install from PyPI</a>
+          <a class="btn btn-secondary" href="https://github.com/darashkevich/runspecimen/releases/tag/v0.2.0-rc.16">View rc16 release</a>
         </div>
         <div class="install-command" aria-label="Recommended install command">
-          <code>python3 -m pip install --pre runspecimen==0.2.0rc15</code>
+          <code>python3 -m pip install --pre runspecimen==0.2.0rc16</code>
         </div>
         <div class="marketplace-row" aria-label="Adapter and marketplace availability">
           <span class="marketplace-pending">Adapters install from the <a href="https://github.com/darashkevich/runspecimen/tree/main/plugins/runspecimen">GitHub tree</a>.</span>
@@ -228,6 +228,28 @@
             <p><code>runspecimen bundle</code> copies local run evidence into a folder anyone can check offline. It is free and stays on your disk.</p>
           </details>
           <details data-reveal>
+            <summary>What does GHSA-8357-m9wf-gjh9 change?</summary>
+            <p>
+              Advisory <a href="https://github.com/darashkevich/runspecimen/security/advisories/GHSA-8357-m9wf-gjh9">GHSA-8357-m9wf-gjh9</a>
+              covers SIGTERM/SIGHUP orphaning of an approved contract.
+              In <code>0.2.0rc3</code>–<code>0.2.0rc15</code>, <code>runspecimen run</code> started the contract in its own session and only handled SIGINT,
+              so a closed terminal, <code>kill</code>, or a supervisor/CI cancel could leave the contract running and free the workspace lease.
+            </p>
+            <p>
+              Upgrade with <code>python3 -m pip install --upgrade --pre runspecimen==0.2.0rc16</code>, then <code>runspecimen --version</code>.
+              <code>0.2.0rc16</code> routes SIGTERM, SIGHUP, and SIGINT through process-group cleanup, records an interrupted outcome,
+              and keeps a detached supervisor so <code>wall_timeout_sec</code> still bounds the group if the CLI is SIGKILLed, its group dies, or it is SIGSTOPped.
+              The lease stays held until the group is confirmed empty; otherwise the run is recorded as <code>cleanup_pending</code>.
+            </p>
+            <p>Residual limits (also stated as <code>cleanup_scope=process_group</code> in state):</p>
+            <ul>
+              <li>A descendant that calls <code>setsid()</code> leaves the process group and can outlive cleanup.</li>
+              <li>SIGKILL of both the supervisor and the bind watchdog can still orphan remaining work.</li>
+              <li>A permanently unwritable state directory either keeps the lease (retry) or, if the group was already stopped, leaves a stale <code>phase=running</code> record plus an error that state could not be persisted.</li>
+            </ul>
+            <p>This is not an OS sandbox. Default <code>isolation.backend</code> remains <code>none</code>.</p>
+          </details>
+          <details data-reveal>
             <summary>Can I run two jobs in parallel?</summary>
             <p>Not in the same workspace. A lock covers the whole workspace for approve / preflight / run / postflight. Use separate workspaces if you need concurrency.</p>
           </details>
@@ -236,7 +258,11 @@
             <p>No. This site does not sell a RunSpecimen checkout. The published package is the free local CLI.</p>
           </details>
         </div>
-        <p class="faq-more"><a href="https://github.com/darashkevich/runspecimen/blob/main/docs/FAQ.md">Read the complete FAQ</a></p>
+        <p class="faq-more">
+          <a href="https://github.com/darashkevich/runspecimen/blob/main/docs/FAQ.md">Read the complete FAQ</a>
+          ·
+          <a href="https://github.com/darashkevich/runspecimen/security/advisories/GHSA-8357-m9wf-gjh9">Security advisory GHSA-8357-m9wf-gjh9</a>
+        </p>
       </div>
     </section>
 
@@ -245,14 +271,24 @@
         <p class="section-kicker">Published release</p>
         <h2 id="release-title">What pip installs today</h2>
         <p class="section-lede">
-          <code>runspecimen==0.2.0rc15</code> is the local CLI: one approved run, a workspace lock, postflight check, and a receipt. There is no checkout on this site.
+          <code>runspecimen==0.2.0rc16</code> is the local CLI: one approved run, a workspace lock, postflight check, and a receipt. There is no checkout on this site.
         </p>
         <details class="boundary-note">
-          <summary>What's new in rc15</summary>
+          <summary>What's new in rc16</summary>
           <p>
-            Evidence-expansion commands for richer verification workflows: <code>requirements</code>, <code>freshness</code>, <code>scenes</code>, <code>config</code>, and <code>usage</code>.
-            Also includes opt-in isolation backends (<code>sandbox-exec</code> on macOS, <code>bwrap</code> on Linux), workspace policy files, <code>retain</code>, <code>digest</code>, and <code>diff</code>.
+            <code>runspecimen run</code> no longer orphans an approved contract on SIGTERM/SIGHUP
+            (advisory <a href="https://github.com/darashkevich/runspecimen/security/advisories/GHSA-8357-m9wf-gjh9">GHSA-8357-m9wf-gjh9</a>,
+            affected <code>0.2.0rc3</code>–<code>0.2.0rc15</code>).
+            Upgrade with <code>python3 -m pip install --upgrade --pre runspecimen==0.2.0rc16</code>.
+            Residual limits remain: a <code>setsid()</code> descendant can outlive cleanup;
+            SIGKILL of both the supervisor and the bind watchdog can still orphan work;
+            an unwritable state directory can leave a stale <code>phase=running</code> record.
+          </p>
+          <p>
+            Still includes the rc15 evidence-expansion commands (<code>requirements</code>, <code>freshness</code>, <code>scenes</code>, <code>config</code>, and <code>usage</code>)
+            plus opt-in isolation backends (<code>sandbox-exec</code> on macOS, <code>bwrap</code> on Linux), workspace policy files, <code>retain</code>, <code>digest</code>, and <code>diff</code>.
             The default isolation backend is <code>none</code>, which does not confine the process.
+            The local Mac app label remains <code>0.1.6 (16)</code> and is not an App Store upload.
           </p>
         </details>
       </div>
@@ -332,10 +368,10 @@
 
         <div class="code-block" data-reveal>
           <pre><code># Current published candidate (PyPI == GitHub Release bytes)
-python3 -m pip install --pre runspecimen==0.2.0rc15
+python3 -m pip install --pre runspecimen==0.2.0rc16
 runspecimen --version
 
-# Or from Homebrew
+# Or from Homebrew (tap still served 0.2.0rc15 on 2026-11-01; pin via pip for rc16)
 brew install darashkevich/runspecimen/runspecimen
 
 # Pip/Homebrew installs do not create a cwd examples/ tree — use init-demo
@@ -360,19 +396,19 @@ runspecimen bundle --workspace . --campaign-id demo-campaign --run-id run-001 \
         </div>
 
         <div class="cta-row start-ctas">
-          <a class="btn btn-primary" href="https://pypi.org/project/runspecimen/0.2.0rc15/">Open PyPI</a>
+          <a class="btn btn-primary" href="https://pypi.org/project/runspecimen/0.2.0rc16/">Open PyPI</a>
           <a class="btn btn-secondary" href="https://github.com/darashkevich/homebrew-runspecimen">Homebrew tap</a>
-          <a class="btn btn-secondary" href="https://github.com/darashkevich/runspecimen/releases/tag/v0.2.0-rc.15">Release notes &amp; assets</a>
-          <a class="btn btn-ghost" href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.15/SHA256SUMS">SHA256SUMS</a>
+          <a class="btn btn-secondary" href="https://github.com/darashkevich/runspecimen/releases/tag/v0.2.0-rc.16">Release notes &amp; assets</a>
+          <a class="btn btn-ghost" href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.16/SHA256SUMS">SHA256SUMS</a>
         </div>
         <details class="release-assets-details">
           <summary>Release assets and checksums</summary>
           <p class="release-assets">
-            Verified rc15 release assets (same SHA-256 on GitHub and PyPI):
-            <a href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.15/runspecimen-0.2.0rc15-py3-none-any.whl">wheel</a>,
-            <a href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.15/runspecimen-0.2.0rc15.tar.gz">source distribution</a>,
-            <a href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.15/runspecimen-plugin-0.2.0-rc.15.zip">repository adapter ZIP</a>,
-            and <a href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.15/SHA256SUMS">checksums</a>.
+            Verified rc16 release assets (same SHA-256 on GitHub and PyPI):
+            <a href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.16/runspecimen-0.2.0rc16-py3-none-any.whl">wheel</a>,
+            <a href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.16/runspecimen-0.2.0rc16.tar.gz">source distribution</a>,
+            <a href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.16/runspecimen-plugin-0.2.0-rc.16.zip">repository adapter ZIP</a>,
+            and <a href="https://github.com/darashkevich/runspecimen/releases/download/v0.2.0-rc.16/SHA256SUMS">checksums</a>.
           </p>
         </details>
         <p class="start-note">

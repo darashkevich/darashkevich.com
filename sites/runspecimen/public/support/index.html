@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" href="/brand/favicon.svg?v=20260918h" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png?v=20260918h" />
-  <link rel="stylesheet" href="/styles.css?v=20260918" />
+  <link rel="stylesheet" href="/styles.css?v=20261101" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -34,11 +34,13 @@
 
       <h2>Documentation</h2>
       <ul>
-        <li><a href="https://pypi.org/project/runspecimen/0.2.0rc15/">PyPI package (0.2.0rc15)</a></li>
-        <li><a href="https://github.com/darashkevich/runspecimen/releases/tag/v0.2.0-rc.15">v0.2.0-rc.15 release notes and assets</a></li>
+        <li><a href="https://pypi.org/project/runspecimen/0.2.0rc16/">PyPI package (0.2.0rc16)</a></li>
+        <li><a href="https://github.com/darashkevich/runspecimen/releases/tag/v0.2.0-rc.16">v0.2.0-rc.16 release notes and assets</a></li>
         <li><a href="https://github.com/darashkevich/runspecimen/blob/main/docs/USER_GUIDE.md">User guide</a></li>
         <li><a href="https://github.com/darashkevich/runspecimen/blob/main/docs/ABOUT.md">About</a></li>
         <li><a href="https://github.com/darashkevich/runspecimen/blob/main/docs/FAQ.md">FAQ</a></li>
+        <li><a href="https://github.com/darashkevich/runspecimen/blob/main/docs/FAQ.md#what-does-ghsa-8357-m9wf-gjh9-change">FAQ: GHSA-8357-m9wf-gjh9 signal-cleanup fix</a></li>
+        <li><a href="https://github.com/darashkevich/runspecimen/security/advisories/GHSA-8357-m9wf-gjh9">Security advisory GHSA-8357-m9wf-gjh9</a></li>
         <li><a href="https://github.com/darashkevich/runspecimen/blob/main/docs/SPEC_INCIDENT_BUNDLE.md">Incident bundle spec</a></li>
         <li><a href="https://github.com/darashkevich/runspecimen/blob/main/docs/SPEC_REMOTE_CONFIRM_CARD.md">Remote confirm card spec</a></li>
         <li><a href="https://github.com/darashkevich/runspecimen/blob/main/docs/ADR-004-remote-human-confirm.md">ADR-004 remote human confirm</a></li>
@@ -56,6 +58,12 @@
         Use <code>runspecimen recovery-status</code> to determine whether a run was interrupted.
         Abandonment is an audited, real-TTY decision; the old run ID remains permanently terminal.
         Do not remove state files or assume recovery makes an untrusted payload safe.
+        In <code>0.2.0rc3</code>–<code>0.2.0rc15</code>, <code>runspecimen run</code> could orphan an approved contract on SIGTERM/SIGHUP
+        (<a href="https://github.com/darashkevich/runspecimen/security/advisories/GHSA-8357-m9wf-gjh9">GHSA-8357-m9wf-gjh9</a>).
+        Upgrade with <code>python3 -m pip install --upgrade --pre runspecimen==0.2.0rc16</code>.
+        Residual limits remain: a <code>setsid()</code> descendant can outlive cleanup;
+        SIGKILL of both the supervisor and the bind watchdog can still orphan work;
+        an unwritable state directory can leave a stale <code>phase=running</code> record.
         For a reconstructable local pack, <code>runspecimen bundle</code> copies run evidence without
         pairing tokens or Mac challenge secrets. That pack is not a hosted vault.
       </p>
@@ -69,7 +77,7 @@
         <a href="https://github.com/darashkevich/runspecimen/blob/main/SECURITY.md">SECURITY.md</a>.
       </p>
 
-      <p class="page-updated">Last updated: 2026-09-18</p>
+      <p class="page-updated">Last updated: 2026-11-01</p>
     </div>
   </main>
 
